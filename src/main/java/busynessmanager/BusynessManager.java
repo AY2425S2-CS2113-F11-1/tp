@@ -1,8 +1,8 @@
-package seedu.duke;
+package busynessmanager;
 
 import java.util.Scanner;
 
-public class Duke {
+public class BusynessManager {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
