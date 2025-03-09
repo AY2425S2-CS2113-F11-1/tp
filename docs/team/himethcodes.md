@@ -1,4 +1,4 @@
-# John Doe - Project Portfolio Page
+# Himeth Thewmika - Project Portfolio Page
 
 ## Overview
 
