@@ -1,4 +1,4 @@
-# Rozalie Smit - Project Portfolio Page
+# Rozalie Lisen Smit - Project Portfolio
 
 ## Overview
 

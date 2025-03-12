@@ -6,4 +6,4 @@ Display |        Name         |               Github Profile               | Por
 ![](pics/sy.png) | Lee Seung Yoon |    [Github](https://github.com/LEESY02)    | [Portfolio](team/LEESY02.md)
 ![](pics/himeth.jpg) | Himeth Thewmika |  [Github](https://github.com/himethcodes)  | [Portfolio](team/himethcodes.md)
 ![](pics/amir.jpg) | Amir Husaini Bin Musa | [Github](https://github.com/amirhusaini06) | [Portfolio](team/amirhusaini06.md)
-![]() | Rozalie Smit | [Github](https://github.com/rozaliesmit) | [Portfolio](team/rozaliesmit.md)
+![](pics/rozalie.jpg) | Rozalie Smit | [Github](https://github.com/rozaliesmit) | [Portfolio](team/rozalie.md)
