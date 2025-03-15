@@ -9,7 +9,8 @@ public class CommandParser {
     private SearchManager searchManager;
     */
 
-    /**
+    // Javadoc comment
+    /*
      * Constructs the CommandParser class when the other systems have not been created.
      * This constructor also instantiates the other systems.
      */
@@ -22,7 +23,8 @@ public class CommandParser {
     }
     */
 
-    /**
+    // Javadoc comment
+    /*
      * Constructs the CommandParser class given existing systems for the business.
      *
      * @param inventoryManager existing InventoryManager for the business.
