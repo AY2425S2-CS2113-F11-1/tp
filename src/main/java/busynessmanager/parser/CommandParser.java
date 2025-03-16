@@ -86,7 +86,7 @@ public class CommandParser {
      * @return String containing the information related to the command keyword.
      */
     public String extractInfo(int commandSeparatorIndex, String input) {
-        return input.substring(commandSeparatorIndex);
+        return input.substring(commandSeparatorIndex + 1);
     }
 
     /**
