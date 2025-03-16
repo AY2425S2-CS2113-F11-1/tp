@@ -9,19 +9,23 @@ public class BusynessManager {
     private String businessType; // Enum: FNB / RETAIL
     private static HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
 
+   /*
     private CommandParser commandParser;
     private InventoryManager inventoryManager;
     private SalesManager salesManager;
     private RevenueCalculator revenueCalculator;
     private SearchManager searchManager;
+    */
 
     public BusynessManager() {
-        // Initialize components
+        /* Initialize components
         this.inventoryManager = new InventoryManager();
         this.salesManager = new SalesManager(inventoryManager);
         this.revenueCalculator = new RevenueCalculator(inventoryManager);
         this.searchManager = new SearchManager(inventoryManager);
         this.commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
+
+         */
     }
 
     public void start() {
@@ -76,7 +80,7 @@ public class BusynessManager {
                 System.out.println("Exiting Busyness Manager...");
                 break;
             }
-            commandParser.parseCommand(input);
+            //commandParser.parseCommand(input);
         }
         scanner.close();
     }
