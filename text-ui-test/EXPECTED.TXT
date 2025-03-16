@@ -1,2 +1,2 @@
-Enter Business ID: First-time setup required.
-Enter Business Name:
+Welcome to Busyness Manager!
+Enter Business ID:
