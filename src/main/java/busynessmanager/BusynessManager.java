@@ -1,4 +1,5 @@
 package busynessmanager;
+
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -19,14 +20,13 @@ public class BusynessManager {
     */
 
     public BusynessManager() {
-        /* Initialize components
+        /*
         this.inventoryManager = new InventoryManager();
         this.salesManager = new SalesManager(inventoryManager);
         this.revenueCalculator = new RevenueCalculator(inventoryManager);
         this.searchManager = new SearchManager(inventoryManager);
         this.commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
-
-         */
+        */
     }
 
     public void start() {
@@ -92,14 +92,14 @@ public class BusynessManager {
 
     public void run(Scanner scanner) {
         System.out.println("Busyness Manager is ready. Type 'help' for commands.");
-
         while (true) {
-            System.out.print("> ");
+            System.out.print(">");
             String input = scanner.nextLine();
             if (input.equalsIgnoreCase("exit")) {
                 System.out.println("Exiting Busyness Manager...");
                 break;
             }
+
             //commandParser.parseCommand(input);
         }
         scanner.close();
