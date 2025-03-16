@@ -7,8 +7,7 @@ import java.util.Set;
 /**
  * SearchManager is used to query through the InventoryManager and return different results based on the given queries
  */
-public class SearchManager
-{
+public class SearchManager {
     private InventoryManager inventory;
 
     /**
