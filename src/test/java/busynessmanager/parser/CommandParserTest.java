@@ -2,13 +2,9 @@ package busynessmanager.parser;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class CommandParserTest {
-
-    /*
-     * For now, since parseCommand() executes the 3 commands below it, we can just assume by wishful thinking if
-     * testing the 3 commands is satisfactory, parseCommand() will also work.
-     */
 
     @Test
     public void getCommandSeparatorIndex_stringContainsSpaces_success() {
@@ -46,5 +42,31 @@ public class CommandParserTest {
 
         // This should throw exception during later implementations.
         assertEquals("", new CommandParser().extractInfo(0, ""));
+    }
+
+    @Test
+    public void testSplitInfo() {
+        assertArrayEquals(new String[]{"/name", "MILK", "/qty", "50", "/price", "2.50"},
+                new CommandParser().splitInfo("/name MILK /qty 50 /price 2.50"));
+        assertArrayEquals(new String[]{"/id", "1"},
+                new CommandParser().splitInfo("/id 1"));
+        assertArrayEquals(new String[]{"/id", "1", "/name", "FRESH_MILK", "/qty", "45", "/price", "3.00"},
+                new CommandParser().splitInfo("/id 1 /name FRESH_MILK /qty 45 /price 3.00"));
+        assertArrayEquals(new String[]{"/id", "1", "/qty", "5"},
+                new CommandParser().splitInfo("/id 1 /qty 5"));
+        assertArrayEquals(new String[]{""},
+                new CommandParser().splitInfo(""));
+        assertArrayEquals(new String[]{"/name", "MILK"},
+                new CommandParser().splitInfo("/name MILK"));
+    }
+
+    @Test
+    public void testParseInt_stringIsNumber() {
+        assertEquals(50, new CommandParser().parseInt("50"));
+    }
+
+    @Test
+    public void testParseDouble_stringIsNumber() {
+        assertEquals(2.50, new CommandParser().parseDouble("2.50"));
     }
 }
