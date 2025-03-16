@@ -3,13 +3,14 @@ import java.util.Scanner;
 import java.util.HashMap;
 
 public class BusynessManager {
+    private static HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
+
     private String businessID;
     private String businessName;
     private String businessPassword;
     private String businessType; // Enum: FNB / RETAIL
-    private static HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
 
-   /*
+    /*
     private CommandParser commandParser;
     private InventoryManager inventoryManager;
     private SalesManager salesManager;
