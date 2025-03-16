@@ -29,11 +29,6 @@ public class BusynessManager {
         */
     }
 
-    public static void main(String[] args) {
-        BusynessManager manager = new BusynessManager();
-        manager.start();
-    }
-
     public void start() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Busyness Manager!");
@@ -54,7 +49,7 @@ public class BusynessManager {
             String password = scanner.nextLine().trim();
             if (login(id, password)) {
                 System.out.println("Login successful!");
-                run();
+                run(scanner);
             } else {
                 System.out.println("Invalid credentials. Exiting.");
             }
@@ -86,7 +81,7 @@ public class BusynessManager {
             credentials.put(businessID, businessPassword);
 
             System.out.println("Business setup complete!");
-            run();
+            run(scanner);
         }
     }
 
@@ -95,19 +90,23 @@ public class BusynessManager {
         return credentials.containsKey(id) && credentials.get(id).equals(password);
     }
 
-    public void run() {
-        Scanner scanner = new Scanner(System.in);
+    public void run(Scanner scanner) {
         System.out.println("Busyness Manager is ready. Type 'help' for commands.");
-
         while (true) {
-            System.out.print("> ");
+            System.out.print(">");
             String input = scanner.nextLine();
             if (input.equalsIgnoreCase("exit")) {
                 System.out.println("Exiting Busyness Manager...");
                 break;
             }
+
             //commandParser.parseCommand(input);
         }
         scanner.close();
+    }
+
+    public static void main(String[] args) {
+        BusynessManager manager = new BusynessManager();
+        manager.start();
     }
 }
