@@ -1,2 +1,10 @@
 Welcome to Busyness Manager!
-Enter Business ID:
+Enter Business ID: 0001
+First-time setup required.
+Enter Business Name: bruh logistics
+Enter Business Password: abcd
+Enter Business Type (FNB/RETAIL): FNB
+Business setup complete!
+Busyness Manager is ready. Type 'help' for commands.
+> exit
+Exiting Busyness Manager...
