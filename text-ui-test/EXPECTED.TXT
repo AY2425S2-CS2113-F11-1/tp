@@ -2,5 +2,5 @@ Welcome to Busyness Manager!
 Enter Business ID: First-time setup required.
 Enter Business Name: Enter Business Password: Enter Business Type (FNB/RETAIL): Business setup complete!
 Busyness Manager is ready. Type 'help' for commands.
->Exiting Busyness Manager...
+> Exiting Busyness Manager...
 
