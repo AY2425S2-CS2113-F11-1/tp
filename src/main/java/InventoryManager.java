@@ -9,13 +9,13 @@ public class InventoryManager {
     }
 
     // Add a new product
-    public void addProduct(String id, String name, int qty, double price) {
-        if (productList.containsKey(id)) {
-            System.out.println("Product with ID " + id + " already exists.");
+    public void addProduct(String name, int qty, double price) {
+        if (productList.containsKey(name)) {
+            System.out.println("Product with Name " + name + " already exists.");
             return;
         }
-        Product product = new Product(id, name, qty, price);
-        productList.put(id, product);
+        Product product = new Product(name, qty, price);
+        productList.put(name, product);
         System.out.println("Product added: " + product);
     }
 
