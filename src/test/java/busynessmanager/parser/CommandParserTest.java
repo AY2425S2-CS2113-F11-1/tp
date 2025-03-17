@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class CommandParserTest {
 
     @Test
-    public void getCommandSeparatorIndex_stringContainsSpaces_success() {
+    public void getCommandSeparatorIndex_success() {
         assertEquals(3, new CommandParser().getCommandSeparatorIndex(
                 "add /name MILK /qty 50 price 2.50"));
         assertEquals(6, new CommandParser().getCommandSeparatorIndex(
@@ -25,11 +25,17 @@ public class CommandParserTest {
         assertEquals(6, new CommandParser().getCommandSeparatorIndex(
                 "search /id 1"));
 
-        // These tests currently does not give what I want.
-        assertEquals(-1, new CommandParser().getCommandSeparatorIndex("print"));
-        assertEquals(-1, new CommandParser().getCommandSeparatorIndex("revenue"));
+        // Test cases for when there is one word as the user input.
+        assertEquals(-1, new CommandParser().getCommandSeparatorIndex(
+                "print"));
+        assertEquals(-1, new CommandParser().getCommandSeparatorIndex(
+                "revenue"));
 
-        assertEquals(-1, new CommandParser().getCommandSeparatorIndex(""));
+        // Test cases where erroneous inputs are given.
+        assertEquals(-1, new CommandParser().getCommandSeparatorIndex(
+                ""));
+        assertEquals(4, new CommandParser().getCommandSeparatorIndex(
+                "ding dong"));
     }
 
     @Test
@@ -51,16 +57,20 @@ public class CommandParserTest {
         assertEquals("search", new CommandParser().extractCommand(
                 6, "search /id 1"));
 
-        // These tests currently fail due to wrong index.
-        /*
-        assertEquals("print",
-                new CommandParser().extractCommand(-1, "print"));
-        assertEquals("revenue",
-                new CommandParser().extractCommand(-1, "revenue"));
-         */
+        // Test cases for when there is one word as the user input.
+        assertEquals("print", new CommandParser().extractCommand(
+                -1, "print"));
+        assertEquals("revenue", new CommandParser().extractCommand(
+                -1, "revenue"));
 
-        // While this test passes, this should throw exception during later implementations.
-        //assertEquals("", new CommandParser().extractCommand(0, ""));
+        /*
+         * Test cases where erroneous inputs are given.
+         * These tests will pass for now, and throw an exception during later methods.
+         */
+        assertEquals("", new CommandParser().extractCommand(
+                0, ""));
+        assertEquals("ding", new CommandParser().extractCommand(
+                4, "ding dong"));
     }
 
     @Test
@@ -82,8 +92,16 @@ public class CommandParserTest {
         assertEquals("/id 1", new CommandParser().extractInfo(
                 6, "search /id 1"));
 
-        // While this test passes, this should throw exception during later implementations.
+        // This test fails. Put into fail section.
         //assertEquals("", new CommandParser().extractInfo(0, ""));
+
+        /*
+         * Test cases where erroneous inputs are given.
+         * These tests will pass for now, and will fail later as the command portion will
+         * throw the exception.
+         */
+        assertEquals("dong", new CommandParser().extractInfo(
+                4, "ding dong"));
     }
 
     @Test

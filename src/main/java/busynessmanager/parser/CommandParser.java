@@ -75,7 +75,12 @@ public class CommandParser {
      * @return String containing the command keyword.
      */
     public String extractCommand(int commandSeparatorIndex, String input) {
-        return input.substring(0, commandSeparatorIndex);
+        if (commandSeparatorIndex == -1) {
+            return input;
+        } else {
+            return input.substring(0, commandSeparatorIndex);
+        }
+
     }
 
     /**
