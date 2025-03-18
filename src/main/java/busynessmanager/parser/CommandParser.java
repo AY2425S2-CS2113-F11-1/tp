@@ -74,7 +74,7 @@ public class CommandParser {
      * @return Index where the command keyword ends.
      * @throws InvalidStringException If the user input is null.
      */
-    public int getCommandSeparatorIndex(String input) throws InvalidStringException {
+    protected int getCommandSeparatorIndex(String input) throws InvalidStringException {
         if (input == null) {
             throw new InvalidStringException();
         } else {
@@ -90,7 +90,7 @@ public class CommandParser {
      * @return String containing the command keyword.
      * @throws InvalidStringException If commandSeparatorIndex < -1 or exceeds the length of input.
      */
-    public String extractCommand(int commandSeparatorIndex, String input) throws InvalidStringException {
+    protected String extractCommand(int commandSeparatorIndex, String input) throws InvalidStringException {
         if (commandSeparatorIndex == -1) {
             return input;
         } else if (commandSeparatorIndex >= 0 && commandSeparatorIndex < input.length()) {
@@ -108,7 +108,7 @@ public class CommandParser {
      * @return String containing the information related to the command keyword.
      * @throws InvalidStringException If commandSeparatorIndex < -1 or exceeds the length of input.
      */
-    public String extractInfo(int commandSeparatorIndex, String input) throws InvalidStringException {
+    protected String extractInfo(int commandSeparatorIndex, String input) throws InvalidStringException {
         if (commandSeparatorIndex == -1) {
             return "";
         } else if (commandSeparatorIndex >= 0 && commandSeparatorIndex < input.length()) {
