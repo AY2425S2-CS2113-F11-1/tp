@@ -1,9 +1,9 @@
 package busynessmanager.parser;
 
-import busynessmanager.SalesManager;
-import busynessmanager.InventoryManager;
-import busynessmanager.RevenueCalculator;
-import busynessmanager.SearchManager;
+import busynessmanager.managers.InventoryManager;
+import busynessmanager.managers.SalesManager;
+import busynessmanager.managers.SearchManager;
+import busynessmanager.revenue.RevenueCalculator;
 
 import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;

@@ -1,4 +1,4 @@
-package busynessmanager;
+package busynessmanager.product;
 
 public class Product {
     private static int idCounter = 1; // Simple counter for unique IDs
