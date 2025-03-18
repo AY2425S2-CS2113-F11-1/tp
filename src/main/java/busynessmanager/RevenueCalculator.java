@@ -1,6 +1,5 @@
 package busynessmanager;
 
-
 import java.util.HashMap;
 
 /**

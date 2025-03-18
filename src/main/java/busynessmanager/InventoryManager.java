@@ -2,7 +2,6 @@ package busynessmanager;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.lang.Math;
 
 public class InventoryManager {
     private final HashMap<String, Product> productList;
