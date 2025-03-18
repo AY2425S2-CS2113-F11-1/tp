@@ -2,6 +2,8 @@ package busynessmanager.parser;
 
 import busynessmanager.SalesManager;
 import busynessmanager.InventoryManager;
+import busynessmanager.RevenueCalculator;
+import busynessmanager.SearchManager;
 
 import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;
@@ -15,10 +17,9 @@ public class CommandParser {
 
     private final InventoryManager inventoryManager;
     private final SalesManager salesManager;
-    /*
-    private RevenueCalculator revenueCalculator;
-    private SearchManager searchManager;
-    */
+    private final RevenueCalculator revenueCalculator;
+    private final SearchManager searchManager;
+
 
     /**
      * Constructs the CommandParser class when the other systems have not been created.
@@ -27,11 +28,8 @@ public class CommandParser {
     public CommandParser() {
         this.inventoryManager = new InventoryManager();
         this.salesManager = new SalesManager(inventoryManager);
-        /*
-        this.revenueCalculator = new RevenueCalculator();
-        this.searchManager = new SearchManager();
-        */
-
+        this.revenueCalculator = new RevenueCalculator(salesManager);
+        this.searchManager = new SearchManager(inventoryManager);
     }
 
 
@@ -44,14 +42,12 @@ public class CommandParser {
      * //@param searchManager existing SearchManager for the business.
      */
 
-    public CommandParser(InventoryManager inventoryManager, SalesManager salesManager/*,
-                         RevenueCalculator revenueCalculator, SearchManager searchManager*/) {
+    public CommandParser(InventoryManager inventoryManager, SalesManager salesManager,
+                         RevenueCalculator revenueCalculator, SearchManager searchManager) {
         this.inventoryManager = inventoryManager;
         this.salesManager = salesManager;
-        /*
         this.revenueCalculator = revenueCalculator;
         this.searchManager = searchManager;
-        */
     }
 
     /**
@@ -198,7 +194,7 @@ public class CommandParser {
             throw new InvalidCommandException("Invalid format. /name /qty /price.");
         }
 
-        //InventoryManager.addProduct(productName, productQuantity, productPrice);
+        inventoryManager.addProduct(productName, productQuantity, productPrice);
     }
 
     /**
@@ -223,7 +219,7 @@ public class CommandParser {
             if (!productID.matches("ID_\\d{4}")) {
                 throw new InvalidCommandException("ID is invalid. Please try again.");
             } else {
-                //InventoryManager.deleteProduct(productID);
+                inventoryManager.deleteProduct(productID);
             }
         } catch (IndexOutOfBoundsException e) {
                 throw new InvalidCommandException("Invalid format. /id.");
@@ -267,7 +263,7 @@ public class CommandParser {
         if (!productID.matches("ID_\\d{4}")) {
             throw new InvalidCommandException("ID is invalid. Please try again.");
         } else {
-            //InventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
+            inventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
         }
     }
 
@@ -352,7 +348,7 @@ public class CommandParser {
      */
     protected void computeRevenue(String info) throws InvalidCommandException {
         if (info.isEmpty()) {
-            //RevenueCalculator.computeTotalRevenue();
+            revenueCalculator.computeTotalRevenue();
         } else {
             String[] components = splitInfo(info);
 
@@ -368,7 +364,7 @@ public class CommandParser {
                 if (!productID.matches("ID_\\d{4}")) {
                     throw new InvalidCommandException("ID is invalid. Please try again.");
                 } else {
-                    //RevenueCalculator.computeProductRevenue(productID);
+                    revenueCalculator.computeProductRevenue(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
             throw new InvalidCommandException("Invalid format. /id or keep empty for total.");
@@ -396,7 +392,7 @@ public class CommandParser {
                 throw new InvalidCommandException("Invalid format. /name OR /id.");
             }
 
-            //SearchManager.searchByName(productName);
+            searchManager.searchByName(productName);
         } else if (components[0].equals("/id")) {
             String productID;
 
@@ -406,7 +402,7 @@ public class CommandParser {
                 if (!productID.matches("ID_\\d{4}")) {
                     throw new InvalidCommandException("ID is invalid. Please try again.");
                 } else {
-                    //SearchManager.searchById(productID);
+                    searchManager.searchById(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
                 throw new InvalidCommandException("Invalid format. /name OR /id.");

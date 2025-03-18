@@ -12,7 +12,7 @@ public class RevenueCalculator {
      * Constructor
      * @param sm Pre-existing SalesManager to be used for instantiation
      */
-    RevenueCalculator(SalesManager sm) {
+    public RevenueCalculator(SalesManager sm) {
         this.sm = sm;
     }
 
