@@ -1,4 +1,8 @@
-package busynessmanager;
+package busynessmanager.revenue;
+
+import busynessmanager.managers.InventoryManager;
+import busynessmanager.managers.SalesManager;
+import busynessmanager.product.Product;
 
 import java.util.HashMap;
 
@@ -6,7 +10,7 @@ import java.util.HashMap;
  * RevenueCalculator is used to calculate the various revenues that is produced in the Busyness
  */
 public class RevenueCalculator {
-    private SalesManager sm;
+    private final SalesManager sm;
 
     /**
      * Constructor

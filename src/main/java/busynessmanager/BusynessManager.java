@@ -1,5 +1,10 @@
 package busynessmanager;
 
+import busynessmanager.managers.InventoryManager;
+import busynessmanager.revenue.RevenueCalculator;
+import busynessmanager.managers.SalesManager;
+import busynessmanager.managers.SearchManager;
+
 public class BusynessManager {
     /**
      * Main entry-point for Busyness Manager
