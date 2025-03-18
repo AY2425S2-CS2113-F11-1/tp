@@ -1,9 +1,9 @@
 package busynessmanager;
 
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class BusynessManager {
-<<<<<<< HEAD
     private static HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
 
     private String businessID;
@@ -105,25 +105,8 @@ public class BusynessManager {
         scanner.close();
     }
 
-=======
-    /**
-     * Main entry-point for the java.duke.Duke application.
-     */
->>>>>>> master
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+        BusynessManager manager = new BusynessManager();
+        manager.start();
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
