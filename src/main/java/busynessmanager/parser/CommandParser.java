@@ -60,13 +60,20 @@ public class CommandParser {
      * @param input Input from the user.
      */
     public void parseCommand(String input) {
+        String command;
+        String info;
+
         try {
             int commandSeparatorIndex = getCommandSeparatorIndex(input.trim());
 
-            String command = extractCommand(commandSeparatorIndex, input.trim());
-            String info = extractInfo(commandSeparatorIndex, input.trim());
+            command = extractCommand(commandSeparatorIndex, input.trim());
+            info = extractInfo(commandSeparatorIndex, input.trim());
 
-            executeCommand(command, info);
+            try {
+                executeCommand(command, info);
+            } catch (InvalidCommandException e) {
+                System.out.println(e.getMessage());
+            }
         } catch (InvalidStringException e) {
             System.out.println(e.getMessage());
         }
@@ -129,38 +136,34 @@ public class CommandParser {
      * @param command Command keyword from the user input.
      * @param info Information related to the command keyword.
      */
-    protected void executeCommand(String command, String info) {
-        try {
-            switch (command) {
-            case "add":
-                addProduct(info);
-                break;
-            case "delete":
-                deleteProduct(info);
-                break;
-            case "update":
-                updateProduct(info);
-                break;
-            case "print":
-                printProducts();
-                break;
-            case "sold":
-                recordSale(info);
-                break;
-            case "clear":
-                clearSales(info);
-                break;
-            case "revenue":
-                computeRevenue(info);
-                break;
-            case "search":
-                searchForProduct(info);
-                break;
-            default:
-                throw new InvalidCommandException("Command does not exist. Please try again.");
-            }
-        } catch (InvalidCommandException e) {
-            System.out.println(e.getMessage());
+    protected void executeCommand(String command, String info) throws InvalidCommandException {
+        switch (command) {
+        case "add":
+            addProduct(info);
+            break;
+        case "delete":
+            deleteProduct(info);
+            break;
+        case "update":
+            updateProduct(info);
+            break;
+        case "print":
+            printProducts();
+            break;
+        case "sold":
+            recordSale(info);
+            break;
+        case "clear":
+            clearSales(info);
+            break;
+        case "revenue":
+            computeRevenue(info);
+            break;
+        case "search":
+            searchForProduct(info);
+            break;
+        default:
+            throw new InvalidCommandException("Command does not exist. Please try again.");
         }
     }
 
@@ -182,9 +185,7 @@ public class CommandParser {
         int productQuantity;
         double productPrice;
 
-        if (components[5].isEmpty()) {
-            throw new InvalidCommandException("Invalid format. /name /qty /price.");
-        } else {
+        try {
             productName = components[1];
 
             try {
@@ -193,6 +194,8 @@ public class CommandParser {
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException("Quantity or price is not a number. Please try again.");
             }
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException("Invalid format. /name /qty /price.");
         }
 
         //InventoryManager.addProduct(productName, productQuantity, productPrice);
@@ -214,16 +217,16 @@ public class CommandParser {
 
         String productID;
 
-        if (components[1].isEmpty()) {
-            throw new InvalidCommandException("Invalid format. /id.");
-        } else {
+        try {
             productID = components[1];
-        }
 
-        if (!productID.matches("ID_\\d{4}")) {
-            throw new InvalidCommandException("ID is invalid. Please try again.");
-        } else {
-            //InventoryManager.deleteProduct(productID);
+            if (!productID.matches("ID_\\d{4}")) {
+                throw new InvalidCommandException("ID is invalid. Please try again.");
+            } else {
+                //InventoryManager.deleteProduct(productID);
+            }
+        } catch (IndexOutOfBoundsException e) {
+                throw new InvalidCommandException("Invalid format. /id.");
         }
     }
 
@@ -247,9 +250,7 @@ public class CommandParser {
         int productNewQuantity;
         double productNewPrice;
 
-        if (components[7].isEmpty()) {
-            throw new InvalidCommandException("Invalid format. /id /name /qty /price.");
-        } else {
+        try {
             productID = components[1];
             productNewName = components[3];
 
@@ -259,6 +260,8 @@ public class CommandParser {
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException("Quantity or price is not a number. Please try again.");
             }
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException("Invalid format. /id /name /qty /price.");
         }
 
         if (!productID.matches("ID_\\d{4}")) {
@@ -291,9 +294,7 @@ public class CommandParser {
         String productID;
         int quantitySold;
 
-        if (components[3].isEmpty()) {
-            throw new InvalidCommandException("Invalid format. /id /qty.");
-        } else {
+        try {
             productID = components[1];
 
             try {
@@ -301,6 +302,8 @@ public class CommandParser {
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException("Quantity is not a number. Please try again.");
             }
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException("Invalid format. /id /qty.");
         }
 
         if (!productID.matches("ID_\\d{4}")) {
@@ -326,16 +329,16 @@ public class CommandParser {
 
         String productID;
 
-        if (components[1].isEmpty()) {
-            throw new InvalidCommandException("Invalid format. /id.");
-        } else {
+        try {
             productID = components[1];
-        }
 
-        if (!productID.matches("ID_\\d{4}")) {
-            throw new InvalidCommandException("ID is invalid. Please try again.");
-        } else {
-            salesManager.clearSales(productID);
+            if (!productID.matches("ID_\\d{4}")) {
+                throw new InvalidCommandException("ID is invalid. Please try again.");
+            } else {
+                salesManager.clearSales(productID);
+            }
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException("Invalid format. /id.");
         }
     }
 
@@ -354,21 +357,21 @@ public class CommandParser {
             String[] components = splitInfo(info);
 
             if (!components[0].equals("/id")) {
-                throw new InvalidCommandException("Invalid format. /id.");
+                throw new InvalidCommandException("Invalid format. /id or keep empty for total.");
             }
 
             String productID;
 
-            if (components[1].isEmpty()) {
-                throw new InvalidCommandException("Invalid format. /id.");
-            } else {
+            try {
                 productID = components[1];
-            }
 
-            if (!productID.matches("ID_\\d{4}")) {
-                throw new InvalidCommandException("ID is invalid. Please try again.");
-            } else {
-                //RevenueCalculator.computeProductRevenue(productID);
+                if (!productID.matches("ID_\\d{4}")) {
+                    throw new InvalidCommandException("ID is invalid. Please try again.");
+                } else {
+                    //RevenueCalculator.computeProductRevenue(productID);
+                }
+            } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException("Invalid format. /id or keep empty for total.");
             }
         }
     }
@@ -387,29 +390,29 @@ public class CommandParser {
         if (components[0].equals("/name")) {
             String productName;
 
-            if (components[1].isEmpty()) {
-                throw new InvalidCommandException("Invalid format. /name OR /qty.");
-            } else {
+            try {
                 productName = components[1];
+            } catch (IndexOutOfBoundsException e) {
+                throw new InvalidCommandException("Invalid format. /name OR /id.");
             }
 
             //SearchManager.searchByName(productName);
         } else if (components[0].equals("/id")) {
             String productID;
 
-            if (components[1].isEmpty()) {
-                throw new InvalidCommandException("Invalid format. /name OR /qty.");
-            } else {
+            try {
                 productID = components[1];
-            }
 
-            if (!productID.matches("ID_\\d{4}")) {
-                throw new InvalidCommandException("ID is invalid. Please try again.");
-            } else {
-                //SearchManager.searchById(productID);
+                if (!productID.matches("ID_\\d{4}")) {
+                    throw new InvalidCommandException("ID is invalid. Please try again.");
+                } else {
+                    //SearchManager.searchById(productID);
+                }
+            } catch (IndexOutOfBoundsException e) {
+                throw new InvalidCommandException("Invalid format. /name OR /id.");
             }
         } else {
-            throw new InvalidCommandException("Invalid format. /name OR /qty.");
+            throw new InvalidCommandException("Invalid format. /name OR /id.");
         }
     }
 
