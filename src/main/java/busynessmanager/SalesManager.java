@@ -22,6 +22,7 @@ public class SalesManager {
             return;
         }
         inventory.updateProductQuantity(id, qtySold);
+
         System.out.println("Sale recorded: Product ID " + id + ", Quantity Sold: " + qtySold);
     }
 

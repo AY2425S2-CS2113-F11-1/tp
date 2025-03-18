@@ -11,13 +11,6 @@ public class RevenueCalculator {
 
     /**
      * Constructor
-     */
-    RevenueCalculator() {
-        this.sm = new SalesManager();
-    }
-
-    /**
-     * Constructor
      * @param sm Pre-existing SalesManager to be used for instantiation
      */
     RevenueCalculator(SalesManager sm) {
