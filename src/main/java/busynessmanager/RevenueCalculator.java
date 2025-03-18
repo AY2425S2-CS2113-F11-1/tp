@@ -34,7 +34,7 @@ public class RevenueCalculator {
 
         double totalRevenue = 0;
         for (Product product : currentProductList.values()) {
-            totalRevenue += product.returnPrice() * product.returnQuantitySold();
+            totalRevenue += product.getPrice() * product.getQuantitySold();
         }
 
         return totalRevenue;
@@ -52,6 +52,6 @@ public class RevenueCalculator {
         // Possible error for invalid ID (product will be null)
         Product product = currentProductList.get(id);
 
-        return product.returnPrice() * product.returnQuantitySold();
+        return product.getPrice() * product.getQuantitySold();
     }
 }

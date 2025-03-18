@@ -34,7 +34,7 @@ public class SearchManager {
         HashMap<String, Product> currentProductList = this.inventory.returnProductList();
         Set<Map.Entry<String, Product>> mapSet = currentProductList.entrySet();
         for (Map.Entry<String, Product> entry : mapSet) {
-            if (entry.getValue().returnName().equals(name)) {
+            if (entry.getValue().getName().equals(name)) {
                 return entry.getKey();
             }
         }
