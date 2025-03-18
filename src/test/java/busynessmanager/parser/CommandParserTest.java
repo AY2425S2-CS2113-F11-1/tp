@@ -3,11 +3,15 @@ package busynessmanager.parser;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import busynessmanager.exceptions.InvalidStringException;
+import busynessmanager.exceptions.InvalidCommandException;
 
 public class CommandParserTest {
 
     @Test
-    public void getCommandSeparatorIndex_success() {
+    public void getCommandSeparatorIndex_validString_success() throws InvalidStringException {
         assertEquals(3, new CommandParser().getCommandSeparatorIndex(
                 "add /name MILK /qty 50 price 2.50"));
         assertEquals(6, new CommandParser().getCommandSeparatorIndex(
@@ -31,15 +35,31 @@ public class CommandParserTest {
         assertEquals(-1, new CommandParser().getCommandSeparatorIndex(
                 "revenue"));
 
-        // Test cases where erroneous inputs are given.
-        assertEquals(-1, new CommandParser().getCommandSeparatorIndex(
-                ""));
+        /*
+         * Test case where erroneous inputs are given.
+         * These tests will pass for now, and throw an exception later on in the execution.
+         */
         assertEquals(4, new CommandParser().getCommandSeparatorIndex(
                 "ding dong"));
+        assertEquals(-1, new CommandParser().getCommandSeparatorIndex(
+                "cat"));
+        assertEquals(-1, new CommandParser().getCommandSeparatorIndex(
+                ""));
     }
 
     @Test
-    public void extractCommand_positiveIndexWithinLimit_success() {
+    public void getCommandSeparatorIndex_nullString_exceptionThrown() throws InvalidStringException {
+        try {
+            assertEquals(-1, new CommandParser().getCommandSeparatorIndex(
+                    null));
+            fail();
+        } catch (InvalidStringException e) {
+            assertEquals("Input String cannot be split.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void extractCommand_positiveIndexWithinLimit_success() throws InvalidStringException {
         assertEquals("add", new CommandParser().extractCommand(
                 3, "add /name MILK /qty 50 price 2.50"));
         assertEquals("delete", new CommandParser().extractCommand(
@@ -65,16 +85,40 @@ public class CommandParserTest {
 
         /*
          * Test cases where erroneous inputs are given.
-         * These tests will pass for now, and throw an exception during later methods.
+         * These tests will pass for now, and throw an exception later on in the execution.
          */
-        assertEquals("", new CommandParser().extractCommand(
-                0, ""));
         assertEquals("ding", new CommandParser().extractCommand(
                 4, "ding dong"));
+        assertEquals("cat", new CommandParser().extractCommand(
+                -1, "cat"));
+        assertEquals("", new CommandParser().extractCommand(
+                -1, ""));
     }
 
     @Test
-    public void extractInfo_positiveIndexWithinLimit_success() {
+    public void extractCommand_positiveIndexOutsideLimit_throwException() throws InvalidStringException {
+        try {
+            assertEquals("", new CommandParser().extractCommand(
+                    4, "cat"));
+            fail();
+        } catch (InvalidStringException e) {
+            assertEquals("Input String cannot be split.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void extractCommand_negativeIndex_throwException() throws InvalidStringException {
+        try {
+            assertEquals("", new CommandParser().extractCommand(
+                    -2, "ding dong"));
+            fail();
+        } catch (InvalidStringException e) {
+            assertEquals("Input String cannot be split.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void extractInfo_positiveIndexWithinLimit_success() throws InvalidStringException {
         assertEquals("/name MILK /qty 50 price 2.50", new CommandParser().extractInfo(
                 3, "add /name MILK /qty 50 price 2.50"));
         assertEquals("/id 1", new CommandParser().extractInfo(
@@ -92,16 +136,44 @@ public class CommandParserTest {
         assertEquals("/id 1", new CommandParser().extractInfo(
                 6, "search /id 1"));
 
-        // This test fails. Put into fail section.
-        //assertEquals("", new CommandParser().extractInfo(0, ""));
+        // Test cases for when there is one word as the user input.
+        assertEquals("", new CommandParser().extractInfo(
+                -1, "print"));
+        assertEquals("", new CommandParser().extractInfo(
+                -1, "revenue"));
 
         /*
          * Test cases where erroneous inputs are given.
-         * These tests will pass for now, and will fail later as the command portion will
-         * throw the exception.
+         * These tests will pass for now, and throw an exception later on in the execution.
          */
         assertEquals("dong", new CommandParser().extractInfo(
                 4, "ding dong"));
+        assertEquals("", new CommandParser().extractInfo(
+                -1, "cat"));
+        assertEquals("", new CommandParser().extractInfo(
+                -1, ""));
+    }
+
+    @Test
+    public void extractInfo_positiveIndexOutsideLimit_throwException() throws InvalidStringException {
+        try {
+            assertEquals("", new CommandParser().extractInfo(
+                    4, "cat"));
+            fail();
+        } catch (InvalidStringException e) {
+            assertEquals("Input String cannot be split.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void extractInfo_negativeIndex_throwException() throws InvalidStringException {
+        try {
+            assertEquals("", new CommandParser().extractInfo(
+                    -2, "ding dong"));
+            fail();
+        } catch (InvalidStringException e) {
+            assertEquals("Input String cannot be split.", e.getMessage());
+        }
     }
 
     @Test

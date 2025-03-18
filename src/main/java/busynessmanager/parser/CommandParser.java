@@ -1,5 +1,11 @@
 package busynessmanager.parser;
 
+import busynessmanager.exceptions.InvalidStringException;
+import busynessmanager.exceptions.InvalidCommandException;
+
+/**
+ * Class for parsing the user input, and executing the appropriate methods.
+ */
 public class CommandParser {
 
     /*
@@ -49,12 +55,16 @@ public class CommandParser {
      * @param input Input from the user.
      */
     public void parseCommand(String input) {
-        int commandSeparatorIndex = getCommandSeparatorIndex(input);
+        try {
+            int commandSeparatorIndex = getCommandSeparatorIndex(input.trim());
 
-        String command = extractCommand(commandSeparatorIndex, input);
-        String info = extractInfo(commandSeparatorIndex, input);
+            String command = extractCommand(commandSeparatorIndex, input.trim());
+            String info = extractInfo(commandSeparatorIndex, input.trim());
 
-        executeCommand(command, info);
+            executeCommand(command, info);
+        } catch (InvalidStringException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -62,9 +72,14 @@ public class CommandParser {
      *
      * @param input Input from the user.
      * @return Index where the command keyword ends.
+     * @throws InvalidStringException If the user input is null.
      */
-    public int getCommandSeparatorIndex(String input) {
-        return input.indexOf(' ');
+    public int getCommandSeparatorIndex(String input) throws InvalidStringException {
+        if (input == null) {
+            throw new InvalidStringException();
+        } else {
+            return input.indexOf(' ');
+        }
     }
 
     /**
@@ -73,14 +88,16 @@ public class CommandParser {
      * @param commandSeparatorIndex Index where the command keyword ends.
      * @param input Input from the user.
      * @return String containing the command keyword.
+     * @throws InvalidStringException If commandSeparatorIndex < -1 or exceeds the length of input.
      */
-    public String extractCommand(int commandSeparatorIndex, String input) {
+    public String extractCommand(int commandSeparatorIndex, String input) throws InvalidStringException {
         if (commandSeparatorIndex == -1) {
             return input;
-        } else {
+        } else if (commandSeparatorIndex >= 0 && commandSeparatorIndex < input.length()) {
             return input.substring(0, commandSeparatorIndex);
+        } else {
+            throw new InvalidStringException();
         }
-
     }
 
     /**
@@ -89,9 +106,16 @@ public class CommandParser {
      * @param commandSeparatorIndex Index where the command keyword ends.
      * @param input Input from the user.
      * @return String containing the information related to the command keyword.
+     * @throws InvalidStringException If commandSeparatorIndex < -1 or exceeds the length of input.
      */
-    public String extractInfo(int commandSeparatorIndex, String input) {
-        return input.substring(commandSeparatorIndex + 1);
+    public String extractInfo(int commandSeparatorIndex, String input) throws InvalidStringException {
+        if (commandSeparatorIndex == -1) {
+            return "";
+        } else if (commandSeparatorIndex >= 0 && commandSeparatorIndex < input.length()) {
+            return input.substring(commandSeparatorIndex + 1);
+        } else {
+            throw new InvalidStringException();
+        }
     }
 
     /**
