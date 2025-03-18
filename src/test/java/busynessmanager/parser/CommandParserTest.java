@@ -551,7 +551,7 @@ public class CommandParserTest {
             fail();
         } catch (NumberParsingFailedException e) {
             assertEquals("Conversion to a number has failed.", e.getMessage());
-       }
+        }
     }
 
     @Test

@@ -38,8 +38,8 @@ public class CommandParser {
      *
      * @param inventoryManager existing InventoryManager for the business.
      * @param salesManager existing SalesManager for the business.
-     * //@param revenueCalculator existing RevenueCalculator for the business.
-     * //@param searchManager existing SearchManager for the business.
+     * @param revenueCalculator existing RevenueCalculator for the business.
+     * @param searchManager existing SearchManager for the business.
      */
 
     public CommandParser(InventoryManager inventoryManager, SalesManager salesManager,
@@ -222,7 +222,7 @@ public class CommandParser {
                 inventoryManager.deleteProduct(productID);
             }
         } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException("Invalid format. /id.");
+            throw new InvalidCommandException("Invalid format. /id.");
         }
     }
 
@@ -367,7 +367,7 @@ public class CommandParser {
                     revenueCalculator.computeProductRevenue(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException("Invalid format. /id or keep empty for total.");
+                throw new InvalidCommandException("Invalid format. /id or keep empty for total.");
             }
         }
     }
