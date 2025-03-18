@@ -5,6 +5,7 @@ import busynessmanager.InventoryManager;
 
 import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;
+import busynessmanager.exceptions.NumberParsingFailedException;
 
 /**
  * Class for parsing the user input, and executing the appropriate methods.
@@ -12,8 +13,8 @@ import busynessmanager.exceptions.InvalidCommandException;
 public class CommandParser {
 
 
-    private InventoryManager inventoryManager;
-    private SalesManager salesManager;
+    private final InventoryManager inventoryManager;
+    private final SalesManager salesManager;
     /*
     private RevenueCalculator revenueCalculator;
     private SearchManager searchManager;
@@ -129,33 +130,37 @@ public class CommandParser {
      * @param info Information related to the command keyword.
      */
     protected void executeCommand(String command, String info) {
-        switch (command) {
-        case "add":
-            addProduct(info);
-            break;
-        case "delete":
-            deleteProduct(info);
-            break;
-        case "update":
-            updateProduct(info);
-            break;
-        case "print":
-            printProducts();
-            break;
-        case "sold":
-            recordSale(info);
-            break;
-        case "clear":
-            clearSales(info);
-            break;
-        case "revenue":
-            computeRevenue(info);
-            break;
-        case "search":
-            searchForProduct(info);
-            break;
-        default:
-            break;
+        try {
+            switch (command) {
+            case "add":
+                addProduct(info);
+                break;
+            case "delete":
+                deleteProduct(info);
+                break;
+            case "update":
+                updateProduct(info);
+                break;
+            case "print":
+                printProducts();
+                break;
+            case "sold":
+                recordSale(info);
+                break;
+            case "clear":
+                clearSales(info);
+                break;
+            case "revenue":
+                computeRevenue(info);
+                break;
+            case "search":
+                searchForProduct(info);
+                break;
+            default:
+                throw new InvalidCommandException("Command does not exist. Please try again.");
+            }
+        } catch (InvalidCommandException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -164,13 +169,31 @@ public class CommandParser {
      * It then calls addProduct() from the InventoryManager class.
      *
      * @param info Information related to the command keyword.
+     * @throws InvalidCommandException If the user input is of the wrong format.
      */
-    protected void addProduct(String info) {
+    protected void addProduct(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
 
-        String productName = components[1];
-        int productQuantity = parseInt(components[3]);
-        double productPrice = parseDouble(components[5]);
+        if (!components[0].equals("/name") || !components[2].equals("/qty") || !components[4].equals("/price")) {
+            throw new InvalidCommandException("Invalid format. /name /qty /price.");
+        }
+
+        String productName;
+        int productQuantity;
+        double productPrice;
+
+        if (components[5].isEmpty()) {
+            throw new InvalidCommandException("Invalid format. /name /qty /price.");
+        } else {
+            productName = components[1];
+
+            try {
+                productQuantity = parseInt(components[3]);
+                productPrice = parseDouble(components[5]);
+            } catch (NumberParsingFailedException e) {
+                throw new InvalidCommandException("Quantity or price is not a number. Please try again.");
+            }
+        }
 
         //InventoryManager.addProduct(productName, productQuantity, productPrice);
     }
@@ -180,29 +203,69 @@ public class CommandParser {
      * It then calls deleteProduct() from the InventoryManager class.
      *
      * @param info Information related to the command keyword.
+     * @throws InvalidCommandException If the user input is of the wrong format.
      */
-    protected void deleteProduct(String info) {
+    protected void deleteProduct(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
 
-        String productID = components[1];
+        if (!components[0].equals("/id")) {
+            throw new InvalidCommandException("Invalid format. /id.");
+        }
 
-        //InventoryManager.deleteProduct(productID);
+        String productID;
+
+        if (components[1].isEmpty()) {
+            throw new InvalidCommandException("Invalid format. /id.");
+        } else {
+            productID = components[1];
+        }
+
+        if (!productID.matches("ID_\\d{4}")) {
+            throw new InvalidCommandException("ID is invalid. Please try again.");
+        } else {
+            //InventoryManager.deleteProduct(productID);
+        }
     }
 
     /**
      * Splits the information String into the product ID, updated name, updated quantity and updated price.
      * It then calls updateProduct() from the InventoryManager class.
+     *
      * @param info Information related to the command keyword.
+     * @throws InvalidCommandException If the user input is of the wrong format.
      */
-    protected void updateProduct(String info) {
+    protected void updateProduct(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
 
-        String productID = components[1];
-        String productNewName = components[3];
-        int productNewQuantity = parseInt(components[5]);
-        double productNewPrice = parseDouble(components[7]);
+        if (!components[0].equals("/id") || !components[2].equals("/name") || !components[4].equals("/qty") ||
+                !components[6].equals("/price")) {
+            throw new InvalidCommandException("Invalid format. /id /name /qty /price.");
+        }
 
-        //InventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
+        String productID;
+        String productNewName;
+        int productNewQuantity;
+        double productNewPrice;
+
+        if (components[7].isEmpty()) {
+            throw new InvalidCommandException("Invalid format. /id /name /qty /price.");
+        } else {
+            productID = components[1];
+            productNewName = components[3];
+
+            try {
+                productNewQuantity = parseInt(components[5]);
+                productNewPrice = parseDouble(components[7]);
+            } catch (NumberParsingFailedException e) {
+                throw new InvalidCommandException("Quantity or price is not a number. Please try again.");
+            }
+        }
+
+        if (!productID.matches("ID_\\d{4}")) {
+            throw new InvalidCommandException("ID is invalid. Please try again.");
+        } else {
+            //InventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
+        }
     }
 
     /**
@@ -215,15 +278,36 @@ public class CommandParser {
     /**
      * Splits the information String into the product ID, and amount of product that was sold.
      * It then calls recordSale() from the SalesManager class.
-     * @param info Information related to the command keyword.\
+     * @param info Information related to the command keyword.
+     * @throws InvalidCommandException If the user input is of the wrong format.
      */
-    protected void recordSale(String info) {
+    protected void recordSale(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
 
-        String productID = components[1];
-        int quantitySold = parseInt(components[3]);
+        if (!components[0].equals("/id") || !components[2].equals("/qty")) {
+            throw new InvalidCommandException("Invalid format. /id /qty.");
+        }
 
-        salesManager.recordSale(productID, quantitySold);
+        String productID;
+        int quantitySold;
+
+        if (components[3].isEmpty()) {
+            throw new InvalidCommandException("Invalid format. /id /qty.");
+        } else {
+            productID = components[1];
+
+            try {
+                quantitySold = parseInt(components[3]);
+            } catch (NumberParsingFailedException e) {
+                throw new InvalidCommandException("Quantity is not a number. Please try again.");
+            }
+        }
+
+        if (!productID.matches("ID_\\d{4}")) {
+            throw new InvalidCommandException("ID is invalid. Please try again.");
+        } else {
+            salesManager.recordSale(productID, quantitySold);
+        }
     }
 
     /**
@@ -231,13 +315,28 @@ public class CommandParser {
      * It then calls clearSales() from the SalesManager class.
      *
      * @param info Information related to the command keyword.
+     * @throws InvalidCommandException If the user input is of the wrong format.
      */
-    protected void clearSales(String info) {
+    protected void clearSales(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
 
-        String productID = components[1];
+        if (!components[0].equals("/id")) {
+            throw new InvalidCommandException("Invalid format. /id.");
+        }
 
-        salesManager.clearSales(productID);
+        String productID;
+
+        if (components[1].isEmpty()) {
+            throw new InvalidCommandException("Invalid format. /id.");
+        } else {
+            productID = components[1];
+        }
+
+        if (!productID.matches("ID_\\d{4}")) {
+            throw new InvalidCommandException("ID is invalid. Please try again.");
+        } else {
+            salesManager.clearSales(productID);
+        }
     }
 
     /**
@@ -246,18 +345,31 @@ public class CommandParser {
      * It will then call computeProductRevenue() from the RevenueCalculator class.
      *
      * @param info Information related to the command keyword.
+     * @throws InvalidCommandException If the user input is of the wrong format.
      */
-    protected void computeRevenue(String info) {
+    protected void computeRevenue(String info) throws InvalidCommandException {
         if (info.isEmpty()) {
-            int i = 0; // Placeholder to silence the 'empty if body' warning.
-
             //RevenueCalculator.computeTotalRevenue();
         } else {
             String[] components = splitInfo(info);
 
-            String productID = components[1];
+            if (!components[0].equals("/id")) {
+                throw new InvalidCommandException("Invalid format. /id.");
+            }
 
-            //RevenueCalculator.computeProductRevenue();
+            String productID;
+
+            if (components[1].isEmpty()) {
+                throw new InvalidCommandException("Invalid format. /id.");
+            } else {
+                productID = components[1];
+            }
+
+            if (!productID.matches("ID_\\d{4}")) {
+                throw new InvalidCommandException("ID is invalid. Please try again.");
+            } else {
+                //RevenueCalculator.computeProductRevenue(productID);
+            }
         }
     }
 
@@ -267,18 +379,37 @@ public class CommandParser {
      * If the product ID is present, it will call searchById() from the SearchManager class.
      *
      * @param info Information related to the command keyword.
+     * @throws InvalidCommandException If the user input is of the wrong format.
      */
-    protected void searchForProduct(String info) {
+    protected void searchForProduct(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
 
         if (components[0].equals("/name")) {
-            String productName = components[1];
+            String productName;
+
+            if (components[1].isEmpty()) {
+                throw new InvalidCommandException("Invalid format. /name OR /qty.");
+            } else {
+                productName = components[1];
+            }
 
             //SearchManager.searchByName(productName);
         } else if (components[0].equals("/id")) {
-            String productID = components[1];
+            String productID;
 
-            //SearchManager.searchById(productID);
+            if (components[1].isEmpty()) {
+                throw new InvalidCommandException("Invalid format. /name OR /qty.");
+            } else {
+                productID = components[1];
+            }
+
+            if (!productID.matches("ID_\\d{4}")) {
+                throw new InvalidCommandException("ID is invalid. Please try again.");
+            } else {
+                //SearchManager.searchById(productID);
+            }
+        } else {
+            throw new InvalidCommandException("Invalid format. /name OR /qty.");
         }
     }
 
@@ -298,9 +429,14 @@ public class CommandParser {
      *
      * @param number String containing the number.
      * @return The number with type int.
+     * @throws NumberParsingFailedException If parsing into an int has failed.
      */
-    protected int parseInt(String number) {
-        return Integer.parseInt(number);
+    protected int parseInt(String number) throws NumberParsingFailedException {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new NumberParsingFailedException();
+        }
     }
 
     /**
@@ -308,8 +444,13 @@ public class CommandParser {
      *
      * @param number String containing the number.
      * @return The number with type double.
+     * @throws NumberParsingFailedException If parsing into a double has failed.
      */
-    protected double parseDouble(String number) {
-        return Double.parseDouble(number);
+    protected double parseDouble(String number) throws NumberParsingFailedException {
+        try {
+            return Double.parseDouble(number);
+        } catch (NumberFormatException e) {
+            throw new NumberParsingFailedException();
+        }
     }
 }

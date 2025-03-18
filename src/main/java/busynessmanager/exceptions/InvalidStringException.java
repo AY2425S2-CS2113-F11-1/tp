@@ -5,7 +5,6 @@ package busynessmanager.exceptions;
  */
 public class InvalidStringException extends Exception {
 
-
     /**
      * Constructs the InvalidString exception.
      */
