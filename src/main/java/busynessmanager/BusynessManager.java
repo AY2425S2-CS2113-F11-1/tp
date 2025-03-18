@@ -1,7 +1,5 @@
 package busynessmanager;
 
-import java.util.Scanner;
-
 public class BusynessManager {
     /**
      * Main entry-point for Busyness Manager
@@ -57,7 +55,7 @@ public class BusynessManager {
 
         System.out.println(searchManager.searchById("ID_0001")); // Returns Product object
         System.out.println(searchManager.searchByName("bean")); // Returns String object
-        
+
     }
 }
 
