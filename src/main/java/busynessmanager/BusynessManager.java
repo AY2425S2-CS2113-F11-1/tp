@@ -1,5 +1,6 @@
 package busynessmanager;
 
+import busynessmanager.parser.CommandParser;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -11,22 +12,22 @@ public class BusynessManager {
     private String businessPassword;
     private String businessType; // Enum: FNB / RETAIL
 
-    /*
+
     private CommandParser commandParser;
     private InventoryManager inventoryManager;
     private SalesManager salesManager;
     private RevenueCalculator revenueCalculator;
     private SearchManager searchManager;
-    */
+
 
     public BusynessManager() {
-        /*
+
         this.inventoryManager = new InventoryManager();
         this.salesManager = new SalesManager(inventoryManager);
-        this.revenueCalculator = new RevenueCalculator(inventoryManager);
+        this.revenueCalculator = new RevenueCalculator(salesManager);
         this.searchManager = new SearchManager(inventoryManager);
-        this.commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
-        */
+        // this.commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
+
     }
 
     public void start() {
