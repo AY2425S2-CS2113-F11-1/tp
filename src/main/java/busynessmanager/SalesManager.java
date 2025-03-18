@@ -1,15 +1,21 @@
 package busynessmanager;
 
+/**
+ * Updates sales transactions, decrements inventory and increases quantity sold
+ */
 public class SalesManager {
     private InventoryManager inventory;
 
     public SalesManager(InventoryManager inventory) {
-            this.inventory = inventory;
-        }
+        this.inventory = inventory;
+    }
 
     /**
-     *  Record a sale of a quantity of a product by its ID
-      */
+     * Record a sale of a quantity of a product by its ID
+     *
+     * @param id Product ID
+     * @param qtySold Quantity of product sold
+     */
     public void recordSale(String id, int qtySold) {
         if (qtySold <= 0) {
             System.out.println("Quantity sold must be greater than 0.");
@@ -21,10 +27,11 @@ public class SalesManager {
 
     /**
      * Clear sales for a product by its ID
+     *
      * @param id product ID
      */
     public void clearSales(String id) {
         inventory.resetProductSales(id);
         System.out.println("Sales cleared: Product ID " + id);
-        }
     }
+}
