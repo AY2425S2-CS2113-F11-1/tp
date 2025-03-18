@@ -19,3 +19,4 @@ public class BusynessManager {
         System.out.println("Hello " + in.nextLine());
     }
 }
+
