@@ -1,7 +1,5 @@
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Product {
-    private static final AtomicInteger idCounter = new AtomicInteger(1);
+    private static int idCounter = 1; // Simple counter for unique IDs
     private final String id;
     private String name;
     private int quantity;
@@ -10,7 +8,7 @@ public class Product {
 
     // Constructor
     public Product(String name, int quantity, double price) {
-        this.id = String.format("ID_%04d", idCounter.getAndIncrement()); // Generates unique ID like ID_0001
+        this.id = String.format("ID_%04d", idCounter++); // Generates unique ID like ID_0001
         this.name = name;
         this.quantity = quantity;
         this.quantitySold = 0;
