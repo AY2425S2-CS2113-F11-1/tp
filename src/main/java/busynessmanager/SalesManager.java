@@ -22,6 +22,7 @@ public class SalesManager {
             return;
         }
         inventory.updateProductQuantity(id, qtySold);
+
         System.out.println("Sale recorded: Product ID " + id + ", Quantity Sold: " + qtySold);
     }
 
@@ -33,5 +34,13 @@ public class SalesManager {
     public void clearSales(String id) {
         inventory.resetProductSales(id);
         System.out.println("Sales cleared: Product ID " + id);
+    }
+
+    /**
+     * required for SY's RevenueCalculator to function
+     * @return the inventory
+     */
+    protected InventoryManager getInventory() {
+        return inventory;
     }
 }
