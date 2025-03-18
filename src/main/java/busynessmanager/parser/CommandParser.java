@@ -1,5 +1,8 @@
 package busynessmanager.parser;
 
+import busynessmanager.SalesManager;
+import busynessmanager.InventoryManager;
+
 import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;
 
@@ -8,46 +11,47 @@ import busynessmanager.exceptions.InvalidCommandException;
  */
 public class CommandParser {
 
-    /*
+
     private InventoryManager inventoryManager;
     private SalesManager salesManager;
+    /*
     private RevenueCalculator revenueCalculator;
     private SearchManager searchManager;
     */
 
-    // Javadoc comment
-    /*
+    /**
      * Constructs the CommandParser class when the other systems have not been created.
      * This constructor also instantiates the other systems.
      */
-    /*
     public CommandParser() {
         this.inventoryManager = new InventoryManager();
-        this.salesManager = new SalesManager();
+        this.salesManager = new SalesManager(inventoryManager);
+        /*
         this.revenueCalculator = new RevenueCalculator();
         this.searchManager = new SearchManager();
+        */
 
     }
-    */
 
-    // Javadoc comment
-    /*
+
+    /**
      * Constructs the CommandParser class given existing systems for the business.
      *
      * @param inventoryManager existing InventoryManager for the business.
      * @param salesManager existing SalesManager for the business.
-     * @param revenueCalculator existing RevenueCalculator for the business.
-     * @param searchManager existing SearchManager for the business.
+     * //@param revenueCalculator existing RevenueCalculator for the business.
+     * //@param searchManager existing SearchManager for the business.
      */
-    /*
-    public CommandParser(InventoryManager inventoryManager, SalesManager salesManager,
-                         RevenueCalculator revenueCalculator, SearchManager searchManager) {
+
+    public CommandParser(InventoryManager inventoryManager, SalesManager salesManager/*,
+                         RevenueCalculator revenueCalculator, SearchManager searchManager*/) {
         this.inventoryManager = inventoryManager;
         this.salesManager = salesManager;
+        /*
         this.revenueCalculator = revenueCalculator;
         this.searchManager = searchManager;
+        */
     }
-    */
 
     /**
      * Parses the user input for execution.
@@ -219,7 +223,7 @@ public class CommandParser {
         String productID = components[1];
         int quantitySold = parseInt(components[3]);
 
-        //SalesManager.recordSale(productID, quantitySold);
+        salesManager.recordSale(productID, quantitySold);
     }
 
     /**
@@ -233,7 +237,7 @@ public class CommandParser {
 
         String productID = components[1];
 
-        //SalesManager.clearSales(productID);
+        salesManager.clearSales(productID);
     }
 
     /**
