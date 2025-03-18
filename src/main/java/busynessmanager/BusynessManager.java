@@ -57,9 +57,7 @@ public class BusynessManager {
 
         System.out.println(searchManager.searchById("ID_0001")); // Returns Product object
         System.out.println(searchManager.searchByName("bean")); // Returns String object
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+        
     }
 }
 
