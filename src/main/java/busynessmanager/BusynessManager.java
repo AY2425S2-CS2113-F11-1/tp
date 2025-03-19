@@ -107,7 +107,7 @@ public class BusynessManager {
         System.out.println("Busyness Manager is ready. Type 'help' for commands.");
 
         while (true) {
-            System.out.print(">");
+            System.out.print("> ");
             String input = scanner.nextLine();
 
             if (input.equalsIgnoreCase("exit")) {
