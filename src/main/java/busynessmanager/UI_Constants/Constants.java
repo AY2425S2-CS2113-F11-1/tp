@@ -51,7 +51,9 @@ public class Constants {
     public static final String CP_INVALID_FLAG_MESSAGE_3 = "Invalid format. /id.";
     public static final String CP_INVALID_FLAG_MESSAGE_4 = "Invalid format. /id or keep empty for total.";
     public static final String CP_INVALID_FLAG_MESSAGE_5 = "Invalid format. /name OR /id.";
+    public static final String CP_INVALID_FLAG_MESSAGE_6 = "Invalid format. /id /name /qty /price.";
     public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a number. Please try again.";
+    public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a number. Please try again.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
     public static final String CP_INVALID_ID_MESSAGE = "ID is invalid. Please try again.";
 
