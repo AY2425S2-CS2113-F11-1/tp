@@ -5,7 +5,8 @@ package busynessmanager.UI_Constants;
  * Note:
  * 1. prefix XX_ refers to the class the constant is likely to be used in (i.e. IM_ stands for InventoryManager)
  * 2. suffix _MESSAGE means the constant is to be printed out directly as a message to user (UI Class)
- * 3. suffix _FM means the constant is a Formatted Message, similar to point 2, but different values need to be inserted into the String
+ * 3. suffix _FM means the constant is a Formatted Message, similar to point 2,
+ *    but different values need to be inserted into the String
  */
 public class Constants {
     // Misc
