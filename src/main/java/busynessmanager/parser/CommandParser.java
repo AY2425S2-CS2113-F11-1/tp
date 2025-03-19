@@ -56,11 +56,11 @@ import java.util.logging.Logger;
 public class CommandParser {
 
 
+    private static final Logger logger = Logger.getLogger("CommandParser");
     private final InventoryManager inventoryManager;
     private final SalesManager salesManager;
     private final RevenueCalculator revenueCalculator;
     private final SearchManager searchManager;
-    private static final Logger logger = Logger.getLogger("CommandParser");
 
 
     /**
