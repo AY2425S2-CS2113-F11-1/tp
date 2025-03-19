@@ -4,6 +4,11 @@ import busynessmanager.parser.CommandParser;
 import java.util.Scanner;
 import java.util.HashMap;
 
+import busynessmanager.managers.InventoryManager;
+import busynessmanager.revenue.RevenueCalculator;
+import busynessmanager.managers.SalesManager;
+import busynessmanager.managers.SearchManager;
+
 public class BusynessManager {
     private static HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
 
