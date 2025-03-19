@@ -27,8 +27,8 @@ public class RevenueCalculator {
     public double computeTotalRevenue() {
         InventoryManager currentInventory = sm.getInventory();
         HashMap<String, Product> currentProductList = currentInventory.returnProductList();
-
         double totalRevenue = 0;
+
         for (Product product : currentProductList.values()) {
             totalRevenue += product.getPrice() * product.getQuantitySold();
         }

@@ -271,7 +271,7 @@ public class CommandParser {
      * Calls printProducts() from the InventoryManager class.
      */
     protected void printProducts() {
-        //InventoryManager.printProducts();
+        inventoryManager.printProducts();
     }
 
     /**

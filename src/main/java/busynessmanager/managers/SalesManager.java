@@ -21,8 +21,8 @@ public class SalesManager {
             System.out.println("Quantity sold must be greater than 0.");
             return;
         }
-        inventory.updateProductQuantity(id, qtySold);
 
+        inventory.updateProductQuantity(id, qtySold);
         System.out.println("Sale recorded: Product ID " + id + ", Quantity Sold: " + qtySold);
     }
 
