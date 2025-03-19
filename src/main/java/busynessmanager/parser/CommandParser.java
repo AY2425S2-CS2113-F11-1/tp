@@ -47,12 +47,16 @@ import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;
 import busynessmanager.exceptions.NumberParsingFailedException;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Class for parsing the user input, and executing the appropriate methods.
  */
 public class CommandParser {
 
 
+    private static final Logger logger = Logger.getLogger("CommandParser");
     private final InventoryManager inventoryManager;
     private final SalesManager salesManager;
     private final RevenueCalculator revenueCalculator;
@@ -109,7 +113,7 @@ public class CommandParser {
                 UI.printMessage(e.getMessage());
             }
         } catch (InvalidStringException e) {
-            UI.printMessage(e.getMessage());
+            logger.log(Level.SEVERE, "Exception thrown.", e);
         }
     }
 
