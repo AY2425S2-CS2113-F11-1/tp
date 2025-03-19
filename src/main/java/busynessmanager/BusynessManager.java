@@ -1,66 +1,153 @@
 package busynessmanager;
 
+import busynessmanager.parser.CommandParser;
+import java.util.Scanner;
+import java.util.HashMap;
+
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.revenue.RevenueCalculator;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.managers.SearchManager;
+import busynessmanager.UI_Constants.UI;
+import static busynessmanager.UI_Constants.Constants.BM_WELCOME_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_NO_INPUT_ERROR_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_ENTER_BUSINESS_ID_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_ENTER_PASSWORD_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_ENTER_PASSWORD_MESSAGE_2;
+import static busynessmanager.UI_Constants.Constants.BM_SUCCESSFUL_LOGIN_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_INVALID_CREDENTIALS_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_FIRST_SETUP_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_ENTER_NAME_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_ENTER_BUSINESS_TYPE_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_SETUP_COMPLETE_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_READY_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_WAITING_INPUT_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_EXIT_KEYWORD;
+import static busynessmanager.UI_Constants.Constants.BM_EXIT_MESSAGE;
 
 public class BusynessManager {
-    /**
-     * Main entry-point for Busyness Manager
-     * Currently holding arbitrary test code
-     */
+    private static final HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
+
+    private String businessID;
+    private String businessName;
+    private String businessPassword;
+    private String businessType; // Enum: FNB / RETAIL
+
+    private final CommandParser commandParser;
+
+    public BusynessManager() {
+        InventoryManager inventoryManager = new InventoryManager();
+        SalesManager salesManager = new SalesManager(inventoryManager);
+        RevenueCalculator revenueCalculator = new RevenueCalculator(salesManager);
+        SearchManager searchManager = new SearchManager(inventoryManager);
+        commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
+    }
+
     public static void main(String[] args) {
+        BusynessManager manager = new BusynessManager();
+        manager.start();
+    }
 
+    public void start() {
+        Scanner scanner = new Scanner(System.in);
+        //System.out.println("Welcome to Busyness Manager!");
+        UI.printMessage(BM_WELCOME_MESSAGE);
 
-        // test code
-        // Himeth's portion
-        //Product product1 = new Product("bean", 100, 0.6);
-        //Product product2 = new Product("donkey", 6000, 900);
-        //Product product3 = new Product("bingbangbong", 1, 10000);
+        //System.out.print("Enter Business ID: ");
+        UI.printMessage(BM_ENTER_BUSINESS_ID_MESSAGE);
+        if (!scanner.hasNextLine()) {
+            //System.err.println("Error: No input detected. Exiting...");
+            UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+            return;
+        }
 
-        InventoryManager im = new InventoryManager();
-        SearchManager searchManager = new SearchManager(im);
+        String id = scanner.nextLine().trim();
 
-        im.addProduct("bean", 100, 0.6);
-        im.addProduct("donkey", 6000, 900);
+        if (credentials.containsKey(id)) {
+            login(scanner, id);
+        } else {
+            firstTimeSetup(scanner, id);
+            run(scanner);
+        }
+    }
 
-        im.printProducts();
+    public void login(Scanner scanner, String id) {
+        //System.out.print("Enter Password: ");
+        UI.printMessage(BM_ENTER_PASSWORD_MESSAGE);
+        if (!scanner.hasNextLine()) {
+            //System.err.println("Error: No input detected. Exiting...");
+            UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+            return;
+        }
+        String password = scanner.nextLine().trim();
+        if (validPassword(id, password)) {
+            //System.out.println("Login successful!");
+            UI.printMessage(BM_SUCCESSFUL_LOGIN_MESSAGE);
+            run(scanner);
+        } else {
+            //System.out.println("Invalid credentials. Exiting.");
+            UI.printMessage(BM_INVALID_CREDENTIALS_MESSAGE);
+        }
+    }
 
-        im.addProduct("bingbangbong", 1, 10000);
+    public void firstTimeSetup(Scanner scanner, String id) {
+        //System.out.println("First-time setup required.");
+        UI.printMessage(BM_FIRST_SETUP_MESSAGE);
 
-        im.printProducts(); // Ensure items a re sorted in order of ID for readability
+        //System.out.print("Enter Business Name: ");
+        UI.printMessage(BM_ENTER_NAME_MESSAGE);
+        if (!scanner.hasNextLine()) {
+            //System.err.println("Error: No input detected. Exiting...");
+            UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+            return;
+        }
+        businessName = scanner.nextLine().trim();
 
-        im.deleteProduct(searchManager.searchByName("bingbangbong"));
+        //System.out.print("Enter Business Password: ");
+        UI.printMessage(BM_ENTER_PASSWORD_MESSAGE_2);
+        if (!scanner.hasNextLine()) {
+            //System.err.println("Error: No input detected. Exiting...");
+            UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+            return;
+        }
+        businessPassword = scanner.nextLine().trim();
 
-        im.printProducts();
+        //System.out.print("Enter Business Type (FNB/RETAIL): ");
+        UI.printMessage(BM_ENTER_BUSINESS_TYPE_MESSAGE);
+        if (!scanner.hasNextLine()) {
+            //System.err.println("Error: No input detected. Exiting...");
+            UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+            return;
+        }
+        businessType = scanner.nextLine().trim().toUpperCase();
 
-        // Rozalie's portion
-        SalesManager sm = new SalesManager(im);
-        sm.recordSale(searchManager.searchByName("bean"), 55);
+        businessID = id;
+        credentials.put(businessID, businessPassword);
 
-        im.printProducts();
+        //System.out.println("Business setup complete!");
+        UI.printMessage(BM_SETUP_COMPLETE_MESSAGE);
+    }
 
-        sm.clearSales(searchManager.searchByName("bean"));
+    public boolean validPassword(String id, String password) {
+        return credentials.containsKey(id) && credentials.get(id).equals(password);
+    }
 
-        im.printProducts();
+    public void run(Scanner scanner) {
+        //System.out.println("Busyness Manager is ready. Type 'help' for commands.");
+        UI.printMessage(BM_READY_MESSAGE);
+        while (true) {
+            //System.out.print(">");
+            UI.printMessageWithoutNewline(BM_WAITING_INPUT_MESSAGE);
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase(BM_EXIT_KEYWORD)) {
+                //System.out.println("Exiting Busyness Manager...");
+                UI.printMessage(BM_EXIT_MESSAGE);
+                break;
+            }
 
-        sm.recordSale(searchManager.searchByName("bean"), 35);
-        sm.recordSale(searchManager.searchByName("donkey"), 2);
+            commandParser.parseCommand(input);
+        }
 
-        // SY's portion
-        RevenueCalculator rc = new RevenueCalculator(sm);
-
-        double beanRevenue = rc.computeProductRevenue(searchManager.searchByName("bean"));
-
-        double totalRevenue = rc.computeTotalRevenue();
-
-        System.out.println(beanRevenue);
-        System.out.println(totalRevenue);
-
-        System.out.println(searchManager.searchById("ID_0001")); // Returns Product object
-        System.out.println(searchManager.searchByName("bean")); // Returns String object
-
+        scanner.close();
     }
 }
-
