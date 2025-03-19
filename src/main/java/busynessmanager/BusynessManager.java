@@ -9,6 +9,10 @@ import busynessmanager.revenue.RevenueCalculator;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.managers.SearchManager;
 import busynessmanager.UI_Constants.UI;
+
+import static busynessmanager.UI_Constants.Constants.BM_UPPERCASE_REGEX;
+import static busynessmanager.UI_Constants.Constants.BM_BUSINESSTYPE_FNB;
+import static busynessmanager.UI_Constants.Constants.BM_BUSINESSTYPE_RETAIL;
 import static busynessmanager.UI_Constants.Constants.BM_WELCOME_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_NO_INPUT_ERROR_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_ENTER_BUSINESS_ID_MESSAGE;
@@ -19,6 +23,7 @@ import static busynessmanager.UI_Constants.Constants.BM_INVALID_CREDENTIALS_MESS
 import static busynessmanager.UI_Constants.Constants.BM_FIRST_SETUP_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_ENTER_NAME_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_ENTER_BUSINESS_TYPE_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_SETUP_COMPLETE_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_READY_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_WAITING_INPUT_MESSAGE;
@@ -28,10 +33,14 @@ import static busynessmanager.UI_Constants.Constants.BM_EXIT_MESSAGE;
 public class BusynessManager {
     private static final HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
 
+    private enum BusinessType {
+        FNB, RETAIL
+    }
+
     private String businessID;
     private String businessName;
     private String businessPassword;
-    private String businessType; // Enum: FNB / RETAIL
+    private BusinessType businessType;
 
     private final CommandParser commandParser;
 
@@ -42,6 +51,7 @@ public class BusynessManager {
         SearchManager searchManager = new SearchManager(inventoryManager);
         commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
     }
+
 
     public static void main(String[] args) {
         BusynessManager manager = new BusynessManager();
@@ -119,7 +129,22 @@ public class BusynessManager {
             UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
             return;
         }
-        businessType = scanner.nextLine().trim().toUpperCase();
+
+        BusinessType businessType = null;
+
+        while (businessType == null) {
+            String businessTypeString = scanner.nextLine().trim();
+
+            if (businessTypeString.matches(BM_UPPERCASE_REGEX)
+                    && businessTypeString.equals(BM_BUSINESSTYPE_FNB)) {
+                businessType = BusinessType.FNB;
+            } else if (businessTypeString.matches(BM_UPPERCASE_REGEX)
+                    && businessTypeString.equals(BM_BUSINESSTYPE_RETAIL)) {
+                businessType = BusinessType.RETAIL;
+            } else {
+                UI.printMessage(BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE);
+            }
+        }
 
         businessID = id;
         credentials.put(businessID, businessPassword);
