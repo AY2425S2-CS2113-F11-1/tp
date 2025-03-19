@@ -1,5 +1,7 @@
 package busynessmanager.UI_Constants;
 
+import static busynessmanager.UI_Constants.Constants.*;
+
 /**
  * Class meant for receiving input and giving output to the user
  */

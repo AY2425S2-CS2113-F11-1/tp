@@ -1,6 +1,7 @@
 package busynessmanager.managers;
 
 import busynessmanager.product.Product;
+import static busynessmanager.UI_Constants.Constants.INVALID_NAME;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class SearchManager {
             }
         }
         // Possible avenue for error (Invalid name provided)
-        return "INVALID_NAME";
+        return INVALID_NAME;
     }
 
     /**

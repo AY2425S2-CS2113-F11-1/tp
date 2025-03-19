@@ -3,8 +3,11 @@ package busynessmanager.revenue;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.product.Product;
+import static busynessmanager.UI_Constants.Constants.*;
 
 import java.util.HashMap;
+
+
 
 /**
  * RevenueCalculator is used to calculate the various revenues that is produced in the Busyness
@@ -28,7 +31,7 @@ public class RevenueCalculator {
         InventoryManager currentInventory = sm.getInventory();
         HashMap<String, Product> currentProductList = currentInventory.returnProductList();
 
-        double totalRevenue = 0;
+        double totalRevenue = MINIMUM_VALUE;
         for (Product product : currentProductList.values()) {
             totalRevenue += product.getPrice() * product.getQuantitySold();
         }
