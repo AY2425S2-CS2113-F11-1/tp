@@ -1,66 +1,118 @@
 package busynessmanager;
 
+import busynessmanager.parser.CommandParser;
+import java.util.Scanner;
+import java.util.HashMap;
+
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.revenue.RevenueCalculator;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.managers.SearchManager;
 
 public class BusynessManager {
-    /**
-     * Main entry-point for Busyness Manager
-     * Currently holding arbitrary test code
-     */
-    public static void main(String[] args) {
+    private static HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
+
+    private String businessID;
+    private String businessName;
+    private String businessPassword;
+    private String businessType; // Enum: FNB / RETAIL
 
 
-        // test code
-        // Himeth's portion
-        //Product product1 = new Product("bean", 100, 0.6);
-        //Product product2 = new Product("donkey", 6000, 900);
-        //Product product3 = new Product("bingbangbong", 1, 10000);
+    private CommandParser commandParser;
+    private InventoryManager inventoryManager;
+    private SalesManager salesManager;
+    private RevenueCalculator revenueCalculator;
+    private SearchManager searchManager;
 
-        InventoryManager im = new InventoryManager();
-        SearchManager searchManager = new SearchManager(im);
 
-        im.addProduct("bean", 100, 0.6);
-        im.addProduct("donkey", 6000, 900);
+    public BusynessManager() {
 
-        im.printProducts();
-
-        im.addProduct("bingbangbong", 1, 10000);
-
-        im.printProducts(); // Ensure items a re sorted in order of ID for readability
-
-        im.deleteProduct(searchManager.searchByName("bingbangbong"));
-
-        im.printProducts();
-
-        // Rozalie's portion
-        SalesManager sm = new SalesManager(im);
-        sm.recordSale(searchManager.searchByName("bean"), 55);
-
-        im.printProducts();
-
-        sm.clearSales(searchManager.searchByName("bean"));
-
-        im.printProducts();
-
-        sm.recordSale(searchManager.searchByName("bean"), 35);
-        sm.recordSale(searchManager.searchByName("donkey"), 2);
-
-        // SY's portion
-        RevenueCalculator rc = new RevenueCalculator(sm);
-
-        double beanRevenue = rc.computeProductRevenue(searchManager.searchByName("bean"));
-
-        double totalRevenue = rc.computeTotalRevenue();
-
-        System.out.println(beanRevenue);
-        System.out.println(totalRevenue);
-
-        System.out.println(searchManager.searchById("ID_0001")); // Returns Product object
-        System.out.println(searchManager.searchByName("bean")); // Returns String object
+        this.inventoryManager = new InventoryManager();
+        this.salesManager = new SalesManager(inventoryManager);
+        this.revenueCalculator = new RevenueCalculator(salesManager);
+        this.searchManager = new SearchManager(inventoryManager);
+        // this.commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
 
     }
-}
 
+    public void start() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to Busyness Manager!");
+
+        System.out.print("Enter Business ID: ");
+        if (!scanner.hasNextLine()) {
+            System.err.println("Error: No input detected. Exiting...");
+            return;
+        }
+        String id = scanner.nextLine().trim();
+
+        if (credentials.containsKey(id)) {
+            System.out.print("Enter Password: ");
+            if (!scanner.hasNextLine()) {
+                System.err.println("Error: No input detected. Exiting...");
+                return;
+            }
+            String password = scanner.nextLine().trim();
+            if (login(id, password)) {
+                System.out.println("Login successful!");
+                run(scanner);
+            } else {
+                System.out.println("Invalid credentials. Exiting.");
+            }
+        } else {
+            System.out.println("First-time setup required.");
+
+            System.out.print("Enter Business Name: ");
+            if (!scanner.hasNextLine()) {
+                System.err.println("Error: No input detected. Exiting...");
+                return;
+            }
+            businessName = scanner.nextLine().trim();
+
+            System.out.print("Enter Business Password: ");
+            if (!scanner.hasNextLine()) {
+                System.err.println("Error: No input detected. Exiting...");
+                return;
+            }
+            businessPassword = scanner.nextLine().trim();
+
+            System.out.print("Enter Business Type (FNB/RETAIL): ");
+            if (!scanner.hasNextLine()) {
+                System.err.println("Error: No input detected. Exiting...");
+                return;
+            }
+            businessType = scanner.nextLine().trim().toUpperCase();
+
+            businessID = id;
+            credentials.put(businessID, businessPassword);
+
+            System.out.println("Business setup complete!");
+            run(scanner);
+        }
+    }
+
+
+    public boolean login(String id, String password) {
+        return credentials.containsKey(id) && credentials.get(id).equals(password);
+    }
+
+    public void run(Scanner scanner) {
+        System.out.println("Busyness Manager is ready. Type 'help' for commands.");
+        while (true) {
+            System.out.print(">");
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("exit")) {
+                System.out.println("Exiting Busyness Manager...");
+                break;
+            }
+
+            //commandParser.parseCommand(input);
+        }
+        scanner.close();
+    }
+
+    public static void main(String[] args) {
+        BusynessManager manager = new BusynessManager();
+        manager.start();
+    }
+}
