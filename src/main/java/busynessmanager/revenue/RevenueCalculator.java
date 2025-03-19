@@ -3,6 +3,7 @@ package busynessmanager.revenue;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.product.Product;
+import static busynessmanager.UI_Constants.Constants.MINIMUM_VALUE;
 
 import java.util.HashMap;
 
@@ -27,8 +28,8 @@ public class RevenueCalculator {
     public double computeTotalRevenue() {
         InventoryManager currentInventory = sm.getInventory();
         HashMap<String, Product> currentProductList = currentInventory.returnProductList();
-        double totalRevenue = 0;
 
+        double totalRevenue = MINIMUM_VALUE;
         for (Product product : currentProductList.values()) {
             totalRevenue += product.getPrice() * product.getQuantitySold();
         }

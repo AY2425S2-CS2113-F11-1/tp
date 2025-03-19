@@ -1,5 +1,8 @@
 package busynessmanager.product;
 
+import static busynessmanager.UI_Constants.Constants.ID_FORMAT;
+import static busynessmanager.UI_Constants.Constants.PRODUCT_FORMAT;
+
 public class Product {
     private static int idCounter = 1; // Simple counter for unique IDs
     private final String id;
@@ -10,7 +13,7 @@ public class Product {
 
     // Constructor
     public Product(String name, int quantity, double price) {
-        this.id = String.format("ID_%04d", idCounter++); // Generates unique ID like ID_0001
+        this.id = String.format(ID_FORMAT, idCounter++); // Generates unique ID like ID_0001
         this.name = name;
         this.quantity = quantity;
         this.quantitySold = 0;
@@ -58,7 +61,7 @@ public class Product {
     // toString method for formatted product details
     @Override
     public String toString() {
-        return String.format("%s: %s | Qty: %d | Sold: %d | Price: $%.2f",
+        return String.format(PRODUCT_FORMAT,
                 id, name, quantity, quantitySold, price);
     }
 }
