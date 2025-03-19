@@ -26,18 +26,18 @@ public class InventoryManager {
 
     // Add a new product
     public void addProduct(String name, int qty, double price) {
-        Product product = new Product(name, qty, price);  // Generates unique ID internally
-        String productId = product.getId();  // Get the unique ID of the product
 
-        if (productList.containsKey(productId)) {
-            //System.out.println("Product with ID " + productId + " already exists.");
-            UI.printFormattedMessage(IM_ID_EXISTS_FORMAT + NEWLINE, productId);
-            return;
+        for (Product existingProduct : productList.values()) {
+            if (existingProduct.getName().equalsIgnoreCase(name)) { // Case-insensitive check
+                System.out.println("Error: A product with the name '" + name + "' already exists.");
+                return;
+            }
         }
 
+        Product product = new Product(name, qty, price);
+        String productId = product.getId();
         productList.put(productId, product);
-        //System.out.println("Product added: " + product);
-        UI.printFormattedMessage(IM_ADD_FORMAT + NEWLINE, product.toString());
+        System.out.println("Product added: " + product);
     }
 
     // Delete a product by ID
@@ -72,16 +72,13 @@ public class InventoryManager {
     // Print all products in inventory
     public void printProducts() {
         if (productList.isEmpty()) {
-            //System.out.println("No products in inventory.");
-            UI.printMessage(IM_EMPTY_MESSAGE);
+            System.out.println("No products in inventory.");
             return;
         }
-        //System.out.println("Product List:");
-        UI.printMessage(IM_LIST);
-        for (Map.Entry<String, Product> entry : productList.entrySet()) {
-            //System.out.println(entry.getValue());
-            UI.printMessage(entry.getValue().toString());
-        }
+        System.out.println("Product List:");
+        productList.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEach(entry -> System.out.println(entry.getValue()));
     }
 
     // Rozalie's portion
