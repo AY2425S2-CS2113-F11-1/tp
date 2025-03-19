@@ -2,12 +2,14 @@ package busynessmanager.managers;
 
 import busynessmanager.UI_Constants.UI;
 import busynessmanager.product.Product;
+import static busynessmanager.UI_Constants.Constants.INVALID_NAME;
+import static busynessmanager.UI_Constants.Constants.NEWLINE;
+import static busynessmanager.UI_Constants.Constants.SRM_ID_QUERY_FORMAT;
+import static busynessmanager.UI_Constants.Constants.SRM_NAME_QUERY_FORMAT;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import static busynessmanager.UI_Constants.Constants.*;
 
 /**
  * SearchManager is used to query through the InventoryManager and return different results based on the given queries

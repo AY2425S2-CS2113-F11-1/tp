@@ -4,10 +4,12 @@ import busynessmanager.UI_Constants.UI;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.product.Product;
+import static busynessmanager.UI_Constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.UI_Constants.Constants.NEWLINE;
+import static busynessmanager.UI_Constants.Constants.RC_INDIVIDUAL_REVENUE_FORMAT;
+import static busynessmanager.UI_Constants.Constants.RC_TOTAL_REVENUE_FORMAT;
 
 import java.util.HashMap;
-
-import static busynessmanager.UI_Constants.Constants.*;
 
 /**
  * RevenueCalculator is used to calculate the various revenues that is produced in the Busyness
