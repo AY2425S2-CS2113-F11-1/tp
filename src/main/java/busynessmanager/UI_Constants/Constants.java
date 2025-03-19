@@ -89,11 +89,18 @@ public class Constants {
     public static final String IM_ID_EXISTS_FORMAT = "Product with ID %s already exists.";
     public static final String IM_PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
 
-    // Sale
+    // SalesManager
     public static final String SM_SALES = "Sales";
     public static final String SM_RECORDED_FORMAT = SM_SALES + WHITESPACE +
         "recorded: " + IM_ID_FORMAT + ", Quantity Sold: %d";
     public static final String SM_MINIMUM_QTY_SOLD_MESSAGE = "Quantity sold must be greater than 0";
     public static final String SM_CLEARED_FORMAT = SM_SALES + WHITESPACE + "cleared: " + IM_ID_FORMAT;
 
+    // RevenueCalculator
+    public static final String RC_TOTAL_REVENUE_FORMAT = "Total Revenue: %.2f";
+    public static final String RC_INDIVIDUAL_REVENUE_FORMAT = "Revenue of %s: %.2f";
+
+    // SearchManager
+    public static final String SRM_ID_QUERY_FORMAT = "Product ID of %s: %s";
+    public static final String SRM_NAME_QUERY_FORMAT = "Product name of %s: %s";
 }
