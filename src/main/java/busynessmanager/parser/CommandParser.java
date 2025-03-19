@@ -110,11 +110,9 @@ public class CommandParser {
             try {
                 executeCommand(command, info);
             } catch (InvalidCommandException e) {
-                //System.out.println(e.getMessage());
                 UI.printMessage(e.getMessage());
             }
         } catch (InvalidStringException e) {
-            //System.out.println(e.getMessage());
             logger.log(Level.SEVERE, "Exception thrown.", e);
         }
     }
@@ -233,6 +231,9 @@ public class CommandParser {
             try {
                 productQuantity = parseInt(components[INDEX_3]);
                 productPrice = parseDouble(components[INDEX_5]);
+
+                assert productQuantity >= 0 : "productQuantity is a negative number.";
+                assert productPrice > 0 : "productPrice is not a positive number.";
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
@@ -301,6 +302,9 @@ public class CommandParser {
             try {
                 productNewQuantity = parseInt(components[INDEX_5]);
                 productNewPrice = parseDouble(components[INDEX_7]);
+
+                assert productNewQuantity >= 0 : "productNewQuantity is a negative number.";
+                assert productNewPrice > 0 : "productNewPrice is not a positive number.";
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
@@ -343,6 +347,8 @@ public class CommandParser {
 
             try {
                 quantitySold = parseInt(components[INDEX_3]);
+
+                assert quantitySold >= 0 : "quantitySold is a negative number.";
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE_2);
             }
