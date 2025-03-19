@@ -81,7 +81,7 @@ public class BusynessManager {
 
             businessPassword = scanner.nextLine().trim();
 
-            System.out.print("Enter Business Type Below (FNB/RETAIL): ");
+            System.out.print("Enter Business Type (FNB/RETAIL): ");
 
             if (!scanner.hasNextLine()) {
                 System.err.println("Error: No input detected. Exiting...");
