@@ -1,11 +1,11 @@
 package busynessmanager.parser;
 
-//import static busynessmanager.UI_Constants.Constants.* // This line will fail style checks
 import busynessmanager.UI_Constants.UI;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.managers.SearchManager;
 import busynessmanager.revenue.RevenueCalculator;
+
 import static busynessmanager.UI_Constants.Constants.WHITESPACE;
 import static busynessmanager.UI_Constants.Constants.EMPTY_STRING;
 import static busynessmanager.UI_Constants.Constants.INDEX_0;
@@ -47,6 +47,9 @@ import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;
 import busynessmanager.exceptions.NumberParsingFailedException;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Class for parsing the user input, and executing the appropriate methods.
  */
@@ -57,6 +60,7 @@ public class CommandParser {
     private final SalesManager salesManager;
     private final RevenueCalculator revenueCalculator;
     private final SearchManager searchManager;
+    private static final Logger logger = Logger.getLogger("CommandParser");
 
 
     /**
@@ -111,7 +115,7 @@ public class CommandParser {
             }
         } catch (InvalidStringException e) {
             //System.out.println(e.getMessage());
-            UI.printMessage(e.getMessage());
+            logger.log(Level.SEVERE, "Exception thrown.", e);
         }
     }
 
