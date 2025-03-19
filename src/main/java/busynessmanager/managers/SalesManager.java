@@ -1,7 +1,11 @@
 package busynessmanager.managers;
 
 import busynessmanager.UI_Constants.UI;
-import static busynessmanager.UI_Constants.Constants.*;
+//import static busynessmanager.UI_Constants.Constants.*; // This will fail style check
+import static busynessmanager.UI_Constants.Constants.NEWLINE;
+import static busynessmanager.UI_Constants.Constants.SM_MINIMUM_QTY_SOLD_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.SM_CLEARED_FORMAT;
+import static busynessmanager.UI_Constants.Constants.SM_RECORDED_FORMAT;
 
 /**
  * Updates sales transactions, decrements inventory and increases quantity sold

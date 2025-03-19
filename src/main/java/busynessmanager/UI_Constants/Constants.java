@@ -1,7 +1,5 @@
 package busynessmanager.UI_Constants;
 
-import javax.print.DocFlavor;
-
 /**
  * Constants class for usage
  * Note:
@@ -75,7 +73,8 @@ public class Constants {
 
     // Sale
     public static final String SM_SALES = "Sales";
-    public static final String SM_RECORDED_FORMAT = SM_SALES + WHITESPACE + "recorded: " + IM_ID_FORMAT + ", Quantity Sold: %d";
+    public static final String SM_RECORDED_FORMAT = SM_SALES + WHITESPACE +
+        "recorded: " + IM_ID_FORMAT + ", Quantity Sold: %d";
     public static final String SM_MINIMUM_QTY_SOLD_MESSAGE = "Quantity sold must be greater than 0";
     public static final String SM_CLEARED_FORMAT = SM_SALES + WHITESPACE + "cleared: " + IM_ID_FORMAT;
 

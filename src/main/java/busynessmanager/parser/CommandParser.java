@@ -1,11 +1,45 @@
 package busynessmanager.parser;
 
+//import static busynessmanager.UI_Constants.Constants.* // This line will fail style checks
 import busynessmanager.UI_Constants.UI;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.managers.SearchManager;
 import busynessmanager.revenue.RevenueCalculator;
-import static busynessmanager.UI_Constants.Constants.*;
+import static busynessmanager.UI_Constants.Constants.WHITESPACE;
+import static busynessmanager.UI_Constants.Constants.EMPTY_STRING;
+import static busynessmanager.UI_Constants.Constants.INDEX_0;
+import static busynessmanager.UI_Constants.Constants.INDEX_1;
+import static busynessmanager.UI_Constants.Constants.INDEX_2;
+import static busynessmanager.UI_Constants.Constants.INDEX_3;
+import static busynessmanager.UI_Constants.Constants.INDEX_4;
+import static busynessmanager.UI_Constants.Constants.INDEX_5;
+import static busynessmanager.UI_Constants.Constants.INDEX_6;
+import static busynessmanager.UI_Constants.Constants.INDEX_7;
+import static busynessmanager.UI_Constants.Constants.CP_COMMAND_SEPARATOR_INDEX;
+import static busynessmanager.UI_Constants.Constants.CP_ADD_COMMAND;
+import static busynessmanager.UI_Constants.Constants.CP_DELETE_COMMAND;
+import static busynessmanager.UI_Constants.Constants.CP_UPDATE_COMMAND;
+import static busynessmanager.UI_Constants.Constants.CP_PRINT_COMMAND;
+import static busynessmanager.UI_Constants.Constants.CP_SOLD_COMMAND;
+import static busynessmanager.UI_Constants.Constants.CP_CLEAR_COMMAND;
+import static busynessmanager.UI_Constants.Constants.CP_REVENUE_COMMAND;
+import static busynessmanager.UI_Constants.Constants.CP_SEARCH_COMMAND;
+import static busynessmanager.UI_Constants.Constants.CP_ID_REGEX;
+import static busynessmanager.UI_Constants.Constants.CP_SPLIT_REGEX;
+import static busynessmanager.UI_Constants.Constants.CP_ID_FLAG;
+import static busynessmanager.UI_Constants.Constants.CP_NAME_FLAG;
+import static busynessmanager.UI_Constants.Constants.CP_PRICE_FLAG;
+import static busynessmanager.UI_Constants.Constants.CP_QUANTITY_FLAG;
+import static busynessmanager.UI_Constants.Constants.CP_INVALID_COMMAND_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE_2;
+import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE_3;
+import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE_4;
+import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE_5;
+import static busynessmanager.UI_Constants.Constants.CP_INVALID_ID_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.CP_INVALID_ID_FORMAT_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
 
 import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;

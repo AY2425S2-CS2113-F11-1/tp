@@ -3,11 +3,9 @@ package busynessmanager.revenue;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.product.Product;
-import static busynessmanager.UI_Constants.Constants.*;
+import static busynessmanager.UI_Constants.Constants.MINIMUM_VALUE;
 
 import java.util.HashMap;
-
-
 
 /**
  * RevenueCalculator is used to calculate the various revenues that is produced in the Busyness

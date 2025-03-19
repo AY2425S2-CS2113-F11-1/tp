@@ -1,6 +1,7 @@
 package busynessmanager.product;
 
-import static busynessmanager.UI_Constants.Constants.*;
+import static busynessmanager.UI_Constants.Constants.ID_FORMAT;
+import static busynessmanager.UI_Constants.Constants.PRODUCT_FORMAT;
 
 public class Product {
     private static int idCounter = 1; // Simple counter for unique IDs

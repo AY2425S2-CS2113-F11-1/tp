@@ -1,7 +1,17 @@
 package busynessmanager.managers;
 
 import busynessmanager.UI_Constants.UI;
-import static busynessmanager.UI_Constants.Constants.*;
+//import static busynessmanager.UI_Constants.Constants.*; // This line will fail style checks
+import static busynessmanager.UI_Constants.Constants.NEWLINE;
+import static busynessmanager.UI_Constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.UI_Constants.Constants.IM_LIST;
+import static busynessmanager.UI_Constants.Constants.IM_EMPTY_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.IM_ADD_FORMAT;
+import static busynessmanager.UI_Constants.Constants.IM_REMOVE_FORMAT;
+import static busynessmanager.UI_Constants.Constants.IM_UPDATED_FORMAT;
+import static busynessmanager.UI_Constants.Constants.IM_ID_EXISTS_FORMAT;
+import static busynessmanager.UI_Constants.Constants.IM_PRODUCT_NOT_FOUND_FORMAT;
+
 import busynessmanager.product.Product;
 
 import java.util.HashMap;
