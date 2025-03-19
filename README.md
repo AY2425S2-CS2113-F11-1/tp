@@ -1,66 +1,168 @@
-# BusynessManager project template
+# User Guide for Busyness Manager
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+## Start Up:
+1. Define business name and type (during first-time use)
+2. Input:
+   - **Integer** of business ID
+   - **String** of business name
+   - **String** of business password
+   - **String** of business type (recognized as an enumeration, e.g., `FNB` / `RETAIL`)
+3. List format and information will be structured according to the business type enumeration.
 
-## Setting up in Intellij
+## Features:
+- **Login**
+   - Requires ID and password.
+   - Subsequent features can be accessed after logging in.
 
-Prerequisites: JDK 17 (use the exact version), update Intellij to the most recent version.
+- **Viewing Help: `help`**
+   - Prints possible command instructions and expected formatting.
 
-1. **Ensure Intellij JDK 17 is defined as an SDK**, as described [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk) -- this step is not needed if you have used JDK 17 in a previous Intellij project.
-1. **Import the project _as a Gradle project_**, as described [here](https://se-education.org/guides/tutorials/intellijImportGradleProject.html).
-1. **Verify the setup**: After the importing is complete, locate the `src/main/java/seedu/duke/Duke.java` file, right-click it, and choose `Run Duke.main()`. If the setup is correct, you should see something like the below:
-   ```
-   > Task :compileJava
-   > Task :processResources NO-SOURCE
-   > Task :classes
-   
-   > Task :Duke.main()
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   
-   What is your name?
-   ```
-   Type some word and press enter to let the execution proceed to the end.
+- **Adding a Product: `add`**
+   - Adds a product to the products-for-sale list.
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+- **Deleting a Product: `delete`**
+   - Removes a product from the products-for-sale list.
 
-## Build automation using Gradle
+- **Checking Info of Products: `display`**
+   - Shows data of the specified product.
 
-* This project uses Gradle for build automation and dependency management. It includes a basic build script as well (i.e. the `build.gradle` file).
-* If you are new to Gradle, refer to the [Gradle Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/gradle.html).
+- **Changing Info of Products: `update`**
+   - Updates data of a specified product.
+   - Data to be updated must be specified during command input.
 
-## Testing
+- **Printing List of Products / Equipment: `print`**
+   - Prints the entire list of products for sale (classified according to product ID).
 
-### I/O redirection tests
+- **Incrementing Sold Products List, Decrementing Inventory: `sold`**
+   - Changes the quantity of the inventory and sold products list.
 
-* To run _I/O redirection_ tests (aka _Text UI tests_), navigate to the `text-ui-test` and run the `runtest(.bat/.sh)` script.
+- **Clear the Quantity Sold: `clear`**
+   - Changes the quantity sold of a product to 0.
 
-### JUnit tests
+- **Compute Total Amount of Sale Transaction: `revenue`**
+   - Adds up all the prices of all products sold, multiplied by their quantity.
 
-* A skeleton JUnit test (`src/test/java/seedu/duke/DukeTest.java`) is provided with this project template. 
-* If you are new to JUnit, refer to the [JUnit Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/junit.html).
+- **Search for the ID of a Product: `search`**
+   - Given a product ID, searches for the corresponding product.
 
-## Checkstyle
+---
 
-* A sample CheckStyle rule configuration is provided in this project.
-* If you are new to Checkstyle, refer to the [Checkstyle Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/checkstyle.html).
+## Command Summary:
+> *Add a slash (`/`) in front of the tag.*
 
-## CI using GitHub Actions
+### **Adding a Product**
+add /name PRODUCT_NAME /qty QUANTITY /qty_sold QUANTITY_SOLD /price PRICE
 
-The project uses [GitHub actions](https://github.com/features/actions) for CI. When you push a commit to this repo or PR against it, GitHub actions will run automatically to build and verify the code as updated by the commit/PR.
+- Creates a new product item & attaches different attributes to it (with auto-generated ID).
+- `QUANTITY_SOLD` defaults to zero unless stated otherwise.
+- Optional tags:
+   - `/qty` → Quantity available.
+   - `/price` → Price of product.
 
-## Documentation
+**Example:**
+Input -> add /name MILK /qty 50 /price $2.50 
+Output -> "MILK added, qty 50, price $2.50, ID = 0001"
 
-`/docs` folder contains a skeleton version of the project documentation.
+---
 
-Steps for publishing documentation to the public: 
-1. If you are using this project template for an individual project, go your fork on GitHub.<br>
-   If you are using this project template for a team project, go to the team fork on GitHub.
-1. Click on the `settings` tab.
-1. Scroll down to the `GitHub Pages` section.
-1. Set the `source` as `master branch /docs folder`.
-1. Optionally, use the `choose a theme` button to choose a theme for your documentation.
+### **Deleting a Product**
+delete /id PRODUCT_ID
+
+- Deletes the specific product with the given ID.
+- Confirmation prompt (`yes/no`) before deletion.
+
+**Example:**
+Input -> delete /id 1 
+Output -> "ID_0001: MILK removed"
+
+---
+
+### **Displaying Product Info**
+display /id PRODUCT_ID
+
+- Prints data of each product.
+- Uses `toString()` of each product.
+- Optional flags to display specific product data.
+
+**Example:**
+Input -> display /id 1 
+Output -> "ID_0001: MILK, qty 50, price $2.50"
+
+---
+
+### **Updating a Product**
+update /id PRODUCT_ID /name NEW_NAME /qty NEW_QUANTITY /price NEW_PRICE
+
+- Changes one or more attributes of a product.
+- Optional tags:
+   - `/qty` → New quantity.
+   - `/price` → New price.
+   - `/name` → New name.
+
+**Example:**
+Input -> update /id 1 /name FRESH_MILK /qty 45 /price $3.00 
+Output -> "ID_0001: updated to FRESH_MILK, qty 45, price $3.00"
+
+---
+
+### **Printing Product List**
+print
+
+- Prints the current list of products (default: quantity displayed).
+- Optional flag `/price` → Displays price of each item.
+
+**Example:**
+Input -> print /price 
+Output -> "ID_0001: MILK | $2.50"
+
+_Format: `ID_NUMBER: PRODUCT_NAME | PRICE`_
+
+---
+
+### **Recording a Sale**
+sold /id PRODUCT_ID /qty_sold QUANTITY_SOLD
+
+- Changes sales record and updates the inventory list.
+
+**Example:**
+Input -> sold /id 0001 /qty 5 
+Output -> "Sale Recorded: MILK (ID_0001), Quantity Sold: 5, Updated Inventory: 45 Remaining"
+
+---
+
+### **Clearing Sold Quantity**
+clear /id PRODUCT_ID
+
+- Sets the `/qty_sold` value to zero for the specified product.
+- Confirmation prompt (`yes/no`) before executing.
+
+**Example:**
+Input -> clear /id 1 
+Output -> "Qty Sold for MILK (ID_0001) has been set to 0"
+
+---
+
+### **Computing Revenue**
+revenue /id PRODUCT_ID
+
+- Computes the total amount of revenue.
+- Optional `/id` flag to check revenue for a specific product.
+
+**Example (Overall Revenue):**
+Input -> revenue 
+Output -> "Total revenue for your busyness is $0 dollars!"
+
+**Example (Specific Product Revenue):**
+Input -> revenue /id 1 
+Output -> "Revenue for MILK (ID_0001) is $0 dollars!"
+
+---
+
+### **Searching for a Product by Name**
+search /name PRODUCT_NAME
+
+- Returns the product ID of a product that matches the given name.
+
+**Example:**
+Input -> search /name MILK 
+Output -> "MILK (ID_0001)"
