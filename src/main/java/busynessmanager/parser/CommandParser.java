@@ -187,6 +187,9 @@ public class CommandParser {
             try {
                 productQuantity = parseInt(components[3]);
                 productPrice = parseDouble(components[5]);
+
+                assert productQuantity >= 0 : "productQuantity is a negative number.";
+                assert productPrice > 0 : "productPrice is not a positive number.";
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException("Quantity or price is not a number. Please try again.");
             }
@@ -253,6 +256,9 @@ public class CommandParser {
             try {
                 productNewQuantity = parseInt(components[5]);
                 productNewPrice = parseDouble(components[7]);
+
+                assert productNewQuantity >= 0 : "productNewQuantity is a negative number.";
+                assert productNewPrice > 0 : "productNewPrice is not a positive number.";
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException("Quantity or price is not a number. Please try again.");
             }
@@ -271,7 +277,7 @@ public class CommandParser {
      * Calls printProducts() from the InventoryManager class.
      */
     protected void printProducts() {
-        //InventoryManager.printProducts();
+        inventoryManager.printProducts();
     }
 
     /**
@@ -295,6 +301,8 @@ public class CommandParser {
 
             try {
                 quantitySold = parseInt(components[3]);
+
+                assert quantitySold >= 0 : "quantitySold is a negative number.";
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException("Quantity is not a number. Please try again.");
             }
