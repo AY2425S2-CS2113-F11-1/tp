@@ -29,11 +29,13 @@ public class SearchManager {
     public String searchByName(String name) {
         HashMap<String, Product> currentProductList = this.inventory.returnProductList();
         Set<Map.Entry<String, Product>> mapSet = currentProductList.entrySet();
+
         for (Map.Entry<String, Product> entry : mapSet) {
             if (entry.getValue().getName().equals(name)) {
                 return entry.getKey();
             }
         }
+
         // Possible avenue for error (Invalid name provided)
         return INVALID_NAME;
     }
@@ -45,7 +47,7 @@ public class SearchManager {
      */
     public Product searchById(String id) {
         HashMap<String, Product> currentProductList = this.inventory.returnProductList();
+
         return currentProductList.get(id);
     }
-
 }

@@ -26,29 +26,26 @@ import static busynessmanager.UI_Constants.Constants.BM_EXIT_KEYWORD;
 import static busynessmanager.UI_Constants.Constants.BM_EXIT_MESSAGE;
 
 public class BusynessManager {
-    private static HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
+    private static final HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
 
     private String businessID;
     private String businessName;
     private String businessPassword;
     private String businessType; // Enum: FNB / RETAIL
 
-
-    private CommandParser commandParser;
-    private InventoryManager inventoryManager;
-    private SalesManager salesManager;
-    private RevenueCalculator revenueCalculator;
-    private SearchManager searchManager;
-
+    private final CommandParser commandParser;
 
     public BusynessManager() {
+        InventoryManager inventoryManager = new InventoryManager();
+        SalesManager salesManager = new SalesManager(inventoryManager);
+        RevenueCalculator revenueCalculator = new RevenueCalculator(salesManager);
+        SearchManager searchManager = new SearchManager(inventoryManager);
+        commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
+    }
 
-        this.inventoryManager = new InventoryManager();
-        this.salesManager = new SalesManager(inventoryManager);
-        this.revenueCalculator = new RevenueCalculator(salesManager);
-        this.searchManager = new SearchManager(inventoryManager);
-        // this.commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
-
+    public static void main(String[] args) {
+        BusynessManager manager = new BusynessManager();
+        manager.start();
     }
 
     public void start() {
@@ -63,6 +60,7 @@ public class BusynessManager {
             UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
             return;
         }
+
         String id = scanner.nextLine().trim();
 
         if (credentials.containsKey(id)) {
@@ -147,13 +145,9 @@ public class BusynessManager {
                 break;
             }
 
-            //commandParser.parseCommand(input);
+            commandParser.parseCommand(input);
         }
-        scanner.close();
-    }
 
-    public static void main(String[] args) {
-        BusynessManager manager = new BusynessManager();
-        manager.start();
+        scanner.close();
     }
 }

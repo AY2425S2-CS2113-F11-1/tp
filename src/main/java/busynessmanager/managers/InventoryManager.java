@@ -28,11 +28,13 @@ public class InventoryManager {
     public void addProduct(String name, int qty, double price) {
         Product product = new Product(name, qty, price);  // Generates unique ID internally
         String productId = product.getId();  // Get the unique ID of the product
+
         if (productList.containsKey(productId)) {
             //System.out.println("Product with ID " + productId + " already exists.");
             UI.printFormattedMessage(IM_ID_EXISTS_FORMAT + NEWLINE, productId);
             return;
         }
+
         productList.put(productId, product);
         //System.out.println("Product added: " + product);
         UI.printFormattedMessage(IM_ADD_FORMAT + NEWLINE, product.toString());
@@ -54,6 +56,7 @@ public class InventoryManager {
     public void updateProduct(String id, String name, int qty, double price) {
         if (productList.containsKey(id)) {
             Product product = productList.get(id);
+
             product.setName(name);
             product.setQuantity(qty);
             product.setPrice(price);
