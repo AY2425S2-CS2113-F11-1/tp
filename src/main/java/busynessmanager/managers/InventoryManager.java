@@ -1,3 +1,7 @@
+package busynessmanager.managers;
+
+import busynessmanager.product.Product;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,5 +57,22 @@ public class InventoryManager {
         for (Map.Entry<String, Product> entry : productList.entrySet()) {
             System.out.println(entry.getValue());
         }
+    }
+
+    // Rozalie's portion
+    protected void updateProductQuantity(String id, int qtySold) {
+        Product product = productList.get(id);
+        int currentQty = product.getQuantity();
+        product.setQuantitySold(qtySold);
+        product.setQuantity(Math.max(0, currentQty - qtySold));
+    }
+
+    protected void resetProductSales(String id) {
+        productList.get(id).setQuantity(0);
+    }
+
+    // SY's portion
+    public HashMap<String, Product> returnProductList() {
+        return productList;
     }
 }
