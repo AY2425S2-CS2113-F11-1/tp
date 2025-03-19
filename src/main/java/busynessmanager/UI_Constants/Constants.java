@@ -22,11 +22,13 @@ public class Constants {
     public static final int INDEX_5 = 5;
     public static final int INDEX_6 = 6;
     public static final int INDEX_7 = 7;
-    public static final int INDEX_8 = 8;
-    public static final int INDEX_9 = 9;
     public static final String INVALID_NAME = "INVALID_NAME";
 
     // BusynessManager
+    public static final String BM_UPPERCASE_REGEX = "[A-Z]+";
+    public static final String BM_BUSINESSTYPE_FNB = "FNB";
+    public static final String BM_BUSINESSTYPE_RETAIL = "RETAIL";
+
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
     public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected. Exiting...";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
@@ -37,6 +39,7 @@ public class Constants {
     public static final String BM_FIRST_SETUP_MESSAGE = "First-time setup required.";
     public static final String BM_ENTER_NAME_MESSAGE = "Enter Business Name: ";
     public static final String BM_ENTER_BUSINESS_TYPE_MESSAGE = "Enter Business Type (FNB/RETAIL): ";
+    public static final String BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE = "Invalid business type. Please try again.";
     public static final String BM_SETUP_COMPLETE_MESSAGE = "Business setup complete!";
     public static final String BM_READY_MESSAGE = "Busyness Manager is ready. Type 'help' for commands.";
     public static final String BM_WAITING_INPUT_MESSAGE = ">";
@@ -44,6 +47,7 @@ public class Constants {
     public static final String BM_EXIT_MESSAGE = "Exiting Busyness Manager...";
 
     // CommandParser
+    public static final String CP_NAME = "CommandParser";
     public static final int CP_COMMAND_SEPARATOR_INDEX = -1;
     public static final String CP_ID_REGEX = "ID_\\d{4}";
     public static final String CP_SPLIT_REGEX = "\\s+";
@@ -73,6 +77,10 @@ public class Constants {
     public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a number. Please try again.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
     public static final String CP_INVALID_ID_MESSAGE = "ID is invalid. Please try again.";
+
+    public static final String CP_NEGATIVE_QUANTITY_MESSAGE = "Quantity is a negative number.";
+    public static final String CP_NEGATIVE_PRICE_MESSAGE = "Price is not a positive number.";
+    public static final String CP_EXCEPTION_LOG_MESSAGE = "Exception thrown.";
 
     // Product
     public static final String ID_FORMAT = "ID_%04d";
