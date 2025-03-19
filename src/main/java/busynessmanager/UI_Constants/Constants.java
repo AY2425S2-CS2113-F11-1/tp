@@ -26,6 +26,23 @@ public class Constants {
     public static final int INDEX_9 = 9;
     public static final String INVALID_NAME = "INVALID_NAME";
 
+    // BusynessManager
+    public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
+    public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected. Exiting...";
+    public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
+    public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
+    public static final String BM_SUCCESSFUL_LOGIN_MESSAGE = "Login successful!";
+    public static final String BM_INVALID_CREDENTIALS_MESSAGE = "Invalid credentials. Exiting.";
+    public static final String BM_FIRST_SETUP_MESSAGE = "First-time setup required.";
+    public static final String BM_ENTER_NAME_MESSAGE = "Enter Business Name: ";
+    // "Enter Business Password: "
+    public static final String BM_ENTER_BUSINESS_TYPE_MESSAGE = "Enter Business Type (FNB/RETAIL): ";
+    public static final String BM_SETUP_COMPLETE_MESSAGE = "Business setup complete!";
+    public static final String BM_READY_MESSAGE = "Busyness Manager is ready. Type 'help' for commands.";
+    public static final String BM_WAITING_INPUT_MESSAGE = ">";
+    public static final String BM_EXIT_KEYWORD = "exit";
+    public static final String BM_EXIT_MESSAGE = "Exiting Busyness Manager...";
+
     // CommandParser
     public static final int CP_COMMAND_SEPARATOR_INDEX = -1;
     public static final String CP_ID_REGEX = "ID_\\d{4}";
@@ -56,7 +73,6 @@ public class Constants {
     public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a number. Please try again.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
     public static final String CP_INVALID_ID_MESSAGE = "ID is invalid. Please try again.";
-
 
     // Product
     public static final String ID_FORMAT = "ID_%04d";

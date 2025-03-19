@@ -9,8 +9,24 @@ public class UI {
      * Used to print _MESSAGE suffix constants from Constants class
      * @param message Constant variable from Constants class
      */
+    public static void printMessageWithoutNewline(String message) {
+        System.out.print(message);
+    }
+
+    /**
+     * Used to print _MESSAGE suffix constants from Constants class
+     * @param message Constant variable from Constants class
+     */
     public static void printMessage(String message) {
         System.out.println(message);
+    }
+
+    /**
+     * Used to print _MESSAGE suffix constants from Constants class
+     * @param message Constant variable from Constants class
+     */
+    public static void printErrorMessage(String message) {
+        System.err.println(message);
     }
 
     /**
