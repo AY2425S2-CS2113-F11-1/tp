@@ -9,7 +9,7 @@ import static busynessmanager.UI_Constants.Constants.IM_EMPTY_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.IM_ADD_FORMAT;
 import static busynessmanager.UI_Constants.Constants.IM_REMOVE_FORMAT;
 import static busynessmanager.UI_Constants.Constants.IM_UPDATED_FORMAT;
-import static busynessmanager.UI_Constants.Constants.IM_ID_EXISTS_FORMAT;
+import static busynessmanager.UI_Constants.Constants.IM_NAME_EXISTS_FORMAT;
 import static busynessmanager.UI_Constants.Constants.IM_PRODUCT_NOT_FOUND_FORMAT;
 
 import busynessmanager.product.Product;
@@ -28,8 +28,9 @@ public class InventoryManager {
     public void addProduct(String name, int qty, double price) {
 
         for (Product existingProduct : productList.values()) {
-            if (existingProduct.getName().equalsIgnoreCase(name)) { // Case-insensitive check
-                System.out.println("Error: A product with the name '" + name + "' already exists.");
+            if (existingProduct.getName().equalsIgnoreCase(name)) {
+                //System.out.println("Error: A product with the name '" + name + "' already exists.");
+                UI.printFormattedMessage(IM_NAME_EXISTS_FORMAT + NEWLINE, name);
                 return;
             }
         }
@@ -37,7 +38,8 @@ public class InventoryManager {
         Product product = new Product(name, qty, price);
         String productId = product.getId();
         productList.put(productId, product);
-        System.out.println("Product added: " + product);
+        //System.out.println("Product added: " + product);
+        UI.printFormattedMessage(IM_ADD_FORMAT + NEWLINE, product.toString());
     }
 
     // Delete a product by ID
@@ -72,10 +74,12 @@ public class InventoryManager {
     // Print all products in inventory
     public void printProducts() {
         if (productList.isEmpty()) {
-            System.out.println("No products in inventory.");
+            //System.out.println("No products in inventory.");
+            UI.printMessage(IM_EMPTY_MESSAGE);
             return;
         }
-        System.out.println("Product List:");
+        //System.out.println("Product List:");
+        UI.printMessage(IM_LIST);
         productList.entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
                 .forEach(entry -> System.out.println(entry.getValue()));
