@@ -1,28 +1,5 @@
-Product added: ID_0001: bean | Qty: 100 | Sold: 0 | Price: $0.60
-Product added: ID_0002: donkey | Qty: 6000 | Sold: 0 | Price: $900.00
-Product list:
-ID_0001: bean | Qty: 100 | Sold: 0 | Price: $0.60
-ID_0002: donkey | Qty: 6000 | Sold: 0 | Price: $900.00
-Product added: ID_0003: bingbangbong | Qty: 1 | Sold: 0 | Price: $10000.00
-Product list:
-ID_0001: bean | Qty: 100 | Sold: 0 | Price: $0.60
-ID_0003: bingbangbong | Qty: 1 | Sold: 0 | Price: $10000.00
-ID_0002: donkey | Qty: 6000 | Sold: 0 | Price: $900.00
-Product removed: ID_0003: bingbangbong | Qty: 1 | Sold: 0 | Price: $10000.00
-Product list:
-ID_0001: bean | Qty: 100 | Sold: 0 | Price: $0.60
-ID_0002: donkey | Qty: 6000 | Sold: 0 | Price: $900.00
-Sales recorded: Product ID: ID_0001, Quantity Sold: 55
-Product list:
-ID_0001: bean | Qty: 45 | Sold: 55 | Price: $0.60
-ID_0002: donkey | Qty: 6000 | Sold: 0 | Price: $900.00
-Sales cleared: Product ID: ID_0001
-Product list:
-ID_0001: bean | Qty: 0 | Sold: 55 | Price: $0.60
-ID_0002: donkey | Qty: 6000 | Sold: 0 | Price: $900.00
-Sales recorded: Product ID: ID_0001, Quantity Sold: 35
-Sales recorded: Product ID: ID_0002, Quantity Sold: 2
-21.0
-1821.0
-ID_0001: bean | Qty: 0 | Sold: 35 | Price: $0.60
-ID_0001
+Welcome to Busyness Manager!
+Enter Business ID: First-time setup required.
+Enter Business Name: Enter Business Password: Enter Business Type (FNB/RETAIL): Business setup complete!
+Busyness Manager is ready. Type 'help' for commands.
+>Exiting Busyness Manager...
