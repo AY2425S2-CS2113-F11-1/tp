@@ -13,6 +13,7 @@ import static busynessmanager.UI_Constants.Constants.BM_WELCOME_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_NO_INPUT_ERROR_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_ENTER_BUSINESS_ID_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_ENTER_PASSWORD_MESSAGE;
+import static busynessmanager.UI_Constants.Constants.BM_ENTER_PASSWORD_MESSAGE_2;
 import static busynessmanager.UI_Constants.Constants.BM_SUCCESSFUL_LOGIN_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_INVALID_CREDENTIALS_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_FIRST_SETUP_MESSAGE;
@@ -105,7 +106,7 @@ public class BusynessManager {
         businessName = scanner.nextLine().trim();
 
         //System.out.print("Enter Business Password: ");
-        UI.printMessage(BM_ENTER_PASSWORD_MESSAGE);
+        UI.printMessage(BM_ENTER_PASSWORD_MESSAGE_2);
         if (!scanner.hasNextLine()) {
             //System.err.println("Error: No input detected. Exiting...");
             UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);

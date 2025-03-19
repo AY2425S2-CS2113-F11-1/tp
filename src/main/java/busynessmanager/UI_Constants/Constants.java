@@ -31,11 +31,11 @@ public class Constants {
     public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected. Exiting...";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
+    public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
     public static final String BM_SUCCESSFUL_LOGIN_MESSAGE = "Login successful!";
     public static final String BM_INVALID_CREDENTIALS_MESSAGE = "Invalid credentials. Exiting.";
     public static final String BM_FIRST_SETUP_MESSAGE = "First-time setup required.";
     public static final String BM_ENTER_NAME_MESSAGE = "Enter Business Name: ";
-    // "Enter Business Password: "
     public static final String BM_ENTER_BUSINESS_TYPE_MESSAGE = "Enter Business Type (FNB/RETAIL): ";
     public static final String BM_SETUP_COMPLETE_MESSAGE = "Business setup complete!";
     public static final String BM_READY_MESSAGE = "Busyness Manager is ready. Type 'help' for commands.";
