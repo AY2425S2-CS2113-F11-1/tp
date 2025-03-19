@@ -36,7 +36,7 @@ public class BusynessManager {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to Busyness Manager!");
-        System.out.print("Enter Business ID: ");
+        System.out.println("Enter Business ID Below:");
 
         if (!scanner.hasNextLine()) {
             System.err.println("Error: No input detected. Exiting...");
@@ -46,7 +46,7 @@ public class BusynessManager {
         String id = scanner.nextLine().trim();
 
         if (credentials.containsKey(id)) {
-            System.out.print("Enter Password: ");
+            System.out.println("Enter Password Below:");
 
             if (!scanner.hasNextLine()) {
                 System.err.println("Error: No input detected. Exiting...");
@@ -63,7 +63,7 @@ public class BusynessManager {
             }
         } else {
             System.out.println("First-time setup required.");
-            System.out.print("Enter Business Name: ");
+            System.out.println("Enter Business Name Below:");
 
             if (!scanner.hasNextLine()) {
                 System.err.println("Error: No input detected. Exiting...");
@@ -72,7 +72,7 @@ public class BusynessManager {
 
             businessName = scanner.nextLine().trim();
 
-            System.out.print("Enter Business Password: ");
+            System.out.println("Enter Business Password Below:");
 
             if (!scanner.hasNextLine()) {
                 System.err.println("Error: No input detected. Exiting...");
@@ -81,7 +81,7 @@ public class BusynessManager {
 
             businessPassword = scanner.nextLine().trim();
 
-            System.out.print("Enter Business Type (FNB/RETAIL): ");
+            System.out.println("Enter Business Type Below (FNB/RETAIL):");
 
             if (!scanner.hasNextLine()) {
                 System.err.println("Error: No input detected. Exiting...");
@@ -107,7 +107,6 @@ public class BusynessManager {
         System.out.println("Busyness Manager is ready. Type 'help' for commands.");
 
         while (true) {
-            System.out.print("> ");
             String input = scanner.nextLine();
 
             if (input.equalsIgnoreCase("exit")) {
