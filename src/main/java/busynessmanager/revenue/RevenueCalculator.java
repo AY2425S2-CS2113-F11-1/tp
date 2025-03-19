@@ -1,11 +1,13 @@
 package busynessmanager.revenue;
 
+import busynessmanager.UI_Constants.UI;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.product.Product;
-import static busynessmanager.UI_Constants.Constants.MINIMUM_VALUE;
 
 import java.util.HashMap;
+
+import static busynessmanager.UI_Constants.Constants.*;
 
 /**
  * RevenueCalculator is used to calculate the various revenues that is produced in the Busyness
@@ -31,8 +33,13 @@ public class RevenueCalculator {
 
         double totalRevenue = MINIMUM_VALUE;
         for (Product product : currentProductList.values()) {
-            totalRevenue += product.getPrice() * product.getQuantitySold();
+            double individualRevenue = product.getPrice() * product.getQuantitySold();
+            UI.printFormattedMessage(RC_INDIVIDUAL_REVENUE_FORMAT + NEWLINE,
+                product.getName(), individualRevenue);
+            totalRevenue += individualRevenue;
         }
+
+        UI.printFormattedMessage(RC_TOTAL_REVENUE_FORMAT + NEWLINE, totalRevenue);
 
         return totalRevenue;
     }
@@ -49,6 +56,10 @@ public class RevenueCalculator {
         // Possible error for invalid ID (product will be null)
         Product product = currentProductList.get(id);
 
-        return product.getPrice() * product.getQuantitySold();
+        double individualRevenue = product.getPrice() * product.getQuantitySold();
+        UI.printFormattedMessage(RC_INDIVIDUAL_REVENUE_FORMAT + NEWLINE,
+            product.getName(), individualRevenue);
+
+        return individualRevenue;
     }
 }
