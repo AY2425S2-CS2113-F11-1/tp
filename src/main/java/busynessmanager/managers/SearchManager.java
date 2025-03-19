@@ -1,7 +1,11 @@
 package busynessmanager.managers;
 
+import busynessmanager.UI_Constants.UI;
 import busynessmanager.product.Product;
 import static busynessmanager.UI_Constants.Constants.INVALID_NAME;
+import static busynessmanager.UI_Constants.Constants.NEWLINE;
+import static busynessmanager.UI_Constants.Constants.SRM_ID_QUERY_FORMAT;
+import static busynessmanager.UI_Constants.Constants.SRM_NAME_QUERY_FORMAT;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +36,9 @@ public class SearchManager {
 
         for (Map.Entry<String, Product> entry : mapSet) {
             if (entry.getValue().getName().equals(name)) {
-                return entry.getKey();
+                String id = entry.getKey();
+                UI.printFormattedMessage(SRM_ID_QUERY_FORMAT + NEWLINE, name, id);
+                return id;
             }
         }
 
@@ -48,6 +54,10 @@ public class SearchManager {
     public Product searchById(String id) {
         HashMap<String, Product> currentProductList = this.inventory.returnProductList();
 
-        return currentProductList.get(id);
+        Product product = currentProductList.get(id);
+        String name = product.getName();
+        UI.printFormattedMessage(SRM_NAME_QUERY_FORMAT + NEWLINE, id, name);
+
+        return product;
     }
 }

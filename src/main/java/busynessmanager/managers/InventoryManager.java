@@ -93,7 +93,7 @@ public class InventoryManager {
     }
 
     protected void resetProductSales(String id) {
-        productList.get(id).setQuantity(MINIMUM_VALUE);
+        productList.get(id).setQuantitySold(MINIMUM_VALUE);
     }
 
     // SY's portion
