@@ -1,10 +1,10 @@
-package busynessmanager;
+package busynessmanager.managers;
 
 /**
  * Updates sales transactions, decrements inventory and increases quantity sold
  */
 public class SalesManager {
-    private InventoryManager inventory;
+    private final InventoryManager inventory;
 
     public SalesManager(InventoryManager inventory) {
         this.inventory = inventory;
@@ -40,7 +40,7 @@ public class SalesManager {
      * required for SY's RevenueCalculator to function
      * @return the inventory
      */
-    protected InventoryManager getInventory() {
+    public InventoryManager getInventory() {
         return inventory;
     }
 }

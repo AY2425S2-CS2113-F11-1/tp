@@ -1,4 +1,6 @@
-package busynessmanager;
+package busynessmanager.managers;
+
+import busynessmanager.product.Product;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,14 +10,7 @@ import java.util.Set;
  * SearchManager is used to query through the InventoryManager and return different results based on the given queries
  */
 public class SearchManager {
-    private InventoryManager inventory;
-
-    /**
-     * Constructor
-     */
-    public SearchManager() {
-        inventory = new InventoryManager();
-    }
+    private final InventoryManager inventory;
 
     /**
      * Constructor
