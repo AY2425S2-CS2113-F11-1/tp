@@ -1,15 +1,15 @@
-package busynessmanager.UI_Constants;
+package busynessmanager.constants;
 
 /**
- * Constants class for usage
+ * Constants class for usage.
  * Note:
- * 1. prefix XX_ refers to the class the constant is likely to be used in (i.e. IM_ stands for InventoryManager)
- * 2. suffix _MESSAGE means the constant is to be printed out directly as a message to user (UI Class)
+ * 1. prefix XX_ refers to the class the constant is likely to be used in. (i.e. IM_ stands for InventoryManager)
+ * 2. suffix _MESSAGE means the constant is to be printed out directly as a message to the user. (UI Class)
  * 3. suffix _FORMAT means the constant is a Formatted Message, similar to point 2,
- *    but different values need to be inserted into the String
+ *    but different values need to be inserted into the String.
  */
 public class Constants {
-    // Misc
+    // Misc.
     public static final String EMPTY_STRING = "";
     public static final String WHITESPACE = " ";
     public static final String NEWLINE = "\n";
@@ -22,7 +22,9 @@ public class Constants {
     public static final int INDEX_5 = 5;
     public static final int INDEX_6 = 6;
     public static final int INDEX_7 = 7;
+
     public static final String INVALID_NAME = "INVALID_NAME";
+
 
     // BusynessManager
     public static final String BM_UPPERCASE_REGEX = "[A-Z]+";
@@ -45,6 +47,7 @@ public class Constants {
     public static final String BM_WAITING_INPUT_MESSAGE = ">";
     public static final String BM_EXIT_KEYWORD = "exit";
     public static final String BM_EXIT_MESSAGE = "Exiting Busyness Manager...";
+
 
     // CommandParser
     public static final String CP_NAME = "CommandParser";
@@ -82,31 +85,40 @@ public class Constants {
     public static final String CP_NEGATIVE_PRICE_MESSAGE = "Price is not a positive number.";
     public static final String CP_EXCEPTION_LOG_MESSAGE = "Exception thrown.";
 
+
     // Product
     public static final String ID_FORMAT = "ID_%04d";
     public static final String PRODUCT_FORMAT = "%s: %s | Qty: %d | Sold: %d | Price: $%.2f";
 
+
     // InventoryManager
     public static final String PRODUCT = "Product";
+
     public static final String IM_ADD_FORMAT = PRODUCT + WHITESPACE + "added: %s";
     public static final String IM_ID_FORMAT = PRODUCT + WHITESPACE + "ID: %s";
     public static final String IM_REMOVE_FORMAT = PRODUCT + WHITESPACE + "removed: %s";
     public static final String IM_UPDATED_FORMAT = PRODUCT + WHITESPACE + "updated: %s";
-    public static final String IM_LIST = PRODUCT + WHITESPACE + "list: ";
-    public static final String IM_EMPTY_MESSAGE = "No products in inventory";
     public static final String IM_NAME_EXISTS_FORMAT = "Error: A product with the name '%s' already exists.";
     public static final String IM_PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
 
+    public static final String IM_LIST = PRODUCT + WHITESPACE + "list: ";
+    public static final String IM_EMPTY_MESSAGE = "No products in inventory";
+
+
     // SalesManager
     public static final String SM_SALES = "Sales";
-    public static final String SM_RECORDED_FORMAT = SM_SALES + WHITESPACE +
-        "recorded: " + IM_ID_FORMAT + ", Quantity Sold: %d";
-    public static final String SM_MINIMUM_QTY_SOLD_MESSAGE = "Quantity sold must be greater than 0";
+
     public static final String SM_CLEARED_FORMAT = SM_SALES + WHITESPACE + "cleared: " + IM_ID_FORMAT;
+    public static final String SM_RECORDED_FORMAT = SM_SALES + WHITESPACE +
+            "recorded: " + IM_ID_FORMAT + ", Quantity Sold: %d";
+
+    public static final String SM_MINIMUM_QTY_SOLD_MESSAGE = "Quantity sold must be greater than 0";
+
 
     // RevenueCalculator
     public static final String RC_TOTAL_REVENUE_FORMAT = "Total Revenue: %.2f";
     public static final String RC_INDIVIDUAL_REVENUE_FORMAT = "Revenue of %s: %.2f";
+
 
     // SearchManager
     public static final String SRM_ID_QUERY_FORMAT = "Product ID of %s: %s";

@@ -1,7 +1,8 @@
 package busynessmanager.product;
 
-import static busynessmanager.UI_Constants.Constants.ID_FORMAT;
-import static busynessmanager.UI_Constants.Constants.PRODUCT_FORMAT;
+import static busynessmanager.constants.Constants.ID_FORMAT;
+import static busynessmanager.constants.Constants.PRODUCT_FORMAT;
+
 
 /**
  * Represents a product in the inventory.
@@ -14,6 +15,7 @@ public class Product {
     private int quantity;
     private int quantitySold;
     private double price;
+
 
     /**
      * Constructs a new Product with the specified name, quantity, and price.
@@ -30,6 +32,7 @@ public class Product {
         this.quantitySold = 0;
         this.price = price;
     }
+
 
     /**
      * Gets the unique product ID.
@@ -119,7 +122,6 @@ public class Product {
      */
     @Override
     public String toString() {
-        return String.format(PRODUCT_FORMAT,
-                id, name, quantity, quantitySold, price);
+        return String.format(PRODUCT_FORMAT, id, name, quantity, quantitySold, price);
     }
 }
