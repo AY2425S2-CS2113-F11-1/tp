@@ -94,7 +94,7 @@ public class Constants {
     public static final String IM_UPDATED_FORMAT = PRODUCT + WHITESPACE + "updated: %s";
     public static final String IM_LIST = PRODUCT + WHITESPACE + "list: ";
     public static final String IM_EMPTY_MESSAGE = "No products in inventory";
-    public static final String IM_ID_EXISTS_FORMAT = "Product with ID %s already exists.";
+    public static final String IM_NAME_EXISTS_FORMAT = "Error: A product with the name '%s' already exists.";
     public static final String IM_PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
 
     // SalesManager
