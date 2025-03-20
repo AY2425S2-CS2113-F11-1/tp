@@ -4,7 +4,6 @@ package busynessmanager.exceptions;
  * Exception for an invalid command.
  */
 public class InvalidCommandException extends Exception {
-
     /**
      * Constructs the InvalidCommand exception.
      *

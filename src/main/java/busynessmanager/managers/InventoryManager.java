@@ -1,18 +1,17 @@
 package busynessmanager.managers;
 
-import busynessmanager.UI_Constants.UI;
-//import static busynessmanager.UI_Constants.Constants.*; // This line will fail style checks
-import static busynessmanager.UI_Constants.Constants.NEWLINE;
-import static busynessmanager.UI_Constants.Constants.MINIMUM_VALUE;
-import static busynessmanager.UI_Constants.Constants.IM_LIST;
-import static busynessmanager.UI_Constants.Constants.IM_EMPTY_MESSAGE;
-import static busynessmanager.UI_Constants.Constants.IM_ADD_FORMAT;
-import static busynessmanager.UI_Constants.Constants.IM_REMOVE_FORMAT;
-import static busynessmanager.UI_Constants.Constants.IM_UPDATED_FORMAT;
-import static busynessmanager.UI_Constants.Constants.IM_NAME_EXISTS_FORMAT;
-import static busynessmanager.UI_Constants.Constants.IM_PRODUCT_NOT_FOUND_FORMAT;
-
 import busynessmanager.product.Product;
+import busynessmanager.ui.UI;
+
+import static busynessmanager.constants.Constants.NEWLINE;
+import static busynessmanager.constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.constants.Constants.IM_LIST;
+import static busynessmanager.constants.Constants.IM_EMPTY_MESSAGE;
+import static busynessmanager.constants.Constants.IM_ADD_FORMAT;
+import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
+import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
+import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
+import static busynessmanager.constants.Constants.IM_PRODUCT_NOT_FOUND_FORMAT;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,12 +23,14 @@ import java.util.Map;
 public class InventoryManager {
     private final HashMap<String, Product> productList;
 
+
     /**
      * Constructs an empty inventory manager.
      */
     public InventoryManager() {
         this.productList = new HashMap<>();
     }
+
 
     /**
      * Adds a new product to the inventory.
@@ -39,10 +40,8 @@ public class InventoryManager {
      * @param price The price of the product.
      */
     public void addProduct(String name, int qty, double price) {
-
         for (Product existingProduct : productList.values()) {
             if (existingProduct.getName().equalsIgnoreCase(name)) {
-                //System.out.println("Error: A product with the name '" + name + "' already exists.");
                 UI.printFormattedMessage(IM_NAME_EXISTS_FORMAT + NEWLINE, name);
                 return;
             }
@@ -50,8 +49,8 @@ public class InventoryManager {
 
         Product product = new Product(name, qty, price);
         String productId = product.getId();
+
         productList.put(productId, product);
-        //System.out.println("Product added: " + product);
         UI.printFormattedMessage(IM_ADD_FORMAT + NEWLINE, product.toString());
     }
 
@@ -63,10 +62,8 @@ public class InventoryManager {
     public void deleteProduct(String id) {
         if (productList.containsKey(id)) {
             Product removedProduct = productList.remove(id);
-            //System.out.println("Product removed: " + removedProduct);
             UI.printFormattedMessage(IM_REMOVE_FORMAT + NEWLINE, removedProduct.toString());
         } else {
-            //System.out.println("Product with ID " + id + " not found.");
             UI.printFormattedMessage(IM_PRODUCT_NOT_FOUND_FORMAT+ NEWLINE, id);
         }
     }
@@ -86,11 +83,10 @@ public class InventoryManager {
             product.setName(name);
             product.setQuantity(qty);
             product.setPrice(price);
-            //System.out.println("Product updated: " + product);
+
             UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
 
         } else {
-            //System.out.println("Product with ID " + id + " not found.");
             UI.printFormattedMessage(IM_PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
     }
@@ -101,12 +97,12 @@ public class InventoryManager {
      */
     public void printProducts() {
         if (productList.isEmpty()) {
-            //System.out.println("No products in inventory.");
             UI.printMessage(IM_EMPTY_MESSAGE);
             return;
         }
-        //System.out.println("Product List:");
+
         UI.printMessage(IM_LIST);
+
         productList.entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
                 .forEach(entry -> System.out.println(entry.getValue()));
@@ -123,6 +119,7 @@ public class InventoryManager {
     protected void updateProductQuantity(String id, int qtySold) {
         Product product = productList.get(id);
         int currentQty = product.getQuantity();
+
         product.setQuantitySold(qtySold);
         product.setQuantity(Math.max(MINIMUM_VALUE, currentQty - qtySold));
     }
