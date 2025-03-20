@@ -17,14 +17,27 @@ import busynessmanager.product.Product;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * Manages the inventory of products, allowing operations such as adding, updating, and removing products.
+ */
 public class InventoryManager {
     private final HashMap<String, Product> productList;
 
+    /**
+     * Constructs an empty inventory manager.
+     */
     public InventoryManager() {
         this.productList = new HashMap<>();
     }
 
-    // Add a new product
+    /**
+     * Adds a new product to the inventory.
+     *
+     * @param name  The name of the product.
+     * @param qty   The initial quantity of the product.
+     * @param price The price of the product.
+     */
     public void addProduct(String name, int qty, double price) {
 
         for (Product existingProduct : productList.values()) {
@@ -42,7 +55,11 @@ public class InventoryManager {
         UI.printFormattedMessage(IM_ADD_FORMAT + NEWLINE, product.toString());
     }
 
-    // Delete a product by ID
+    /**
+     * Deletes a product from the inventory by its unique ID.
+     *
+     * @param id The unique ID of the product to be removed.
+     */
     public void deleteProduct(String id) {
         if (productList.containsKey(id)) {
             Product removedProduct = productList.remove(id);
@@ -54,7 +71,14 @@ public class InventoryManager {
         }
     }
 
-    // Update product details
+    /**
+     * Updates the details of an existing product.
+     *
+     * @param id    The unique ID of the product.
+     * @param name  The new name of the product.
+     * @param qty   The new quantity of the product.
+     * @param price The new price of the product.
+     */
     public void updateProduct(String id, String name, int qty, double price) {
         if (productList.containsKey(id)) {
             Product product = productList.get(id);
@@ -71,7 +95,10 @@ public class InventoryManager {
         }
     }
 
-    // Print all products in inventory
+    /**
+     * Prints all products in the inventory.
+     * If the inventory is empty, displays an appropriate message.
+     */
     public void printProducts() {
         if (productList.isEmpty()) {
             //System.out.println("No products in inventory.");
@@ -85,7 +112,14 @@ public class InventoryManager {
                 .forEach(entry -> System.out.println(entry.getValue()));
     }
 
-    // Rozalie's portion
+
+    /**
+     * Updates the quantity of a product after a sale.
+     * Ensures the quantity does not drop below the minimum allowed value.
+     *
+     * @param id       The unique ID of the product.
+     * @param qtySold  The quantity sold.
+     */
     protected void updateProductQuantity(String id, int qtySold) {
         Product product = productList.get(id);
         int currentQty = product.getQuantity();
@@ -93,11 +127,20 @@ public class InventoryManager {
         product.setQuantity(Math.max(MINIMUM_VALUE, currentQty - qtySold));
     }
 
+    /**
+     * Resets the sales count of a product.
+     *
+     * @param id The unique ID of the product.
+     */
     protected void resetProductSales(String id) {
         productList.get(id).setQuantitySold(MINIMUM_VALUE);
     }
 
-    // SY's portion
+    /**
+     * Returns the current list of products in the inventory.
+     *
+     * @return A HashMap containing product IDs and their corresponding Product objects.
+     */
     public HashMap<String, Product> returnProductList() {
         return productList;
     }

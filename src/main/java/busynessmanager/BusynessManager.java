@@ -30,6 +30,10 @@ import static busynessmanager.UI_Constants.Constants.BM_WAITING_INPUT_MESSAGE;
 import static busynessmanager.UI_Constants.Constants.BM_EXIT_KEYWORD;
 import static busynessmanager.UI_Constants.Constants.BM_EXIT_MESSAGE;
 
+/**
+ * The main class for the Busyness Manager application.
+ * Handles user authentication, business setup, and command execution.
+ */
 public class BusynessManager {
     private static final HashMap<String, String> credentials = new HashMap<>(); // Stores business ID & passwords
 
@@ -44,6 +48,9 @@ public class BusynessManager {
 
     private final CommandParser commandParser;
 
+    /**
+     * Constructs a BusynessManager instance and initializes the necessary managers.
+     */
     public BusynessManager() {
         InventoryManager inventoryManager = new InventoryManager();
         SalesManager salesManager = new SalesManager(inventoryManager);
@@ -53,11 +60,19 @@ public class BusynessManager {
     }
 
 
+    /**
+     * The entry point of the program.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         BusynessManager manager = new BusynessManager();
         manager.start();
     }
 
+    /**
+     * Starts the application by handling user login or setup.
+     */
     public void start() {
         Scanner scanner = new Scanner(System.in);
         //System.out.println("Welcome to Busyness Manager!");
@@ -81,6 +96,12 @@ public class BusynessManager {
         }
     }
 
+    /**
+     * Handles user login.
+     *
+     * @param scanner The Scanner object for user input.
+     * @param id The business ID entered by the user.
+     */
     public void login(Scanner scanner, String id) {
         //System.out.print("Enter Password: ");
         UI.printMessage(BM_ENTER_PASSWORD_MESSAGE);
@@ -100,6 +121,12 @@ public class BusynessManager {
         }
     }
 
+    /**
+     * Handles first-time business setup.
+     *
+     * @param scanner The Scanner object for user input.
+     * @param id The business ID entered by the user.
+     */
     public void firstTimeSetup(Scanner scanner, String id) {
         //System.out.println("First-time setup required.");
         UI.printMessage(BM_FIRST_SETUP_MESSAGE);
@@ -153,10 +180,22 @@ public class BusynessManager {
         UI.printMessage(BM_SETUP_COMPLETE_MESSAGE);
     }
 
+    /**
+     * Validates the entered password for login.
+     *
+     * @param id The business ID.
+     * @param password The password entered by the user.
+     * @return True if the password matches, false otherwise.
+     */
     public boolean validPassword(String id, String password) {
         return credentials.containsKey(id) && credentials.get(id).equals(password);
     }
 
+    /**
+     * Runs the main application loop, waiting for user commands.
+     *
+     * @param scanner The Scanner object for user input.
+     */
     public void run(Scanner scanner) {
         //System.out.println("Busyness Manager is ready. Type 'help' for commands.");
         UI.printMessage(BM_READY_MESSAGE);
