@@ -20,7 +20,7 @@ public class RevenueCalculatorTest {
     }
 
     @Test
-    public void RevenueCalculatorIndividualRevenueTest() {
+    public void computeProductRevenue_individualRevenueTest_success() {
         im.addProduct("bean", 100, 0.6); // ID_0010
         im.addProduct("donkey", 6000, 900);
         im.addProduct("bingbangbong", 1, 10000);
@@ -46,7 +46,7 @@ public class RevenueCalculatorTest {
     }
 
     @Test
-    public void RevenueCalculatorTotalRevenueTest() {
+    public void computeTotalRevenue_totalRevenueTest_success() {
         im.addProduct("bean", 100, 0.6); // ID_0010
         im.addProduct("donkey", 6000, 900);
         im.addProduct("bingbangbong", 1, 10000);
