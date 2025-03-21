@@ -15,36 +15,36 @@ public class InventoryManagerTest {
     }
 
     @Test
+    public void updateProductQuantity_updateQtyAndQtySoldTest_success() {
+        im.addProduct("bing", 200, 1);
+        im.updateProductQuantity("ID_0001", 100);
+        assertEquals(
+            "ID_0001: bing | Qty: 100 | Sold: 100 | Price: $1.00",
+            im.returnProductList().get("ID_0001").toString()
+        );
+    }
+
+    @Test
     public void addProduct_addItemTest_success() {
         // "Product added: ID_0001: beans | Qty: 20 | Sold: 0 | Price: $0.60"
         im.addProduct("bean", 100, 0.6);
         assertEquals(
-            "ID_0001: bean | Qty: 100 | Sold: 0 | Price: $0.60",
-            im.returnProductList().get("ID_0001").toString()
+            "ID_0002: bean | Qty: 100 | Sold: 0 | Price: $0.60",
+            im.returnProductList().get("ID_0002").toString()
         );
 
         im.addProduct("donkey", 6000, 900);
         assertEquals(
-            "ID_0002: donkey | Qty: 6000 | Sold: 0 | Price: $900.00",
-            im.returnProductList().get("ID_0002").toString()
+            "ID_0003: donkey | Qty: 6000 | Sold: 0 | Price: $900.00",
+            im.returnProductList().get("ID_0003").toString()
         );
 
         im.addProduct("bingbangbong", 1, 10000);
         assertEquals(
-            "ID_0003: bingbangbong | Qty: 1 | Sold: 0 | Price: $10000.00",
-            im.returnProductList().get("ID_0003").toString()
-        );
-
-    }
-
-    @Test
-    public void updateProductQuantity_updateQtyAndQtySoldTest_success() {
-        im.addProduct("bing", 200, 1);
-        im.updateProductQuantity("ID_0004", 100);
-        assertEquals(
-            "ID_0004: bing | Qty: 100 | Sold: 100 | Price: $1.00",
+            "ID_0004: bingbangbong | Qty: 1 | Sold: 0 | Price: $10000.00",
             im.returnProductList().get("ID_0004").toString()
         );
+
     }
 
     @Test
