@@ -38,7 +38,7 @@ public class InventoryManagerTest {
     }
 
     @Test
-    public void updateProductQuantity_UpdateQtyAndQtySoldTest_success() {
+    public void updateProductQuantity_updateQtyAndQtySoldTest_success() {
         im.addProduct("bing", 200, 1);
         im.updateProductQuantity("ID_0004", 100);
         assertEquals(
