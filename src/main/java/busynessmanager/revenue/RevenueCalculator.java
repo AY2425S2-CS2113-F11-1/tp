@@ -33,7 +33,7 @@ public class RevenueCalculator {
     /**
      * Sums up the total revenue of all Products in the SalesManager (which has an InventoryManager).
      */
-    public void computeTotalRevenue() {
+    public double computeTotalRevenue() {
         InventoryManager currentInventory = sm.getInventory();
         HashMap<String, Product> currentProductList = currentInventory.returnProductList();
 
@@ -49,6 +49,7 @@ public class RevenueCalculator {
         }
 
         UI.printFormattedMessage(RC_TOTAL_REVENUE_FORMAT + NEWLINE, totalRevenue);
+        return totalRevenue;
     }
 
     /**
@@ -56,7 +57,7 @@ public class RevenueCalculator {
      *
      * @param id The String ID of the product to be queried.
      */
-    public void computeProductRevenue(String id) {
+    public double computeProductRevenue(String id) {
         InventoryManager currentInventory = sm.getInventory();
         HashMap<String, Product> currentProductList = currentInventory.returnProductList();
 
@@ -67,5 +68,6 @@ public class RevenueCalculator {
 
         UI.printFormattedMessage(RC_INDIVIDUAL_REVENUE_FORMAT + NEWLINE,
             product.getName(), individualRevenue);
+        return individualRevenue;
     }
 }

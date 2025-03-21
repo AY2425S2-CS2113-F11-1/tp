@@ -404,7 +404,7 @@ public class CommandParser {
      */
     protected void computeRevenue(String info) throws InvalidCommandException {
         if (info.isEmpty()) {
-            revenueCalculator.computeTotalRevenue();
+            double totalRevenue = revenueCalculator.computeTotalRevenue();
         } else {
             String[] components = splitInfo(info);
 
@@ -420,7 +420,7 @@ public class CommandParser {
                 if (!productID.matches(CP_ID_REGEX)) {
                     throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
                 } else {
-                    revenueCalculator.computeProductRevenue(productID);
+                    double revenue = revenueCalculator.computeProductRevenue(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
                 throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_4);
