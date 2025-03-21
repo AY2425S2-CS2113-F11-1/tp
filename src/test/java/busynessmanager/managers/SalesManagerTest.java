@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SalesManagerTest {
     InventoryManager im;
     SalesManager sm;
+
     @BeforeEach
     public void setUp() throws Exception {
         this.im = new InventoryManager();
