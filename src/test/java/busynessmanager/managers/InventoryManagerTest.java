@@ -15,7 +15,7 @@ public class InventoryManagerTest {
     }
 
     @Test
-    public void InventoryManager_removeItem_nonExistingID_test() {
+    public void InventoryManagerRemoveItemAndNonExistingIDTest() {
         im.addProduct("bingbangbong", 1, 10000);
         im.deleteProduct("ID_0001");
 
@@ -34,7 +34,7 @@ public class InventoryManagerTest {
     }
 
     @Test
-    public void InventoryManager_resetSales_test() {
+    public void InventoryManagerResetSalesTest() {
         im.addProduct("gong", 1000, 100);
         im.updateProductQuantity("ID_0002", 100);
         im.resetProductSales("ID_0002");
@@ -46,7 +46,7 @@ public class InventoryManagerTest {
     }
 
     @Test
-    public void InventoryManager_addItem_test() {
+    public void InventoryManagerAddItemTest() {
         // "Product added: ID_0001: beans | Qty: 20 | Sold: 0 | Price: $0.60"
         im.addProduct("bean", 100, 0.6);
         assertEquals(
@@ -69,7 +69,7 @@ public class InventoryManagerTest {
     }
 
     @Test
-    public void InventoryManager_updateItem_test() {
+    public void InventoryManagerUpdateItemTest() {
         im.addProduct("bo", 20, 10000);
         im.updateProduct("ID_0006", "bro", 10, 200);
         assertEquals(
@@ -79,7 +79,7 @@ public class InventoryManagerTest {
     }
 
     @Test
-    public void InventoryManager_update_Qty_QtySold_test() {
+    public void InventoryManagerUpdateQtyAndQtySoldTest() {
         im.addProduct("bing", 200, 1);
         im.updateProductQuantity("ID_0007", 100);
         assertEquals(

@@ -15,7 +15,7 @@ public class SalesManagerTest {
     }
 
     @Test
-    public void SalesManager_recordSales_test() {
+    public void SalesManagerRecordSalesTest() {
         im.addProduct("biangblong", 420, 2100);
         sm.recordSale("ID_0009", 80);
 
@@ -26,7 +26,7 @@ public class SalesManagerTest {
     }
 
     @Test
-    public void SalesManager_resetSales_test() {
+    public void SalesManagerResetSalesTest() {
         im.addProduct("blangbliong", 420, 2100);
         sm.recordSale("ID_0008", 80);
         im.resetProductSales("ID_0008");
