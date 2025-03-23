@@ -45,9 +45,7 @@ import static busynessmanager.constants.Constants.CP_INVALID_ID_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_ID_FORMAT_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
-import static busynessmanager.constants.Constants.CP_NEGATIVE_QUANTITY_MESSAGE;
-import static busynessmanager.constants.Constants.CP_NEGATIVE_PRICE_MESSAGE;
-import static busynessmanager.constants.Constants.CP_EXCEPTION_LOG_MESSAGE;
+import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
 
 import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;
@@ -107,6 +105,7 @@ public class CommandParser {
 
         try {
             int commandSeparatorIndex = getCommandSeparatorIndex(input.trim());
+            assert commandSeparatorIndex > -2 : CP_LOG_MESSAGE;
 
             command = extractCommand(commandSeparatorIndex, input.trim());
             info = extractInfo(commandSeparatorIndex, input.trim());
@@ -117,7 +116,7 @@ public class CommandParser {
                 UI.printMessage(e.getMessage());
             }
         } catch (InvalidStringException e) {
-            logger.log(Level.SEVERE, CP_EXCEPTION_LOG_MESSAGE, e);
+            logger.log(Level.SEVERE, CP_LOG_MESSAGE, e);
         }
     }
 
@@ -245,9 +244,6 @@ public class CommandParser {
             try {
                 productQuantity = parseInt(components[INDEX_3]);
                 productPrice = parseDouble(components[INDEX_5]);
-
-                assert productQuantity >= 0 : CP_NEGATIVE_QUANTITY_MESSAGE;
-                assert productPrice > 0 : CP_NEGATIVE_PRICE_MESSAGE;
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
@@ -316,9 +312,6 @@ public class CommandParser {
             try {
                 productNewQuantity = parseInt(components[INDEX_5]);
                 productNewPrice = parseDouble(components[INDEX_7]);
-
-                assert productNewQuantity >= 0 : CP_NEGATIVE_QUANTITY_MESSAGE;
-                assert productNewPrice > 0 : CP_NEGATIVE_PRICE_MESSAGE;
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
@@ -361,8 +354,6 @@ public class CommandParser {
 
             try {
                 quantitySold = parseInt(components[INDEX_3]);
-
-                assert quantitySold >= 0 : CP_NEGATIVE_QUANTITY_MESSAGE;
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE_2);
             }

@@ -2,6 +2,7 @@ package busynessmanager.managers;
 
 import busynessmanager.ui.UI;
 
+import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.SM_MINIMUM_QTY_SOLD_MESSAGE;
 import static busynessmanager.constants.Constants.SM_CLEARED_FORMAT;
@@ -32,7 +33,7 @@ public class SalesManager {
      * @param qtySold Quantity of product sold.
      */
     public void recordSale(String id, int qtySold) {
-        if (qtySold <= 0) {
+        if (qtySold <= MINIMUM_VALUE) {
             UI.printMessage(SM_MINIMUM_QTY_SOLD_MESSAGE);
             return;
         }

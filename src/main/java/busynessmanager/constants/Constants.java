@@ -89,9 +89,8 @@ public class Constants {
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
     public static final String CP_INVALID_ID_MESSAGE = "ID is invalid. Please try again.";
 
-    public static final String CP_NEGATIVE_QUANTITY_MESSAGE = "Quantity is a negative number.";
-    public static final String CP_NEGATIVE_PRICE_MESSAGE = "Price is not a positive number.";
-    public static final String CP_EXCEPTION_LOG_MESSAGE = "Exception thrown.";
+
+    public static final String CP_LOG_MESSAGE = "String splitting failure.";
 
 
     // Product
@@ -109,8 +108,10 @@ public class Constants {
     public static final String IM_NAME_EXISTS_FORMAT = "Error: A product with the name '%s' already exists.";
     public static final String IM_PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
 
-    public static final String IM_LIST = PRODUCT + WHITESPACE + "list: ";
+    public static final String IM_LIST = PRODUCT + WHITESPACE + "list:";
     public static final String IM_EMPTY_MESSAGE = "No products in inventory";
+
+    public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE = "Quantity and/or price is a negative number.";
 
 
     // SalesManager

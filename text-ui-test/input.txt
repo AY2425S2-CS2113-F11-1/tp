@@ -2,4 +2,18 @@
 bruh logistics
 abcd
 FNB
+help
+add /name MILK /qty -50 /price -5
+add /name MILK /qty 50 /price -5
+add /name MILK /qty -50 /price 5
+add /name MILK /qty 50 /price 5
+print
+update /id ID_0001 /name MILK /qty -60 /price -6
+update /id ID_0001 /name MILK /qty 60 /price -6
+update /id ID_0001 /name MILK /qty -60 /price 6
+update /id ID_0001 /name MILK /qty 60 /price 6
+print
+sold /id ID_0001 /qty -12
+sold /id ID_0001 /qty 12
+print
 exit

@@ -12,6 +12,7 @@ import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
 import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
 import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
 import static busynessmanager.constants.Constants.IM_PRODUCT_NOT_FOUND_FORMAT;
+import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +48,15 @@ public class InventoryManager {
             }
         }
 
-        Product product = new Product(name, qty, price);
+        Product product;
+
+        if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
+            UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+            return;
+        } else {
+            product = new Product(name, qty, price);
+        }
+
         String productId = product.getId();
 
         productList.put(productId, product);
@@ -80,9 +89,14 @@ public class InventoryManager {
         if (productList.containsKey(id)) {
             Product product = productList.get(id);
 
-            product.setName(name);
-            product.setQuantity(qty);
-            product.setPrice(price);
+            if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
+                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                return;
+            } else {
+                product.setName(name);
+                product.setQuantity(qty);
+                product.setPrice(price);
+            }
 
             UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
 

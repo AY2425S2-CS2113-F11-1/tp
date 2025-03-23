@@ -2,4 +2,27 @@ Welcome to Busyness Manager!
 Enter Business ID: First-time setup required.
 Enter Business Name: Enter Business Password: Enter Business Type (FNB/RETAIL): Business setup complete!
 Busyness Manager is ready. Type 'help' for commands.
+>add         add /name <name> /qty <number> /price <number>
+delete      delete /id <number>
+update      update /id <number> /name <name> /qty <number> /price <number>
+sold        sold /id <number> /qty <number>
+clear       clear /id <number>
+revenue     revenue OR revenue /id <number>
+search      search /name <name> OR search /id <number>
+>Quantity and/or price is a negative number.
+>Quantity and/or price is a negative number.
+>Quantity and/or price is a negative number.
+>Product added: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $5.00
+>Product list:
+ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $5.00
+>Quantity and/or price is a negative number.
+>Quantity and/or price is a negative number.
+>Quantity and/or price is a negative number.
+>Product updated: ID_0001: MILK | Qty: 60 | Sold: 0 | Price: $6.00
+>Product list:
+ID_0001: MILK | Qty: 60 | Sold: 0 | Price: $6.00
+>Quantity sold must be greater than 0
+>Sales recorded: Product ID: ID_0001, Quantity Sold: 12
+>Product list:
+ID_0001: MILK | Qty: 48 | Sold: 12 | Price: $6.00
 >Exiting Busyness Manager...
