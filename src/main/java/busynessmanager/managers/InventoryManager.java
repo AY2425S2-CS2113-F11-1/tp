@@ -108,7 +108,6 @@ public class InventoryManager {
                 .forEach(entry -> System.out.println(entry.getValue()));
     }
 
-
     /**
      * Updates the quantity of a product after a sale.
      * Ensures the quantity does not drop below the minimum allowed value.
