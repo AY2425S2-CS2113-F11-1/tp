@@ -182,15 +182,19 @@ public class BusynessManager {
      * @return The business name inputted by the user.
      */
     private String extractName(Scanner scanner) {
-        UI.printMessageWithoutNewline(BM_ENTER_NAME_MESSAGE);
-
         String businessName = "";
 
         while (businessName.isEmpty()) {
+            UI.printMessageWithoutNewline(BM_ENTER_NAME_MESSAGE);
+
             if (!scanner.hasNextLine()) {
                 UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
             } else {
                 businessName = scanner.nextLine().trim();
+            }
+
+            if (businessName.isEmpty()) {
+                UI.printMessage(BM_NO_INPUT_ERROR_MESSAGE);
             }
         }
 
@@ -204,15 +208,19 @@ public class BusynessManager {
      * @return The password inputted by the user.
      */
     private String extractPassword(Scanner scanner) {
-        UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE_2);
-
         String businessPassword = "";
 
         while (businessPassword.isEmpty()) {
+            UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE_2);
+
             if (!scanner.hasNextLine()) {
                 UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
             } else {
                 businessPassword = scanner.nextLine().trim();
+            }
+
+            if (businessPassword.isEmpty()) {
+                UI.printMessage(BM_NO_INPUT_ERROR_MESSAGE);
             }
         }
 
@@ -226,11 +234,11 @@ public class BusynessManager {
      * @return The BusinessType inputted by the user.
      */
     private BusinessType extractBusinessType(Scanner scanner) {
-        UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_TYPE_MESSAGE);
-
         BusinessType businessType = null;
 
         while (businessType == null) {
+            UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_TYPE_MESSAGE);
+
             if (!scanner.hasNextLine()) {
                 UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
             } else {
@@ -244,7 +252,6 @@ public class BusynessManager {
                     businessType = BusinessType.RETAIL;
                 } else {
                     UI.printMessage(BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE);
-                    UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_TYPE_MESSAGE);
                 }
             }
         }

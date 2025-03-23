@@ -32,7 +32,7 @@ public class Constants {
     public static final String BM_BUSINESSTYPE_RETAIL = "RETAIL";
 
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
-    public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected. Exiting...";
+    public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected.";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
