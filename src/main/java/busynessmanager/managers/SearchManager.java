@@ -3,10 +3,12 @@ package busynessmanager.managers;
 import busynessmanager.product.Product;
 import busynessmanager.ui.UI;
 
+
 import static busynessmanager.constants.Constants.NEWLINE;
+import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
 import static busynessmanager.constants.Constants.SRM_ID_QUERY_FORMAT;
-import static busynessmanager.constants.Constants.SRM_NAME_MISSING_ERROR_MESSAGE;
 import static busynessmanager.constants.Constants.SRM_NAME_QUERY_FORMAT;
+import static busynessmanager.constants.Constants.SRM_PRODUCT_NOT_FOUND_FORMAT;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +48,7 @@ public class SearchManager {
                 UI.printFormattedMessage(SRM_ID_QUERY_FORMAT + NEWLINE, name, id);
                 return;
             } else {
-                UI.printMessage(SRM_NAME_MISSING_ERROR_MESSAGE);
+                UI.printFormattedMessage(SRM_PRODUCT_NOT_FOUND_FORMAT + NEWLINE, name);
             }
         }
     }
@@ -59,9 +61,13 @@ public class SearchManager {
     public void searchById(String id) {
         HashMap<String, Product> currentProductList = this.inventory.returnProductList();
 
-        Product product = currentProductList.get(id);
-        String name = product.getName();
+        if (currentProductList.containsKey(id)) {
+            Product product = currentProductList.get(id);
+            String name = product.getName();
 
-        UI.printFormattedMessage(SRM_NAME_QUERY_FORMAT + NEWLINE, id, name);
+            UI.printFormattedMessage(SRM_NAME_QUERY_FORMAT + NEWLINE, id, name);
+        } else {
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
+        }
     }
 }

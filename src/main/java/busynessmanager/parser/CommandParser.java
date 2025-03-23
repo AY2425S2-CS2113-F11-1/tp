@@ -44,6 +44,8 @@ import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
 import static busynessmanager.constants.Constants.CP_NEGATIVE_QUANTITY_MESSAGE;
 import static busynessmanager.constants.Constants.CP_NEGATIVE_PRICE_MESSAGE;
+import static busynessmanager.constants.Constants.CP_ID_MISSING_MESSAGE;
+import static busynessmanager.constants.Constants.CP_NAME_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_EXCEPTION_LOG_MESSAGE;
 
 import busynessmanager.exceptions.InvalidStringException;
@@ -270,7 +272,7 @@ public class CommandParser {
                 inventoryManager.deleteProduct(productID);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_ID_FORMAT_MESSAGE);
+            throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
         }
     }
 
@@ -375,7 +377,7 @@ public class CommandParser {
         String[] components = splitInfo(info);
 
         if (!components[INDEX_0].equals(CP_ID_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            throw new InvalidCommandException(CP_INVALID_ID_FORMAT_MESSAGE);
         }
 
         String productID;
@@ -389,7 +391,7 @@ public class CommandParser {
                 salesManager.clearSales(productID);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
         }
     }
 
@@ -422,7 +424,7 @@ public class CommandParser {
                     double revenue = revenueCalculator.computeProductRevenue(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_REVENUE);
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
         }
     }
@@ -444,7 +446,7 @@ public class CommandParser {
             try {
                 productName = components[INDEX_1];
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException("Name is missing.");
+                throw new InvalidCommandException(CP_NAME_MISSING_MESSAGE);
             }
 
             searchManager.searchByName(productName);
@@ -460,7 +462,7 @@ public class CommandParser {
                     searchManager.searchById(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException("ID is missing.");
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
         } else {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SEARCH);
