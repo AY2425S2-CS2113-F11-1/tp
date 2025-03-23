@@ -284,7 +284,7 @@ public class CommandParserTest {
             new CommandParser().deleteProduct("/id");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Invalid format. /id.", e.getMessage());
+            assertEquals("ID is invalid. Please try again.", e.getMessage());
         }
     }
 
@@ -424,7 +424,7 @@ public class CommandParserTest {
             new CommandParser().clearSales("/id");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Invalid format. /id.", e.getMessage());
+            assertEquals("ID is invalid. Please try again.", e.getMessage());
         }
     }
 
@@ -458,7 +458,7 @@ public class CommandParserTest {
             new CommandParser().computeRevenue("/id");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Invalid format. /id or keep empty for total.", e.getMessage());
+            assertEquals("ID is invalid. Please try again.", e.getMessage());
         }
     }
 
@@ -503,7 +503,7 @@ public class CommandParserTest {
             new CommandParser().searchForProduct("/id");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Invalid format. /name OR /id.", e.getMessage());
+            assertEquals("ID is invalid. Please try again.", e.getMessage());
         }
     }
 
