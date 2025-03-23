@@ -23,7 +23,14 @@ public class Constants {
     public static final int INDEX_6 = 6;
     public static final int INDEX_7 = 7;
 
-    public static final String INVALID_NAME = "INVALID_NAME";
+    public static final String HELP_LIST = """
+            add         add /name <name> /qty <number> /price <number>
+            delete      delete /id <number>
+            update      update /id <number> /name <name> /qty <number> /price <number>
+            sold        sold /id <number> /qty <number>
+            clear       clear /id <number>
+            revenue     revenue OR revenue /id <number>
+            search      search /name <name> OR search /id <number>""";
 
 
     // BusynessManager
@@ -55,6 +62,7 @@ public class Constants {
     public static final String CP_ID_REGEX = "ID_\\d{4}";
     public static final String CP_SPLIT_REGEX = "\\s+";
 
+    public static final String CP_HELP_COMMAND = "help";
     public static final String CP_ADD_COMMAND = "add";
     public static final String CP_DELETE_COMMAND = "delete";
     public static final String CP_UPDATE_COMMAND = "update";

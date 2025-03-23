@@ -16,8 +16,10 @@ import static busynessmanager.constants.Constants.INDEX_4;
 import static busynessmanager.constants.Constants.INDEX_5;
 import static busynessmanager.constants.Constants.INDEX_6;
 import static busynessmanager.constants.Constants.INDEX_7;
+import static busynessmanager.constants.Constants.HELP_LIST;
 import static busynessmanager.constants.Constants.CP_NAME;
 import static busynessmanager.constants.Constants.CP_COMMAND_SEPARATOR_INDEX;
+import static busynessmanager.constants.Constants.CP_HELP_COMMAND;
 import static busynessmanager.constants.Constants.CP_ADD_COMMAND;
 import static busynessmanager.constants.Constants.CP_DELETE_COMMAND;
 import static busynessmanager.constants.Constants.CP_UPDATE_COMMAND;
@@ -178,6 +180,9 @@ public class CommandParser {
      */
     protected void executeCommand(String command, String info) throws InvalidCommandException {
         switch (command) {
+        case CP_HELP_COMMAND:
+            helpCommand();
+            break;
         case CP_ADD_COMMAND:
             addProduct(info);
             break;
@@ -205,6 +210,13 @@ public class CommandParser {
         default:
             throw new InvalidCommandException(CP_INVALID_COMMAND_MESSAGE);
         }
+    }
+
+    /**
+     * Prints a list of possible commands and their formats.
+     */
+    protected void helpCommand() {
+        UI.printMessage(HELP_LIST);
     }
 
     /**
