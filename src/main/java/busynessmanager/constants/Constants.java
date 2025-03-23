@@ -1,5 +1,6 @@
 package busynessmanager.constants;
 
+//@@author LEESY02
 /**
  * Constants class for usage.
  * Note:

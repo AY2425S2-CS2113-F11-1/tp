@@ -9,6 +9,8 @@ import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;
 import busynessmanager.exceptions.NumberParsingFailedException;
 
+
+//@@author b1inmeister
 public class CommandParserTest {
 
     /*

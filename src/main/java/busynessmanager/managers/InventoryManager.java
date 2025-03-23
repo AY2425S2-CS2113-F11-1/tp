@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+//@@author himethcodes
 /**
  * Manages the inventory of products, allowing operations such as adding, updating, and removing products.
  */
@@ -123,6 +124,7 @@ public class InventoryManager {
     }
 
 
+    //@@author rozaliesmit
     /**
      * Updates the quantity of a product after a sale.
      * Ensures the quantity does not drop below the minimum allowed value.
@@ -147,6 +149,7 @@ public class InventoryManager {
         productList.get(id).setQuantitySold(MINIMUM_VALUE);
     }
 
+    //@@author LEESY02
     /**
      * Returns the current list of products in the inventory.
      *

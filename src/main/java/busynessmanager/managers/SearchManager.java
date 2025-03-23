@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 
+//@@author LEESY02
 /**
  * SearchManager is used to query through the InventoryManager and return different results based on the given queries.
  */

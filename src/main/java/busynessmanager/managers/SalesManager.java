@@ -9,6 +9,7 @@ import static busynessmanager.constants.Constants.SM_CLEARED_FORMAT;
 import static busynessmanager.constants.Constants.SM_RECORDED_FORMAT;
 
 
+//@@author rozaliesmit
 /**
  * Updates sales transactions, decrements inventory and increases quantity sold
  */
