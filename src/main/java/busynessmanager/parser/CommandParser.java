@@ -6,6 +6,8 @@ import busynessmanager.managers.SearchManager;
 import busynessmanager.revenue.RevenueCalculator;
 import busynessmanager.ui.UI;
 
+import static busynessmanager.constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.constants.Constants.MAXIMUM_VALUE;
 import static busynessmanager.constants.Constants.WHITESPACE;
 import static busynessmanager.constants.Constants.EMPTY_STRING;
 import static busynessmanager.constants.Constants.INDEX_0;
@@ -19,6 +21,7 @@ import static busynessmanager.constants.Constants.INDEX_7;
 import static busynessmanager.constants.Constants.HELP_LIST;
 import static busynessmanager.constants.Constants.CP_NAME;
 import static busynessmanager.constants.Constants.CP_COMMAND_SEPARATOR_INDEX;
+import static busynessmanager.constants.Constants.CP_ASSERTION_FAIL_INDEX;
 import static busynessmanager.constants.Constants.CP_HELP_COMMAND;
 import static busynessmanager.constants.Constants.CP_ADD_COMMAND;
 import static busynessmanager.constants.Constants.CP_DELETE_COMMAND;
@@ -105,7 +108,7 @@ public class CommandParser {
 
         try {
             int commandSeparatorIndex = getCommandSeparatorIndex(input.trim());
-            assert commandSeparatorIndex > -2 : CP_LOG_MESSAGE;
+            assert commandSeparatorIndex > CP_ASSERTION_FAIL_INDEX : CP_LOG_MESSAGE;
 
             command = extractCommand(commandSeparatorIndex, input.trim());
             info = extractInfo(commandSeparatorIndex, input.trim());
@@ -268,14 +271,28 @@ public class CommandParser {
             throw new InvalidCommandException(CP_INVALID_ID_FORMAT_MESSAGE);
         }
 
-        String productID;
-
         try {
-            productID = components[INDEX_1];
+            String productIDString;
 
-            if (!productID.matches(CP_ID_REGEX)) {
+            try {
+                productIDString = components[INDEX_1];
+            } catch (IndexOutOfBoundsException e) {
+                // replace with CP_ID_MISSING_MESSAGE
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            int productIDNumber;
+
+            try {
+                productIDNumber = Integer.parseInt(productIDString);
+            } catch (NumberFormatException e) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             } else {
+                String productID = String.format(CP_ID_REGEX, productIDNumber);
                 inventoryManager.deleteProduct(productID);
             }
         } catch (IndexOutOfBoundsException e) {
@@ -300,13 +317,11 @@ public class CommandParser {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_6);
         }
 
-        String productID;
         String productNewName;
         int productNewQuantity;
         double productNewPrice;
 
         try {
-            productID = components[INDEX_1];
             productNewName = components[INDEX_3];
 
             try {
@@ -315,14 +330,32 @@ public class CommandParser {
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
+
+            String productIDString;
+
+            try {
+                productIDString = components[INDEX_1];
+            } catch (IndexOutOfBoundsException e) {
+                // replace with CP_ID_MISSING_MESSAGE
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            int productIDNumber;
+
+            try {
+                productIDNumber = Integer.parseInt(productIDString);
+            } catch (NumberFormatException e) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            } else {
+                String productID = String.format(CP_ID_REGEX, productIDNumber);
+                inventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
+            }
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_6);
-        }
-
-        if (!productID.matches(CP_ID_REGEX)) {
-            throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
-        } else {
-            inventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
         }
     }
 
@@ -346,25 +379,40 @@ public class CommandParser {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_2);
         }
 
-        String productID;
-        int quantitySold;
-
         try {
-            productID = components[INDEX_1];
+            int quantitySold;
 
             try {
                 quantitySold = parseInt(components[INDEX_3]);
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE_2);
             }
+
+            String productIDString;
+
+            try {
+                productIDString = components[INDEX_1];
+            } catch (IndexOutOfBoundsException e) {
+                // replace with CP_ID_MISSING_MESSAGE
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            int productIDNumber;
+
+            try {
+                productIDNumber = Integer.parseInt(productIDString);
+            } catch (NumberFormatException e) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            } else {
+                String productID = String.format(CP_ID_REGEX, productIDNumber);
+                salesManager.recordSale(productID, quantitySold);
+            }
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_2);
-        }
-
-        if (!productID.matches(CP_ID_REGEX)) {
-            throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
-        } else {
-            salesManager.recordSale(productID, quantitySold);
         }
     }
 
@@ -382,14 +430,28 @@ public class CommandParser {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_3);
         }
 
-        String productID;
-
         try {
-            productID = components[INDEX_1];
+            String productIDString;
 
-            if (!productID.matches(CP_ID_REGEX)) {
+            try {
+                productIDString = components[INDEX_1];
+            } catch (IndexOutOfBoundsException e) {
+                // replace with CP_ID_MISSING_MESSAGE
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            int productIDNumber;
+
+            try {
+                productIDNumber = Integer.parseInt(productIDString);
+            } catch (NumberFormatException e) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             } else {
+                String productID = String.format(CP_ID_REGEX, productIDNumber);
                 salesManager.clearSales(productID);
             }
         } catch (IndexOutOfBoundsException e) {
@@ -415,14 +477,28 @@ public class CommandParser {
                 throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_4);
             }
 
-            String productID;
-
             try {
-                productID = components[INDEX_1];
+                String productIDString;
 
-                if (!productID.matches(CP_ID_REGEX)) {
+                try {
+                    productIDString = components[INDEX_1];
+                } catch (IndexOutOfBoundsException e) {
+                    // replace with CP_ID_MISSING_MESSAGE
+                    throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                }
+
+                int productIDNumber;
+
+                try {
+                    productIDNumber = Integer.parseInt(productIDString);
+                } catch (NumberFormatException e) {
+                    throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                }
+
+                if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                     throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
                 } else {
+                    String productID = String.format(CP_ID_REGEX, productIDNumber);
                     double revenue = revenueCalculator.computeProductRevenue(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
@@ -453,14 +529,28 @@ public class CommandParser {
 
             searchManager.searchByName(productName);
         } else if (components[INDEX_0].equals(CP_ID_FLAG)) {
-            String productID;
-
             try {
-                productID = components[INDEX_1];
+                String productIDString;
 
-                if (!productID.matches(CP_ID_REGEX)) {
+                try {
+                    productIDString = components[INDEX_1];
+                } catch (IndexOutOfBoundsException e) {
+                    // replace with CP_ID_MISSING_MESSAGE
+                    throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                }
+
+                int productIDNumber;
+
+                try {
+                    productIDNumber = Integer.parseInt(productIDString);
+                } catch (NumberFormatException e) {
+                    throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                }
+
+                if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                     throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
                 } else {
+                    String productID = String.format(CP_ID_REGEX, productIDNumber);
                     searchManager.searchById(productID);
                 }
             } catch (IndexOutOfBoundsException e) {

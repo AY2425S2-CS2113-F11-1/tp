@@ -14,6 +14,7 @@ public class Constants {
     public static final String WHITESPACE = " ";
     public static final String NEWLINE = "\n";
     public static final int MINIMUM_VALUE = 0;
+    public static final int MAXIMUM_VALUE = 9999;
     public static final int INDEX_0 = 0;
     public static final int INDEX_1 = 1;
     public static final int INDEX_2 = 2;
@@ -59,7 +60,8 @@ public class Constants {
     // CommandParser
     public static final String CP_NAME = "CommandParser";
     public static final int CP_COMMAND_SEPARATOR_INDEX = -1;
-    public static final String CP_ID_REGEX = "ID_\\d{4}";
+    public static final int CP_ASSERTION_FAIL_INDEX = -2;
+    public static final String CP_ID_REGEX = "ID_%04d";
     public static final String CP_SPLIT_REGEX = "\\s+";
 
     public static final String CP_HELP_COMMAND = "help";
