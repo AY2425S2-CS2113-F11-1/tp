@@ -33,12 +33,11 @@ import static busynessmanager.constants.Constants.CP_NAME_FLAG;
 import static busynessmanager.constants.Constants.CP_PRICE_FLAG;
 import static busynessmanager.constants.Constants.CP_QUANTITY_FLAG;
 import static busynessmanager.constants.Constants.CP_INVALID_COMMAND_MESSAGE;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_2;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_3;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_4;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_5;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_6;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_ADD;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_UPDATE;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SOLD;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_REVENUE;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SEARCH;
 import static busynessmanager.constants.Constants.CP_INVALID_ID_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_ID_FORMAT_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
@@ -220,7 +219,7 @@ public class CommandParser {
         if (!components[INDEX_0].equals(CP_NAME_FLAG) ||
             !components[INDEX_2].equals(CP_QUANTITY_FLAG) ||
             !components[INDEX_4].equals(CP_PRICE_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
         }
 
         String productName;
@@ -240,7 +239,7 @@ public class CommandParser {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
         }
 
         inventoryManager.addProduct(productName, productQuantity, productPrice);
@@ -289,7 +288,7 @@ public class CommandParser {
             !components[INDEX_2].equals(CP_NAME_FLAG) ||
             !components[INDEX_4].equals(CP_QUANTITY_FLAG) ||
             !components[INDEX_6].equals(CP_PRICE_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_6);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
         }
 
         String productID;
@@ -311,7 +310,7 @@ public class CommandParser {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_6);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
         }
 
         if (!productID.matches(CP_ID_REGEX)) {
@@ -338,7 +337,7 @@ public class CommandParser {
         String[] components = splitInfo(info);
 
         if (!components[INDEX_0].equals(CP_ID_FLAG) || !components[INDEX_2].equals(CP_QUANTITY_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_2);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SOLD);
         }
 
         String productID;
@@ -355,7 +354,7 @@ public class CommandParser {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE_2);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_2);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SOLD);
         }
 
         if (!productID.matches(CP_ID_REGEX)) {
@@ -376,7 +375,7 @@ public class CommandParser {
         String[] components = splitInfo(info);
 
         if (!components[INDEX_0].equals(CP_ID_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_3);
+            throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
         }
 
         String productID;
@@ -390,7 +389,7 @@ public class CommandParser {
                 salesManager.clearSales(productID);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_3);
+            throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
         }
     }
 
@@ -409,7 +408,7 @@ public class CommandParser {
             String[] components = splitInfo(info);
 
             if (!components[INDEX_0].equals(CP_ID_FLAG)) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_4);
+                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_REVENUE);
             }
 
             String productID;
@@ -423,7 +422,7 @@ public class CommandParser {
                     double revenue = revenueCalculator.computeProductRevenue(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_4);
+                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_REVENUE);
             }
         }
     }
@@ -445,7 +444,7 @@ public class CommandParser {
             try {
                 productName = components[INDEX_1];
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_5);
+                throw new InvalidCommandException("Name is missing.");
             }
 
             searchManager.searchByName(productName);
@@ -461,10 +460,10 @@ public class CommandParser {
                     searchManager.searchById(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_5);
+                throw new InvalidCommandException("ID is missing.");
             }
         } else {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_5);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SEARCH);
         }
     }
 

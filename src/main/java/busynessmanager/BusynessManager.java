@@ -79,7 +79,9 @@ public class BusynessManager {
      */
     private void start() {
         Scanner scanner = new Scanner(System.in);
+        run(scanner);
 
+        /*
         UI.printMessage(BM_WELCOME_MESSAGE);
         UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
 
@@ -111,6 +113,7 @@ public class BusynessManager {
                 UI.printMessage(BM_EXIT_MESSAGE);
             }
         }
+        */
     }
 
     /**

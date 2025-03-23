@@ -5,6 +5,7 @@ import busynessmanager.ui.UI;
 
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.SRM_ID_QUERY_FORMAT;
+import static busynessmanager.constants.Constants.SRM_NAME_MISSING_ERROR_MESSAGE;
 import static busynessmanager.constants.Constants.SRM_NAME_QUERY_FORMAT;
 
 import java.util.HashMap;
@@ -39,11 +40,13 @@ public class SearchManager {
         Set<Map.Entry<String, Product>> mapSet = currentProductList.entrySet();
 
         for (Map.Entry<String, Product> entry : mapSet) {
-            if (entry.getValue().getName().equals(name)) {
+            if (entry.getValue().getName().equalsIgnoreCase(name)) {
                 String id = entry.getKey();
 
                 UI.printFormattedMessage(SRM_ID_QUERY_FORMAT + NEWLINE, name, id);
                 return;
+            } else {
+                UI.printMessage(SRM_NAME_MISSING_ERROR_MESSAGE);
             }
         }
     }

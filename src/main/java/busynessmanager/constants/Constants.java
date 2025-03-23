@@ -51,8 +51,8 @@ public class Constants {
 
 
     // CommandParser
-    public static final String CP_NAME = "CommandParser";
     public static final int CP_COMMAND_SEPARATOR_INDEX = -1;
+    public static final String CP_NAME = "CommandParser";
     public static final String CP_ID_REGEX = "ID_\\d{4}";
     public static final String CP_SPLIT_REGEX = "\\s+";
 
@@ -71,12 +71,11 @@ public class Constants {
     public static final String CP_ID_FLAG = "/id";
 
     public static final String CP_INVALID_COMMAND_MESSAGE = "Command does not exist. Please try again.";
-    public static final String CP_INVALID_FLAG_MESSAGE = "Invalid format. /name /qty /price.";
-    public static final String CP_INVALID_FLAG_MESSAGE_2 = "Invalid format. /id /qty.";
-    public static final String CP_INVALID_FLAG_MESSAGE_3 = "Invalid format. /id.";
-    public static final String CP_INVALID_FLAG_MESSAGE_4 = "Invalid format. /id or keep empty for total.";
-    public static final String CP_INVALID_FLAG_MESSAGE_5 = "Invalid format. /name OR /id.";
-    public static final String CP_INVALID_FLAG_MESSAGE_6 = "Invalid format. /id /name /qty /price.";
+    public static final String CP_INVALID_FLAG_MESSAGE_ADD = "Invalid format. /name /qty /price.";
+    public static final String CP_INVALID_FLAG_MESSAGE_SOLD = "Invalid format. /id /qty.";
+    public static final String CP_INVALID_FLAG_MESSAGE_REVENUE = "Invalid format. /id or keep empty for total.";
+    public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. /name OR /id.";
+    public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid format. /id /name /qty /price.";
     public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a number. Please try again.";
     public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a number. Please try again.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
@@ -122,6 +121,7 @@ public class Constants {
 
 
     // SearchManager
+    public static final String SRM_NAME_MISSING_ERROR_MESSAGE = "Name cannot be found.";
     public static final String SRM_ID_QUERY_FORMAT = "Product ID of %s: %s";
     public static final String SRM_NAME_QUERY_FORMAT = "Product name of %s: %s";
 }
