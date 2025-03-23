@@ -1,5 +1,8 @@
 Welcome to Busyness Manager!
-Enter Business ID: First-time setup required.
-Enter Business Name: Enter Business Password: Enter Business Type (FNB/RETAIL): Business setup complete!
+Enter Business ID: ID does not exist. Do you want to add your business? Enter Business Name: Error: No input detected.
+Enter Business Name: Enter Business Password: Error: No input detected.
+Enter Business Password: Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
+Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
+Enter Business Type (FNB/RETAIL): Business setup complete!
 Busyness Manager is ready. Type 'help' for commands.
 >Exiting Busyness Manager...
