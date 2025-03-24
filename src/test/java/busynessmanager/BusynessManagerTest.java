@@ -1,12 +1,49 @@
 package busynessmanager;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.util.Scanner;
 
+//@@author amirhusaini06
 class BusynessManagerTest {
+    private BusynessManager busynessManager;
+
+    @BeforeEach
+    void setUp() {
+        busynessManager = new BusynessManager();
+    }
+
     @Test
-    public void sampleTest() {
-        assertTrue(true);
+    void testFirstTimeSetup() {
+        Scanner input = new Scanner("testName\ntestPass\nFNB\n");
+        busynessManager.firstTimeSetup(input, "testID");
+
+        assertTrue(busynessManager.validPassword("testID", "testPass"),
+                "Password should be set correctly");
+    }
+
+    @Test
+    void testLoginWithInvalidCredentials() {
+        Scanner setupInput = new Scanner("testName\ntestPass\nFNB\n");
+        busynessManager.firstTimeSetup(setupInput, "testID");
+
+        Scanner loginInput = new Scanner("wrongPass\n");
+        busynessManager.login(loginInput, "testID");
+
+        assertFalse(busynessManager.validPassword("testID", "wrongPass"),
+                "Login should fail with incorrect password");
+    }
+
+    @Test
+    void testBusinessTypeSelection() {
+        Scanner setupInput = new Scanner("testName\ntestPass\nFNB\n");
+        busynessManager.firstTimeSetup(setupInput, "testID");
+
+        assertNotNull(busynessManager.extractBusinessType(new Scanner("FNB\n")),
+                "Business type should not be null");
     }
 }

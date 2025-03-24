@@ -101,7 +101,6 @@ public class InventoryManager {
             }
 
             UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
-
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
