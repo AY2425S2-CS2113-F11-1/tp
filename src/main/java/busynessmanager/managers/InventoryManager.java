@@ -5,14 +5,15 @@ import busynessmanager.ui.UI;
 
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
 import static busynessmanager.constants.Constants.IM_LIST;
 import static busynessmanager.constants.Constants.IM_EMPTY_MESSAGE;
 import static busynessmanager.constants.Constants.IM_ADD_FORMAT;
 import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
 import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
 import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
-import static busynessmanager.constants.Constants.IM_PRODUCT_NOT_FOUND_FORMAT;
 import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
+import static busynessmanager.constants.Constants.IM_QTY_EXCEED_ERROR_MESSAGE;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -74,7 +75,7 @@ public class InventoryManager {
             Product removedProduct = productList.remove(id);
             UI.printFormattedMessage(IM_REMOVE_FORMAT + NEWLINE, removedProduct.toString());
         } else {
-            UI.printFormattedMessage(IM_PRODUCT_NOT_FOUND_FORMAT+ NEWLINE, id);
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT+ NEWLINE, id);
         }
     }
 
@@ -102,7 +103,7 @@ public class InventoryManager {
             UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
 
         } else {
-            UI.printFormattedMessage(IM_PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
     }
 
@@ -132,12 +133,26 @@ public class InventoryManager {
      * @param id       The unique ID of the product.
      * @param qtySold  The quantity sold.
      */
-    protected void updateProductQuantity(String id, int qtySold) {
-        Product product = productList.get(id);
-        int currentQty = product.getQuantity();
+    protected boolean updateProductQuantity(String id, int qtySold) {
+        Product product;
 
-        product.setQuantitySold(qtySold);
-        product.setQuantity(Math.max(MINIMUM_VALUE, currentQty - qtySold));
+        if (productList.containsKey(id)) {
+            product = productList.get(id);
+
+            int currentQty = product.getQuantity();
+
+            if (qtySold > currentQty) {
+                UI.printMessage(IM_QTY_EXCEED_ERROR_MESSAGE);
+                return false;
+            } else {
+                product.setQuantitySold(qtySold);
+                product.setQuantity(Math.max(MINIMUM_VALUE, currentQty - qtySold));
+                return true;
+            }
+        } else {
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
+            return false;
+        }
     }
 
     /**
@@ -145,8 +160,14 @@ public class InventoryManager {
      *
      * @param id The unique ID of the product.
      */
-    protected void resetProductSales(String id) {
-        productList.get(id).setQuantitySold(MINIMUM_VALUE);
+    protected boolean resetProductSales(String id) {
+        if (productList.containsKey(id)) {
+            productList.get(id).setQuantitySold(MINIMUM_VALUE);
+            return true;
+        } else {
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
+            return false;
+        }
     }
 
     //@@author LEESY02

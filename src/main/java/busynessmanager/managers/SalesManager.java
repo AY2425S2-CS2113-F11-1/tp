@@ -39,8 +39,11 @@ public class SalesManager {
             return;
         }
 
-        inventory.updateProductQuantity(id, qtySold);
-        UI.printFormattedMessage(SM_RECORDED_FORMAT + NEWLINE, id, qtySold);
+        boolean isSuccess = inventory.updateProductQuantity(id, qtySold);
+
+        if (isSuccess) {
+            UI.printFormattedMessage(SM_RECORDED_FORMAT + NEWLINE, id, qtySold);
+        }
     }
 
     /**
@@ -49,8 +52,11 @@ public class SalesManager {
      * @param id product ID.
      */
     public void clearSales(String id) {
-        inventory.resetProductSales(id);
-        UI.printFormattedMessage(SM_CLEARED_FORMAT + NEWLINE, id);
+        boolean isSuccess = inventory.resetProductSales(id);
+
+        if (isSuccess) {
+            UI.printFormattedMessage(SM_CLEARED_FORMAT + NEWLINE, id);
+        }
     }
 
     /**
