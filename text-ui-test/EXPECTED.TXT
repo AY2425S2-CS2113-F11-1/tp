@@ -12,43 +12,416 @@ sold        sold /id <number> /qty <number>
 clear       clear /id <number>
 revenue     revenue OR revenue /id <number>
 search      search /name <name> OR search /id <number>
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
+>Invalid format. /name /qty /price.
 >Quantity and/or price is a negative number.
 >Quantity and/or price is a negative number.
 >Quantity and/or price is a negative number.
+>Quantity or price is not a proper number. Please try again.
 >Product added: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $4.00
 >Error: A product with the name 'MILK' already exists.
+>Product added: ID_0002: BREAD | Qty: 70 | Sold: 0 | Price: $3.00
+>Product added: ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
 >Product list:
 ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $4.00
+ID_0002: BREAD | Qty: 70 | Sold: 0 | Price: $3.00
+ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>Invalid format. /id /name /qty /price.
+>ID is invalid. Please try again.
+>Product with ID ID_0069 not found.
 >Quantity and/or price is a negative number.
 >Quantity and/or price is a negative number.
 >Quantity and/or price is a negative number.
+>Quantity or price is not a proper number. Please try again.
 >Product updated: ID_0001: MILK | Qty: 60 | Sold: 0 | Price: $6.00
 >Product list:
 ID_0001: MILK | Qty: 60 | Sold: 0 | Price: $6.00
+ID_0002: BREAD | Qty: 70 | Sold: 0 | Price: $3.00
+ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>Invalid format. /id /qty.
+>ID is invalid. Please try again.
+>Product with ID ID_0069 not found.
 >Quantity sold must be greater than 0
 >Sales recorded: Product ID: ID_0001, Quantity Sold: 7
+>Sales recorded: Product ID: ID_0002, Quantity Sold: 13
+>Sales recorded: Product ID: ID_0003, Quantity Sold: 11
 >Product list:
 ID_0001: MILK | Qty: 53 | Sold: 7 | Price: $6.00
+ID_0002: BREAD | Qty: 57 | Sold: 13 | Price: $3.00
+ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
+>Invalid format. /name OR /id.
+>Invalid format. /name OR /id.
+>Invalid format. /name OR /id.
+>Invalid format. /name OR /id.
+>Invalid format. /name OR /id.
 >Name is missing. Please try again.
 >Product with name white not found.
->Product ID of milk: ID_0001
+>Product ID of bread: ID_0002
+>Invalid format. /name OR /id.
+>Invalid format. /name OR /id.
+>Invalid format. /name OR /id.
+>Invalid format. /name OR /id.
 >ID is missing. Please try again.
 >ID is invalid. Please try again.
->Product with ID ID_0002 not found.
->Product name of ID_0001: MILK
+>Product with ID ID_0069 not found.
+>Product name of ID_0003: RICE
 >Revenue of MILK: 42.00
-Total Revenue: 42.00
+Revenue of RICE: 99.00
+Revenue of BREAD: 39.00
+Total Revenue: 180.00
+>Invalid format. /id or keep empty for total.
+>Invalid format. /id or keep empty for total.
+>Invalid format. /id or keep empty for total.
+>Invalid format. /id or keep empty for total.
+>Invalid format. /id or keep empty for total.
 >ID is missing. Please try again.
 >ID is invalid. Please try again.
->Product with ID ID_0002 not found.
->Revenue of MILK: 42.00
+>Product with ID ID_0069 not found.
+>Revenue of BREAD: 39.00
+>Invalid format. /id.
+>Invalid format. /id.
+>Invalid format. /id.
+>Invalid format. /id.
+>Invalid format. /id.
+>Invalid format. /id.
 >ID is missing. Please try again.
 >ID is invalid. Please try again.
->Product with ID ID_0002 not found.
+>Product with ID ID_0069 not found.
 >Sales cleared: Product ID: ID_0001
+>Invalid format. /id.
+>Invalid format. /id.
+>Invalid format. /id.
+>Invalid format. /id.
+>Invalid format. /id.
+>Invalid format. /id.
 >ID is missing. Please try again.
 >ID is invalid. Please try again.
->Product with ID ID_0002 not found.
->Product removed: ID_0001: MILK | Qty: 53 | Sold: 0 | Price: $6.00
->No products in inventory
+>Product with ID ID_0069 not found.
+>Product removed: ID_0002: BREAD | Qty: 57 | Sold: 13 | Price: $3.00
+>Product list:
+ID_0001: MILK | Qty: 53 | Sold: 0 | Price: $6.00
+ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
 >Exiting Busyness Manager...

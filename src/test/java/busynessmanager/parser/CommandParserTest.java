@@ -250,21 +250,21 @@ public class CommandParserTest {
             new CommandParser().addProduct("/name larry /qty hi /price 2.50");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Quantity or price is not a number. Please try again.", e.getMessage());
+            assertEquals("Quantity or price is not a proper number. Please try again.", e.getMessage());
         }
 
         try {
             new CommandParser().addProduct("/name larry /qty 15.6 /price 2.50");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Quantity or price is not a number. Please try again.", e.getMessage());
+            assertEquals("Quantity or price is not a proper number. Please try again.", e.getMessage());
         }
 
         try {
             new CommandParser().addProduct("/name larry /qty 50 /price hi");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Quantity or price is not a number. Please try again.", e.getMessage());
+            assertEquals("Quantity or price is not a proper number. Please try again.", e.getMessage());
         }
     }
 
@@ -332,21 +332,21 @@ public class CommandParserTest {
             new CommandParser().updateProduct("/id 69 /name larry /qty hi /price 2.50");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Quantity or price is not a number. Please try again.", e.getMessage());
+            assertEquals("Quantity or price is not a proper number. Please try again.", e.getMessage());
         }
 
         try {
             new CommandParser().updateProduct("/id 69 /name larry /qty 15.6 /price 2.50");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Quantity or price is not a number. Please try again.", e.getMessage());
+            assertEquals("Quantity or price is not a proper number. Please try again.", e.getMessage());
         }
 
         try {
             new CommandParser().updateProduct("/id 69 /name larry /qty 50 /price hi");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Quantity or price is not a number. Please try again.", e.getMessage());
+            assertEquals("Quantity or price is not a proper number. Please try again.", e.getMessage());
         }
     }
 
@@ -387,17 +387,17 @@ public class CommandParserTest {
     @Test
     public void recordSale_parseNumberFail_exceptionThrown() {
         try {
-            new CommandParser().recordSale("/id ID 69 /qty hi");
+            new CommandParser().recordSale("/id 69 /qty hi");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Quantity is not a number. Please try again.", e.getMessage());
+            assertEquals("Quantity is not a proper number. Please try again.", e.getMessage());
         }
 
         try {
             new CommandParser().recordSale("/id 69 /qty 15.6");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Quantity is not a number. Please try again.", e.getMessage());
+            assertEquals("Quantity is not a proper number. Please try again.", e.getMessage());
         }
     }
 

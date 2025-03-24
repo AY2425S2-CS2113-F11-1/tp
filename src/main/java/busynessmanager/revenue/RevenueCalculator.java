@@ -5,7 +5,6 @@ import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.ui.UI;
 
-
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;

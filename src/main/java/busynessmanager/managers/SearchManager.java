@@ -3,7 +3,6 @@ package busynessmanager.managers;
 import busynessmanager.product.Product;
 import busynessmanager.ui.UI;
 
-
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
 import static busynessmanager.constants.Constants.SRM_ID_QUERY_FORMAT;
@@ -48,10 +47,10 @@ public class SearchManager {
 
                 UI.printFormattedMessage(SRM_ID_QUERY_FORMAT + NEWLINE, name, id);
                 return;
-            } else {
-                UI.printFormattedMessage(SRM_PRODUCT_NOT_FOUND_FORMAT + NEWLINE, name);
             }
         }
+
+        UI.printFormattedMessage(SRM_PRODUCT_NOT_FOUND_FORMAT + NEWLINE, name);
     }
 
     /**
