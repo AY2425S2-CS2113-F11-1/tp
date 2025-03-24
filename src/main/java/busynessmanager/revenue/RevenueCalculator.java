@@ -5,10 +5,13 @@ import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.ui.UI;
 
+
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.NEWLINE;
+import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
 import static busynessmanager.constants.Constants.RC_INDIVIDUAL_REVENUE_FORMAT;
 import static busynessmanager.constants.Constants.RC_TOTAL_REVENUE_FORMAT;
+
 
 import java.util.HashMap;
 
@@ -49,6 +52,7 @@ public class RevenueCalculator {
         }
 
         UI.printFormattedMessage(RC_TOTAL_REVENUE_FORMAT + NEWLINE, totalRevenue);
+
         return totalRevenue;
     }
 
@@ -61,13 +65,20 @@ public class RevenueCalculator {
         InventoryManager currentInventory = sm.getInventory();
         HashMap<String, Product> currentProductList = currentInventory.returnProductList();
 
-        // Possible error for invalid ID (product will be null)
-        Product product = currentProductList.get(id);
+        Product product;
+
+        if (currentProductList.containsKey(id)) {
+            product = currentProductList.get(id);
+        } else {
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
+            return MINIMUM_VALUE;
+        }
 
         double individualRevenue = product.getPrice() * product.getQuantitySold();
 
         UI.printFormattedMessage(RC_INDIVIDUAL_REVENUE_FORMAT + NEWLINE,
             product.getName(), individualRevenue);
+
         return individualRevenue;
     }
 }

@@ -23,25 +23,27 @@ public class Constants {
     public static final int INDEX_6 = 6;
     public static final int INDEX_7 = 7;
 
-    public static final String INVALID_NAME = "INVALID_NAME";
+    public static final String TRY_AGAIN_MESSAGE = " Please try again.";
+    public static final String PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
 
 
     // BusynessManager
     public static final String BM_UPPERCASE_REGEX = "[A-Z]+";
     public static final String BM_BUSINESSTYPE_FNB = "FNB";
     public static final String BM_BUSINESSTYPE_RETAIL = "RETAIL";
+    public static final String BM_FIRST_SETUP_APPROVAL = "yes";
 
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
-    public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected. Exiting...";
+    public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected.";
+    public static final String BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE = "Invalid business type." + TRY_AGAIN_MESSAGE;
+    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "ID does not exist. Do you want to add your business? ";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
     public static final String BM_SUCCESSFUL_LOGIN_MESSAGE = "Login successful!";
     public static final String BM_INVALID_CREDENTIALS_MESSAGE = "Invalid credentials. Exiting.";
-    public static final String BM_FIRST_SETUP_MESSAGE = "First-time setup required.";
     public static final String BM_ENTER_NAME_MESSAGE = "Enter Business Name: ";
     public static final String BM_ENTER_BUSINESS_TYPE_MESSAGE = "Enter Business Type (FNB/RETAIL): ";
-    public static final String BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE = "Invalid business type. Please try again.";
     public static final String BM_SETUP_COMPLETE_MESSAGE = "Business setup complete!";
     public static final String BM_READY_MESSAGE = "Busyness Manager is ready. Type 'help' for commands.";
     public static final String BM_WAITING_INPUT_MESSAGE = ">";
@@ -50,8 +52,8 @@ public class Constants {
 
 
     // CommandParser
-    public static final String CP_NAME = "CommandParser";
     public static final int CP_COMMAND_SEPARATOR_INDEX = -1;
+    public static final String CP_NAME = "CommandParser";
     public static final String CP_ID_REGEX = "ID_\\d{4}";
     public static final String CP_SPLIT_REGEX = "\\s+";
 
@@ -69,20 +71,21 @@ public class Constants {
     public static final String CP_PRICE_FLAG = "/price";
     public static final String CP_ID_FLAG = "/id";
 
-    public static final String CP_INVALID_COMMAND_MESSAGE = "Command does not exist. Please try again.";
-    public static final String CP_INVALID_FLAG_MESSAGE = "Invalid format. /name /qty /price.";
-    public static final String CP_INVALID_FLAG_MESSAGE_2 = "Invalid format. /id /qty.";
-    public static final String CP_INVALID_FLAG_MESSAGE_3 = "Invalid format. /id.";
-    public static final String CP_INVALID_FLAG_MESSAGE_4 = "Invalid format. /id or keep empty for total.";
-    public static final String CP_INVALID_FLAG_MESSAGE_5 = "Invalid format. /name OR /id.";
-    public static final String CP_INVALID_FLAG_MESSAGE_6 = "Invalid format. /id /name /qty /price.";
-    public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a number. Please try again.";
-    public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a number. Please try again.";
+    public static final String CP_INVALID_COMMAND_MESSAGE = "Command does not exist." + TRY_AGAIN_MESSAGE;
+    public static final String CP_INVALID_FLAG_MESSAGE_ADD = "Invalid format. /name /qty /price.";
+    public static final String CP_INVALID_FLAG_MESSAGE_SOLD = "Invalid format. /id /qty.";
+    public static final String CP_INVALID_FLAG_MESSAGE_REVENUE = "Invalid format. /id or keep empty for total.";
+    public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. /name OR /id.";
+    public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid format. /id /name /qty /price.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
-    public static final String CP_INVALID_ID_MESSAGE = "ID is invalid. Please try again.";
+    public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a number." + TRY_AGAIN_MESSAGE;
+    public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a number." + TRY_AGAIN_MESSAGE;
+    public static final String CP_INVALID_ID_MESSAGE = "ID is invalid." + TRY_AGAIN_MESSAGE;
 
     public static final String CP_NEGATIVE_QUANTITY_MESSAGE = "Quantity is a negative number.";
     public static final String CP_NEGATIVE_PRICE_MESSAGE = "Price is not a positive number.";
+    public static final String CP_ID_MISSING_MESSAGE = "ID is missing." + TRY_AGAIN_MESSAGE;
+    public static final String CP_NAME_MISSING_MESSAGE = "Name is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_EXCEPTION_LOG_MESSAGE = "Exception thrown.";
 
 
@@ -99,10 +102,13 @@ public class Constants {
     public static final String IM_REMOVE_FORMAT = PRODUCT + WHITESPACE + "removed: %s";
     public static final String IM_UPDATED_FORMAT = PRODUCT + WHITESPACE + "updated: %s";
     public static final String IM_NAME_EXISTS_FORMAT = "Error: A product with the name '%s' already exists.";
-    public static final String IM_PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
+
 
     public static final String IM_LIST = PRODUCT + WHITESPACE + "list: ";
-    public static final String IM_EMPTY_MESSAGE = "No products in inventory";
+    public static final String IM_EMPTY_MESSAGE = "No products in inventory.";
+
+    public static final String IM_QTY_EXCEED_ERROR_MESSAGE = "Quantity sold exceeds the quantity of product."
+            + TRY_AGAIN_MESSAGE;
 
 
     // SalesManager
@@ -121,6 +127,8 @@ public class Constants {
 
 
     // SearchManager
+    public static final String SRM_NAME_MISSING_ERROR_MESSAGE = "Name cannot be found." + TRY_AGAIN_MESSAGE;
+    public static final String SRM_PRODUCT_NOT_FOUND_FORMAT = "Product with name %s not found.";
     public static final String SRM_ID_QUERY_FORMAT = "Product ID of %s: %s";
     public static final String SRM_NAME_QUERY_FORMAT = "Product name of %s: %s";
 }

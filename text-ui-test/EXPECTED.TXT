@@ -1,5 +1,31 @@
 Welcome to Busyness Manager!
-Enter Business ID: First-time setup required.
-Enter Business Name: Enter Business Password: Enter Business Type (FNB/RETAIL): Business setup complete!
+Enter Business ID: ID does not exist. Do you want to add your business? Enter Business Name: Error: No input detected.
+Enter Business Name: Enter Business Password: Error: No input detected.
+Enter Business Password: Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
+Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
+Enter Business Type (FNB/RETAIL): Business setup complete!
 Busyness Manager is ready. Type 'help' for commands.
+>Product added: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $4.00
+>Name is missing. Please try again.
+>Product with name white not found.
+>Product ID of milk: ID_0001
+>ID is missing. Please try again.
+>ID is invalid. Please try again.
+>Product with ID ID_0002 not found.
+>Product name of ID_0001: MILK
+>Sales recorded: Product ID: ID_0001, Quantity Sold: 7
+>Revenue of MILK: 28.00
+Total Revenue: 28.00
+>ID is missing. Please try again.
+>ID is invalid. Please try again.
+>Product with ID ID_0002 not found.
+>Revenue of MILK: 28.00
+>ID is missing. Please try again.
+>ID is invalid. Please try again.
+>Product with ID ID_0002 not found.
+>Sales cleared: Product ID: ID_0001
+>ID is missing. Please try again.
+>ID is invalid. Please try again.
+>Product with ID ID_0002 not found.
+>Product removed: ID_0001: MILK | Qty: 43 | Sold: 0 | Price: $4.00
 >Exiting Busyness Manager...

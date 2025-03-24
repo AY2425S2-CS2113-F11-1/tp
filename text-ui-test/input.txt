@@ -1,5 +1,32 @@
 0001
-bruh logistics
+yes
+
+Milk Corp
+
 abcd
+
+xd
 FNB
+add /name MILK /qty 50 /price 4
+search /name
+search /name white
+search /name milk
+search /id
+search /id xd
+search /id ID_0002
+search /id ID_0001
+sold /id ID_0001 /qty 7
+revenue
+revenue /id
+revenue /id xd
+revenue /id ID_0002
+revenue /id ID_0001
+clear /id
+clear /id xd
+clear /id ID_0002
+clear /id ID_0001
+delete /id
+delete /id xd
+delete /id ID_0002
+delete /id ID_0001
 exit
