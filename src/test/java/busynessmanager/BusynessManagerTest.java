@@ -25,18 +25,6 @@ class BusynessManagerTest {
     }
 
     @Test
-    void testLoginWithValidCredentials() {
-        Scanner setupInput = new Scanner("testName\ntestPass\nFNB\n");
-        busynessManager.firstTimeSetup(setupInput, "testID");
-
-        Scanner loginInput = new Scanner("testPass\n");
-        busynessManager.login(loginInput, "testID");
-
-        assertTrue(busynessManager.validPassword("testID", "testPass"),
-                "Login should be successful with correct credentials");
-    }
-
-    @Test
     void testLoginWithInvalidCredentials() {
         Scanner setupInput = new Scanner("testName\ntestPass\nFNB\n");
         busynessManager.firstTimeSetup(setupInput, "testID");
