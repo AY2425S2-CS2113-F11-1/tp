@@ -232,18 +232,17 @@ public class CommandParser {
      */
     protected void addProduct(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
-
-        if (!components[INDEX_0].equals(CP_NAME_FLAG) ||
-            !components[INDEX_2].equals(CP_QUANTITY_FLAG) ||
-            !components[INDEX_4].equals(CP_PRICE_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
-        }
-
         String productName;
         int productQuantity;
         double productPrice;
 
         try {
+            if (!components[INDEX_0].equals(CP_NAME_FLAG) ||
+                    !components[INDEX_2].equals(CP_QUANTITY_FLAG) ||
+                    !components[INDEX_4].equals(CP_PRICE_FLAG)) {
+                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
+            }
+
             productName = components[INDEX_1];
 
             try {
@@ -310,19 +309,18 @@ public class CommandParser {
      */
     protected void updateProduct(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
-
-        if (!components[INDEX_0].equals(CP_ID_FLAG) ||
-            !components[INDEX_2].equals(CP_NAME_FLAG) ||
-            !components[INDEX_4].equals(CP_QUANTITY_FLAG) ||
-            !components[INDEX_6].equals(CP_PRICE_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
-        }
-
         String productNewName;
         int productNewQuantity;
         double productNewPrice;
 
         try {
+            if (!components[INDEX_0].equals(CP_ID_FLAG) ||
+                    !components[INDEX_2].equals(CP_NAME_FLAG) ||
+                    !components[INDEX_4].equals(CP_QUANTITY_FLAG) ||
+                    !components[INDEX_6].equals(CP_PRICE_FLAG)) {
+                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
+            }
+
             productNewName = components[INDEX_3];
 
             try {
@@ -376,11 +374,11 @@ public class CommandParser {
     protected void recordSale(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
 
-        if (!components[INDEX_0].equals(CP_ID_FLAG) || !components[INDEX_2].equals(CP_QUANTITY_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SOLD);
-        }
-
         try {
+            if (!components[INDEX_0].equals(CP_ID_FLAG) || !components[INDEX_2].equals(CP_QUANTITY_FLAG)) {
+                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SOLD);
+            }
+
             int quantitySold;
 
             try {

@@ -27,6 +27,12 @@ import static busynessmanager.constants.Constants.BM_READY_MESSAGE;
 import static busynessmanager.constants.Constants.BM_WAITING_INPUT_MESSAGE;
 import static busynessmanager.constants.Constants.BM_EXIT_KEYWORD;
 import static busynessmanager.constants.Constants.BM_EXIT_MESSAGE;
+import static busynessmanager.constants.Constants.BM_SCANNER_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_ID_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_NAME_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_PASSWORD_EMPTY_ASSERTION_FAIL_MESSAGE;
 
 import java.util.Scanner;
 import java.util.HashMap;
@@ -80,7 +86,6 @@ public class BusynessManager {
      */
     private void start() {
         Scanner scanner = new Scanner(System.in);
-        //run(scanner);
 
         UI.printMessage(BM_WELCOME_MESSAGE);
         UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
@@ -124,8 +129,8 @@ public class BusynessManager {
     protected void login(Scanner scanner, String id) {
         UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE);
 
-        assert scanner != null : "Scanner should not be null";
-        assert id != null && !id.isEmpty() : "Business ID should not be null or empty";
+        assert scanner != null : BM_SCANNER_ASSERTION_FAIL_MESSAGE;
+        assert id != null && !id.isEmpty() : BM_ID_ASSERTION_FAIL_MESSAGE;
 
         if (!scanner.hasNextLine()) {
             UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
@@ -149,17 +154,17 @@ public class BusynessManager {
      * @param id The business ID entered by the user.
      */
     public void firstTimeSetup(Scanner scanner, String id) {
-        assert scanner != null : "Scanner should not be null";
-        assert id != null && !id.isEmpty() : "Business ID should not be null or empty";
+        assert scanner != null : BM_SCANNER_ASSERTION_FAIL_MESSAGE;
+        assert id != null && !id.isEmpty() : BM_ID_ASSERTION_FAIL_MESSAGE;
 
         businessName = extractName(scanner);
-        assert !businessName.isEmpty() : "Business name should not be empty";
+        assert !businessName.isEmpty() : BM_NAME_ASSERTION_FAIL_MESSAGE;
 
         businessPassword = extractPassword(scanner);
-        assert !businessPassword.isEmpty() : "Business password should not be empty";
+        assert !businessPassword.isEmpty() : BM_PASSWORD_EMPTY_ASSERTION_FAIL_MESSAGE;
 
         businessType = extractBusinessType(scanner);
-        assert businessType != null : "Business type should not be null";
+        assert businessType != null : BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE;
 
         businessID = id;
         credentials.put(businessID, businessPassword);
@@ -199,8 +204,8 @@ public class BusynessManager {
      * @return True if the password matches, false otherwise.
      */
     protected boolean validPassword(String id, String password) {
-        assert id != null && !id.isEmpty() : "Business ID should not be null or empty";
-        assert password != null : "Password should not be null";
+        assert id != null && !id.isEmpty() : BM_ID_ASSERTION_FAIL_MESSAGE;
+        assert password != null : BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE;
 
         return credentials.containsKey(id) && credentials.get(id).equals(password);
     }

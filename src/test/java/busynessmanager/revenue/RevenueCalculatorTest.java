@@ -23,7 +23,7 @@ public class RevenueCalculatorTest {
 
     @Test
     public void computeProductRevenue_individualRevenueTest_success() {
-        im.addProduct("bean", 100, 0.6); // ID_0010
+        im.addProduct("bean", 100, 0.6);
         im.addProduct("donkey", 6000, 900);
         im.addProduct("bingbangbong", 1, 10000);
         sm.recordSale("ID_0010", 50);
@@ -31,6 +31,7 @@ public class RevenueCalculatorTest {
         sm.recordSale("ID_0012", 1);
 
         im.printProducts();
+
         assertEquals(
             30,
             rc.computeProductRevenue("ID_0010")
