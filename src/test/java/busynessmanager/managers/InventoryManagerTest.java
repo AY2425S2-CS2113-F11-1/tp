@@ -19,6 +19,7 @@ public class InventoryManagerTest {
     public void updateProductQuantity_updateQtyAndQtySoldTest_success() {
         im.addProduct("bing", 200, 1);
         im.updateProductQuantity("ID_0001", 100);
+
         assertEquals(
             "ID_0001: bing | Qty: 100 | Sold: 100 | Price: $1.00",
             im.returnProductList().get("ID_0001").toString()
@@ -27,7 +28,6 @@ public class InventoryManagerTest {
 
     @Test
     public void addProduct_addItemTest_success() {
-        // "Product added: ID_0001: beans | Qty: 20 | Sold: 0 | Price: $0.60"
         im.addProduct("bean", 100, 0.6);
         assertEquals(
             "ID_0002: bean | Qty: 100 | Sold: 0 | Price: $0.60",
@@ -64,6 +64,7 @@ public class InventoryManagerTest {
     public void updateProduct_updateItemTest_success() {
         im.addProduct("bo", 20, 10000);
         im.updateProduct("ID_0006", "bro", 10, 200);
+
         assertEquals(
             "ID_0006: bro | Qty: 10 | Sold: 0 | Price: $200.00",
             im.returnProductList().get("ID_0006").toString()

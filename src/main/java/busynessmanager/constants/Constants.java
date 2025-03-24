@@ -59,6 +59,13 @@ public class Constants {
     public static final String BM_EXIT_KEYWORD = "exit";
     public static final String BM_EXIT_MESSAGE = "Exiting Busyness Manager...";
 
+    public static final String BM_SCANNER_ASSERTION_FAIL_MESSAGE = "Scanner should not be null.";
+    public static final String BM_ID_ASSERTION_FAIL_MESSAGE = "Business ID should not be null or empty.";
+    public static final String BM_NAME_ASSERTION_FAIL_MESSAGE = "Business name should not be empty.";
+    public static final String BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE = "Business type should not be null.";
+    public static final String BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE = "Password should not be null.";
+    public static final String BM_PASSWORD_EMPTY_ASSERTION_FAIL_MESSAGE = "Business password should not be empty.";
+
 
     // CommandParser
     public static final int CP_COMMAND_SEPARATOR_INDEX = -1;
@@ -89,8 +96,10 @@ public class Constants {
     public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. /name OR /id.";
     public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid format. /id /name /qty /price.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
-    public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a number." + TRY_AGAIN_MESSAGE;
-    public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a number." + TRY_AGAIN_MESSAGE;
+    public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a proper number." +
+            TRY_AGAIN_MESSAGE;
+    public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a proper number." +
+            TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_ID_MESSAGE = "ID is invalid." + TRY_AGAIN_MESSAGE;
     public static final String CP_ID_MISSING_MESSAGE = "ID is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_NAME_MISSING_MESSAGE = "Name is missing." + TRY_AGAIN_MESSAGE;
