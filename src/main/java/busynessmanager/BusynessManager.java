@@ -41,14 +41,14 @@ public class BusynessManager {
     // Stores business ID & passwords
     private static final HashMap<String, String> credentials = new HashMap<>();
 
-    private enum BusinessType {
+    protected enum BusinessType {
         FNB, RETAIL
     }
 
-    private String businessID;
-    private String businessName;
-    private String businessPassword;
-    private BusinessType businessType;
+    protected String businessID;
+    protected String businessName;
+    protected String businessPassword;
+    protected BusinessType businessType;
 
     private final CommandParser commandParser;
 
@@ -121,8 +121,11 @@ public class BusynessManager {
      * @param scanner The Scanner object for user input.
      * @param id The business ID entered by the user.
      */
-    private void login(Scanner scanner, String id) {
+    protected void login(Scanner scanner, String id) {
         UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE);
+
+        assert scanner != null : "Scanner should not be null";
+        assert id != null && !id.isEmpty() : "Business ID should not be null or empty";
 
         if (!scanner.hasNextLine()) {
             UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
@@ -146,11 +149,19 @@ public class BusynessManager {
      * @param id The business ID entered by the user.
      */
     public void firstTimeSetup(Scanner scanner, String id) {
-        businessName = extractName(scanner);
-        businessPassword = extractPassword(scanner);
-        businessType = extractBusinessType(scanner);
-        businessID = id;
+        assert scanner != null : "Scanner should not be null";
+        assert id != null && !id.isEmpty() : "Business ID should not be null or empty";
 
+        businessName = extractName(scanner);
+        assert !businessName.isEmpty() : "Business name should not be empty";
+
+        businessPassword = extractPassword(scanner);
+        assert !businessPassword.isEmpty() : "Business password should not be empty";
+
+        businessType = extractBusinessType(scanner);
+        assert businessType != null : "Business type should not be null";
+
+        businessID = id;
         credentials.put(businessID, businessPassword);
 
         UI.printMessage(BM_SETUP_COMPLETE_MESSAGE);
@@ -187,7 +198,10 @@ public class BusynessManager {
      * @param password The password entered by the user.
      * @return True if the password matches, false otherwise.
      */
-    private boolean validPassword(String id, String password) {
+    protected boolean validPassword(String id, String password) {
+        assert id != null && !id.isEmpty() : "Business ID should not be null or empty";
+        assert password != null : "Password should not be null";
+
         return credentials.containsKey(id) && credentials.get(id).equals(password);
     }
 
@@ -249,7 +263,7 @@ public class BusynessManager {
      * @param scanner The scanner object for user input.
      * @return The BusinessType inputted by the user.
      */
-    private BusinessType extractBusinessType(Scanner scanner) {
+    protected BusinessType extractBusinessType(Scanner scanner) {
         BusinessType businessType = null;
 
         while (businessType == null) {
