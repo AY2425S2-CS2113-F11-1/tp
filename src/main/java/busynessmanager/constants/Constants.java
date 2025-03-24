@@ -96,8 +96,10 @@ public class Constants {
     public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. /name OR /id.";
     public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid format. /id /name /qty /price.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
-    public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a proper number." + TRY_AGAIN_MESSAGE;
-    public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a proper number." + TRY_AGAIN_MESSAGE;
+    public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a proper number." +
+            TRY_AGAIN_MESSAGE;
+    public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a proper number." +
+            TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_ID_MESSAGE = "ID is invalid." + TRY_AGAIN_MESSAGE;
     public static final String CP_ID_MISSING_MESSAGE = "ID is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_NAME_MISSING_MESSAGE = "Name is missing." + TRY_AGAIN_MESSAGE;

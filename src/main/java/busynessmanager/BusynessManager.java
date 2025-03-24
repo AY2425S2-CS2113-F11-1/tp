@@ -46,7 +46,7 @@ import java.util.HashMap;
 public class BusynessManager {
     // Stores business ID & passwords
     private static final HashMap<String, String> credentials = new HashMap<>();
-    
+
     protected enum BusinessType {
         FNB, RETAIL
     }
