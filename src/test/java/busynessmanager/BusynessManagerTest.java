@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Scanner;
 
+//@@author amirhusaini06
 class BusynessManagerTest {
     private BusynessManager busynessManager;
 
@@ -21,7 +22,8 @@ class BusynessManagerTest {
         Scanner input = new Scanner("testName\ntestPass\nFNB\n");
         busynessManager.firstTimeSetup(input, "testID");
 
-        assertTrue(busynessManager.validPassword("testID", "testPass"), "Password should be set correctly");
+        assertTrue(busynessManager.validPassword("testID", "testPass"),
+                "Password should be set correctly");
     }
 
     @Test

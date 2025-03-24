@@ -59,6 +59,13 @@ public class Constants {
     public static final String BM_EXIT_KEYWORD = "exit";
     public static final String BM_EXIT_MESSAGE = "Exiting Busyness Manager...";
 
+    public static final String BM_SCANNER_ASSERTION_FAIL_MESSAGE = "Scanner should not be null.";
+    public static final String BM_ID_ASSERTION_FAIL_MESSAGE = "Business ID should not be null or empty.";
+    public static final String BM_NAME_ASSERTION_FAIL_MESSAGE = "Business name should not be empty.";
+    public static final String BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE = "Business type should not be null.";
+    public static final String BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE = "Password should not be null.";
+    public static final String BM_PASSWORD_EMPTY_ASSERTION_FAIL_MESSAGE = "Business password should not be empty.";
+
 
     // CommandParser
     public static final int CP_COMMAND_SEPARATOR_INDEX = -1;
