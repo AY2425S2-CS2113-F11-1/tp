@@ -1,7 +1,7 @@
 <!--
-//@@author LEESY02
+//@@author rozaliesmit
 -->
-# Lee Seung Yoon - Project Portfolio Page
+# Rozalie Lisen Smit - Project Portfolio Page
 
 ## Overview of Project: Busyness Manager
 Busyness Manager is a CLI inventory management application designed to help businesses maintain their inventory
