@@ -12,12 +12,14 @@ import static busynessmanager.constants.Constants.IM_ADD_FORMAT;
 import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
 import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
 import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
+import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.IM_QTY_EXCEED_ERROR_MESSAGE;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
+//@@author himethcodes
 /**
  * Manages the inventory of products, allowing operations such as adding, updating, and removing products.
  */
@@ -48,7 +50,15 @@ public class InventoryManager {
             }
         }
 
-        Product product = new Product(name, qty, price);
+        Product product;
+
+        if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
+            UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+            return;
+        } else {
+            product = new Product(name, qty, price);
+        }
+
         String productId = product.getId();
 
         productList.put(productId, product);
@@ -81,9 +91,14 @@ public class InventoryManager {
         if (productList.containsKey(id)) {
             Product product = productList.get(id);
 
-            product.setName(name);
-            product.setQuantity(qty);
-            product.setPrice(price);
+            if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
+                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                return;
+            } else {
+                product.setName(name);
+                product.setQuantity(qty);
+                product.setPrice(price);
+            }
 
             UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
 
@@ -109,6 +124,8 @@ public class InventoryManager {
                 .forEach(entry -> System.out.println(entry.getValue()));
     }
 
+
+    //@@author rozaliesmit
     /**
      * Updates the quantity of a product after a sale.
      * Ensures the quantity does not drop below the minimum allowed value.
@@ -153,6 +170,7 @@ public class InventoryManager {
         }
     }
 
+    //@@author LEESY02
     /**
      * Returns the current list of products in the inventory.
      *

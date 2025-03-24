@@ -1,5 +1,6 @@
 package busynessmanager.constants;
 
+//@@author LEESY02
 /**
  * Constants class for usage.
  * Note:
@@ -14,6 +15,7 @@ public class Constants {
     public static final String WHITESPACE = " ";
     public static final String NEWLINE = "\n";
     public static final int MINIMUM_VALUE = 0;
+    public static final int MAXIMUM_VALUE = 9999;
     public static final int INDEX_0 = 0;
     public static final int INDEX_1 = 1;
     public static final int INDEX_2 = 2;
@@ -22,9 +24,16 @@ public class Constants {
     public static final int INDEX_5 = 5;
     public static final int INDEX_6 = 6;
     public static final int INDEX_7 = 7;
-
-    public static final String TRY_AGAIN_MESSAGE = " Please try again.";
     public static final String PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
+    public static final String TRY_AGAIN_MESSAGE = " Please try again.";
+    public static final String HELP_LIST = """
+            add         add /name <name> /qty <number> /price <number>
+            delete      delete /id <number>
+            update      update /id <number> /name <name> /qty <number> /price <number>
+            sold        sold /id <number> /qty <number>
+            clear       clear /id <number>
+            revenue     revenue OR revenue /id <number>
+            search      search /name <name> OR search /id <number>""";
 
 
     // BusynessManager
@@ -53,10 +62,12 @@ public class Constants {
 
     // CommandParser
     public static final int CP_COMMAND_SEPARATOR_INDEX = -1;
+    public static final int CP_ASSERTION_FAIL_INDEX = -2;
     public static final String CP_NAME = "CommandParser";
-    public static final String CP_ID_REGEX = "ID_\\d{4}";
+    public static final String CP_ID_REGEX = "ID_%04d";
     public static final String CP_SPLIT_REGEX = "\\s+";
 
+    public static final String CP_HELP_COMMAND = "help";
     public static final String CP_ADD_COMMAND = "add";
     public static final String CP_DELETE_COMMAND = "delete";
     public static final String CP_UPDATE_COMMAND = "update";
@@ -81,12 +92,9 @@ public class Constants {
     public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a number." + TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a number." + TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_ID_MESSAGE = "ID is invalid." + TRY_AGAIN_MESSAGE;
-
-    public static final String CP_NEGATIVE_QUANTITY_MESSAGE = "Quantity is a negative number.";
-    public static final String CP_NEGATIVE_PRICE_MESSAGE = "Price is not a positive number.";
     public static final String CP_ID_MISSING_MESSAGE = "ID is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_NAME_MISSING_MESSAGE = "Name is missing." + TRY_AGAIN_MESSAGE;
-    public static final String CP_EXCEPTION_LOG_MESSAGE = "Exception thrown.";
+    public static final String CP_LOG_MESSAGE = "String splitting failure.";
 
 
     // Product
@@ -103,10 +111,9 @@ public class Constants {
     public static final String IM_UPDATED_FORMAT = PRODUCT + WHITESPACE + "updated: %s";
     public static final String IM_NAME_EXISTS_FORMAT = "Error: A product with the name '%s' already exists.";
 
-
-    public static final String IM_LIST = PRODUCT + WHITESPACE + "list: ";
-    public static final String IM_EMPTY_MESSAGE = "No products in inventory.";
-
+    public static final String IM_LIST = PRODUCT + WHITESPACE + "list:";
+    public static final String IM_EMPTY_MESSAGE = "No products in inventory";
+    public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE = "Quantity and/or price is a negative number.";
     public static final String IM_QTY_EXCEED_ERROR_MESSAGE = "Quantity sold exceeds the quantity of product."
             + TRY_AGAIN_MESSAGE;
 
@@ -127,7 +134,6 @@ public class Constants {
 
 
     // SearchManager
-    public static final String SRM_NAME_MISSING_ERROR_MESSAGE = "Name cannot be found." + TRY_AGAIN_MESSAGE;
     public static final String SRM_PRODUCT_NOT_FOUND_FORMAT = "Product with name %s not found.";
     public static final String SRM_ID_QUERY_FORMAT = "Product ID of %s: %s";
     public static final String SRM_NAME_QUERY_FORMAT = "Product name of %s: %s";
