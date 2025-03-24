@@ -47,11 +47,8 @@ import static busynessmanager.constants.Constants.CP_INVALID_ID_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_ID_FORMAT_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
-import static busynessmanager.constants.Constants.CP_NEGATIVE_QUANTITY_MESSAGE;
-import static busynessmanager.constants.Constants.CP_NEGATIVE_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.CP_ID_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_NAME_MISSING_MESSAGE;
-import static busynessmanager.constants.Constants.CP_EXCEPTION_LOG_MESSAGE;
 import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
 
 import busynessmanager.exceptions.InvalidStringException;

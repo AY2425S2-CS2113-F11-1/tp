@@ -92,12 +92,8 @@ public class Constants {
     public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a number." + TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Quantity is not a number." + TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_ID_MESSAGE = "ID is invalid." + TRY_AGAIN_MESSAGE;
-
-    public static final String CP_NEGATIVE_QUANTITY_MESSAGE = "Quantity is a negative number.";
-    public static final String CP_NEGATIVE_PRICE_MESSAGE = "Price is not a positive number.";
     public static final String CP_ID_MISSING_MESSAGE = "ID is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_NAME_MISSING_MESSAGE = "Name is missing." + TRY_AGAIN_MESSAGE;
-    public static final String CP_EXCEPTION_LOG_MESSAGE = "Exception thrown.";
     public static final String CP_LOG_MESSAGE = "String splitting failure.";
 
 
@@ -138,7 +134,6 @@ public class Constants {
 
 
     // SearchManager
-    public static final String SRM_NAME_MISSING_ERROR_MESSAGE = "Name cannot be found." + TRY_AGAIN_MESSAGE;
     public static final String SRM_PRODUCT_NOT_FOUND_FORMAT = "Product with name %s not found.";
     public static final String SRM_ID_QUERY_FORMAT = "Product ID of %s: %s";
     public static final String SRM_NAME_QUERY_FORMAT = "Product name of %s: %s";
