@@ -9,6 +9,8 @@ import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;
 import busynessmanager.exceptions.NumberParsingFailedException;
 
+
+//@@author b1inmeister
 public class CommandParserTest {
 
     /*
@@ -282,7 +284,7 @@ public class CommandParserTest {
             new CommandParser().deleteProduct("/id");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Invalid format. /id.", e.getMessage());
+            assertEquals("ID is missing. Please try again.", e.getMessage());
         }
     }
 
@@ -422,7 +424,7 @@ public class CommandParserTest {
             new CommandParser().clearSales("/id");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Invalid format. /id.", e.getMessage());
+            assertEquals("ID is missing. Please try again.", e.getMessage());
         }
     }
 
@@ -456,7 +458,7 @@ public class CommandParserTest {
             new CommandParser().computeRevenue("/id");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Invalid format. /id or keep empty for total.", e.getMessage());
+            assertEquals("ID is missing. Please try again.", e.getMessage());
         }
     }
 
@@ -491,7 +493,7 @@ public class CommandParserTest {
             new CommandParser().searchForProduct("/name");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Invalid format. /name OR /id.", e.getMessage());
+            assertEquals("Name is missing. Please try again.", e.getMessage());
         }
     }
 
@@ -501,7 +503,7 @@ public class CommandParserTest {
             new CommandParser().searchForProduct("/id");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Invalid format. /name OR /id.", e.getMessage());
+            assertEquals("ID is missing. Please try again.", e.getMessage());
         }
     }
 

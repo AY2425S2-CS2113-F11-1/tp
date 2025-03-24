@@ -4,7 +4,6 @@ package busynessmanager.exceptions;
  * Exception for when parsing a String to a number has failed.
  */
 public class NumberParsingFailedException extends Exception {
-
     /**
      * Constructs the NumberParsingFailed exception.
      */

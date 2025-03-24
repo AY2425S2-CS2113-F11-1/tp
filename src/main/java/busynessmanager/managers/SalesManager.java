@@ -1,54 +1,68 @@
 package busynessmanager.managers;
 
-import busynessmanager.UI_Constants.UI;
-//import static busynessmanager.UI_Constants.Constants.*; // This will fail style check
-import static busynessmanager.UI_Constants.Constants.NEWLINE;
-import static busynessmanager.UI_Constants.Constants.SM_MINIMUM_QTY_SOLD_MESSAGE;
-import static busynessmanager.UI_Constants.Constants.SM_CLEARED_FORMAT;
-import static busynessmanager.UI_Constants.Constants.SM_RECORDED_FORMAT;
+import busynessmanager.ui.UI;
 
+import static busynessmanager.constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.constants.Constants.NEWLINE;
+import static busynessmanager.constants.Constants.SM_MINIMUM_QTY_SOLD_MESSAGE;
+import static busynessmanager.constants.Constants.SM_CLEARED_FORMAT;
+import static busynessmanager.constants.Constants.SM_RECORDED_FORMAT;
+
+
+//@@author rozaliesmit
 /**
  * Updates sales transactions, decrements inventory and increases quantity sold
  */
 public class SalesManager {
     private final InventoryManager inventory;
 
+
+    /**
+     * Constructs the SalesManager class using an existing InventoryManager.
+     *
+     * @param inventory Existing InventoryManager for the business.
+     */
     public SalesManager(InventoryManager inventory) {
         this.inventory = inventory;
     }
 
+
     /**
-     * Record a sale of a quantity of a product by its ID
+     * Records a sale of a quantity of a product by its ID.
      *
-     * @param id Product ID
-     * @param qtySold Quantity of product sold
+     * @param id Product ID.
+     * @param qtySold Quantity of product sold.
      */
     public void recordSale(String id, int qtySold) {
-        if (qtySold <= 0) {
-            //System.out.println("Quantity sold must be greater than 0.");
+        if (qtySold <= MINIMUM_VALUE) {
             UI.printMessage(SM_MINIMUM_QTY_SOLD_MESSAGE);
             return;
         }
-        inventory.updateProductQuantity(id, qtySold);
 
-        //System.out.println("Sale recorded: Product ID " + id + ", Quantity Sold: " + qtySold);
-        UI.printFormattedMessage(SM_RECORDED_FORMAT + NEWLINE, id, qtySold);
+        boolean isSuccess = inventory.updateProductQuantity(id, qtySold);
+
+        if (isSuccess) {
+            UI.printFormattedMessage(SM_RECORDED_FORMAT + NEWLINE, id, qtySold);
+        }
     }
 
     /**
-     * Clear sales for a product by its ID
+     * Clears sales for a product by its ID.
      *
-     * @param id product ID
+     * @param id product ID.
      */
     public void clearSales(String id) {
-        inventory.resetProductSales(id);
-        //System.out.println("Sales cleared: Product ID " + id);
-        UI.printFormattedMessage(SM_CLEARED_FORMAT + NEWLINE, id);
+        boolean isSuccess = inventory.resetProductSales(id);
+
+        if (isSuccess) {
+            UI.printFormattedMessage(SM_CLEARED_FORMAT + NEWLINE, id);
+        }
     }
 
     /**
-     * required for SY's RevenueCalculator to function
-     * @return the inventory
+     * Returns the InventoryManager used in the SalesManager class.
+     *
+     * @return the InventoryManager used by the business.
      */
     public InventoryManager getInventory() {
         return inventory;

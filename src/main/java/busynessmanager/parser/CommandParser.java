@@ -1,51 +1,55 @@
 package busynessmanager.parser;
 
-import busynessmanager.UI_Constants.UI;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.managers.SearchManager;
 import busynessmanager.revenue.RevenueCalculator;
+import busynessmanager.ui.UI;
 
-import static busynessmanager.UI_Constants.Constants.WHITESPACE;
-import static busynessmanager.UI_Constants.Constants.EMPTY_STRING;
-import static busynessmanager.UI_Constants.Constants.INDEX_0;
-import static busynessmanager.UI_Constants.Constants.INDEX_1;
-import static busynessmanager.UI_Constants.Constants.INDEX_2;
-import static busynessmanager.UI_Constants.Constants.INDEX_3;
-import static busynessmanager.UI_Constants.Constants.INDEX_4;
-import static busynessmanager.UI_Constants.Constants.INDEX_5;
-import static busynessmanager.UI_Constants.Constants.INDEX_6;
-import static busynessmanager.UI_Constants.Constants.INDEX_7;
-import static busynessmanager.UI_Constants.Constants.CP_NAME;
-import static busynessmanager.UI_Constants.Constants.CP_COMMAND_SEPARATOR_INDEX;
-import static busynessmanager.UI_Constants.Constants.CP_ADD_COMMAND;
-import static busynessmanager.UI_Constants.Constants.CP_DELETE_COMMAND;
-import static busynessmanager.UI_Constants.Constants.CP_UPDATE_COMMAND;
-import static busynessmanager.UI_Constants.Constants.CP_PRINT_COMMAND;
-import static busynessmanager.UI_Constants.Constants.CP_SOLD_COMMAND;
-import static busynessmanager.UI_Constants.Constants.CP_CLEAR_COMMAND;
-import static busynessmanager.UI_Constants.Constants.CP_REVENUE_COMMAND;
-import static busynessmanager.UI_Constants.Constants.CP_SEARCH_COMMAND;
-import static busynessmanager.UI_Constants.Constants.CP_ID_REGEX;
-import static busynessmanager.UI_Constants.Constants.CP_SPLIT_REGEX;
-import static busynessmanager.UI_Constants.Constants.CP_ID_FLAG;
-import static busynessmanager.UI_Constants.Constants.CP_NAME_FLAG;
-import static busynessmanager.UI_Constants.Constants.CP_PRICE_FLAG;
-import static busynessmanager.UI_Constants.Constants.CP_QUANTITY_FLAG;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_COMMAND_MESSAGE;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE_2;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE_3;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE_4;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE_5;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_FLAG_MESSAGE_6;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_ID_MESSAGE;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_ID_FORMAT_MESSAGE;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
-import static busynessmanager.UI_Constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
-import static busynessmanager.UI_Constants.Constants.CP_NEGATIVE_QUANTITY_MESSAGE;
-import static busynessmanager.UI_Constants.Constants.CP_NEGATIVE_PRICE_MESSAGE;
-import static busynessmanager.UI_Constants.Constants.CP_EXCEPTION_LOG_MESSAGE;
+import static busynessmanager.constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.constants.Constants.MAXIMUM_VALUE;
+import static busynessmanager.constants.Constants.WHITESPACE;
+import static busynessmanager.constants.Constants.EMPTY_STRING;
+import static busynessmanager.constants.Constants.INDEX_0;
+import static busynessmanager.constants.Constants.INDEX_1;
+import static busynessmanager.constants.Constants.INDEX_2;
+import static busynessmanager.constants.Constants.INDEX_3;
+import static busynessmanager.constants.Constants.INDEX_4;
+import static busynessmanager.constants.Constants.INDEX_5;
+import static busynessmanager.constants.Constants.INDEX_6;
+import static busynessmanager.constants.Constants.INDEX_7;
+import static busynessmanager.constants.Constants.HELP_LIST;
+import static busynessmanager.constants.Constants.CP_NAME;
+import static busynessmanager.constants.Constants.CP_COMMAND_SEPARATOR_INDEX;
+import static busynessmanager.constants.Constants.CP_ASSERTION_FAIL_INDEX;
+import static busynessmanager.constants.Constants.CP_HELP_COMMAND;
+import static busynessmanager.constants.Constants.CP_ADD_COMMAND;
+import static busynessmanager.constants.Constants.CP_DELETE_COMMAND;
+import static busynessmanager.constants.Constants.CP_UPDATE_COMMAND;
+import static busynessmanager.constants.Constants.CP_PRINT_COMMAND;
+import static busynessmanager.constants.Constants.CP_SOLD_COMMAND;
+import static busynessmanager.constants.Constants.CP_CLEAR_COMMAND;
+import static busynessmanager.constants.Constants.CP_REVENUE_COMMAND;
+import static busynessmanager.constants.Constants.CP_SEARCH_COMMAND;
+import static busynessmanager.constants.Constants.CP_ID_REGEX;
+import static busynessmanager.constants.Constants.CP_SPLIT_REGEX;
+import static busynessmanager.constants.Constants.CP_ID_FLAG;
+import static busynessmanager.constants.Constants.CP_NAME_FLAG;
+import static busynessmanager.constants.Constants.CP_PRICE_FLAG;
+import static busynessmanager.constants.Constants.CP_QUANTITY_FLAG;
+import static busynessmanager.constants.Constants.CP_INVALID_COMMAND_MESSAGE;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_ADD;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_UPDATE;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SOLD;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_REVENUE;
+import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SEARCH;
+import static busynessmanager.constants.Constants.CP_INVALID_ID_MESSAGE;
+import static busynessmanager.constants.Constants.CP_INVALID_ID_FORMAT_MESSAGE;
+import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
+import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
+import static busynessmanager.constants.Constants.CP_ID_MISSING_MESSAGE;
+import static busynessmanager.constants.Constants.CP_NAME_MISSING_MESSAGE;
+import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
 
 import busynessmanager.exceptions.InvalidStringException;
 import busynessmanager.exceptions.InvalidCommandException;
@@ -54,12 +58,12 @@ import busynessmanager.exceptions.NumberParsingFailedException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+//@@author b1inmeister
 /**
  * Class for parsing the user input, and executing the appropriate methods.
  */
 public class CommandParser {
-
-
     private static final Logger logger = Logger.getLogger(CP_NAME);
     private final InventoryManager inventoryManager;
     private final SalesManager salesManager;
@@ -78,7 +82,6 @@ public class CommandParser {
         this.searchManager = new SearchManager(inventoryManager);
     }
 
-
     /**
      * Constructs the CommandParser class given existing systems for the business.
      *
@@ -87,7 +90,6 @@ public class CommandParser {
      * @param revenueCalculator existing RevenueCalculator for the business.
      * @param searchManager existing SearchManager for the business.
      */
-
     public CommandParser(InventoryManager inventoryManager, SalesManager salesManager,
                          RevenueCalculator revenueCalculator, SearchManager searchManager) {
         this.inventoryManager = inventoryManager;
@@ -95,6 +97,7 @@ public class CommandParser {
         this.revenueCalculator = revenueCalculator;
         this.searchManager = searchManager;
     }
+
 
     /**
      * Parses the user input for execution.
@@ -107,6 +110,7 @@ public class CommandParser {
 
         try {
             int commandSeparatorIndex = getCommandSeparatorIndex(input.trim());
+            assert commandSeparatorIndex > CP_ASSERTION_FAIL_INDEX : CP_LOG_MESSAGE;
 
             command = extractCommand(commandSeparatorIndex, input.trim());
             info = extractInfo(commandSeparatorIndex, input.trim());
@@ -117,7 +121,7 @@ public class CommandParser {
                 UI.printMessage(e.getMessage());
             }
         } catch (InvalidStringException e) {
-            logger.log(Level.SEVERE, CP_EXCEPTION_LOG_MESSAGE, e);
+            logger.log(Level.SEVERE, CP_LOG_MESSAGE, e);
         }
     }
 
@@ -180,6 +184,9 @@ public class CommandParser {
      */
     protected void executeCommand(String command, String info) throws InvalidCommandException {
         switch (command) {
+        case CP_HELP_COMMAND:
+            helpCommand();
+            break;
         case CP_ADD_COMMAND:
             addProduct(info);
             break;
@@ -210,6 +217,13 @@ public class CommandParser {
     }
 
     /**
+     * Prints a list of possible commands and their formats.
+     */
+    protected void helpCommand() {
+        UI.printMessage(HELP_LIST);
+    }
+
+    /**
      * Splits the information String into the product name, quantity and price.
      * It then calls addProduct() from the InventoryManager class.
      *
@@ -222,7 +236,7 @@ public class CommandParser {
         if (!components[INDEX_0].equals(CP_NAME_FLAG) ||
             !components[INDEX_2].equals(CP_QUANTITY_FLAG) ||
             !components[INDEX_4].equals(CP_PRICE_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
         }
 
         String productName;
@@ -235,14 +249,11 @@ public class CommandParser {
             try {
                 productQuantity = parseInt(components[INDEX_3]);
                 productPrice = parseDouble(components[INDEX_5]);
-
-                assert productQuantity >= 0 : CP_NEGATIVE_QUANTITY_MESSAGE;
-                assert productPrice > 0 : CP_NEGATIVE_PRICE_MESSAGE;
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
         }
 
         inventoryManager.addProduct(productName, productQuantity, productPrice);
@@ -262,18 +273,31 @@ public class CommandParser {
             throw new InvalidCommandException(CP_INVALID_ID_FORMAT_MESSAGE);
         }
 
-        String productID;
-
         try {
-            productID = components[INDEX_1];
+            String productIDString;
 
-            if (!productID.matches(CP_ID_REGEX)) {
+            try {
+                productIDString = components[INDEX_1];
+            } catch (IndexOutOfBoundsException e) {
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+            }
+
+            int productIDNumber;
+
+            try {
+                productIDNumber = Integer.parseInt(productIDString);
+            } catch (NumberFormatException e) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             } else {
+                String productID = String.format(CP_ID_REGEX, productIDNumber);
                 inventoryManager.deleteProduct(productID);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_ID_FORMAT_MESSAGE);
+            throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
         }
     }
 
@@ -291,35 +315,48 @@ public class CommandParser {
             !components[INDEX_2].equals(CP_NAME_FLAG) ||
             !components[INDEX_4].equals(CP_QUANTITY_FLAG) ||
             !components[INDEX_6].equals(CP_PRICE_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_6);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
         }
 
-        String productID;
         String productNewName;
         int productNewQuantity;
         double productNewPrice;
 
         try {
-            productID = components[INDEX_1];
             productNewName = components[INDEX_3];
 
             try {
                 productNewQuantity = parseInt(components[INDEX_5]);
                 productNewPrice = parseDouble(components[INDEX_7]);
-
-                assert productNewQuantity >= 0 : CP_NEGATIVE_QUANTITY_MESSAGE;
-                assert productNewPrice > 0 : CP_NEGATIVE_PRICE_MESSAGE;
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
-        } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_6);
-        }
 
-        if (!productID.matches(CP_ID_REGEX)) {
-            throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
-        } else {
-            inventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
+            String productIDString;
+
+            try {
+                productIDString = components[INDEX_1];
+            } catch (IndexOutOfBoundsException e) {
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+            }
+
+
+            int productIDNumber;
+
+            try {
+                productIDNumber = Integer.parseInt(productIDString);
+            } catch (NumberFormatException e) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            } else {
+                String productID = String.format(CP_ID_REGEX, productIDNumber);
+                inventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
+            }
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
         }
     }
 
@@ -340,30 +377,43 @@ public class CommandParser {
         String[] components = splitInfo(info);
 
         if (!components[INDEX_0].equals(CP_ID_FLAG) || !components[INDEX_2].equals(CP_QUANTITY_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_2);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SOLD);
         }
 
-        String productID;
-        int quantitySold;
-
         try {
-            productID = components[INDEX_1];
+            int quantitySold;
 
             try {
                 quantitySold = parseInt(components[INDEX_3]);
-
-                assert quantitySold >= 0 : CP_NEGATIVE_QUANTITY_MESSAGE;
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE_2);
             }
-        } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_2);
-        }
 
-        if (!productID.matches(CP_ID_REGEX)) {
-            throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
-        } else {
-            salesManager.recordSale(productID, quantitySold);
+
+            String productIDString;
+
+            try {
+                productIDString = components[INDEX_1];
+            } catch (IndexOutOfBoundsException e) {
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+            }
+
+            int productIDNumber;
+
+            try {
+                productIDNumber = Integer.parseInt(productIDString);
+            } catch (NumberFormatException e) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            } else {
+                String productID = String.format(CP_ID_REGEX, productIDNumber);
+                salesManager.recordSale(productID, quantitySold);
+            }
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SOLD);
         }
     }
 
@@ -378,21 +428,34 @@ public class CommandParser {
         String[] components = splitInfo(info);
 
         if (!components[INDEX_0].equals(CP_ID_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_3);
+            throw new InvalidCommandException(CP_INVALID_ID_FORMAT_MESSAGE);
         }
 
-        String productID;
-
         try {
-            productID = components[INDEX_1];
+            String productIDString;
 
-            if (!productID.matches(CP_ID_REGEX)) {
+            try {
+                productIDString = components[INDEX_1];
+            } catch (IndexOutOfBoundsException e) {
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+            }
+
+            int productIDNumber;
+
+            try {
+                productIDNumber = Integer.parseInt(productIDString);
+            } catch (NumberFormatException e) {
+                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+            }
+
+            if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             } else {
+                String productID = String.format(CP_ID_REGEX, productIDNumber);
                 salesManager.clearSales(productID);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_3);
+            throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
         }
     }
 
@@ -406,26 +469,39 @@ public class CommandParser {
      */
     protected void computeRevenue(String info) throws InvalidCommandException {
         if (info.isEmpty()) {
-            revenueCalculator.computeTotalRevenue();
+            double totalRevenue = revenueCalculator.computeTotalRevenue();
         } else {
             String[] components = splitInfo(info);
 
             if (!components[INDEX_0].equals(CP_ID_FLAG)) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_4);
+                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_REVENUE);
             }
 
-            String productID;
-
             try {
-                productID = components[INDEX_1];
+                String productIDString;
 
-                if (!productID.matches(CP_ID_REGEX)) {
+                try {
+                    productIDString = components[INDEX_1];
+                } catch (IndexOutOfBoundsException e) {
+                    throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+                }
+
+                int productIDNumber;
+
+                try {
+                    productIDNumber = Integer.parseInt(productIDString);
+                } catch (NumberFormatException e) {
+                    throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                }
+
+                if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                     throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
                 } else {
-                    revenueCalculator.computeProductRevenue(productID);
+                    String productID = String.format(CP_ID_REGEX, productIDNumber);
+                    double revenue = revenueCalculator.computeProductRevenue(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_4);
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
         }
     }
@@ -447,26 +523,39 @@ public class CommandParser {
             try {
                 productName = components[INDEX_1];
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_5);
+                throw new InvalidCommandException(CP_NAME_MISSING_MESSAGE);
             }
 
             searchManager.searchByName(productName);
         } else if (components[INDEX_0].equals(CP_ID_FLAG)) {
-            String productID;
-
             try {
-                productID = components[INDEX_1];
+                String productIDString;
 
-                if (!productID.matches(CP_ID_REGEX)) {
+                try {
+                    productIDString = components[INDEX_1];
+                } catch (IndexOutOfBoundsException e) {
+                    throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+                }
+
+                int productIDNumber;
+
+                try {
+                    productIDNumber = Integer.parseInt(productIDString);
+                } catch (NumberFormatException e) {
+                    throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                }
+
+                if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                     throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
                 } else {
+                    String productID = String.format(CP_ID_REGEX, productIDNumber);
                     searchManager.searchById(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_5);
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
         } else {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_5);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SEARCH);
         }
     }
 
