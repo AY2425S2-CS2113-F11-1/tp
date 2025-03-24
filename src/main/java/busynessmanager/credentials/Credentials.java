@@ -24,10 +24,18 @@ public class Credentials {
      */
     public Credentials(String businessID, String businessName, String businessPassword,
                        BusynessManager.BusinessType businessType) {
-        assert businessID != null && !businessID.isEmpty() : "Business ID cannot be null or empty";
-        assert businessName != null && !businessName.isEmpty() : "Business name cannot be null or empty";
-        assert businessPassword != null && !businessPassword.isEmpty() : "Business password cannot be null or empty";
-        assert businessType != null : "Business type cannot be null";
+        if (businessID == null || businessID.isEmpty()) {
+            throw new IllegalArgumentException("Business ID cannot be null or empty");
+        }
+        if (businessName == null || businessName.isEmpty()) {
+            throw new IllegalArgumentException("Business name cannot be null or empty");
+        }
+        if (businessPassword == null || businessPassword.isEmpty()) {
+            throw new IllegalArgumentException("Business password cannot be null or empty");
+        }
+        if (businessType == null) {
+            throw new IllegalArgumentException("Business type cannot be null");
+        }
 
         this.businessID = businessID;
         this.businessName = businessName;
