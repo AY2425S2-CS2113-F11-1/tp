@@ -282,8 +282,7 @@ public class CommandParser {
             try {
                 productIDString = components[INDEX_1];
             } catch (IndexOutOfBoundsException e) {
-                // replace with CP_ID_MISSING_MESSAGE
-                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
 
             int productIDNumber;
@@ -341,12 +340,9 @@ public class CommandParser {
             try {
                 productIDString = components[INDEX_1];
             } catch (IndexOutOfBoundsException e) {
-                // replace with CP_ID_MISSING_MESSAGE
-                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
-        } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
-        }
+
 
             int productIDNumber;
 
@@ -363,7 +359,7 @@ public class CommandParser {
                 inventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_6);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
         }
     }
 
@@ -395,17 +391,14 @@ public class CommandParser {
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE_2);
             }
-        } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SOLD);
-        }
+
 
             String productIDString;
 
             try {
                 productIDString = components[INDEX_1];
             } catch (IndexOutOfBoundsException e) {
-                // replace with CP_ID_MISSING_MESSAGE
-                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
 
             int productIDNumber;
@@ -423,7 +416,7 @@ public class CommandParser {
                 salesManager.recordSale(productID, quantitySold);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_2);
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SOLD);
         }
     }
 
@@ -447,8 +440,7 @@ public class CommandParser {
             try {
                 productIDString = components[INDEX_1];
             } catch (IndexOutOfBoundsException e) {
-                // replace with CP_ID_MISSING_MESSAGE
-                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
 
             int productIDNumber;
@@ -494,8 +486,7 @@ public class CommandParser {
                 try {
                     productIDString = components[INDEX_1];
                 } catch (IndexOutOfBoundsException e) {
-                    // replace with CP_ID_MISSING_MESSAGE
-                    throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                    throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
                 }
 
                 int productIDNumber;
@@ -546,8 +537,7 @@ public class CommandParser {
                 try {
                     productIDString = components[INDEX_1];
                 } catch (IndexOutOfBoundsException e) {
-                    // replace with CP_ID_MISSING_MESSAGE
-                    throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+                    throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
                 }
 
                 int productIDNumber;
