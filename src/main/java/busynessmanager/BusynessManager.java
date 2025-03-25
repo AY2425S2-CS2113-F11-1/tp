@@ -137,7 +137,17 @@ public class BusynessManager {
         String name = scanner.nextLine().trim();
 
         UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE_2);
-        String password = scanner.nextLine().trim();
+        String password;
+
+        while (true) { // Loop until a valid password is provided
+            System.out.print("Enter business password: ");
+            password = scanner.nextLine().trim();
+
+            if (!password.isEmpty()) { // Valid password
+                break;
+            }
+            System.out.println("Error: Password cannot be empty. Please try again.");
+        }
 
         UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_TYPE_MESSAGE);
         String typeInput = scanner.nextLine().trim().toUpperCase();
