@@ -41,6 +41,8 @@ public class Constants {
     public static final String BM_BUSINESSTYPE_FNB = "FNB";
     public static final String BM_BUSINESSTYPE_RETAIL = "RETAIL";
     public static final String BM_FIRST_SETUP_APPROVAL = "yes";
+    public static final String CP_READ_BUSINESS_INFO_COMMAND = "readbusinessinfo";
+
 
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
     public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected.";

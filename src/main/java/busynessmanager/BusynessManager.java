@@ -255,6 +255,30 @@ public class BusynessManager {
     }
 
     /**
+     * Retrieves business details as a formatted string.
+     *
+     * @return A string containing business credentials.
+     */
+    public String getBusinessDetails() {
+        if (credentials == null) {
+            return "No business credentials available.";
+        }
+        return "Business ID: " + credentials.getBusinessID() + "\n"
+                + "Business Name: " + credentials.getBusinessName() + "\n"
+                + "Business Type: " + credentials.getBusinessType();
+    }
+
+    /**
+     * Retrieves the inventory manager instance.
+     *
+     * @return The {@code InventoryManager} instance managing the business inventory.
+     */
+    public InventoryManager getInventoryManager() {
+        return inventoryManager;
+    }
+
+
+    /**
      * Extracts the name of the business from the user input.
      *
      * @param scanner The scanner object for user input.
