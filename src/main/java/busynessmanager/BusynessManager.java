@@ -47,7 +47,7 @@ public class BusynessManager {
     // Stores business ID & passwords
     private static final HashMap<String, String> credentials = new HashMap<>();
 
-    protected enum BusinessType {
+    public enum BusinessType {
         FNB, RETAIL
     }
 
