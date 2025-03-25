@@ -1,3 +1,4 @@
+//@@author LEESY02
 package busynessmanager.revenue;
 
 import busynessmanager.product.Product;
@@ -15,7 +16,6 @@ import static busynessmanager.constants.Constants.RC_TOTAL_REVENUE_FORMAT;
 import java.util.HashMap;
 
 
-//@@author LEESY02
 /**
  * RevenueCalculator is used to calculate the various revenues that is produced in BusynessManager.
  */

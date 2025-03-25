@@ -1,3 +1,4 @@
+//@@author b1inmeister
 package busynessmanager.parser;
 
 import busynessmanager.managers.InventoryManager;
@@ -59,7 +60,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-//@@author b1inmeister
 /**
  * Class for parsing the user input, and executing the appropriate methods.
  */

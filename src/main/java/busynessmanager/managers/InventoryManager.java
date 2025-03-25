@@ -1,3 +1,4 @@
+//@@author himethcodes
 package busynessmanager.managers;
 
 import busynessmanager.product.Product;
@@ -19,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-//@@author himethcodes
 /**
  * Manages the inventory of products, allowing operations such as adding, updating, and removing products.
  */

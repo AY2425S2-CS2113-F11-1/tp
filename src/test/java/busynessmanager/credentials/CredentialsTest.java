@@ -1,18 +1,18 @@
+//@@author amirhusaini06
 package busynessmanager.credentials;
-
-import busynessmanager.BusynessManager;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import busynessmanager.BusynessManager;
+
+
 /**
  * Unit tests for the {@link Credentials} class.
  * Ensures correct object creation and exception handling.
  */
-//@@author amirhusaini06
 class CredentialsTest {
-
     /**
      * Tests successful creation of a valid Credentials object.
      */
