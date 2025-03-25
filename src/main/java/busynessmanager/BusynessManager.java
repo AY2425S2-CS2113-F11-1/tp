@@ -35,7 +35,13 @@ import static busynessmanager.constants.Constants.BM_ID_ASSERTION_FAIL_MESSAGE;
 import static busynessmanager.constants.Constants.BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE;
 //import static busynessmanager.constants.Constants.BM_PASSWORD_EMPTY_ASSERTION_FAIL_MESSAGE;
 
-import java.io.*;
+
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -45,17 +51,16 @@ import java.util.Scanner;
  * Handles user authentication, business setup, and command execution.
  */
 public class BusynessManager {
-    private Credentials credentials;
-    private final InventoryManager inventoryManager;
+    private static final String DATA_FOLDER = "data";
+    private static final String BUSINESS_INFO_FILE = DATA_FOLDER + "/BusinessInfo.txt";
 
     public enum BusinessType {
         FNB, RETAIL
     }
 
+    private Credentials credentials;
+    private final InventoryManager inventoryManager;
     private final CommandParser commandParser;
-
-    private static final String DATA_FOLDER = "data";
-    private static final String BUSINESS_INFO_FILE = DATA_FOLDER + "/BusinessInfo.txt";
 
 
     /**
