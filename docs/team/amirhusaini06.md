@@ -1,6 +1,4 @@
-<!--
-//@@author amirhusaini06
--->
+<!-- @@author amirhusaini06 -->
 # Amir Husaini Bin Musa - Project Portfolio Page
 
 ## Overview of Project: Busyness Manager

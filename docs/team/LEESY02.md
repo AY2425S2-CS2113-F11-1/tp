@@ -1,6 +1,4 @@
-<!--
-//@@author LEESY02
--->
+<!-- @@author LEESY02 -->
 # Lee Seung Yoon - Project Portfolio Page
 
 ## Overview of Project: Busyness Manager

@@ -1,6 +1,4 @@
-<!--
-//@@author amirhusaini06
--->
+<!-- @@author amirhusaini06 -->
 # User Guide for Busyness Manager
 
 ## Start Up:

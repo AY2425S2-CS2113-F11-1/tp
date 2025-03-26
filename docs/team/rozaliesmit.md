@@ -1,6 +1,4 @@
-<!--
-//@@author rozaliesmit
--->
+<!-- @@author rozaliesmit -->
 # Rozalie Lisen Smit - Project Portfolio Page
 
 ## Overview of Project: Busyness Manager

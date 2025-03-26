@@ -1,6 +1,4 @@
-<!--
-//@@author b1inmeister
--->
+<!-- @@author b1inmeister -->
 # Lee Ming Kai Joshua - Project Portfolio Page
 
 ## Overview of Project: Busyness Manager
@@ -36,6 +34,7 @@ of products. The application is written in Java, with around 2.5kLoC.
 > _Developer's Guide:_
   * Added implementation and design details for the CommandParser class.
   * Added UML sequence diagrams for the CommandParser class and its methods.
+  * Added Product Scope, User Stories, NFR and Testing Instructions. 
 ---
 **Contributions to Team-Based Tasks:**
 * Set up the team GitHub repository.

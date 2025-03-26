@@ -1,6 +1,4 @@
-<!--
-//@@author himethcodes
--->
+<!-- @@author himethcodes -->
 # Himeth Thewmika - Project Portfolio Page
 
 ## Overview of Project: Busyness Manager

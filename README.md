@@ -1,6 +1,4 @@
-<!--
-//@@author b1inmeister
--->
+<!-- @@author b1inmeister -->
 # Busyness Manager
 
 Busyness Manager is a CLI-based inventory system that will allow users to organise their products, track stock
