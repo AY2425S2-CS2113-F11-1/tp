@@ -49,8 +49,8 @@ class BusynessManagerTest {
     void testBusinessTypeSelection() {
         Scanner setupInput = new Scanner("testID\ntestName\ntestPass\nFNB\n");
         busynessManager.firstTimeSetup(setupInput);
-
         Scanner businessTypeInput = new Scanner("FNB\n");
+
         assertNotNull(busynessManager.extractBusinessType(businessTypeInput),
                 "Business type should not be null");
     }

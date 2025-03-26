@@ -36,7 +36,7 @@ class CredentialsTest {
                 new Credentials(null, "My Business",
                         "securePass", BusynessManager.BusinessType.RETAIL));
 
-        assertEquals("Business ID cannot be null or empty", exception.getMessage());
+        assertEquals("Business ID should not be null or empty.", exception.getMessage());
     }
 
     /**
@@ -48,7 +48,7 @@ class CredentialsTest {
                 new Credentials("", "My Business",
                         "securePass", BusynessManager.BusinessType.RETAIL));
 
-        assertEquals("Business ID cannot be null or empty", exception.getMessage());
+        assertEquals("Business ID should not be null or empty.", exception.getMessage());
     }
 
     /**
@@ -60,7 +60,7 @@ class CredentialsTest {
                 new Credentials("12345", null,
                         "securePass", BusynessManager.BusinessType.RETAIL));
 
-        assertEquals("Business name cannot be null or empty", exception.getMessage());
+        assertEquals("Business name should not be null or empty.", exception.getMessage());
     }
 
     /**
@@ -72,7 +72,7 @@ class CredentialsTest {
                 new Credentials("12345", "",
                         "securePass", BusynessManager.BusinessType.RETAIL));
 
-        assertEquals("Business name cannot be null or empty", exception.getMessage());
+        assertEquals("Business name should not be null or empty.", exception.getMessage());
     }
 
     /**
@@ -84,7 +84,7 @@ class CredentialsTest {
                 new Credentials("12345", "My Business",
                         null, BusynessManager.BusinessType.RETAIL));
 
-        assertEquals("Business password cannot be null or empty", exception.getMessage());
+        assertEquals("Business password should not be null or empty.", exception.getMessage());
     }
 
     /**
@@ -96,7 +96,7 @@ class CredentialsTest {
                 new Credentials("12345", "My Business",
                         "", BusynessManager.BusinessType.RETAIL));
 
-        assertEquals("Business password cannot be null or empty", exception.getMessage());
+        assertEquals("Business password should not be null or empty.", exception.getMessage());
     }
 
     /**
@@ -108,7 +108,7 @@ class CredentialsTest {
                 new Credentials("12345", "My Business",
                         "securePass", null));
 
-        assertEquals("Business type cannot be null", exception.getMessage());
+        assertEquals("Business type should not be null.", exception.getMessage());
     }
 }
 

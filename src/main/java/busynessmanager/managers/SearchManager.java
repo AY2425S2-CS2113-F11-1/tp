@@ -4,15 +4,15 @@ package busynessmanager.managers;
 import busynessmanager.product.Product;
 import busynessmanager.ui.UI;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
 import static busynessmanager.constants.Constants.SRM_ID_QUERY_FORMAT;
 import static busynessmanager.constants.Constants.SRM_NAME_QUERY_FORMAT;
 import static busynessmanager.constants.Constants.SRM_PRODUCT_NOT_FOUND_FORMAT;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 
 /**
