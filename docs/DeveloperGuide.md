@@ -4,7 +4,8 @@
 [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip)
 
 ## Design & implementation
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### CommandParser
+<puml src="diagrams/CommandParser.puml" width=300 />
 
 ## Product scope
 ### Target user profile
@@ -52,12 +53,27 @@ out commands, compared to using the mouse to navigate a GUI application.
 4. run `java -jar <file name>.jar` on Command Prompt / Terminal.
 
 ### Adding a product
+* Try tags without `/` / missing tags / missing tag attributes
+* Try negative quantities for `/qty` and `/price`
 
 ### Deleting a product
+* Try tags without `/` / missing tag attributes
+* Try invalid ID formats / non-existent IDs
 
 ### Updating a product
+* Try tags without `/` / missing tags / missing tag attributes
+* Try invalid ID formats / non-existent IDs
+* Try negative quantities for `/qty` and `/price`
 
 ### Searching a product
+* Try tags without `/` / missing tag attributes
+* Try invalid ID formats / non-existent IDs
+
+### Managing Sales
+* Try tags without `/` / missing tags / missing tag attributes
+* Try invalid ID formats / non-existent IDs
+* Try negative quantities for `/qty`
 
 ### Calculation of Revenue
-
+* Try tags without `/` / missing tag attributes
+* Try invalid ID formats / non-existent IDs
