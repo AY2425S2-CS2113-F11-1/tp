@@ -51,6 +51,8 @@ public class RevenueCalculator {
             totalRevenue += individualRevenue;
         }
 
+        assert totalRevenue >= MINIMUM_VALUE;
+
         UI.printFormattedMessage(RC_TOTAL_REVENUE_FORMAT + NEWLINE, totalRevenue);
 
         return totalRevenue;
