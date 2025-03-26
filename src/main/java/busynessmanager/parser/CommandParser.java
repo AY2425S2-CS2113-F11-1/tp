@@ -1,10 +1,18 @@
 package busynessmanager.parser;
 
+import busynessmanager.BusynessManager;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.managers.SearchManager;
 import busynessmanager.revenue.RevenueCalculator;
 import busynessmanager.ui.UI;
+
+import busynessmanager.exceptions.InvalidStringException;
+import busynessmanager.exceptions.InvalidCommandException;
+import busynessmanager.exceptions.NumberParsingFailedException;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.MAXIMUM_VALUE;
@@ -50,13 +58,7 @@ import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
 import static busynessmanager.constants.Constants.CP_ID_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_NAME_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
-
-import busynessmanager.exceptions.InvalidStringException;
-import busynessmanager.exceptions.InvalidCommandException;
-import busynessmanager.exceptions.NumberParsingFailedException;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import static busynessmanager.constants.Constants.CP_READ_BUSINESS_INFO_COMMAND;
 
 
 //@@author b1inmeister
@@ -210,6 +212,9 @@ public class CommandParser {
             break;
         case CP_SEARCH_COMMAND:
             searchForProduct(info);
+            break;
+        case CP_READ_BUSINESS_INFO_COMMAND:
+            readBusinessInfo();
             break;
         default:
             throw new InvalidCommandException(CP_INVALID_COMMAND_MESSAGE);
@@ -597,4 +602,14 @@ public class CommandParser {
             throw new NumberParsingFailedException();
         }
     }
+    /**
+     * Reads business credentials and inventory from BusinessInfo.txt.
+     */
+    protected void readBusinessInfo() {
+        BusynessManager busynessManager = new BusynessManager();
+        UI.printMessage("Business Credentials:\n" + busynessManager.getBusinessDetails());
+        UI.printMessage("Current Inventory:");
+        busynessManager.getInventoryManager().printProducts();
+    }
+
 }
