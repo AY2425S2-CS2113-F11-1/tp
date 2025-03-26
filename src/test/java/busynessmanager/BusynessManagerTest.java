@@ -18,33 +18,40 @@ class BusynessManagerTest {
         busynessManager = new BusynessManager();
     }
 
+    /**
+     * Tests the first-time setup process to ensure credentials are stored correctly.
+     */
     @Test
     void testFirstTimeSetup() {
-        Scanner input = new Scanner("testName\ntestPass\nFNB\n");
-        busynessManager.firstTimeSetup(input, "testID");
+        Scanner input = new Scanner("testID\ntestName\ntestPass\nFNB\n");
+        busynessManager.firstTimeSetup(input);
 
         assertTrue(busynessManager.validPassword("testID", "testPass"),
                 "Password should be set correctly");
     }
 
+    /**
+     * Tests login validation by checking invalid password scenarios.
+     */
     @Test
-    void testLoginWithInvalidCredentials() {
-        Scanner setupInput = new Scanner("testName\ntestPass\nFNB\n");
-        busynessManager.firstTimeSetup(setupInput, "testID");
-
-        Scanner loginInput = new Scanner("wrongPass\n");
-        busynessManager.login(loginInput, "testID");
+    void testValidPasswordWithInvalidCredentials() {
+        Scanner setupInput = new Scanner("testID\ntestName\ntestPass\nFNB\n");
+        busynessManager.firstTimeSetup(setupInput);
 
         assertFalse(busynessManager.validPassword("testID", "wrongPass"),
-                "Login should fail with incorrect password");
+                "Password validation should fail for incorrect password");
     }
 
+    /**
+     * Tests the business type extraction method to ensure it returns a valid type.
+     */
     @Test
     void testBusinessTypeSelection() {
-        Scanner setupInput = new Scanner("testName\ntestPass\nFNB\n");
-        busynessManager.firstTimeSetup(setupInput, "testID");
+        Scanner setupInput = new Scanner("testID\ntestName\ntestPass\nFNB\n");
+        busynessManager.firstTimeSetup(setupInput);
 
-        assertNotNull(busynessManager.extractBusinessType(new Scanner("FNB\n")),
+        Scanner businessTypeInput = new Scanner("FNB\n");
+        assertNotNull(busynessManager.extractBusinessType(businessTypeInput),
                 "Business type should not be null");
     }
 }

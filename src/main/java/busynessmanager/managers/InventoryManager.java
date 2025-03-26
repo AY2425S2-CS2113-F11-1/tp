@@ -16,6 +16,8 @@ import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
 import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.IM_QTY_EXCEED_ERROR_MESSAGE;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -166,6 +168,43 @@ public class InventoryManager {
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
             return false;
+        }
+    }
+
+    //@@author amirhusaini06
+    /**
+     * Retrieves the inventory data as a string for saving to a file.
+     *
+     * @return A formatted string representing the inventory data.
+     */
+    public String getInventoryData() {
+        StringBuilder data = new StringBuilder();
+        for (Product product : productList.values()) {
+            data.append(product.getId()).append(",")
+                    .append(product.getName()).append(",")
+                    .append(product.getQuantity()).append(",")
+                    .append(product.getPrice()).append("\n");
+        }
+        return data.toString();
+    }
+
+    /**
+     * Loads inventory data from a buffered reader.
+     *
+     * @param reader The buffered reader containing inventory data.
+     * @throws IOException If an I/O error occurs while reading.
+     */
+    public void loadInventory(BufferedReader reader) throws IOException {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(",");
+            if (parts.length == 4) {
+                String id = parts[0];
+                String name = parts[1];
+                int quantity = Integer.parseInt(parts[2]);
+                double price = Double.parseDouble(parts[3]);
+                productList.put(id, new Product(name, quantity, price));
+            }
         }
     }
 
