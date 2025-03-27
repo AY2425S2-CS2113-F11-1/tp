@@ -20,7 +20,7 @@ The **Busyness Manager** is a command-line business management application desig
 - **Data Persistence:** Business credentials and inventory data are stored in a text file within the `data/` directory, ensuring persistence across application restarts.
 - **Authentication:** The application verifies business credentials at startup using stored authentication data.
 - **User Commands:** The application accepts structured user input through a command-line interface, with validation for incorrect formats.
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+
 The purpose of this application was to help businesses account for their sales and revenue.
 
 Hence, we required multiple different classes to manage various different aspects of a business owner, such as:
@@ -49,7 +49,7 @@ while the SearchManager helps business owners to search and keep track of each p
 To calculate the revenue of the business (or each sales item), the RevenueCalculator class has an instance of 
 SalesManager to calculate the revenue using the "Price" and "Quantity sold" of each Product object
 
-To have a appropriate and usable interface for the users, we have the UI class, that handles printing of the different
+To have an appropriate and usable interface for the users, we have the UI class, that handles printing of the different
 output to its users, while the CommandParser class receives inputs and commands from its users.
 
 All of these features are contained under the main BusynessManager class to provide its users a smooth experience in 
