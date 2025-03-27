@@ -26,6 +26,40 @@ ensuring persistence across application restarts.
 - **User Commands:** The application accepts structured user input through a command-line interface, with validation for
 incorrect formats.
 
+The purpose of this application was to help businesses account for their sales and revenue.
+
+Hence, we required multiple different classes to manage various different aspects of a business owner, such as:
+1. Product and Inventory
+2. Sales
+3. Revenue
+4. An appropriate and usable UI for the business to keep track of the above factors
+
+The inventory of each business is therefore handled by a InventoryManager class, which contains a hashmap of various
+key-value pairs of String ID and Product objects.
+
+Each Product object contains various useful attributes, such as:
+1. String ID
+2. String name (of the product)
+3. Current stock quantity
+4. Quantity sold
+5. Price of each instance of the product
+
+InventoryManager (IM), while holding onto these objects in a data structure, has various methods to modify and display
+every product that is present in the business.
+
+To utilise these functionalities present in IM, SalesManager and SearchManager each has an instance of the same
+InventoryManager object. For example, SalesManager will be in charge of recording the quantity sold of each item
+while the SearchManager helps business owners to search and keep track of each product.
+
+To calculate the revenue of the business (or each sales item), the RevenueCalculator class has an instance of
+SalesManager to calculate the revenue using the "Price" and "Quantity sold" of each Product object.
+
+To have an appropriate and usable interface for the users, we have the UI class, that handles printing of the different
+output to its users, while the CommandParser class receives inputs and commands from its users.
+
+All of these features are contained under the main BusynessManager class to provide its users a smooth experience in
+taking care of the different needs of businesses.
+
 
 ## Implementation
 ### CommandParser Implementation
