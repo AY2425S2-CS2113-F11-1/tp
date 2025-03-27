@@ -1,10 +1,34 @@
 # Developer Guide
 
 ## Acknowledgements
-[CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip)
+* [CS2113 individualProject (amirhusaini06)](https://github.com/amirhusaini06/ip)
+* [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip)
 
-## Design & Implementation
-### CommandParser
+
+## Design
+The **Busyness Manager** is a command-line business management application designed for small business owners to manage 
+their inventory, sales, and revenue tracking efficiently.
+
+### Architecture Overview
+- The project follows an **Object-Oriented Programming (OOP)** approach, with separate classes handling different 
+aspects of business management.
+- The **Command Parser** is responsible for processing user input and calling the appropriate methods.
+- The **InventoryManager** manages the addition, removal, and modification of products.
+- The **SalesManager** keeps track of product sales and revenue.
+- The **RevenueCalculator** computes total revenue and sales reports.
+- The **Credentials** class stores business authentication details, ensuring security.
+- The **BusynessManager** acts as the central controller, orchestrating interactions between components.
+
+### Key Features & Implementation Details
+- **Data Persistence:** Business credentials and inventory data are stored in a text file within the `data/` directory, 
+ensuring persistence across application restarts.
+- **Authentication:** The application verifies business credentials at startup using stored authentication data.
+- **User Commands:** The application accepts structured user input through a command-line interface, with validation for
+incorrect formats.
+
+
+## Implementation
+### CommandParser Implementation
 <puml src="diagrams/CommandParser.puml" width=300 />
 
 The CommandParser class connects the main BusynessManager class and the other Manager classes. These include the 
@@ -91,6 +115,7 @@ Busyness Manager can manage the inventory of a business in a faster and more org
 application. Moreover, it is cheaper to run and maintain, compared to other inventory management applications in the 
 market.
 
+
 ## User Stories
 | Version | As a ...                                 | I want to ...                                        | So that I can ...                                               |
 |---------|------------------------------------------|------------------------------------------------------|-----------------------------------------------------------------|
@@ -105,14 +130,23 @@ market.
 | v2.0    | forgetful business owner                 | have a list of possible commands and formats         | recall what commands I can use                                  |
 | v2.0    | business owner                           | save my database                                     | reuse the existing database when I restart the application      |
 
+
 ## Non-Functional Requirements
 * Should work on any _mainstream OS_ with Java 17 installed.
 * Should serve a business with up to 10,000 goods for sale.
 * A user with decent typing speed for normal text should be able to complete most tasks faster through typing
 out commands, compared to using the mouse to navigate a GUI application.
 
+
 ## Glossary
+* **Business Credentials** - Unique identifiers (ID, name, password) for a registered business.
+* **Command Parser** - A component responsible for interpreting user commands and triggering appropriate actions.
+* **Inventory Manager** - Manages stock, allowing addition, deletion, and updates of products.
+* **Sales Manager** - Tracks product sales and ensures accurate revenue reporting.
+* **Revenue Calculator** - Computes total revenue and generates sales reports.
+* **CLI (Command-Line Interface)** - A text-based interface where users interact with the application.
 * **Mainstream OS** - Windows, Linux, Unix, macOS
+
 
 ## Instructions for Manual Testing
 ### Launch
