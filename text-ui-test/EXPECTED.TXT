@@ -1,14 +1,13 @@
 No previous business data found.
 Welcome to Busyness Manager!
-ID does not exist. Do you want to add your business? 
-Enter Business ID: Enter Business Name: Enter Business Password: Enter business password: Error: Password cannot be empty. Please try again.
-Enter business password: Enter Business Type (FNB/RETAIL): Business data saved successfully!
+No existing ID. Do you want to add your business? Enter Business ID: Error: No input detected.
+Enter Business ID: Enter Business Name: Error: No input detected.
+Enter Business Name: Enter Business Password: Error: No input detected.
+Enter Business Password: Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
+Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
+Enter Business Type (FNB/RETAIL): Business data saved successfully!
 Business setup complete!
 Busyness Manager is ready. Type 'help' for commands.
->Command does not exist. Please try again.
->Command does not exist. Please try again.
->Command does not exist. Please try again.
->Command does not exist. Please try again.
 >add         add /name <name> /qty <number> /price <number>
 delete      delete /id <number>
 update      update /id <number> /name <name> /qty <number> /price <number>

@@ -1,5 +1,5 @@
-<!-- @@author amirhusaini06 -->
-# Amir Husaini Bin Musa - Project Portfolio Page
+<!-- @@author rozaliesmit -->
+# Rozalie Lisen Smit - Project Portfolio Page
 
 ## Overview of Project: Busyness Manager
 Busyness Manager is a CLI inventory management application designed to help businesses maintain their inventory

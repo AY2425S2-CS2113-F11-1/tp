@@ -1,6 +1,7 @@
+//@@author LEESY02
 package busynessmanager.constants;
 
-//@@author LEESY02
+
 /**
  * Constants class for usage.
  * Note:
@@ -14,6 +15,7 @@ public class Constants {
     public static final String EMPTY_STRING = "";
     public static final String WHITESPACE = " ";
     public static final String NEWLINE = "\n";
+    public static final String FILE_REGEX = ",";
     public static final int MINIMUM_VALUE = 0;
     public static final int MAXIMUM_VALUE = 9999;
     public static final int INDEX_0 = 0;
@@ -41,13 +43,15 @@ public class Constants {
     public static final String BM_BUSINESSTYPE_FNB = "FNB";
     public static final String BM_BUSINESSTYPE_RETAIL = "RETAIL";
     public static final String BM_FIRST_SETUP_APPROVAL = "yes";
-    public static final String CP_READ_BUSINESS_INFO_COMMAND = "readbusinessinfo";
-
+    public static final String BM_NAME_TITLE = "Business Name: ";
+    public static final String BM_TYPE_TITLE = "Business Type: ";
+    public static final String BM_ID_TITLE = "Business ID: ";
+    public static final String BM_INVENTORY_TITLE = "---INVENTORY---";
 
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
     public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected.";
     public static final String BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE = "Invalid business type." + TRY_AGAIN_MESSAGE;
-    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "ID does not exist. Do you want to add your business? ";
+    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "No existing ID. Do you want to add your business? ";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
@@ -61,20 +65,28 @@ public class Constants {
     public static final String BM_EXIT_KEYWORD = "exit";
     public static final String BM_EXIT_MESSAGE = "Exiting Busyness Manager...";
 
-    public static final String BM_SCANNER_ASSERTION_FAIL_MESSAGE = "Scanner should not be null.";
     public static final String BM_ID_ASSERTION_FAIL_MESSAGE = "Business ID should not be null or empty.";
-    public static final String BM_NAME_ASSERTION_FAIL_MESSAGE = "Business name should not be empty.";
+    public static final String BM_NAME_ASSERTION_FAIL_MESSAGE = "Business name should not be null or empty.";
+    public static final String BM_PASSWORD_ASSERTION_FAIL_MESSAGE = "Business password should not be null or empty.";
     public static final String BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE = "Business type should not be null.";
-    public static final String BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE = "Password should not be null.";
-    public static final String BM_PASSWORD_EMPTY_ASSERTION_FAIL_MESSAGE = "Business password should not be empty.";
+    public static final String BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE = "Business password should not be null.";
+
+    public static final String BM_NO_CREDENTIALS_MESSAGE = "No business credentials available.";
+    public static final String BM_NO_DATA_MESSAGE = "No previous business data found.";
+    public static final String BM_SAVE_SUCCESS_MESSAGE = "Business data saved successfully!";
+    public static final String BM_SAVE_FAIL_MESSAGE = "Error saving business data: ";
+    public static final String BM_LOAD_SUCCESS_MESSAGE = "Business data loaded successfully!";
+    public static final String BM_LOAD_FAIL_MESSAGE = "Error loading business data: ";
 
 
     // CommandParser
     public static final int CP_COMMAND_SEPARATOR_INDEX = -1;
     public static final int CP_ASSERTION_FAIL_INDEX = -2;
     public static final String CP_NAME = "CommandParser";
-    public static final String CP_ID_REGEX = "ID_%04d";
     public static final String CP_SPLIT_REGEX = "\\s+";
+
+    public static final String CP_CREDENTIALS_TITLE = "Business Credentials:\n";
+    public static final String CP_INVENTORY_TITLE = "Current Inventory:";
 
     public static final String CP_HELP_COMMAND = "help";
     public static final String CP_ADD_COMMAND = "add";
@@ -85,6 +97,7 @@ public class Constants {
     public static final String CP_CLEAR_COMMAND = "clear";
     public static final String CP_REVENUE_COMMAND = "revenue";
     public static final String CP_SEARCH_COMMAND = "search";
+    public static final String CP_READ_BUSINESS_INFO_COMMAND = "readbusinessinfo";
 
     public static final String CP_NAME_FLAG = "/name";
     public static final String CP_QUANTITY_FLAG = "/qty";
@@ -115,6 +128,7 @@ public class Constants {
 
     // InventoryManager
     public static final String PRODUCT = "Product";
+
 
     public static final String IM_ADD_FORMAT = PRODUCT + WHITESPACE + "added: %s";
     public static final String IM_ID_FORMAT = PRODUCT + WHITESPACE + "ID: %s";

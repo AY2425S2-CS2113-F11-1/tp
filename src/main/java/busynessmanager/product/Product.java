@@ -1,10 +1,10 @@
+//@@author himethcodes
 package busynessmanager.product;
 
 import static busynessmanager.constants.Constants.ID_FORMAT;
 import static busynessmanager.constants.Constants.PRODUCT_FORMAT;
 
 
-//@@author himethcodes
 /**
  * Represents a product in the inventory.
  * Each product has a unique ID, name, quantity, quantity sold, and price.

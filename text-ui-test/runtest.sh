@@ -7,6 +7,7 @@ cd ..
 ./gradlew clean shadowJar
 
 cd text-ui-test
+[ -d data ] && rm -rf data
 
 java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input.txt > ACTUAL.TXT
 

@@ -1,42 +1,169 @@
-# User Guide
+<!-- @@author amirhusaini06 -->
+# User Guide for Busyness Manager
 
-## Introduction
+## Start Up:
+1. Define business name and type (during first-time use)
+2. Input:
+    - **Integer** of business ID
+    - **String** of business name
+    - **String** of business password
+    - **String** of business type (recognized as an enumeration, e.g., `FNB` / `RETAIL`)
+3. List format and information will be structured according to the business type enumeration.
 
-{Give a product intro}
+## Features:
+- **Login**
+    - Requires ID and password.
+    - Subsequent features can be accessed after logging in.
 
-## Quick Start
+- **Viewing Help: `help`**
+    - Prints possible command instructions and expected formatting.
 
-{Give steps to get started quickly}
+- **Adding a Product: `add`**
+    - Adds a product to the products-for-sale list.
 
-1. Ensure that you have Java 17 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+- **Deleting a Product: `delete`**
+    - Removes a product from the products-for-sale list.
 
-## Features 
+- **Checking Info of Products: `display`**
+    - Shows data of the specified product.
 
-{Give detailed description of each feature}
+- **Changing Info of Products: `update`**
+    - Updates data of a specified product.
+    - Data to be updated must be specified during command input.
 
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
+- **Printing List of Products / Equipment: `print`**
+    - Prints the entire list of products for sale (classified according to product ID).
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+- **Incrementing Sold Products List, Decrementing Inventory: `sold`**
+    - Changes the quantity of the inventory and sold products list.
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+- **Clear the Quantity Sold: `clear`**
+    - Changes the quantity sold of a product to 0.
 
-Example of usage: 
+- **Compute Total Amount of Sale Transaction: `revenue`**
+    - Adds up all the prices of all products sold, multiplied by their quantity.
 
-`todo n/Write the rest of the User Guide d/next week`
+- **Search for the ID of a Product: `search`**
+    - Given a product ID, searches for the corresponding product.
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+---
 
-## FAQ
+## Command Summary:
+> *Add a slash (`/`) in front of the tag.*
 
-**Q**: How do I transfer my data to another computer? 
+### **Adding a Product**
+add /name PRODUCT_NAME /qty QUANTITY /qty_sold QUANTITY_SOLD /price PRICE
 
-**A**: {your answer here}
+- Creates a new product item & attaches different attributes to it (with auto-generated ID).
+- `QUANTITY_SOLD` defaults to zero unless stated otherwise.
+- Optional tags:
+    - `/qty` → Quantity available.
+    - `/price` → Price of product.
 
-## Command Summary
+**Example:**
+Input -> add /name MILK /qty 50 /price $2.50
+Output -> "MILK added, qty 50, price $2.50, ID = 0001"
 
-{Give a 'cheat sheet' of commands here}
+---
 
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+### **Deleting a Product**
+delete /id PRODUCT_ID
+
+- Deletes the specific product with the given ID.
+- Confirmation prompt (`yes/no`) before deletion.
+
+**Example:**
+Input -> delete /id 1
+Output -> "ID_0001: MILK removed"
+
+---
+
+### **Displaying Product Info**
+display /id PRODUCT_ID
+
+- Prints data of each product.
+- Uses `toString()` of each product.
+- Optional flags to display specific product data.
+
+**Example:**
+Input -> display /id 1
+Output -> "ID_0001: MILK, qty 50, price $2.50"
+
+---
+
+### **Updating a Product**
+update /id PRODUCT_ID /name NEW_NAME /qty NEW_QUANTITY /price NEW_PRICE
+
+- Changes one or more attributes of a product.
+- Optional tags:
+    - `/qty` → New quantity.
+    - `/price` → New price.
+    - `/name` → New name.
+
+**Example:**
+Input -> update /id 1 /name FRESH_MILK /qty 45 /price $3.00
+Output -> "ID_0001: updated to FRESH_MILK, qty 45, price $3.00"
+
+---
+
+### **Printing Product List**
+print
+
+- Prints the current list of products (default: quantity displayed).
+- Optional flag `/price` → Displays price of each item.
+
+**Example:**
+Input -> print /price
+Output -> "ID_0001: MILK | $2.50"
+
+_Format: `ID_NUMBER: PRODUCT_NAME | PRICE`_
+
+---
+
+### **Recording a Sale**
+sold /id PRODUCT_ID /qty_sold QUANTITY_SOLD
+
+- Changes sales record and updates the inventory list.
+
+**Example:**
+Input -> sold /id 0001 /qty 5
+Output -> "Sale Recorded: MILK (ID_0001), Quantity Sold: 5, Updated Inventory: 45 Remaining"
+
+---
+
+### **Clearing Sold Quantity**
+clear /id PRODUCT_ID
+
+- Sets the `/qty_sold` value to zero for the specified product.
+- Confirmation prompt (`yes/no`) before executing.
+
+**Example:**
+Input -> clear /id 1
+Output -> "Qty Sold for MILK (ID_0001) has been set to 0"
+
+---
+
+### **Computing Revenue**
+revenue /id PRODUCT_ID
+
+- Computes the total amount of revenue.
+- Optional `/id` flag to check revenue for a specific product.
+
+**Example (Overall Revenue):**
+Input -> revenue
+Output -> "Total revenue for your busyness is $0 dollars!"
+
+**Example (Specific Product Revenue):**
+Input -> revenue /id 1
+Output -> "Revenue for MILK (ID_0001) is $0 dollars!"
+
+---
+
+### **Searching for a Product by Name**
+search /name PRODUCT_NAME
+
+- Returns the product ID of a product that matches the given name.
+
+**Example:**
+Input -> search /name MILK
+Output -> "MILK (ID_0001)"
