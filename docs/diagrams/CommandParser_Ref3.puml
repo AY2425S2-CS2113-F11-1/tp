@@ -1,0 +1,26 @@
+@startuml
+hide footbox
+skinparam sequenceReferenceBackgroundColor #
+
+participant "cp:CommandParser" as cp
+participant ":Manager" as m
+
+-> cp ++ #red : parseCommand(input)
+cp -> cp ++ #orange : executeCommand(command, info)
+cp -> cp ++ #yellow : addProduct(info)
+
+group sd Manipulating the information
+    cp -> cp ++ #green : splitInfo(info)
+    return components
+
+    cp -> cp : extract attributes (from components)
+
+    cp -> m ++ : Manager.addProduct(attributes)
+    return
+end
+
+return
+return
+return
+
+@enduml
