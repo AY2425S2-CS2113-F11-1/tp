@@ -1,7 +1,27 @@
 @startuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+hide footbox
+skinparam sequenceReferenceBackgroundColor #
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+participant "bm:BusynessManager" as bm
+participant "cp:CommandParser" as cp
+participant ":Manager" as m
+
+note right of m
+Manager represents InventoryManager,
+SalesManager, SearchManager or
+RevenueCalculator
+endnote
+
+bm -> cp ++ #red : parseCommand(input)
+
+ref over cp
+    Splitting user input String
+end ref
+
+ref over cp, m
+    Executing the command
+end ref
+
+return
+
 @enduml
