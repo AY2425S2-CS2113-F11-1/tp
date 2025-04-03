@@ -4,6 +4,7 @@
 <!-- @@author amirhusaini06 -->
 * [CS2113 individualProject (amirhusaini06)](https://github.com/amirhusaini06/ip)
 * [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip) <!-- @@author b1inmeister -->
+* [CS2113 individualProject (LEESY02)](https://github.com/LEESY02/ip) <!-- @@author LEESY02 -->
 
 
 ## Design
