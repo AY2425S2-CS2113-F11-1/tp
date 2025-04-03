@@ -137,8 +137,8 @@ inventory is adjusted accordingly.
 **SalesManager Class Methods**
 - **`SalesManager inventory`**
   - Constructs a `SalesManager` class with a given `InventoryManager`.
-  -
-- **`recordSale(String id, int qty Sold)`** -
+
+- **`recordSale(String id, int qty Sold)`**
   - Records a sale of a specified quantity of a product with the given ID.
 
 - **`clearSales(String id)`**
@@ -250,18 +250,18 @@ market.
 
 
 ## User Stories
-| Version | As a ...                                 | I want to ...                                        | So that I can ...                                               |
-|---------|------------------------------------------|------------------------------------------------------|-----------------------------------------------------------------|
-| v1.0    | business owner                           | adapt my configuration according to my business type | manage my business based on its needs                           |
-| v1.0    | business owner with new products to sell | add products to my database                          | indicate that these products are to be sold                     |
-| v1.0    | business owner with outdated products    | remove products from my database                     | indicate that my business is not selling these products anymore |
-| v1.0    | forgetful business owner                 | see all my products in one list                      | find out what products my business sells                        |
-| v1.0    | curious business owner                   | the data of the products in my database              | find out more about the performance of that product             |
-| v1.0    | business owner                           | modify the data of a product in my database          | keep the information about my product up-to-date                |
-| v1.0    | business owner with many products        | search for a product in my database                  | find out if that product is sold by my business                 |
-| v1.0    | for-profit business owner                | track my sales                                       | manage my business in a profitable manner                       |
-| v2.0    | forgetful business owner                 | have a list of possible commands and formats         | recall what commands I can use                                  |
-| v2.0    | business owner                           | save my database                                     | reuse the existing database when I restart the application      |
+| Version  | As a ...                                 | I want to ...                                        | So that I can ...                                               |
+|----------|------------------------------------------|------------------------------------------------------|-----------------------------------------------------------------|
+| v1.0     | business owner                           | adapt my configuration according to my business type | manage my business based on its needs                           |
+| v1.0     | business owner with new products to sell | add products to my database                          | indicate that these products are to be sold                     |
+| v1.0     | business owner with outdated products    | remove products from my database                     | indicate that my business is not selling these products anymore |
+| v1.0     | forgetful business owner                 | see all my products in one list                      | find out what products my business sells                        |
+| v1.0     | curious business owner                   | the data of the products in my database              | find out more about the performance of that product             |
+| v1.0     | business owner                           | modify the data of a product in my database          | keep the information about my product up-to-date                |
+| v1.0     | business owner with many products        | search for a product in my database                  | find out if that product is sold by my business                 |
+| v1.0     | for-profit business owner                | track my sales                                       | manage my business in a profitable manner                       |
+| v2.0     | forgetful business owner                 | have a list of possible commands and formats         | recall what commands I can use                                  |
+| v2.0     | business owner                           | save my database                                     | reuse the existing database when I restart the application      |
 
 
 ## Non-Functional Requirements
