@@ -126,7 +126,6 @@ the product ID, and the value is the corresponding `Product` object.
 
 <!-- @@author rozaliesmit -->
 ### SalesManager class
-
 The `SalesManager` class manages sales transactions, updating inventory levels and tracking quantities sold. It acts as
 an intermediary between the user interface and the InventoryManager, ensuring that sales are recorded accurately and
 inventory is adjusted accordingly.
@@ -149,10 +148,10 @@ inventory is adjusted accordingly.
   - Returns the `InventoryManager` class used by the `SalesManager`.
 
 **Interactions with Other Components**
-- **`InventoryManager`** - `SalesManager` relies on the `InventoryManager` to update product quantities and reset sales data.
+- **`InventoryManager`** - `SalesManager` relies on the `InventoryManager` to update product quantities and reset sales 
+data.
 - **`RevenueCalculator`** - Uses `SalesManager` to compute total sales to compute total and individual product revenue.
 - **`CommandParser`** - Calls `SalesManager` to execute sales-related commands entered by the user.
-
 
 <!-- @@author b1inmeister -->
 ### CommandParser class
@@ -232,6 +231,7 @@ After this counterpart has returned, the command execution method will also retu
 *Note:* The manipulating information description applies to most command execution methods. However, for printing of the 
 product list and computation of total revenue, since there is no "information" required for their command execution 
 methods, they will skip the extraction of attributes portion.
+
 
 ## Product Scope
 ### Target user profile

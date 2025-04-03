@@ -2,8 +2,9 @@
 # Lee Ming Kai Joshua - Project Portfolio Page
 
 ## Overview of Project: Busyness Manager
-Busyness Manager is a CLI inventory management application designed to help businesses maintain their inventory 
-of products. The application is written in Java, with around 2.5kLoC.
+Busyness Manager is a CLI-based inventory management application designed to help businesses track inventory, manage
+sales, and compute revenue. The project is written in Java (~2.5kLoC) and incorporates authentication, secure data
+handling, and structured command processing.
 
 ### Summary of Contributions
 
