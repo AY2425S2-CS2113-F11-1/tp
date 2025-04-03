@@ -2,7 +2,9 @@
 # Himeth Thewmika - Project Portfolio Page  
 
 ## Overview of Project: Busyness Manager  
-Busyness Manager is a CLI inventory management application designed to help businesses maintain their inventory of products. The application is written in Java, with around 2.5kLoC.  
+Busyness Manager is a CLI-based inventory management application designed to help businesses track inventory, manage
+sales, and compute revenue. The project is written in Java (~2.5kLoC) and incorporates authentication, secure data
+handling, and structured command processing.
 
 ### Summary of Contributions  
 
@@ -14,14 +16,17 @@ Busyness Manager is a CLI inventory management application designed to help busi
 ### New Features Implemented  
 
 - **Developed the `InventoryManager` class** to handle product storage and inventory operations.  
-  - **What it does:** Manages a collection of `Product` objects, allowing addition, removal, and retrieval of inventory details.  
+  - **What it does:** Manages a collection of `Product` objects, allowing addition, removal, and retrieval of inventory 
+  details.  
   - **Justification:** The application needs a central class to manage product inventory efficiently.  
-  - **Highlights:** This feature required careful design to ensure data integrity, prevent duplication, and handle large datasets effectively.  
+  - **Highlights:** This feature required careful design to ensure data integrity, prevent duplication, and handle large
+  datasets effectively.  
 
 - **Created the `Product` class** to represent individual products in the inventory.  
   - **What it does:** Stores essential details like product name, ID, quantity, and price.  
   - **Justification:** A dedicated class is required to store and manipulate product details within the inventory.  
-  - **Highlights:** This feature involved designing a flexible structure for handling product attributes while ensuring easy integration with inventory operations.  
+  - **Highlights:** This feature involved designing a flexible structure for handling product attributes while ensuring
+  easy integration with inventory operations.  
 
 ---
 

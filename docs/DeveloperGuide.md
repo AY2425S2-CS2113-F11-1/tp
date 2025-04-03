@@ -3,8 +3,10 @@
 ## Acknowledgements
 <!-- @@author amirhusaini06 -->
 * [CS2113 individualProject (amirhusaini06)](https://github.com/amirhusaini06/ip)
-* [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip) <!-- @@author b1inmeister -->
-* [CS2113 individualProject (LEESY02)](https://github.com/LEESY02/ip) <!-- @@author LEESY02 -->
+<!-- @@author b1inmeister -->
+* [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip) 
+<!-- @@author LEESY02 -->
+* [CS2113 individualProject (LEESY02)](https://github.com/LEESY02/ip) 
 
 
 ## Design
@@ -124,7 +126,6 @@ the product ID, and the value is the corresponding `Product` object.
 
 <!-- @@author rozaliesmit -->
 ### SalesManager class
-
 The `SalesManager` class manages sales transactions, updating inventory levels and tracking quantities sold. It acts as
 an intermediary between the user interface and the InventoryManager, ensuring that sales are recorded accurately and
 inventory is adjusted accordingly.
@@ -147,10 +148,10 @@ inventory is adjusted accordingly.
   - Returns the `InventoryManager` class used by the `SalesManager`.
 
 **Interactions with Other Components**
-- **`InventoryManager`** - `SalesManager` relies on the `InventoryManager` to update product quantities and reset sales data.
+- **`InventoryManager`** - `SalesManager` relies on the `InventoryManager` to update product quantities and reset sales 
+data.
 - **`RevenueCalculator`** - Uses `SalesManager` to compute total sales to compute total and individual product revenue.
 - **`CommandParser`** - Calls `SalesManager` to execute sales-related commands entered by the user.
-
 
 <!-- @@author b1inmeister -->
 ### CommandParser class
@@ -231,6 +232,7 @@ After this counterpart has returned, the command execution method will also retu
 product list and computation of total revenue, since there is no "information" required for their command execution 
 methods, they will skip the extraction of attributes portion.
 
+
 ## Product Scope
 ### Target user profile
 * Involved in a business that sells goods (i.e. physical products).
@@ -277,7 +279,8 @@ out commands, compared to using the mouse to navigate a GUI application.
 * **Sales Manager** - Tracks product sales and ensures accurate revenue reporting.
 * **Revenue Calculator** - Computes total revenue and generates sales reports.
 * **CLI (Command-Line Interface)** - A text-based interface where users interact with the application. 
-* **Mainstream OS** - Windows, Linux, Unix, macOS <!-- @@author b1inmeister -->
+<!-- @@author b1inmeister -->
+* **Mainstream OS** - Windows, Linux, Unix, macOS 
 
 
 ## Instructions for Manual Testing
