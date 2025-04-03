@@ -73,7 +73,6 @@ public class Constants {
 
     public static final String BM_NO_CREDENTIALS_MESSAGE = "No business credentials available.";
     public static final String BM_NO_DATA_MESSAGE = "No previous business data found.";
-    public static final String BM_SAVE_SUCCESS_MESSAGE = "Business data saved successfully!";
     public static final String BM_SAVE_FAIL_MESSAGE = "Error saving business data: ";
     public static final String BM_LOAD_SUCCESS_MESSAGE = "Business data loaded successfully!";
     public static final String BM_LOAD_FAIL_MESSAGE = "Error loading business data: ";
