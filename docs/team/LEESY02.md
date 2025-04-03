@@ -11,11 +11,18 @@ of products. The application is written in Java, with around 2.5kLoC.
 [RepoSense Link](https://nus-cs2113-ay2425s2.github.io/tp-dashboard/?search=LEESY02&breakdown=true)
 ---
 **New Features Implemented:**
-> beans
-* _What it does:_ beans
-* _Justification:_ beans
-* _Highlights:_ beans
-
+> Added the ability to calculate Revenue of the business (or individual products)
+* _What it does:_ Method calculates the revenue of each individual Product instance, given its quantitySold and price 
+  attributes
+* _Justification:_ Required for v1.0
+* _Highlights:_ When RevenueCalculator is instantiated, we provide it an instance of SalesManager, which has an instance
+  of InventoryManager. We then access the HashMap (ID : Product) contained under InventorManager. Revenue
+  is then calculated from the attributes of individual Product instances
+> Added UI and Constants classes
+* _What it does:_ Streamlines printing of messages to the users, as well as holds different magic literals required
+* _Justification:_ Enhances readability of the code, greater level of abstraction (Printing is done by UI class only)
+* _Highlights:_ Messages could be printed directly using printMessage(), and formatted string could be printed using
+  printFormattedMessage()
 ---
 
 **Enhancements Added:**
@@ -25,11 +32,9 @@ of products. The application is written in Java, with around 2.5kLoC.
 
 **Contributions to Documentation:**
 > _User Guide:_
-* 
+* Formatting for enhanced readability and other miscellaneous additions
 > _Developer's Guide:_
-* 
-* 
-* 
+* Gave a general breakdown of how all the classes of the project interacts with one another
 ---
 **Contributions to Team-Based Tasks:**
 * Reviewed PRs
