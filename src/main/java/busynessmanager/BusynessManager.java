@@ -52,7 +52,6 @@ import static busynessmanager.constants.Constants.BM_ID_ASSERTION_FAIL_MESSAGE;
 import static busynessmanager.constants.Constants.BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE;
 import static busynessmanager.constants.Constants.BM_NO_CREDENTIALS_MESSAGE;
 import static busynessmanager.constants.Constants.BM_NO_DATA_MESSAGE;
-import static busynessmanager.constants.Constants.BM_SAVE_SUCCESS_MESSAGE;
 import static busynessmanager.constants.Constants.BM_SAVE_FAIL_MESSAGE;
 import static busynessmanager.constants.Constants.BM_LOAD_SUCCESS_MESSAGE;
 import static busynessmanager.constants.Constants.BM_LOAD_FAIL_MESSAGE;
@@ -174,11 +173,11 @@ public class BusynessManager {
 
             if (input.equalsIgnoreCase(BM_EXIT_KEYWORD)) {
                 UI.printMessage(BM_EXIT_MESSAGE);
-                saveBusinessData();
                 break;
             }
 
             commandParser.parseCommand(input);
+            saveBusinessData();
         }
         scanner.close();
     }
@@ -203,8 +202,6 @@ public class BusynessManager {
 
             writer.write(BM_INVENTORY_TITLE + NEWLINE);
             writer.write(inventoryManager.getInventoryData());
-
-            UI.printMessage(BM_SAVE_SUCCESS_MESSAGE);
         } catch (IOException e) {
             UI.printMessage(BM_SAVE_FAIL_MESSAGE + e.getMessage());
         }

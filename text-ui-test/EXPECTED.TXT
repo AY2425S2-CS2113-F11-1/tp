@@ -5,8 +5,7 @@ Enter Business ID: Enter Business Name: Error: No input detected.
 Enter Business Name: Enter Business Password: Error: No input detected.
 Enter Business Password: Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
 Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
-Enter Business Type (FNB/RETAIL): Business data saved successfully!
-Business setup complete!
+Enter Business Type (FNB/RETAIL): Business setup complete!
 Busyness Manager is ready. Type 'help' for commands.
 >add         add /name <name> /qty <number> /price <number>
 delete      delete /id <number>
@@ -428,4 +427,3 @@ Total Revenue: 180.00
 ID_0001: MILK | Qty: 53 | Sold: 0 | Price: $6.00
 ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
 >Exiting Busyness Manager...
-Business data saved successfully!
