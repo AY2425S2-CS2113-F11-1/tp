@@ -3,8 +3,10 @@
 ## Acknowledgements
 <!-- @@author amirhusaini06 -->
 * [CS2113 individualProject (amirhusaini06)](https://github.com/amirhusaini06/ip)
-* [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip) <!-- @@author b1inmeister -->
-* [CS2113 individualProject (LEESY02)](https://github.com/LEESY02/ip) <!-- @@author LEESY02 -->
+<!-- @@author b1inmeister -->
+* [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip) 
+<!-- @@author LEESY02 -->
+* [CS2113 individualProject (LEESY02)](https://github.com/LEESY02/ip) 
 
 
 ## Design
@@ -248,7 +250,8 @@ out commands, compared to using the mouse to navigate a GUI application.
 * **Sales Manager** - Tracks product sales and ensures accurate revenue reporting.
 * **Revenue Calculator** - Computes total revenue and generates sales reports.
 * **CLI (Command-Line Interface)** - A text-based interface where users interact with the application. 
-* **Mainstream OS** - Windows, Linux, Unix, macOS <!-- @@author b1inmeister -->
+<!-- @@author b1inmeister -->
+* **Mainstream OS** - Windows, Linux, Unix, macOS 
 
 
 ## Instructions for Manual Testing
