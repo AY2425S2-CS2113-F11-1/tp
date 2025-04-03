@@ -1,0 +1,26 @@
+@startuml
+ hide footbox
+ skinparam sequenceReferenceBackgroundColor #
+
+ participant "cp:CommandParser" as cp
+ participant ":Manager" as m
+
+ -> cp ++ #red: parseCommand(input)
+
+ ref over cp
+     Splitting user input String
+ end ref
+
+ group sd Executing the command [command = "add"]
+     cp -> cp ++ #orange : executeCommand(command, info)
+     cp -> cp ++ #yellow : addProduct(info)
+     ref over cp, m
+         Manipulating the information
+     end ref
+ end
+
+ return
+ return
+ return
+
+ @enduml

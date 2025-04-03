@@ -1,9 +1,12 @@
+//@@author LEESY02
 package busynessmanager.revenue;
 
 import busynessmanager.product.Product;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.ui.UI;
+
+import java.util.HashMap;
 
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.NEWLINE;
@@ -12,10 +15,6 @@ import static busynessmanager.constants.Constants.RC_INDIVIDUAL_REVENUE_FORMAT;
 import static busynessmanager.constants.Constants.RC_TOTAL_REVENUE_FORMAT;
 
 
-import java.util.HashMap;
-
-
-//@@author LEESY02
 /**
  * RevenueCalculator is used to calculate the various revenues that is produced in BusynessManager.
  */
@@ -50,6 +49,8 @@ public class RevenueCalculator {
 
             totalRevenue += individualRevenue;
         }
+
+        assert totalRevenue >= MINIMUM_VALUE;
 
         UI.printFormattedMessage(RC_TOTAL_REVENUE_FORMAT + NEWLINE, totalRevenue);
 

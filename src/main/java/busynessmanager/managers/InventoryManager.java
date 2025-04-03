@@ -1,11 +1,24 @@
+//@@author himethcodes
 package busynessmanager.managers;
 
 import busynessmanager.product.Product;
 import busynessmanager.ui.UI;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import static busynessmanager.constants.Constants.INDEX_0;
+import static busynessmanager.constants.Constants.INDEX_1;
+import static busynessmanager.constants.Constants.INDEX_2;
+import static busynessmanager.constants.Constants.INDEX_3;
+import static busynessmanager.constants.Constants.INDEX_4;
+import static busynessmanager.constants.Constants.INDEX_5;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
+import static busynessmanager.constants.Constants.FILE_REGEX;
 import static busynessmanager.constants.Constants.IM_LIST;
 import static busynessmanager.constants.Constants.IM_EMPTY_MESSAGE;
 import static busynessmanager.constants.Constants.IM_ADD_FORMAT;
@@ -15,13 +28,7 @@ import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
 import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.IM_QTY_EXCEED_ERROR_MESSAGE;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
-
-//@@author himethcodes
 /**
  * Manages the inventory of products, allowing operations such as adding, updating, and removing products.
  */
@@ -141,12 +148,13 @@ public class InventoryManager {
             product = productList.get(id);
 
             int currentQty = product.getQuantity();
+            int currentQtySold = product.getQuantitySold();
 
             if (qtySold > currentQty) {
                 UI.printMessage(IM_QTY_EXCEED_ERROR_MESSAGE);
                 return false;
             } else {
-                product.setQuantitySold(qtySold);
+                product.setQuantitySold(currentQtySold + qtySold);
                 product.setQuantity(Math.max(MINIMUM_VALUE, currentQty - qtySold));
                 return true;
             }
@@ -171,6 +179,16 @@ public class InventoryManager {
         }
     }
 
+    //@@author LEESY02
+    /**
+     * Returns the current list of products in the inventory.
+     *
+     * @return A HashMap containing product IDs and their corresponding Product objects.
+     */
+    public HashMap<String, Product> returnProductList() {
+        return productList;
+    }
+
     //@@author amirhusaini06
     /**
      * Retrieves the inventory data as a string for saving to a file.
@@ -179,12 +197,15 @@ public class InventoryManager {
      */
     public String getInventoryData() {
         StringBuilder data = new StringBuilder();
+
         for (Product product : productList.values()) {
-            data.append(product.getId()).append(",")
-                    .append(product.getName()).append(",")
-                    .append(product.getQuantity()).append(",")
-                    .append(product.getPrice()).append("\n");
+            data.append(product.getId()).append(FILE_REGEX)
+                    .append(product.getName()).append(FILE_REGEX)
+                    .append(product.getQuantity()).append(FILE_REGEX)
+                    .append(product.getQuantitySold()).append(FILE_REGEX)
+                    .append(product.getPrice()).append(NEWLINE);
         }
+
         return data.toString();
     }
 
@@ -196,25 +217,19 @@ public class InventoryManager {
      */
     public void loadInventory(BufferedReader reader) throws IOException {
         String line;
+
         while ((line = reader.readLine()) != null) {
-            String[] parts = line.split(",");
-            if (parts.length == 4) {
-                String id = parts[0];
-                String name = parts[1];
-                int quantity = Integer.parseInt(parts[2]);
-                double price = Double.parseDouble(parts[3]);
-                productList.put(id, new Product(name, quantity, price));
+            String[] parts = line.split(FILE_REGEX);
+
+            if (parts.length == INDEX_5) {
+                String id = parts[INDEX_0];
+                String name = parts[INDEX_1];
+                int quantity = Integer.parseInt(parts[INDEX_2]);
+                int quantitySold = Integer.parseInt(parts[INDEX_3]);
+                double price = Double.parseDouble(parts[INDEX_4]);
+
+                productList.put(id, new Product(name, quantity, quantitySold, price));
             }
         }
-    }
-
-    //@@author LEESY02
-    /**
-     * Returns the current list of products in the inventory.
-     *
-     * @return A HashMap containing product IDs and their corresponding Product objects.
-     */
-    public HashMap<String, Product> returnProductList() {
-        return productList;
     }
 }

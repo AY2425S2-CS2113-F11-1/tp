@@ -1,0 +1,20 @@
+@startuml
+hide footbox
+skinparam sequenceReferenceBackgroundColor #
+
+participant "cp:CommandParser" as cp
+
+ -> cp ++ #red: parseCommand(input)
+
+group sd Splitting user input String
+    cp -> cp ++ #orange : getCommandSeparatorIndex()
+    return index
+
+    cp -> cp ++ #orange : splitCommand(index, input)
+    return command
+
+    cp -> cp ++ #orange : splitInfo(index, input)
+    return info
+end
+
+@enduml

@@ -1,17 +1,24 @@
+//@@author amirhusaini06
 package busynessmanager.credentials;
 
 import busynessmanager.BusynessManager;
+
+import static busynessmanager.constants.Constants.BM_ID_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_NAME_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_PASSWORD_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE;
+
 
 /**
  * Represents the credentials of a business in the Busyness Manager application.
  * This class stores the business ID, name, password, and type.
  */
-//@@author amirhusaini06
 public class Credentials {
     private final String businessID;
     private final String businessName;
     private final String businessPassword;
     private final BusynessManager.BusinessType businessType;
+
 
     /**
      * Constructs a Credentials object with the given business details.
@@ -25,16 +32,19 @@ public class Credentials {
     public Credentials(String businessID, String businessName, String businessPassword,
                        BusynessManager.BusinessType businessType) {
         if (businessID == null || businessID.isEmpty()) {
-            throw new IllegalArgumentException("Business ID cannot be null or empty");
+            throw new IllegalArgumentException(BM_ID_ASSERTION_FAIL_MESSAGE);
         }
+
         if (businessName == null || businessName.isEmpty()) {
-            throw new IllegalArgumentException("Business name cannot be null or empty");
+            throw new IllegalArgumentException(BM_NAME_ASSERTION_FAIL_MESSAGE);
         }
+
         if (businessPassword == null || businessPassword.isEmpty()) {
-            throw new IllegalArgumentException("Business password cannot be null or empty");
+            throw new IllegalArgumentException(BM_PASSWORD_ASSERTION_FAIL_MESSAGE);
         }
+
         if (businessType == null) {
-            throw new IllegalArgumentException("Business type cannot be null");
+            throw new IllegalArgumentException(BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE);
         }
 
         this.businessID = businessID;
@@ -42,6 +52,7 @@ public class Credentials {
         this.businessPassword = businessPassword;
         this.businessType = businessType;
     }
+
 
     /**
      * Gets the business ID.

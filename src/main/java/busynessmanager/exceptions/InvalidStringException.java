@@ -1,3 +1,4 @@
+//@@author b1inmeister
 package busynessmanager.exceptions;
 
 /**

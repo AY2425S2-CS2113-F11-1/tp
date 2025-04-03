@@ -1,11 +1,11 @@
+//@@author LEESY02
 package busynessmanager.managers;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-//@@author LEESY02
 public class SalesManagerTest {
     InventoryManager im;
     SalesManager sm;

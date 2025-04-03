@@ -1,0 +1,27 @@
+@startuml
+hide footbox
+skinparam sequenceReferenceBackgroundColor #
+
+participant "bm:BusynessManager" as bm
+participant "cp:CommandParser" as cp
+participant ":Manager" as m
+
+note right of m
+Manager represents InventoryManager,
+SalesManager, SearchManager or
+RevenueCalculator
+endnote
+
+bm -> cp ++ #red : parseCommand(input)
+
+ref over cp
+    Splitting user input String
+end ref
+
+ref over cp, m
+    Executing the command
+end ref
+
+return
+
+@enduml

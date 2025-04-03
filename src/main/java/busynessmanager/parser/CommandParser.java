@@ -1,3 +1,4 @@
+//@@author b1inmeister
 package busynessmanager.parser;
 
 import busynessmanager.BusynessManager;
@@ -27,9 +28,12 @@ import static busynessmanager.constants.Constants.INDEX_5;
 import static busynessmanager.constants.Constants.INDEX_6;
 import static busynessmanager.constants.Constants.INDEX_7;
 import static busynessmanager.constants.Constants.HELP_LIST;
+import static busynessmanager.constants.Constants.ID_FORMAT;
 import static busynessmanager.constants.Constants.CP_NAME;
 import static busynessmanager.constants.Constants.CP_COMMAND_SEPARATOR_INDEX;
 import static busynessmanager.constants.Constants.CP_ASSERTION_FAIL_INDEX;
+import static busynessmanager.constants.Constants.CP_CREDENTIALS_TITLE;
+import static busynessmanager.constants.Constants.CP_INVENTORY_TITLE;
 import static busynessmanager.constants.Constants.CP_HELP_COMMAND;
 import static busynessmanager.constants.Constants.CP_ADD_COMMAND;
 import static busynessmanager.constants.Constants.CP_DELETE_COMMAND;
@@ -39,7 +43,6 @@ import static busynessmanager.constants.Constants.CP_SOLD_COMMAND;
 import static busynessmanager.constants.Constants.CP_CLEAR_COMMAND;
 import static busynessmanager.constants.Constants.CP_REVENUE_COMMAND;
 import static busynessmanager.constants.Constants.CP_SEARCH_COMMAND;
-import static busynessmanager.constants.Constants.CP_ID_REGEX;
 import static busynessmanager.constants.Constants.CP_SPLIT_REGEX;
 import static busynessmanager.constants.Constants.CP_ID_FLAG;
 import static busynessmanager.constants.Constants.CP_NAME_FLAG;
@@ -61,7 +64,6 @@ import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
 import static busynessmanager.constants.Constants.CP_READ_BUSINESS_INFO_COMMAND;
 
 
-//@@author b1inmeister
 /**
  * Class for parsing the user input, and executing the appropriate methods.
  */
@@ -297,7 +299,7 @@ public class CommandParser {
             if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             } else {
-                String productID = String.format(CP_ID_REGEX, productIDNumber);
+                String productID = String.format(ID_FORMAT, productIDNumber);
                 inventoryManager.deleteProduct(productID);
             }
         } catch (IndexOutOfBoundsException e) {
@@ -355,7 +357,7 @@ public class CommandParser {
             if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             } else {
-                String productID = String.format(CP_ID_REGEX, productIDNumber);
+                String productID = String.format(ID_FORMAT, productIDNumber);
                 inventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
             }
         } catch (IndexOutOfBoundsException e) {
@@ -412,7 +414,7 @@ public class CommandParser {
             if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             } else {
-                String productID = String.format(CP_ID_REGEX, productIDNumber);
+                String productID = String.format(ID_FORMAT, productIDNumber);
                 salesManager.recordSale(productID, quantitySold);
             }
         } catch (IndexOutOfBoundsException e) {
@@ -454,7 +456,7 @@ public class CommandParser {
             if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             } else {
-                String productID = String.format(CP_ID_REGEX, productIDNumber);
+                String productID = String.format(ID_FORMAT, productIDNumber);
                 salesManager.clearSales(productID);
             }
         } catch (IndexOutOfBoundsException e) {
@@ -500,7 +502,7 @@ public class CommandParser {
                 if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                     throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
                 } else {
-                    String productID = String.format(CP_ID_REGEX, productIDNumber);
+                    String productID = String.format(ID_FORMAT, productIDNumber);
                     double revenue = revenueCalculator.computeProductRevenue(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
@@ -551,7 +553,7 @@ public class CommandParser {
                 if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                     throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
                 } else {
-                    String productID = String.format(CP_ID_REGEX, productIDNumber);
+                    String productID = String.format(ID_FORMAT, productIDNumber);
                     searchManager.searchById(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
@@ -602,13 +604,15 @@ public class CommandParser {
             throw new NumberParsingFailedException();
         }
     }
+
     /**
      * Reads business credentials and inventory from BusinessInfo.txt.
      */
     protected void readBusinessInfo() {
         BusynessManager busynessManager = new BusynessManager();
-        UI.printMessage("Business Credentials:\n" + busynessManager.getBusinessDetails());
-        UI.printMessage("Current Inventory:");
+
+        UI.printMessage(CP_CREDENTIALS_TITLE + busynessManager.getBusinessDetails());
+        UI.printMessage(CP_INVENTORY_TITLE);
         busynessManager.getInventoryManager().printProducts();
     }
 
