@@ -3,8 +3,10 @@
 ## Acknowledgements
 <!-- @@author amirhusaini06 -->
 * [CS2113 individualProject (amirhusaini06)](https://github.com/amirhusaini06/ip)
-* [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip) <!-- @@author b1inmeister -->
-* [CS2113 individualProject (LEESY02)](https://github.com/LEESY02/ip) <!-- @@author LEESY02 -->
+<!-- @@author b1inmeister -->
+* [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip) 
+<!-- @@author LEESY02 -->
+* [CS2113 individualProject (LEESY02)](https://github.com/LEESY02/ip) 
 
 
 ## Design
@@ -124,7 +126,6 @@ the product ID, and the value is the corresponding `Product` object.
 
 <!-- @@author rozaliesmit -->
 ### SalesManager class
-
 The `SalesManager` class manages sales transactions, updating inventory levels and tracking quantities sold. It acts as
 an intermediary between the user interface and the InventoryManager, ensuring that sales are recorded accurately and
 inventory is adjusted accordingly.
@@ -136,8 +137,8 @@ inventory is adjusted accordingly.
 **SalesManager Class Methods**
 - **`SalesManager inventory`**
   - Constructs a `SalesManager` class with a given `InventoryManager`.
-  -
-- **`recordSale(String id, int qty Sold)`** -
+
+- **`recordSale(String id, int qty Sold)`**
   - Records a sale of a specified quantity of a product with the given ID.
 
 - **`clearSales(String id)`**
@@ -147,10 +148,10 @@ inventory is adjusted accordingly.
   - Returns the `InventoryManager` class used by the `SalesManager`.
 
 **Interactions with Other Components**
-- **`InventoryManager`** - `SalesManager` relies on the `InventoryManager` to update product quantities and reset sales data.
+- **`InventoryManager`** - `SalesManager` relies on the `InventoryManager` to update product quantities and reset sales 
+data.
 - **`RevenueCalculator`** - Uses `SalesManager` to compute total sales to compute total and individual product revenue.
 - **`CommandParser`** - Calls `SalesManager` to execute sales-related commands entered by the user.
-
 
 <!-- @@author b1inmeister -->
 ### CommandParser class
@@ -231,6 +232,7 @@ After this counterpart has returned, the command execution method will also retu
 product list and computation of total revenue, since there is no "information" required for their command execution 
 methods, they will skip the extraction of attributes portion.
 
+
 ## Product Scope
 ### Target user profile
 * Involved in a business that sells goods (i.e. physical products).
@@ -248,18 +250,19 @@ market.
 
 
 ## User Stories
-| Version | As a ...                                 | I want to ...                                        | So that I can ...                                               |
-|---------|------------------------------------------|------------------------------------------------------|-----------------------------------------------------------------|
-| v1.0    | business owner                           | adapt my configuration according to my business type | manage my business based on its needs                           |
-| v1.0    | business owner with new products to sell | add products to my database                          | indicate that these products are to be sold                     |
-| v1.0    | business owner with outdated products    | remove products from my database                     | indicate that my business is not selling these products anymore |
-| v1.0    | forgetful business owner                 | see all my products in one list                      | find out what products my business sells                        |
-| v1.0    | curious business owner                   | the data of the products in my database              | find out more about the performance of that product             |
-| v1.0    | business owner                           | modify the data of a product in my database          | keep the information about my product up-to-date                |
-| v1.0    | business owner with many products        | search for a product in my database                  | find out if that product is sold by my business                 |
-| v1.0    | for-profit business owner                | track my sales                                       | manage my business in a profitable manner                       |
-| v2.0    | forgetful business owner                 | have a list of possible commands and formats         | recall what commands I can use                                  |
-| v2.0    | business owner                           | save my database                                     | reuse the existing database when I restart the application      |
+
+| Version |                 As a ...                 |                    I want to ...                     |                        So that I can ...                        |
+|:-------:|:----------------------------------------:|:----------------------------------------------------:|:---------------------------------------------------------------:|
+|  v1.0   |              business owner              | adapt my configuration according to my business type |              manage my business based on its needs              |
+|  v1.0   | business owner with new products to sell |             add products to my database              |           indicate that these products are to be sold           |
+|  v1.0   |  business owner with outdated products   |           remove products from my database           | indicate that my business is not selling these products anymore |
+|  v1.0   |         forgetful business owner         |           see all my products in one list            |            find out what products my business sells             |
+|  v1.0   |          curious business owner          |       the data of the products in my database        |       find out more about the performance of that product       |
+|  v1.0   |              business owner              |     modify the data of a product in my database      |        keep the information about my product up-to-date         |
+|  v1.0   |    business owner with many products     |         search for a product in my database          |         find out if that product is sold by my business         |
+|  v1.0   |        for-profit business owner         |                    track my sales                    |            manage my business in a profitable manner            |
+|  v2.0   |         forgetful business owner         |     have a list of possible commands and formats     |                 recall what commands I can use                  |
+|  v2.0   |              business owner              |                   save my database                   |   reuse the existing database when I restart the application    |
 
 
 ## Non-Functional Requirements
@@ -277,7 +280,8 @@ out commands, compared to using the mouse to navigate a GUI application.
 * **Sales Manager** - Tracks product sales and ensures accurate revenue reporting.
 * **Revenue Calculator** - Computes total revenue and generates sales reports.
 * **CLI (Command-Line Interface)** - A text-based interface where users interact with the application. 
-* **Mainstream OS** - Windows, Linux, Unix, macOS <!-- @@author b1inmeister -->
+<!-- @@author b1inmeister -->
+* **Mainstream OS** - Windows, Linux, Unix, macOS 
 
 
 ## Instructions for Manual Testing
