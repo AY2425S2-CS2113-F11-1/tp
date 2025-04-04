@@ -26,7 +26,7 @@ aspects of business management.
 
 <!-- @@author LEESY02 -->
 Below is a UML Class Diagram of the Classes present in the application
-![](images/UML%20Object%20DIagram3.png)
+![](images/UML%20Object%20DIagram4.png)
 
 <!-- @@author amirhusaini06 -->
 ### Key Features & Implementation Details
