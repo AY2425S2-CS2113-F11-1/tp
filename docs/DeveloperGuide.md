@@ -24,6 +24,11 @@ aspects of business management.
 - The **Credentials** class stores business authentication details, ensuring security.
 - The **BusynessManager** acts as the central controller, orchestrating interactions between components.
 
+<!-- @@author LEESY02 -->
+Below is a UML Class Diagram of the Classes present in the application
+![](images/UML%20Object%20DIagram3.png)
+
+<!-- @@author amirhusaini06 -->
 ### Key Features & Implementation Details
 - **Data Persistence:** Business credentials and inventory data are stored in a text file within the `data/` directory, 
 ensuring persistence across application restarts.

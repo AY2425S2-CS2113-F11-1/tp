@@ -94,6 +94,7 @@ public class RevenueCalculator {
     }
 
     /**
+     * Sub-method of computeProductRevenue
      * Calculates the revenue of a given product
      *
      * @param product The product to be calculated
@@ -104,6 +105,7 @@ public class RevenueCalculator {
     }
 
     /**
+     * Sub-method of computeProductRevenue
      * Prints the revenue earned from the specified product
      *
      * @param product The product to be printed

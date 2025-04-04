@@ -60,6 +60,7 @@ public class SearchManager {
     }
 
     /**
+     * Sub method of searchByName
      * Checks if a Product is present in the map, and prints a message to the user if it is
      *
      * @param name The name of the Product to be queried
@@ -80,6 +81,7 @@ public class SearchManager {
     }
 
     /**
+     * Sub method of searchById
      * Checks if a Product is present in the map, and prints a message to the user if it is
      *
      * @param id The ID of the Product to be queried
