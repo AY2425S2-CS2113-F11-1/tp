@@ -34,8 +34,7 @@ public class SalesManager {
      * @param qtySold Quantity of product sold.
      */
     public void recordSale(String id, int qtySold) {
-        if (qtySold <= MINIMUM_VALUE) {
-            UI.printMessage(SM_MINIMUM_QTY_SOLD_MESSAGE);
+        if (checkIfInvalidQuantity(qtySold)) {
             return;
         }
 
@@ -44,6 +43,20 @@ public class SalesManager {
         if (isSuccess) {
             UI.printFormattedMessage(SM_RECORDED_FORMAT + NEWLINE, id, qtySold);
         }
+    }
+
+    /**
+     * Checks if the input integer is invalid (Lesser or equals to zero)
+     *
+     * @param qtySold The integer to be tested
+     * @return Returns true if integer is below or equals 0
+     */
+    private boolean checkIfInvalidQuantity(int qtySold) {
+        if (qtySold <= MINIMUM_VALUE) {
+            UI.printMessage(SM_MINIMUM_QTY_SOLD_MESSAGE);
+            return true;
+        }
+        return false;
     }
 
     /**
