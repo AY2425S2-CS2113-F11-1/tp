@@ -14,6 +14,7 @@ import static busynessmanager.constants.Constants.INDEX_1;
 import static busynessmanager.constants.Constants.INDEX_2;
 import static busynessmanager.constants.Constants.INDEX_3;
 import static busynessmanager.constants.Constants.INDEX_4;
+import static busynessmanager.constants.Constants.INDEX_5;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
@@ -147,12 +148,13 @@ public class InventoryManager {
             product = productList.get(id);
 
             int currentQty = product.getQuantity();
+            int currentQtySold = product.getQuantitySold();
 
             if (qtySold > currentQty) {
                 UI.printMessage(IM_QTY_EXCEED_ERROR_MESSAGE);
                 return false;
             } else {
-                product.setQuantitySold(qtySold);
+                product.setQuantitySold(currentQtySold + qtySold);
                 product.setQuantity(Math.max(MINIMUM_VALUE, currentQty - qtySold));
                 return true;
             }
@@ -200,6 +202,7 @@ public class InventoryManager {
             data.append(product.getId()).append(FILE_REGEX)
                     .append(product.getName()).append(FILE_REGEX)
                     .append(product.getQuantity()).append(FILE_REGEX)
+                    .append(product.getQuantitySold()).append(FILE_REGEX)
                     .append(product.getPrice()).append(NEWLINE);
         }
 
@@ -218,13 +221,14 @@ public class InventoryManager {
         while ((line = reader.readLine()) != null) {
             String[] parts = line.split(FILE_REGEX);
 
-            if (parts.length == INDEX_4) {
+            if (parts.length == INDEX_5) {
                 String id = parts[INDEX_0];
                 String name = parts[INDEX_1];
                 int quantity = Integer.parseInt(parts[INDEX_2]);
-                double price = Double.parseDouble(parts[INDEX_3]);
+                int quantitySold = Integer.parseInt(parts[INDEX_3]);
+                double price = Double.parseDouble(parts[INDEX_4]);
 
-                productList.put(id, new Product(name, quantity, price));
+                productList.put(id, new Product(name, quantity, quantitySold, price));
             }
         }
     }
