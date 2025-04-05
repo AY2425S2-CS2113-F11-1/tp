@@ -83,7 +83,7 @@ public class BusynessManager {
         RevenueCalculator revenueCalculator = new RevenueCalculator(salesManager);
         SearchManager searchManager = new SearchManager(inventoryManager);
         commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
-        loadBusinessData();
+        //loadBusinessData();
     }
 
 
@@ -103,8 +103,14 @@ public class BusynessManager {
     private void start() {
         Scanner scanner = new Scanner(System.in);
         UI.printMessage(BM_WELCOME_MESSAGE);
+        UI.printMessage("Please enter your business name:");
+        String businessName = scanner.nextLine();
+        File file = new File(String.format("data/%s.txt", businessName));
 
-        if (credentials == null) {
+        loadBusinessData(businessName);
+
+        if (!file.exists()) {
+        //if (credentials == null) {
             UI.printMessageWithoutNewline(BM_FIRST_SETUP_CHECK_MESSAGE);
             String response = scanner.nextLine();
 
@@ -154,7 +160,8 @@ public class BusynessManager {
         BusinessType type = extractBusinessType(scanner);
 
         credentials = new Credentials(id, name, password, type);
-        saveBusinessData();
+        //saveBusinessData();
+        saveBusinessData(credentials.getBusinessName());
         UI.printMessage(BM_SETUP_COMPLETE_MESSAGE);
     }
 
@@ -164,6 +171,8 @@ public class BusynessManager {
      * @param scanner The Scanner object for user input.
      */
     private void run(Scanner scanner) {
+        loadBusinessData(credentials.getBusinessName());
+
         UI.printMessage(BM_READY_MESSAGE);
 
         while (true) {
@@ -176,7 +185,7 @@ public class BusynessManager {
             }
 
             commandParser.parseCommand(input);
-            saveBusinessData();
+            saveBusinessData(credentials.getBusinessName());
         }
         scanner.close();
     }
@@ -184,19 +193,22 @@ public class BusynessManager {
     /**
      * Saves business credentials and inventory data to a file.
      */
-    private void saveBusinessData() {
-        File dataFolder = new File(DATA_FOLDER);
+    private void saveBusinessData(String businessName) {
+        //File dataFolder = new File(DATA_FOLDER);
+        File dataFolder = new File(businessName);
 
         if (!dataFolder.exists()) {
             dataFolder.mkdir();
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BUSINESS_INFO_FILE))) {
+        //try (BufferedWriter writer = new BufferedWriter(new FileWriter(BUSINESS_INFO_FILE))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(
+            DATA_FOLDER + "/" + businessName + ".txt"))) {
             if (credentials != null) {
                 writer.write(credentials.getBusinessID() + FILE_REGEX +
-                        credentials.getBusinessName() + FILE_REGEX +
-                        credentials.getBusinessPassword() + FILE_REGEX +
-                        credentials.getBusinessType() + NEWLINE);
+                    credentials.getBusinessName() + FILE_REGEX +
+                    credentials.getBusinessPassword() + FILE_REGEX +
+                    credentials.getBusinessType() + NEWLINE);
             }
 
             writer.write(BM_INVENTORY_TITLE + NEWLINE);
@@ -210,8 +222,9 @@ public class BusynessManager {
     /**
      * Loads business credentials and inventory data from a file.
      */
-    private void loadBusinessData() {
-        File file = new File(BUSINESS_INFO_FILE);
+    private void loadBusinessData(String businessName) {
+        //File file = new File(BUSINESS_INFO_FILE);
+        File file = new File(String.format("data/%s.txt", businessName));
 
         if (!file.exists()) {
             UI.printMessage(BM_NO_DATA_MESSAGE);

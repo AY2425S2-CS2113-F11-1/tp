@@ -29,14 +29,15 @@ public class Constants {
     public static final String PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
     public static final String TRY_AGAIN_MESSAGE = " Please try again.";
     public static final String HELP_LIST = """
-            add         add /name <name> /qty <number> /price <number>
-            delete      delete /id <number>
-            update      update /id <number> /name <name> /qty <number> /price <number>
-            print       print
-            sold        sold /id <number> /qty <number>
-            clear       clear /id <number>
-            revenue     revenue OR revenue /id <number>
-            search      search /name <name> OR search /id <number>""";
+            add         add /name <name> /qty <number> /price <number>                    (Add new product to list)
+            delete      delete /id <number>                                               (Delete existing product)
+            update      update /id <number> /name <name> /qty <number> /price <number>    (Update existing product)
+            print       print                                                             (Print list of products)
+            sold        sold /id <number> /qty <number>                                   (Mark some products as sold)
+            clear       clear /id <number>                                                (Clear current sales)
+            revenue     revenue OR revenue /id <number>                                   (Check revenue)
+            search      search /name <name> OR search /id <number>                        (Look for specific product)
+            exit        exit                                                              (Exit application)""";
 
 
     // BusynessManager
