@@ -26,17 +26,20 @@ public class Constants {
     public static final int INDEX_5 = 5;
     public static final int INDEX_6 = 6;
     public static final int INDEX_7 = 7;
+    public static final String DATA_FOLDER = "data";
+    public static final String BUSINESS_INFO_FILE = "data/%s.txt";
     public static final String PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
     public static final String TRY_AGAIN_MESSAGE = " Please try again.";
     public static final String HELP_LIST = """
-            add         add /name <name> /qty <number> /price <number>
-            delete      delete /id <number>
-            update      update /id <number> /name <name> /qty <number> /price <number>
-            print       print
-            sold        sold /id <number> /qty <number>
-            clear       clear /id <number>
-            revenue     revenue OR revenue /id <number>
-            search      search /name <name> OR search /id <number>""";
+            add         add /name <name> /qty <number> /price <number>                    (Add new product to list)
+            delete      delete /id <number>                                               (Delete existing product)
+            update      update /id <number> /name <name> /qty <number> /price <number>    (Update existing product)
+            print       print                                                             (Print list of products)
+            sold        sold /id <number> /qty <number>                                   (Mark some products as sold)
+            clear       clear /id <number>                                                (Clear current sales)
+            revenue     revenue OR revenue /id <number>                                   (Check revenue)
+            search      search /name <name> OR search /id <number>                        (Look for specific product)
+            exit        exit                                                              (Exit application)""";
 
 
     // BusynessManager
@@ -50,9 +53,11 @@ public class Constants {
     public static final String BM_INVENTORY_TITLE = "---INVENTORY---";
 
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
+    public static final String BM_LOGIN_MESSAGE = "Please enter your business name:";
     public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected.";
     public static final String BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE = "Invalid business type." + TRY_AGAIN_MESSAGE;
-    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "No existing ID. Do you want to add your business? ";
+    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "Do you want to add your business?" +
+        "\n(Enter: \"Yes\" to set up credentials or any other input to exit Busyness Manager)";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
@@ -119,6 +124,8 @@ public class Constants {
     public static final String CP_ID_MISSING_MESSAGE = "ID is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_NAME_MISSING_MESSAGE = "Name is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_LOG_MESSAGE = "String splitting failure.";
+    public static final String CP_INVALID_PRICE_MESSAGE = "Please enter a valid price value " +
+        "(Input is more than 2 decimal points)";
 
 
     // Product

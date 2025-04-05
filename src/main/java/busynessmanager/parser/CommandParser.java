@@ -14,6 +14,7 @@ import busynessmanager.exceptions.NumberParsingFailedException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.math.BigDecimal;
 
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.MAXIMUM_VALUE;
@@ -62,6 +63,8 @@ import static busynessmanager.constants.Constants.CP_ID_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_NAME_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
 import static busynessmanager.constants.Constants.CP_READ_BUSINESS_INFO_COMMAND;
+import static busynessmanager.constants.Constants.CP_INVALID_PRICE_MESSAGE;
+
 
 
 /**
@@ -258,6 +261,13 @@ public class CommandParser {
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
+
+            BigDecimal bd = BigDecimal.valueOf(productPrice);
+            int decimalPlaces = bd.scale();
+            if (decimalPlaces > 2) {
+                throw new InvalidCommandException(CP_INVALID_PRICE_MESSAGE);
+            }
+
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
         }

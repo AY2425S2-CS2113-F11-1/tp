@@ -6,7 +6,6 @@ import static busynessmanager.constants.Constants.INDEX_1;
 import static busynessmanager.constants.Constants.ID_FORMAT;
 import static busynessmanager.constants.Constants.PRODUCT_FORMAT;
 
-
 /**
  * Represents a product in the inventory.
  * Each product has a unique ID, name, quantity, quantity sold, and price.
@@ -18,7 +17,6 @@ public class Product {
     private int quantity;
     private int quantitySold;
     private double price;
-
 
     /**
      * Constructs a new Product with the specified name, quantity, and price.
@@ -37,22 +35,31 @@ public class Product {
     }
 
     /**
-     * Constructs a new Product with the specified name, quantity, quantity sold and price.
+     * Constructs a new Product with the specified ID, name, quantity, quantity sold and price.
      * This constructor is used when loading from the text file.
      *
+     * @param id     The ID of the product.
      * @param name     The name of the product.
      * @param quantity The initial stock quantity of the product.
      * @param quantitySold The amount of the product that was sold.
      * @param price    The price of the product.
      */
-    public Product(String name, int quantity, int quantitySold, double price) {
-        this.id = String.format(ID_FORMAT, idCounter++); // Generates unique ID like ID_0001
+    public Product(String id, String name, int quantity, int quantitySold, double price) {
+        this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.quantitySold = quantitySold;
         this.price = price;
     }
 
+    /**
+     * Sets the idCounter value to the given input
+     *
+     * @param newCounter The new idCounter value
+     */
+    public static void setIdCounter(int newCounter) {
+        idCounter = newCounter;
+    }
 
     /**
      * Gets the unique product ID.

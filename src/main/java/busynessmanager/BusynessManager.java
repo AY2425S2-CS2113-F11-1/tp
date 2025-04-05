@@ -17,7 +17,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static busynessmanager.constants.Constants.BUSINESS_INFO_FILE;
 import static busynessmanager.constants.Constants.NEWLINE;
+import static busynessmanager.constants.Constants.EMPTY_STRING;
 import static busynessmanager.constants.Constants.INDEX_0;
 import static busynessmanager.constants.Constants.INDEX_1;
 import static busynessmanager.constants.Constants.INDEX_2;
@@ -33,6 +35,7 @@ import static busynessmanager.constants.Constants.BM_TYPE_TITLE;
 import static busynessmanager.constants.Constants.BM_ID_TITLE;
 import static busynessmanager.constants.Constants.BM_INVENTORY_TITLE;
 import static busynessmanager.constants.Constants.BM_WELCOME_MESSAGE;
+import static busynessmanager.constants.Constants.BM_LOGIN_MESSAGE;
 import static busynessmanager.constants.Constants.BM_NO_INPUT_ERROR_MESSAGE;
 import static busynessmanager.constants.Constants.BM_FIRST_SETUP_CHECK_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_ID_MESSAGE;
@@ -62,8 +65,6 @@ import static busynessmanager.constants.Constants.BM_LOAD_FAIL_MESSAGE;
  * Handles user authentication, business setup, and command execution.
  */
 public class BusynessManager {
-    private static final String DATA_FOLDER = "data";
-    private static final String BUSINESS_INFO_FILE = DATA_FOLDER + "/BusinessInfo.txt";
 
     public enum BusinessType {
         FNB, RETAIL
@@ -72,7 +73,6 @@ public class BusynessManager {
     private Credentials credentials;
     private final InventoryManager inventoryManager;
     private final CommandParser commandParser;
-
 
     /**
      * Constructs a BusynessManager instance and initializes the necessary managers.
@@ -84,7 +84,6 @@ public class BusynessManager {
         RevenueCalculator revenueCalculator = new RevenueCalculator(salesManager);
         SearchManager searchManager = new SearchManager(inventoryManager);
         commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
-        loadBusinessData();
     }
 
 
@@ -104,8 +103,11 @@ public class BusynessManager {
     private void start() {
         Scanner scanner = new Scanner(System.in);
         UI.printMessage(BM_WELCOME_MESSAGE);
+        UI.printMessage(BM_LOGIN_MESSAGE);
+        String businessName = scanner.nextLine();
+        File file = new File(String.format(BUSINESS_INFO_FILE, businessName));
 
-        if (credentials == null) {
+        if (!file.exists()) {
             UI.printMessageWithoutNewline(BM_FIRST_SETUP_CHECK_MESSAGE);
             String response = scanner.nextLine();
 
@@ -116,6 +118,7 @@ public class BusynessManager {
                 return;
             }
         } else {
+            loadBusinessData(businessName);
             login(scanner);
         }
 
@@ -155,7 +158,7 @@ public class BusynessManager {
         BusinessType type = extractBusinessType(scanner);
 
         credentials = new Credentials(id, name, password, type);
-        saveBusinessData();
+        saveBusinessData(credentials.getBusinessName());
         UI.printMessage(BM_SETUP_COMPLETE_MESSAGE);
     }
 
@@ -165,6 +168,7 @@ public class BusynessManager {
      * @param scanner The Scanner object for user input.
      */
     private void run(Scanner scanner) {
+
         UI.printMessage(BM_READY_MESSAGE);
 
         while (true) {
@@ -177,7 +181,7 @@ public class BusynessManager {
             }
 
             commandParser.parseCommand(input);
-            saveBusinessData();
+            saveBusinessData(credentials.getBusinessName());
         }
         scanner.close();
     }
@@ -185,19 +189,20 @@ public class BusynessManager {
     /**
      * Saves business credentials and inventory data to a file.
      */
-    private void saveBusinessData() {
-        File dataFolder = new File(DATA_FOLDER);
+    private void saveBusinessData(String businessName) {
+        File dataFolder = new File(businessName);
 
         if (!dataFolder.exists()) {
             dataFolder.mkdir();
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BUSINESS_INFO_FILE))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(
+            String.format(BUSINESS_INFO_FILE, businessName)))) {
             if (credentials != null) {
                 writer.write(credentials.getBusinessID() + FILE_REGEX +
-                        credentials.getBusinessName() + FILE_REGEX +
-                        credentials.getBusinessPassword() + FILE_REGEX +
-                        credentials.getBusinessType() + NEWLINE);
+                    credentials.getBusinessName() + FILE_REGEX +
+                    credentials.getBusinessPassword() + FILE_REGEX +
+                    credentials.getBusinessType() + NEWLINE);
             }
 
             writer.write(BM_INVENTORY_TITLE + NEWLINE);
@@ -211,8 +216,8 @@ public class BusynessManager {
     /**
      * Loads business credentials and inventory data from a file.
      */
-    private void loadBusinessData() {
-        File file = new File(BUSINESS_INFO_FILE);
+    private void loadBusinessData(String businessName) {
+        File file = new File(String.format(BUSINESS_INFO_FILE, businessName));
 
         if (!file.exists()) {
             UI.printMessage(BM_NO_DATA_MESSAGE);
@@ -250,7 +255,7 @@ public class BusynessManager {
      * @return The business name inputted by the user.
      */
     private String extractID(Scanner scanner) {
-        String businessID = "";
+        String businessID = EMPTY_STRING;
 
         while (businessID.isEmpty()) {
             UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
@@ -276,7 +281,7 @@ public class BusynessManager {
      * @return The business name inputted by the user.
      */
     private String extractName(Scanner scanner) {
-        String businessName = "";
+        String businessName = EMPTY_STRING;
 
         while (businessName.isEmpty()) {
             UI.printMessageWithoutNewline(BM_ENTER_NAME_MESSAGE);
@@ -302,7 +307,7 @@ public class BusynessManager {
      * @return The password inputted by the user.
      */
     private String extractPassword(Scanner scanner) {
-        String businessPassword = "";
+        String businessPassword = EMPTY_STRING;
 
         while (businessPassword.isEmpty()) {
             UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE_2);
@@ -379,8 +384,8 @@ public class BusynessManager {
             return BM_NO_CREDENTIALS_MESSAGE;
         }
 
-        return BM_ID_TITLE + credentials.getBusinessID() + "\n"
-                + BM_NAME_TITLE + credentials.getBusinessName() + "\n"
+        return BM_ID_TITLE + credentials.getBusinessID() + NEWLINE
+                + BM_NAME_TITLE + credentials.getBusinessName() + NEWLINE
                 + BM_TYPE_TITLE + credentials.getBusinessType();
     }
 
