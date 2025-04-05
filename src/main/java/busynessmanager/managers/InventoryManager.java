@@ -205,8 +205,7 @@ public class InventoryManager {
                 .append(product.getName()).append(FILE_REGEX)
                 .append(product.getQuantity()).append(FILE_REGEX)
                 .append(product.getQuantitySold()).append(FILE_REGEX)
-                .append(product.getPrice()).append(NEWLINE)
-            );
+                .append(product.getPrice()).append(NEWLINE));
 
         return data.toString();
     }

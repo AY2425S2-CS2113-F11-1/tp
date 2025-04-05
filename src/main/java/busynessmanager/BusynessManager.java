@@ -198,8 +198,7 @@ public class BusynessManager {
         }
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(
-            //DATA_FOLDER + "/" + businessName + ".txt"))) {
-                    String.format(BUSINESS_INFO_FILE, businessName)))) {
+            String.format(BUSINESS_INFO_FILE, businessName)))) {
             if (credentials != null) {
                 writer.write(credentials.getBusinessID() + FILE_REGEX +
                     credentials.getBusinessName() + FILE_REGEX +
