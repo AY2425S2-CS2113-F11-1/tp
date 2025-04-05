@@ -17,7 +17,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static busynessmanager.constants.Constants.DATA_FOLDER;
 import static busynessmanager.constants.Constants.BUSINESS_INFO_FILE;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.EMPTY_STRING;
