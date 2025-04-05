@@ -36,6 +36,7 @@ handling, and structured command processing.
 * Formatting for enhanced readability and other miscellaneous additions
 > _Developer's Guide:_
 * Gave a general breakdown of how all the classes of the project interacts with one another
+* Created a UML Class Diagram for the application
 ---
 **Contributions to Team-Based Tasks:**
 * Reviewed PRs

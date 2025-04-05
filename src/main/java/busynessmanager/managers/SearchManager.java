@@ -33,7 +33,7 @@ public class SearchManager {
 
 
     /**
-     * Returns ID of the given product Name.
+     * Prints the details of a product, given the Product name.
      *
      * @param name Name of the product to query.
      */
@@ -41,26 +41,53 @@ public class SearchManager {
         HashMap<String, Product> currentProductList = this.inventory.returnProductList();
         Set<Map.Entry<String, Product>> mapSet = currentProductList.entrySet();
 
-        for (Map.Entry<String, Product> entry : mapSet) {
-            if (entry.getValue().getName().equalsIgnoreCase(name)) {
-                String id = entry.getKey();
-
-                UI.printFormattedMessage(SRM_ID_QUERY_FORMAT + NEWLINE, name, id);
-                return;
-            }
+        if (checkForProductByName(name, mapSet)) {
+            return;
         }
 
         UI.printFormattedMessage(SRM_PRODUCT_NOT_FOUND_FORMAT + NEWLINE, name);
     }
 
     /**
-     * Returns the product Name of the given product ID.
+     * Prints the details of a product, given the Product ID.
      *
      * @param id ID value of the Product to query.
      */
     public void searchById(String id) {
         HashMap<String, Product> currentProductList = this.inventory.returnProductList();
 
+        checkForProductById(id, currentProductList);
+    }
+
+    /**
+     * Sub method of searchByName
+     * Checks if a Product is present in the map, and prints a message to the user if it is
+     *
+     * @param name The name of the Product to be queried
+     * @param mapSet The mapSet to query through
+     * @return Returns true if Product of String name is found in the mapSet
+     */
+    private boolean checkForProductByName(String name, Set<Map.Entry<String, Product>> mapSet) {
+        for (Map.Entry<String, Product> entry : mapSet) {
+            boolean areNamesMatching = entry.getValue().getName().equalsIgnoreCase(name);
+            if (areNamesMatching) {
+                String id = entry.getKey();
+
+                UI.printFormattedMessage(SRM_ID_QUERY_FORMAT + NEWLINE, name, id);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Sub method of searchById
+     * Checks if a Product is present in the map, and prints a message to the user if it is
+     *
+     * @param id The ID of the Product to be queried
+     * @param currentProductList The HashMap to query through
+     */
+    private void checkForProductById(String id, HashMap<String, Product> currentProductList) {
         if (currentProductList.containsKey(id)) {
             Product product = currentProductList.get(id);
             String name = product.getName();

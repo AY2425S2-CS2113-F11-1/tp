@@ -32,6 +32,7 @@ public class Constants {
             add         add /name <name> /qty <number> /price <number>
             delete      delete /id <number>
             update      update /id <number> /name <name> /qty <number> /price <number>
+            print       print
             sold        sold /id <number> /qty <number>
             clear       clear /id <number>
             revenue     revenue OR revenue /id <number>
