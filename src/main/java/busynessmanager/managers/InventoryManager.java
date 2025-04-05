@@ -198,13 +198,15 @@ public class InventoryManager {
     public String getInventoryData() {
         StringBuilder data = new StringBuilder();
 
-        for (Product product : productList.values()) {
-            data.append(product.getId()).append(FILE_REGEX)
-                    .append(product.getName()).append(FILE_REGEX)
-                    .append(product.getQuantity()).append(FILE_REGEX)
-                    .append(product.getQuantitySold()).append(FILE_REGEX)
-                    .append(product.getPrice()).append(NEWLINE);
-        }
+        productList.entrySet().stream()
+            .sorted(Map.Entry.comparingByKey())
+            .map(entry -> entry.getValue())
+            .forEach(product -> data.append(product.getId()).append(FILE_REGEX)
+                .append(product.getName()).append(FILE_REGEX)
+                .append(product.getQuantity()).append(FILE_REGEX)
+                .append(product.getQuantitySold()).append(FILE_REGEX)
+                .append(product.getPrice()).append(NEWLINE)
+            );
 
         return data.toString();
     }
@@ -228,7 +230,10 @@ public class InventoryManager {
                 int quantitySold = Integer.parseInt(parts[INDEX_3]);
                 double price = Double.parseDouble(parts[INDEX_4]);
 
-                productList.put(id, new Product(name, quantity, quantitySold, price));
+                String numberPart = id.substring(3);
+                int newIDCounter = Integer.parseInt(numberPart) + 1;
+                productList.put(id, new Product(id, name, quantity, quantitySold, price));
+                Product.setIdCounter(newIDCounter);
             }
         }
     }
