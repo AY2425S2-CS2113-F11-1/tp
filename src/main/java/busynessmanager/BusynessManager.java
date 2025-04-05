@@ -73,7 +73,6 @@ public class BusynessManager {
     private final InventoryManager inventoryManager;
     private final CommandParser commandParser;
 
-
     /**
      * Constructs a BusynessManager instance and initializes the necessary managers.
      * Also loads business credentials if available.

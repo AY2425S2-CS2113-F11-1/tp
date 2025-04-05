@@ -14,54 +14,9 @@ import busynessmanager.exceptions.NumberParsingFailedException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.math.BigDecimal;
 
-import static busynessmanager.constants.Constants.MINIMUM_VALUE;
-import static busynessmanager.constants.Constants.MAXIMUM_VALUE;
-import static busynessmanager.constants.Constants.WHITESPACE;
-import static busynessmanager.constants.Constants.EMPTY_STRING;
-import static busynessmanager.constants.Constants.INDEX_0;
-import static busynessmanager.constants.Constants.INDEX_1;
-import static busynessmanager.constants.Constants.INDEX_2;
-import static busynessmanager.constants.Constants.INDEX_3;
-import static busynessmanager.constants.Constants.INDEX_4;
-import static busynessmanager.constants.Constants.INDEX_5;
-import static busynessmanager.constants.Constants.INDEX_6;
-import static busynessmanager.constants.Constants.INDEX_7;
-import static busynessmanager.constants.Constants.HELP_LIST;
-import static busynessmanager.constants.Constants.ID_FORMAT;
-import static busynessmanager.constants.Constants.CP_NAME;
-import static busynessmanager.constants.Constants.CP_COMMAND_SEPARATOR_INDEX;
-import static busynessmanager.constants.Constants.CP_ASSERTION_FAIL_INDEX;
-import static busynessmanager.constants.Constants.CP_CREDENTIALS_TITLE;
-import static busynessmanager.constants.Constants.CP_INVENTORY_TITLE;
-import static busynessmanager.constants.Constants.CP_HELP_COMMAND;
-import static busynessmanager.constants.Constants.CP_ADD_COMMAND;
-import static busynessmanager.constants.Constants.CP_DELETE_COMMAND;
-import static busynessmanager.constants.Constants.CP_UPDATE_COMMAND;
-import static busynessmanager.constants.Constants.CP_PRINT_COMMAND;
-import static busynessmanager.constants.Constants.CP_SOLD_COMMAND;
-import static busynessmanager.constants.Constants.CP_CLEAR_COMMAND;
-import static busynessmanager.constants.Constants.CP_REVENUE_COMMAND;
-import static busynessmanager.constants.Constants.CP_SEARCH_COMMAND;
-import static busynessmanager.constants.Constants.CP_SPLIT_REGEX;
-import static busynessmanager.constants.Constants.CP_ID_FLAG;
-import static busynessmanager.constants.Constants.CP_NAME_FLAG;
-import static busynessmanager.constants.Constants.CP_PRICE_FLAG;
-import static busynessmanager.constants.Constants.CP_QUANTITY_FLAG;
-import static busynessmanager.constants.Constants.CP_INVALID_COMMAND_MESSAGE;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_ADD;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_UPDATE;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SOLD;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_REVENUE;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SEARCH;
-import static busynessmanager.constants.Constants.CP_INVALID_ID_MESSAGE;
-import static busynessmanager.constants.Constants.CP_INVALID_ID_FORMAT_MESSAGE;
-import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
-import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
-import static busynessmanager.constants.Constants.CP_ID_MISSING_MESSAGE;
-import static busynessmanager.constants.Constants.CP_NAME_MISSING_MESSAGE;
-import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
-import static busynessmanager.constants.Constants.CP_READ_BUSINESS_INFO_COMMAND;
+import static busynessmanager.constants.Constants.*;
 
 
 /**
@@ -258,6 +213,13 @@ public class CommandParser {
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
+
+            BigDecimal bd = BigDecimal.valueOf(productPrice);
+            int decimalPlaces = bd.scale();
+            if (decimalPlaces > 2) {
+                throw new InvalidCommandException(CP_INVALID_PRICE_MESSAGE);
+            }
+
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
         }

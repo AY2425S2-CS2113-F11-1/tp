@@ -52,7 +52,8 @@ public class Constants {
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
     public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected.";
     public static final String BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE = "Invalid business type." + TRY_AGAIN_MESSAGE;
-    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "No existing ID. Do you want to add your business? ";
+    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "No existing ID. Do you want to add your business? " +
+        "\n(Enter: \"Yes\" to set up credentials or any other input to exit Busyness Manager)";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
@@ -119,6 +120,8 @@ public class Constants {
     public static final String CP_ID_MISSING_MESSAGE = "ID is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_NAME_MISSING_MESSAGE = "Name is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_LOG_MESSAGE = "String splitting failure.";
+    public static final String CP_INVALID_PRICE_MESSAGE = "Please enter a valid price value " +
+        "(Input is more than 2 decimal points)";
 
 
     // Product
