@@ -56,7 +56,7 @@ public class Constants {
     public static final String BM_LOGIN_MESSAGE = "Please enter your business name:";
     public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected.";
     public static final String BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE = "Invalid business type." + TRY_AGAIN_MESSAGE;
-    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "Do you want to add your business? " + //No existing ID.
+    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "Do you want to add your business?" +
         "\n(Enter: \"Yes\" to set up credentials or any other input to exit Busyness Manager)";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
