@@ -79,9 +79,9 @@ exit        exit                                                              (E
 >Invalid format. /name /qty /price.
 >Invalid format. /name /qty /price.
 >Invalid format. /name /qty /price.
->Quantity and/or price is a negative number.
->Quantity and/or price is a negative number.
->Quantity and/or price is a negative number.
+>Quantity and/or price is a negative number or price is zero.
+>Quantity and/or price is a negative number or price is zero.
+>Quantity and/or price is a negative number or price is zero.
 >Quantity or price is not a proper number. Please try again.
 >Product added: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $4.00
 >Error: A product with the name 'MILK' already exists.
@@ -336,9 +336,9 @@ ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
 >Invalid format. /id /name /qty /price.
 >ID is invalid. Please try again.
 >Product with ID ID_0069 not found.
->Quantity and/or price is a negative number.
->Quantity and/or price is a negative number.
->Quantity and/or price is a negative number.
+>Quantity and/or price is a negative number or price is zero.
+>Quantity and/or price is a negative number or price is zero.
+>Quantity and/or price is a negative number or price is zero.
 >Quantity or price is not a proper number. Please try again.
 >Product updated: ID_0001: MILK | Qty: 60 | Sold: 0 | Price: $6.00
 >Product list:
@@ -381,6 +381,7 @@ ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
 >Name is missing. Please try again.
 >Product with name white not found.
 >Product ID of bread: ID_0002
+ID_0002: BREAD | Qty: 57 | Sold: 13 | Price: $3.00
 >Invalid format. /name OR /id.
 >Invalid format. /name OR /id.
 >Invalid format. /name OR /id.
@@ -389,6 +390,7 @@ ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
 >ID is invalid. Please try again.
 >Product with ID ID_0069 not found.
 >Product name of ID_0003: RICE
+ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
 >Revenue of MILK: 42.00
 Revenue of RICE: 99.00
 Revenue of BREAD: 39.00
