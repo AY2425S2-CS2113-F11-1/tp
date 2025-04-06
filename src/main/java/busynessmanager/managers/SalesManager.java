@@ -56,6 +56,7 @@ public class SalesManager {
             UI.printMessage(SM_MINIMUM_QTY_SOLD_MESSAGE);
             return true;
         }
+
         return false;
     }
 

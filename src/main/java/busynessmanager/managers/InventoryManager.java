@@ -25,8 +25,9 @@ import static busynessmanager.constants.Constants.IM_ADD_FORMAT;
 import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
 import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
 import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
+import static busynessmanager.constants.Constants.IM_QTY_SOLD_ZERO_FORMAT;
 import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
-import static busynessmanager.constants.Constants.IM_QTY_EXCEED_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.IM_QTY_EXCEED_MESSAGE;
 
 
 /**
@@ -151,7 +152,7 @@ public class InventoryManager {
             int currentQtySold = product.getQuantitySold();
 
             if (qtySold > currentQty) {
-                UI.printMessage(IM_QTY_EXCEED_ERROR_MESSAGE);
+                UI.printFormattedMessage(IM_QTY_EXCEED_MESSAGE + NEWLINE, id);
                 return false;
             } else {
                 product.setQuantitySold(currentQtySold + qtySold);
@@ -171,8 +172,13 @@ public class InventoryManager {
      */
     protected boolean resetProductSales(String id) {
         if (productList.containsKey(id)) {
-            productList.get(id).setQuantitySold(MINIMUM_VALUE);
-            return true;
+            if (productList.get(id).getQuantitySold() == MINIMUM_VALUE) {
+                UI.printFormattedMessage(IM_QTY_SOLD_ZERO_FORMAT + NEWLINE, id);
+                return false;
+            } else {
+                productList.get(id).setQuantitySold(MINIMUM_VALUE);
+                return true;
+            }
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
             return false;

@@ -48,16 +48,17 @@ import static busynessmanager.constants.Constants.CP_ID_FLAG;
 import static busynessmanager.constants.Constants.CP_NAME_FLAG;
 import static busynessmanager.constants.Constants.CP_PRICE_FLAG;
 import static busynessmanager.constants.Constants.CP_QUANTITY_FLAG;
-import static busynessmanager.constants.Constants.CP_INVALID_COMMAND_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_ADD;
 import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_UPDATE;
 import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SOLD;
 import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_REVENUE;
 import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SEARCH;
-import static busynessmanager.constants.Constants.CP_INVALID_ID_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_ID_FORMAT_MESSAGE;
+import static busynessmanager.constants.Constants.CP_INVALID_COMMAND_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
+import static busynessmanager.constants.Constants.CP_INVALID_ID_MESSAGE;
+import static busynessmanager.constants.Constants.CP_ID_ABSENT_MESSAGE;
 import static busynessmanager.constants.Constants.CP_ID_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_NAME_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
@@ -303,7 +304,7 @@ public class CommandParser {
                 inventoryManager.deleteProduct(productID);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+            throw new InvalidCommandException(CP_ID_ABSENT_MESSAGE);
         }
     }
 
@@ -460,7 +461,7 @@ public class CommandParser {
                 salesManager.clearSales(productID);
             }
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+            throw new InvalidCommandException(CP_ID_ABSENT_MESSAGE);
         }
     }
 
@@ -506,7 +507,7 @@ public class CommandParser {
                     double revenue = revenueCalculator.computeProductRevenue(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+                throw new InvalidCommandException(CP_ID_ABSENT_MESSAGE);
             }
         }
     }
@@ -557,7 +558,7 @@ public class CommandParser {
                     searchManager.searchById(productID);
                 }
             } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+                throw new InvalidCommandException(CP_ID_ABSENT_MESSAGE);
             }
         } else {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SEARCH);

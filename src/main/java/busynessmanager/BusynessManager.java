@@ -28,12 +28,14 @@ import static busynessmanager.constants.Constants.BM_UPPERCASE_REGEX;
 import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_FNB;
 import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_RETAIL;
 import static busynessmanager.constants.Constants.BM_FIRST_SETUP_APPROVAL;
+import static busynessmanager.constants.Constants.BM_EXIT_APPROVAL;
+import static busynessmanager.constants.Constants.BM_WAITING_INPUT;
 import static busynessmanager.constants.Constants.BM_NAME_TITLE;
 import static busynessmanager.constants.Constants.BM_TYPE_TITLE;
 import static busynessmanager.constants.Constants.BM_ID_TITLE;
 import static busynessmanager.constants.Constants.BM_INVENTORY_TITLE;
 import static busynessmanager.constants.Constants.BM_WELCOME_MESSAGE;
-import static busynessmanager.constants.Constants.BM_NO_INPUT_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.BM_NO_INPUT_MESSAGE;
 import static busynessmanager.constants.Constants.BM_FIRST_SETUP_CHECK_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_ID_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_PASSWORD_MESSAGE;
@@ -42,11 +44,9 @@ import static busynessmanager.constants.Constants.BM_SUCCESSFUL_LOGIN_MESSAGE;
 import static busynessmanager.constants.Constants.BM_INVALID_CREDENTIALS_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_NAME_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_TYPE_MESSAGE;
-import static busynessmanager.constants.Constants.BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.BM_INVALID_BUSINESSTYPE_MESSAGE;
 import static busynessmanager.constants.Constants.BM_SETUP_COMPLETE_MESSAGE;
 import static busynessmanager.constants.Constants.BM_READY_MESSAGE;
-import static busynessmanager.constants.Constants.BM_WAITING_INPUT_MESSAGE;
-import static busynessmanager.constants.Constants.BM_EXIT_KEYWORD;
 import static busynessmanager.constants.Constants.BM_EXIT_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ID_ASSERTION_FAIL_MESSAGE;
 import static busynessmanager.constants.Constants.BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE;
@@ -168,10 +168,10 @@ public class BusynessManager {
         UI.printMessage(BM_READY_MESSAGE);
 
         while (true) {
-            UI.printMessageWithoutNewline(BM_WAITING_INPUT_MESSAGE);
+            UI.printMessageWithoutNewline(BM_WAITING_INPUT);
             String input = scanner.nextLine();
 
-            if (input.equalsIgnoreCase(BM_EXIT_KEYWORD)) {
+            if (input.equalsIgnoreCase(BM_EXIT_APPROVAL)) {
                 UI.printMessage(BM_EXIT_MESSAGE);
                 break;
             }
@@ -256,13 +256,13 @@ public class BusynessManager {
             UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
 
             if (!scanner.hasNextLine()) {
-                UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
             } else {
                 businessID = scanner.nextLine().trim();
             }
 
             if (businessID.isEmpty()) {
-                UI.printMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
             }
         }
 
@@ -282,13 +282,13 @@ public class BusynessManager {
             UI.printMessageWithoutNewline(BM_ENTER_NAME_MESSAGE);
 
             if (!scanner.hasNextLine()) {
-                UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
             } else {
                 businessName = scanner.nextLine().trim();
             }
 
             if (businessName.isEmpty()) {
-                UI.printMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
             }
         }
 
@@ -308,13 +308,13 @@ public class BusynessManager {
             UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE_2);
 
             if (!scanner.hasNextLine()) {
-                UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
             } else {
                 businessPassword = scanner.nextLine().trim();
             }
 
             if (businessPassword.isEmpty()) {
-                UI.printMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
             }
         }
 
@@ -334,7 +334,7 @@ public class BusynessManager {
             UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_TYPE_MESSAGE);
 
             if (!scanner.hasNextLine()) {
-                UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
             } else {
                 String businessTypeString = scanner.nextLine().trim();
 
@@ -345,7 +345,7 @@ public class BusynessManager {
                         && businessTypeString.equals(BM_BUSINESSTYPE_RETAIL)) {
                     businessType = BusinessType.RETAIL;
                 } else {
-                    UI.printMessage(BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE);
+                    UI.printMessage(BM_INVALID_BUSINESSTYPE_MESSAGE);
                 }
             }
         }
