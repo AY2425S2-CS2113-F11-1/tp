@@ -117,6 +117,70 @@ public class InventoryManager {
     }
 
     /**
+     * Updates the details of an existing product.
+     *
+     * @param id    The unique ID of the product.
+     * @param name  The new name of the product.
+     */
+    public void updateName(String id, String name) {
+        if (productList.containsKey(id)) {
+            Product product = productList.get(id);
+
+            product.setName(name);
+
+            UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
+        } else {
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
+        }
+    }
+
+    /**
+     * Updates the details of an existing product.
+     *
+     * @param id    The unique ID of the product.
+     * @param qty   The new quantity of the product.
+     */
+    public void updateQty(String id, int qty) {
+        if (productList.containsKey(id)) {
+            Product product = productList.get(id);
+
+            if (qty < MINIMUM_VALUE) {
+                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                return;
+            } else {
+                product.setQuantity(qty);
+            }
+
+            UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
+        } else {
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
+        }
+    }
+
+    /**
+     * Updates the details of an existing product.
+     *
+     * @param id    The unique ID of the product.
+     * @param price The new price of the product.
+     */
+    public void updatePrice(String id, double price) {
+        if (productList.containsKey(id)) {
+            Product product = productList.get(id);
+
+            if (price <= MINIMUM_VALUE) {
+                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                return;
+            } else {
+                product.setPrice(price);
+            }
+
+            UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
+        } else {
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
+        }
+    }
+
+    /**
      * Prints all products in the inventory.
      * If the inventory is empty, displays an appropriate message.
      */
@@ -204,13 +268,14 @@ public class InventoryManager {
     public String getInventoryData() {
         StringBuilder data = new StringBuilder();
 
-        for (Product product : productList.values()) {
-            data.append(product.getId()).append(FILE_REGEX)
-                    .append(product.getName()).append(FILE_REGEX)
-                    .append(product.getQuantity()).append(FILE_REGEX)
-                    .append(product.getQuantitySold()).append(FILE_REGEX)
-                    .append(product.getPrice()).append(NEWLINE);
-        }
+        productList.entrySet().stream()
+            .sorted(Map.Entry.comparingByKey())
+            .map(entry -> entry.getValue())
+            .forEach(product -> data.append(product.getId()).append(FILE_REGEX)
+                .append(product.getName()).append(FILE_REGEX)
+                .append(product.getQuantity()).append(FILE_REGEX)
+                .append(product.getQuantitySold()).append(FILE_REGEX)
+                .append(product.getPrice()).append(NEWLINE));
 
         return data.toString();
     }
@@ -234,7 +299,10 @@ public class InventoryManager {
                 int quantitySold = Integer.parseInt(parts[INDEX_3]);
                 double price = Double.parseDouble(parts[INDEX_4]);
 
-                productList.put(id, new Product(name, quantity, quantitySold, price));
+                String numberPart = id.substring(3);
+                int newIDCounter = Integer.parseInt(numberPart) + 1;
+                productList.put(id, new Product(id, name, quantity, quantitySold, price));
+                Product.setIdCounter(newIDCounter);
             }
         }
     }
