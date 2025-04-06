@@ -59,8 +59,12 @@
 
 ## Command Summary:
 
-> * *IMPORTANT: Add a slash (`/`) in front of any tag.*
-> * *IMPORTANT: All commands (e.g. add / delete) are LOWERCASE.* 
+**Important things to take note:**
+
+* Add a slash (`/`) in front of any tag.
+* All commands (e.g. `add` / `delete`) are LOWERCASE.
+* Names of all products must be ONE-WORD long. (further explained [below](#known-bugs))
+* IDs will NOT be usable after deletion. (further explained [below](#known-bugs)) 
 
 ### **Adding a Product**
 
@@ -156,7 +160,7 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 * Output -> `Sales recorded: Product ID: ID_0001, Quantity Sold: 5`
 
 ---
-<!-- @@author b1inmeister -->
+
 ### **Clearing Sold Quantity**
 
 > `clear /id P_ID`
@@ -222,3 +226,16 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 * Input -> `search /id 1`
 * Output -> `Product name of ID_0001: FRESH_MILK`
+
+<!-- @@author b1inmeister -->
+## Known Bugs:
+
+1. The names of all products in the inventory must be one-word only. This means that names like *fresh milk* and *cheese
+tofu* are not accepted. To add products with names like these, the space in their names must be replaced by underscores.
+For instance, *fresh milk* must be replaced by **fresh_milk**, and *cheese tofu* must be replaced by **cheese_tofu**.
+This bug is due to implementation limitations, and will be addressed in future versions.
+2. After an ID is deleted, it will not be usable within that business's inventory. While this may be a bug to some 
+users, this is by design. In the context of business operations, product IDs ought not to be re-used for data integrity
+purposes. Furthermore, in databases like our inventory, there is the need to ensure that the primary keys in databases, 
+which in this case are the product IDs, are unique and immutable. Thus, in Busyness Manager, the product IDs will not be
+reusable after deletion from the inventory.
