@@ -110,11 +110,13 @@ public class Constants {
     public static final String CP_ID_FLAG = "/id";
 
     public static final String CP_INVALID_COMMAND_MESSAGE = "Command does not exist." + TRY_AGAIN_MESSAGE;
-    public static final String CP_INVALID_FLAG_MESSAGE_ADD = "Invalid format. /name /qty /price.";
+    public static final String CP_INVALID_FLAG_MESSAGE_ADD = "Invalid format. add <name> <quantity> <price>";
     public static final String CP_INVALID_FLAG_MESSAGE_SOLD = "Invalid format. /id /qty.";
     public static final String CP_INVALID_FLAG_MESSAGE_REVENUE = "Invalid format. /id or keep empty for total.";
     public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. /name OR /id.";
-    public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid format. /id /name /qty /price.";
+    public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid flags." +
+        "\nupdate <ID number> <flag> <Updated value>," +
+        "\nwhere <flag> is either /name, /qty, or /price.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
     public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a proper number." +
             TRY_AGAIN_MESSAGE;
