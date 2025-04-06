@@ -1,45 +1,52 @@
 # Developer Guide
 
 ## Acknowledgements
+
 <!-- @@author amirhusaini06 -->
 * [CS2113 individualProject (amirhusaini06)](https://github.com/amirhusaini06/ip)
+
 <!-- @@author b1inmeister -->
 * [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip) 
+
 <!-- @@author LEESY02 -->
 * [CS2113 individualProject (LEESY02)](https://github.com/LEESY02/ip) 
 
 
 ## Design
+
 <!-- @@author amirhusaini06 -->
 The **Busyness Manager** is a command-line business management application designed for small business owners to manage 
 their inventory, sales, and revenue tracking efficiently.
 
 ### Architecture Overview
-- The project follows an **Object-Oriented Programming (OOP)** approach, with separate classes handling different 
+
+* The project follows an **Object-Oriented Programming (OOP)** approach, with separate classes handling different 
 aspects of business management.
-- The **Command Parser** is responsible for processing user input and calling the appropriate methods.
-- The **InventoryManager** manages the addition, removal, and modification of products.
-- The **SalesManager** keeps track of product sales and revenue.
-- The **RevenueCalculator** computes total revenue and sales reports.
-- The **Credentials** class stores business authentication details, ensuring security.
-- The **BusynessManager** acts as the central controller, orchestrating interactions between components.
+* The **Command Parser** is responsible for processing user input and calling the appropriate methods.
+* The **InventoryManager** manages the addition, removal, and modification of products.
+* The **SalesManager** keeps track of product sales and revenue.
+* The **RevenueCalculator** computes total revenue and sales reports.
+* The **Credentials** class stores business authentication details, ensuring security.
+* The **BusynessManager** acts as the central controller, orchestrating interactions between components.
 
 <!-- @@author LEESY02 -->
-Below is a UML Class Diagram of the Classes present in the application
-![](images/UML%20Object%20DIagram4.png)
+**Below is a UML Class Diagram of the Classes present in the application.**
+![](images/BusynessManager_ClassDiagram.png)
 
 <!-- @@author amirhusaini06 -->
 ### Key Features & Implementation Details
-- **Data Persistence:** Business credentials and inventory data are stored in a text file within the `data/` directory, 
+
+* **Data Persistence:** Business credentials and inventory data are stored in a text file within the `data/` directory, 
 ensuring persistence across application restarts.
-- **Authentication:** The application verifies business credentials at startup using stored authentication data.
-- **User Commands:** The application accepts structured user input through a command-line interface, with validation for
+* **Authentication:** The application verifies business credentials at startup using stored authentication data.
+* **User Commands:** The application accepts structured user input through a command-line interface, with validation for
 incorrect formats.
 
 <!-- @@author LEESY02 -->
 The purpose of this application was to help businesses account for their sales and revenue.
 
 Hence, we required multiple different classes to manage various different aspects of a business owner, such as:
+
 1. Product and Inventory
 2. Sales
 3. Revenue
@@ -49,6 +56,7 @@ The inventory of each business is therefore handled by a InventoryManager class,
 key-value pairs of String ID and Product objects.
 
 Each Product object contains various useful attributes, such as:
+
 1. String ID
 2. String name (of the product)
 3. Current stock quantity
@@ -73,90 +81,91 @@ taking care of the different needs of businesses.
 
 
 ## Implementation
+
 <!-- @@author himethcodes -->
 ### Product class
+
 The `Product` class represents an individual item in the business inventory. It contains the following attributes:
 
 **Attributes**
-- **`String id`** - A unique identifier for the product.
-- **`String name`** - The name of the product.
-- **`int quantity`** - The current quantity available for sale.
-- **`int quantitySold`** - The number of units sold.
-- **`double price`** - The price of each unit of the product.
+
+* **`String id`** - A unique identifier for the product.
+* **`String name`** - The name of the product.
+* **`int quantity`** - The current quantity available for sale.
+* **`int quantitySold`** - The number of units sold.
+* **`double price`** - The price of each unit of the product.
 
 **Product Class Methods**
-- **`Product(String name, int quantity, double price)`**
-  - Constructor to initialize a new product.
 
-- **`getId()`**
-  - Returns the product ID.
-
-- **`getName()`**
-  - Returns the product name.
-
-- **`getQuantity()`**
-  - Returns the available stock quantity.
-
-- **`getQuantitySold()`**
-  - Returns the total quantity sold.
-
-- **`getPrice()`**
-  - Returns the product price.
+* **`Product(String name, int quantity, double price)`**
+  * Constructor to initialize a new product.
+* **`getId()`**
+  * Returns the product ID.
+* **`getName()`**
+  * Returns the product name.
+* **`getQuantity()`**
+  * Returns the available stock quantity.
+* **`getQuantitySold()`**
+  * Returns the total quantity sold.
+* **`getPrice()`**
+  * Returns the product price.
 
 ### InventoryManager class
+
 The `InventoryManager` class manages all `Product` objects in the inventory. It maintains a `HashMap` where the key is
 the product ID, and the value is the corresponding `Product` object.
 
 **Member Variables**
-- **`HashMap<String, Product> inventory`** - Stores product details using a key-value structure.
+
+* **`HashMap<String, Product> inventory`** - Stores product details using a key-value structure.
 
 **InventoryManager Class Methods**
-- **`addProduct(String name, int qty, double price)`**
-  - Adds a new product to the inventory.
 
-- **`deleteProduct(String id)`**
-  - Removes a product from the inventory.
-
-- **`updateProduct(String id, String name, int qty, double price)`**
-  - Updates the details of an existing product.
-
-- **`printProducts()`**
-  - Displays all products in the inventory.
+* **`addProduct(String name, int qty, double price)`**
+  * Adds a new product to the inventory.
+* **`deleteProduct(String id)`**
+  * Removes a product from the inventory.
+* **`updateProduct(String id, String name, int qty, double price)`**
+  * Updates the details of an existing product.
+* **`printProducts()`**
+  * Displays all products in the inventory.
 
 **Interactions with Other Components**
-- **`SalesManager`** - Uses `InventoryManager` to update stock and record sales.
-- **`SearchManager`** - Uses `InventoryManager` to search for products.
-- **`RevenueCalculator`** - Fetches product price and quantity sold from `InventoryManager` to calculate total revenue.
-- **`CommandParser`** - Calls `InventoryManager` methods based on user input.
+
+* **`SalesManager`** - Uses `InventoryManager` to update stock and record sales.
+* **`SearchManager`** - Uses `InventoryManager` to search for products.
+* **`RevenueCalculator`** - Fetches product price and quantity sold from `InventoryManager` to calculate total revenue.
+* **`CommandParser`** - Calls `InventoryManager` methods based on user input.
 
 <!-- @@author rozaliesmit -->
 ### SalesManager class
+
 The `SalesManager` class manages sales transactions, updating inventory levels and tracking quantities sold. It acts as
 an intermediary between the user interface and the InventoryManager, ensuring that sales are recorded accurately and
 inventory is adjusted accordingly.
 
 **Member Variables**
-- **`InventoryManager inventory`** -  Stores a reference to the `InventoryManager` class, allowing the `SalesManager`
+
+* **`InventoryManager inventory`** -  Stores a reference to the `InventoryManager` class, allowing the `SalesManager`
   to interact with the inventory data.
 
 **SalesManager Class Methods**
-- **`SalesManager inventory`**
-  - Constructs a `SalesManager` class with a given `InventoryManager`.
 
-- **`recordSale(String id, int qty Sold)`**
-  - Records a sale of a specified quantity of a product with the given ID.
-
-- **`clearSales(String id)`**
-  - Resets the sales data for a product with the given ID.
-
-- **`getInventory()`**
-  - Returns the `InventoryManager` class used by the `SalesManager`.
+* **`SalesManager inventory`**
+  * Constructs a `SalesManager` class with a given `InventoryManager`.
+* **`recordSale(String id, int qty Sold)`**
+  * Records a sale of a specified quantity of a product with the given ID.
+* **`clearSales(String id)`**
+  * Resets the sales data for a product with the given ID.
+* **`getInventory()`**
+  * Returns the `InventoryManager` class used by the `SalesManager`.
 
 **Interactions with Other Components**
-- **`InventoryManager`** - `SalesManager` relies on the `InventoryManager` to update product quantities and reset sales 
+
+* **`InventoryManager`** - `SalesManager` relies on the `InventoryManager` to update product quantities and reset sales 
 data.
-- **`RevenueCalculator`** - Uses `SalesManager` to compute total sales to compute total and individual product revenue.
-- **`CommandParser`** - Calls `SalesManager` to execute sales-related commands entered by the user.
+* **`RevenueCalculator`** - Uses `SalesManager` to compute total sales to compute total and individual product revenue.
+* **`CommandParser`** - Calls `SalesManager` to execute sales-related commands entered by the user.
 
 <!-- @@author b1inmeister -->
 ### CommandParser class
@@ -170,6 +179,7 @@ through 3 steps to execute the user input, before giving back control to the use
 class. 
 
 The 3 steps is as follows:
+
 1. Splitting user input String
 2. Executing the command
 3. Manipulating the information
@@ -214,7 +224,9 @@ exception handling of `ArrayOutOfBoundsException` is done. In the scenario where
 `InvalidCommandException` will also be thrown, and later caught when the command execution method returns.
 
 For the product **name**, since it is expected to be of type `String`, the attribute is extracted directly from the index 
-immediately after the index that contains `/name`. 
+immediately after the index that contains `/name`. However, due to how `split()` works, only one-word Strings are able
+to be extracted as the product name. Hence, the name of products in the program are restricted to one-word Strings. 
+This limitation will be addressed in later versions.
 
 For the product **quantity** or **price**, the attribute will be extracted from the index immediately after the index that
 contains `/qty` `/price` respectively. After that, since we require the product quantity and price to be of type `int`
@@ -239,16 +251,20 @@ methods, they will skip the extraction of attributes portion.
 
 
 ## Product Scope
+
 ### Target user profile
+
 * Involved in a business that sells goods (i.e. physical products).
   * This business is a for-profit business.
   * This business sells a variety of goods.
+  * This business is not a large business with a single outlet. (e.g. mini-mart / cafe)
 * Prefer desktop applications over other types.
 * Prefer typing over using a mouse to navigate menus.
 * Has the ability to type reasonably fast and accurately.
 * Is used to handling CLI applications.
 
 ### Value Proposition
+
 Busyness Manager can manage the inventory of a business in a faster and more organised way than a typical GUI-driven 
 application. Moreover, it is cheaper to run and maintain, compared to other inventory management applications in the 
 market.
@@ -271,6 +287,7 @@ market.
 
 
 ## Non-Functional Requirements
+
 * Should work on any _mainstream OS_ with Java 17 installed.
 * Should serve a business with up to 10,000 goods for sale.
 * A user with decent typing speed for normal text should be able to complete most tasks faster through typing
@@ -278,6 +295,7 @@ out commands, compared to using the mouse to navigate a GUI application.
 
 
 ## Glossary
+
 <!-- @@author amirhusaini06 -->
 * **Business Credentials** - Unique identifiers (ID, name, password) for a registered business.
 * **Command Parser** - A component responsible for interpreting user commands and triggering appropriate actions.
@@ -290,34 +308,42 @@ out commands, compared to using the mouse to navigate a GUI application.
 
 
 ## Instructions for Manual Testing
+
 ### Launch
+
 1. Download the `.jar` file and copy into an empty folder.
 2. Open Command Prompt on Windows / Terminal on macOS.
 3. Change the current working directory to the folder containing the `.jar` file.
 4. run `java -jar <file name>.jar` on Command Prompt / Terminal.
 
 ### Adding a product
+
 * Try tags without `/` / missing tags / missing tag attributes
 * Try negative quantities for `/qty` and `/price`
 
 ### Deleting a product
+
 * Try tags without `/` / missing tag attributes
 * Try invalid ID formats / non-existent IDs
 
 ### Updating a product
+
 * Try tags without `/` / missing tags / missing tag attributes
 * Try invalid ID formats / non-existent IDs
 * Try negative quantities for `/qty` and `/price`
 
 ### Searching a product
+
 * Try tags without `/` / missing tag attributes
 * Try invalid ID formats / non-existent IDs
 
 ### Managing Sales
+
 * Try tags without `/` / missing tags / missing tag attributes
 * Try invalid ID formats / non-existent IDs
 * Try negative quantities for `/qty`
 
 ### Calculation of Revenue
+
 * Try tags without `/` / missing tag attributes
 * Try invalid ID formats / non-existent IDs

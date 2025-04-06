@@ -3,79 +3,83 @@
 
 ## First-Time Setup:
 
-- Define business information
-   - Input:
-      - Business ID: A whole number 
-      - Business name: A set of words 
-      - Business password: A sequence of letters
-      - Business type: FNB or RETAIL (case-sensitive)
+* Define business information
+  * Input:
+    * Business ID: A whole number 
+    * Business name: A set of words 
+    * Business password: A sequence of letters
+    * Business type: FNB or RETAIL (case-sensitive)
 
 ## Features:
 
-- **Login**
-    - Requires business ID and password.
-    - Subsequent features can be accessed after logging in.
+* **Login**
+  * Requires business ID and password.
+  * Subsequent features can be accessed after logging in.
 
 
-- **Viewing Help:** `help`
-    - Provides possible command instructions and expected formatting.
+* **Viewing Help:** `help`
+  * Provides possible command instructions and expected formatting.
 
 
-- **Adding a Product:** `add`
-    - Adds a product to the products-for-sale list.
+* **Adding a Product:** `add`
+  * Adds a product to the products-for-sale list.
 
 
-- **Deleting a Product:** `delete`
-    - Removes a product from the products-for-sale list.
-
-  
-- **Changing Info of Products:** `update`
-    - Updates data of a specified product in the products-for-sale list.
-    - Data to be updated must be specified during command input.
+* **Deleting a Product:** `delete`
+  * Removes a product from the products-for-sale list.
 
 
-- **Printing List of Products:** `list`
-    - Prints the entire list of products for sale (according to product ID).
+* **Changing Info of Products:** `update`
+  * Updates data of a specified product in the products-for-sale list.
+  * Data to be updated must be specified during command input.
 
 
-- **Incrementing Sold Product Value, Decrementing Inventory Value:** `sold`
-    - Changes the quantity of available inventory and the quantity sold.
+* **Printing List of Products:** `list`
+  * Prints the entire list of products for sale (according to product ID).
 
 
-- **Clear the Quantity Sold:** `clear`
-    - Changes the quantity sold of a specified product to 0.
+* **Incrementing Sold Product Value, Decrementing Inventory Value:** `sold`
+  * Changes the quantity of available inventory and the quantity sold.
 
 
-- **Compute Total Amount of Sale Transactions:** `revenue`
-    - Adds up all the products sold, multiplied by their respective prices.
-    - Given a product ID, provides the revenue of a specified product.
+* **Clear the Quantity Sold:** `clear`
+  * Changes the quantity sold of a specified product to 0.
 
 
-- **Search for a Product:** `search`
-    - Given a product name, searches for the corresponding product.
-    - Given a product ID, searches for the corresponding product.
+* **Compute Total Amount of Sale Transactions:** `revenue`
+  * Adds up all the products sold, multiplied by their respective prices.
+    * Given a product ID, provides the revenue of a specified product.
+
+
+* **Search for a Product:** `search`
+  * Given a product name, searches for the corresponding product.
+  * Given a product ID, searches for the corresponding product.
 
 ---
 
 ## Command Summary:
 
-> - *IMPORTANT: Add a slash (`/`) in front of any tag.*
-> - *IMPORTANT: All commands (e.g. add / delete) are LOWERCASE.* 
+> * *IMPORTANT: Add a slash (`/`) in front of any tag.*
+> * *IMPORTANT: All commands (e.g. add / delete) are LOWERCASE.* 
 
 ### **Adding a Product**
 
 > `add /name P_NAME /qty P_QTY /price P_PRICE`
 
-- Creates a new product object & attaches different attributes to it (with an auto-generated ID).
-- Tags:
-    - `/name` →  Name of the product to create.
-    - `/qty` → Quantity of the product to create that is available for sale.
-    - `/price` → Price of the product to create.
+* Creates a new product object & attaches different attributes to it (with an auto-generated ID).
+* Tags:
+  * `/name` →  Name of the product to create.
+  * `/qty` → Quantity of the product to create that is available for sale.
+  * `/price` → Price of the product to create.
+* **Things to note:**
+  * P_NAME must be ONE word only. (due to implementation limitations)
+    * E.g. fresh milk must be written as fresh_milk. (i.e. replace spaces with underscores)
+    * This feature will be fixed in later versions.
 
 **Example:**
 
-- Input -> `add /name MILK /qty 50 /price 2.50`
-- Output ->`Product added: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $2.50`
+* Input -> `add /name MILK /qty 50 /price 2.50`
+* Output ->`Product added: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $2.50`
 
 ---
 
@@ -83,14 +87,14 @@
 
 > `delete /id P_ID`
 
-- Deletes a specified product with the given ID.
-- Tags:
-  - `/id` → ID of the product to delete (just the non-zero part will suffice).
+* Deletes a specified product with the given ID.
+* Tags:
+  * `/id` → ID of the product to delete (just the non-zero part will suffice).
 
 **Example:**
 
-- Input -> `delete /id 1`
-- Output -> `Product removed: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $2.50`
+* Input -> `delete /id 1`
+* Output -> `Product removed: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $2.50`
 
 ---
 
@@ -98,17 +102,21 @@
 
 > `update /id P_ID /name NEW_NAME /qty NEW_QTY /price NEW_PRICE`
 
-- Changes one or more attributes of a specified product.
-- Tags:
-    - `/id` → ID of the product to modify (just the non-zero part will suffice).
-    - `/name` → New name of the product to modify.
-    - `/qty` → New quantity of the product to modify.
-    - `/price` → New price of the product to modify.
+* Changes one or more attributes of a specified product.
+* Tags:
+  * `/id` → ID of the product to modify (just the non-zero part will suffice).
+  * `/name` → New name of the product to modify.
+  * `/qty` → New quantity of the product to modify.
+  * `/price` → New price of the product to modify.
+* **Things to note:**
+  * NEW_NAME must be ONE word only. (due to implementation limitations)
+    * E.g. fresh milk must be written as fresh_milk. (i.e. replace spaces with underscores)
+    * This feature will be fixed in later versions.
 
 **Example:**
 
-- Input -> `update /id 1 /name FRESH_MILK /qty 45 /price 3`
-- Output -> `Product updated: ID_0001: FRESH_MILK | Qty: 45 | Sold: 0 | Price: $3.00`
+* Input -> `update /id 1 /name FRESH_MILK /qty 45 /price 3`
+* Output -> `Product updated: ID_0001: FRESH_MILK | Qty: 45 | Sold: 0 | Price: $3.00`
 
 ---
 
@@ -116,20 +124,20 @@
 
 > `list`
 
-- Prints the current list of products.
-- Attributes displayed:
-  - Product ID
-  - Product name
-  - Quantity of product not sold
-  - Quantity of product sold
-  - Product price
+* Prints the current list of products.
+* Attributes displayed:
+  * Product ID
+  * Product name
+  * Quantity of product not sold
+  * Quantity of product sold
+  * Product price
 
 **Example:**
 
-- Input -> `list`
-- Output -> `Product list: (next line) ID_0001: FRESH_MILK | Qty: 45 | Sold: 0 | Price: $3.00`
+* Input -> `list`
+* Output -> `Product list: (next line) ID_0001: FRESH_MILK | Qty: 45 | Sold: 0 | Price: $3.00`
 
-_Format of Product List: `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`_
+_Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 ---
 
@@ -137,15 +145,15 @@ _Format of Product List: `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`_
 
 > `sold /id P_ID /qty QTY_SOLD`
 
-- Changes the sales record and updates the inventory list.
-- Tags:
-  - `/id` → ID of the product that was sold (just the non-zero part will suffice).
-  - `/qty` → Quantity of the product that was sold.
+* Changes the sales record and updates the inventory list.
+* Tags:
+  * `/id` → ID of the product that was sold (just the non-zero part will suffice).
+  * `/qty` → Quantity of the product that was sold.
 
 **Example:**
 
-- Input -> `sold /id 1 /qty 5`
-- Output -> `Sales recorded: Product ID: ID_0001, Quantity Sold: 5`
+* Input -> `sold /id 1 /qty 5`
+* Output -> `Sales recorded: Product ID: ID_0001, Quantity Sold: 5`
 
 ---
 <!-- @@author b1inmeister -->
@@ -153,14 +161,14 @@ _Format of Product List: `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`_
 
 > `clear /id P_ID`
 
-- Sets the quantity sold to zero for the specified product.
-- Tags:
-  - `/id` → ID of the product to clear (just the non-zero part will suffice).
+* Sets the quantity sold to zero for the specified product.
+* Tags:
+  * `/id` → ID of the product to clear (just the non-zero part will suffice).
 
 **Example:**
 
-- Input -> `clear /id 1`
-- Output -> `Sales cleared: Product ID: ID_0001`
+* Input -> `clear /id 1`
+* Output -> `Sales cleared: Product ID: ID_0001`
 
 ---
 <!-- @@author himethcodes -->
@@ -168,18 +176,18 @@ _Format of Product List: `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`_
 
 > `revenue` OR `revenue /id P_ID`
 
-- Computes the total amount of revenue.
-- Optional `/id` tag (to check revenue for a specific product).
+* Computes the total amount of revenue.
+* Optional `/id` tag (to check revenue for a specific product).
 
 **Example (Overall Revenue):**
 
-- Input -> `revenue`
-- Output -> `Revenue of FRESH_MILK: 15.00 (next line) Total Revenue: 15.00`
+* Input -> `revenue`
+* Output -> `Revenue of FRESH_MILK: 15.00 (next line) Total Revenue: 15.00`
 
 **Example (Specific Product Revenue):**
 
-- Input -> `revenue /id 1`
-- Output -> `Revenue of FRESH_MILK: 15.00`
+* Input -> `revenue /id 1`
+* Output -> `Revenue of FRESH_MILK: 15.00`
 
 ---
 <!-- @@author rozaliesmit -->
@@ -187,9 +195,13 @@ _Format of Product List: `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`_
 
 > `search /name P_NAME`
 
-- Returns the ID of the product that matches the given name.
-- Tags:
-  - `/name` → Name of product to search for.
+* Returns the ID of the product that matches the given name.
+* Tags:
+  * `/name` → Name of product to search for.
+* **Things to note:**
+  * P_NAME must be ONE word only. (due to implementation limitations)
+    * E.g. fresh milk must be written as fresh_milk. (i.e. replace spaces with underscores)
+    * This feature will be fixed in later versions.
 
 **Example:**
 
@@ -202,11 +214,11 @@ _Format of Product List: `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`_
 
 > `search /id P_ID`
 
-- Returns the name of the product that matches the given ID.
-- Tags:
-  - `/id` → ID of the product to search for (just the non-zero part will suffice).
+* Returns the name of the product that matches the given ID.
+* Tags:
+  * `/id` → ID of the product to search for (just the non-zero part will suffice).
 
 **Example:**
 
-- Input -> `search /id 1`
-- Output -> `Product name of ID_0001: FRESH_MILK`
+* Input -> `search /id 1`
+* Output -> `Product name of ID_0001: FRESH_MILK`
