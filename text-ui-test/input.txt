@@ -1,12 +1,8 @@
 FAKENAME
 yes
-
 abc123
-
 Milk Corp
-
 abcd
-
 xd
 FNB
 help

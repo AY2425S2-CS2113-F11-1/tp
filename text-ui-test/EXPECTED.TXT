@@ -1,13 +1,8 @@
 Welcome to Busyness Manager!
 Please enter your business name:
 Do you want to add your business?
-(Enter: "Yes" to set up credentials or any other input to exit Busyness Manager)Enter Business ID: Error: No input detected.
-Enter Business ID: Enter Business Name: Error: No input detected.
-Enter Business Name: Enter Business Password: Error: No input detected.
-Enter Business Password: Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
-Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
-Enter Business Type (FNB/RETAIL): Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
-Business setup complete!
+(Enter: "Yes" to set up credentials or any other input to exit Busyness Manager)Enter Business ID: Enter Business Name: Enter Business Password: Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
+Enter Business Type (FNB/RETAIL): Business setup complete!
 Busyness Manager is ready. Type 'help' for commands.
 >add         add /name <name> /qty <number> /price <number>                    (Add new product to list)
 delete      delete /id <number>                                               (Delete existing product)
@@ -18,815 +13,416 @@ clear       clear /id <number>                                                (C
 revenue     revenue OR revenue /id <number>                                   (Check revenue)
 search      search /name <name> OR search /id <number>                        (Look for specific product)
 exit        exit                                                              (Exit application)
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Quantity and/or price is a negative number.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Quantity and/or price is a negative number.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Quantity and/or price is a negative number.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Quantity or price is not a proper number. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product added: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $4.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Error: A product with the name 'MILK' already exists.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product added: ID_0002: BREAD | Qty: 70 | Sold: 0 | Price: $3.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product added: ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product list:
 ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $4.00
 ID_0002: BREAD | Qty: 70 | Sold: 0 | Price: $3.00
 ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /name /qty /price.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is invalid. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product with ID ID_0069 not found.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Quantity and/or price is a negative number.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Quantity and/or price is a negative number.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Quantity and/or price is a negative number.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Quantity or price is not a proper number. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product updated: ID_0001: MILK | Qty: 60 | Sold: 0 | Price: $6.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product list:
 ID_0001: MILK | Qty: 60 | Sold: 0 | Price: $6.00
 ID_0002: BREAD | Qty: 70 | Sold: 0 | Price: $3.00
 ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id /qty.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is invalid. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product with ID ID_0069 not found.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Quantity sold must be greater than 0
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Sales recorded: Product ID: ID_0001, Quantity Sold: 7
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Sales recorded: Product ID: ID_0002, Quantity Sold: 13
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Sales recorded: Product ID: ID_0003, Quantity Sold: 11
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product list:
 ID_0001: MILK | Qty: 53 | Sold: 7 | Price: $6.00
 ID_0002: BREAD | Qty: 57 | Sold: 13 | Price: $3.00
 ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name OR /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name OR /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name OR /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name OR /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name OR /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Name is missing. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product with name white not found.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product ID of bread: ID_0002
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name OR /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name OR /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name OR /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /name OR /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is missing. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is invalid. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product with ID ID_0069 not found.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product name of ID_0003: RICE
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Revenue of MILK: 42.00
 Revenue of RICE: 99.00
 Revenue of BREAD: 39.00
 Total Revenue: 180.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id or keep empty for total.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id or keep empty for total.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id or keep empty for total.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id or keep empty for total.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id or keep empty for total.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is missing. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is invalid. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product with ID ID_0069 not found.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Revenue of BREAD: 39.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is missing. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is invalid. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product with ID ID_0069 not found.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Sales cleared: Product ID: ID_0001
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Invalid format. /id.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is missing. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >ID is invalid. Please try again.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product with ID ID_0069 not found.
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product removed: ID_0002: BREAD | Qty: 57 | Sold: 13 | Price: $3.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Product list:
 ID_0001: MILK | Qty: 53 | Sold: 0 | Price: $6.00
 ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
-Error saving business data: data\Milk Corp.txt (The system cannot find the path specified)
 >Exiting Busyness Manager...
