@@ -74,6 +74,7 @@ public class SearchManager {
                 String id = entry.getKey();
 
                 UI.printFormattedMessage(SRM_ID_QUERY_FORMAT + NEWLINE, name, id);
+                UI.printMessage(entry.getValue().toString());
                 return true;
             }
         }
@@ -93,6 +94,7 @@ public class SearchManager {
             String name = product.getName();
 
             UI.printFormattedMessage(SRM_NAME_QUERY_FORMAT + NEWLINE, id, name);
+            UI.printMessage(product.toString());
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }

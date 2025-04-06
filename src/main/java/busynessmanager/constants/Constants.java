@@ -145,7 +145,8 @@ public class Constants {
 
     public static final String IM_LIST = PRODUCT + WHITESPACE + "list:";
     public static final String IM_EMPTY_MESSAGE = "No products in inventory";
-    public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE = "Quantity and/or price is a negative number.";
+    public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE
+        = "Quantity and/or price is a negative number or price is zero.";
     public static final String IM_QTY_EXCEED_ERROR_MESSAGE = "Quantity sold exceeds the quantity of product."
             + TRY_AGAIN_MESSAGE;
 
