@@ -61,10 +61,13 @@
 
 **Important things to take note:**
 
-* Add a slash (`/`) in front of any tag.
-* All commands (e.g. `add` / `delete`) are LOWERCASE.
-* Names of all products must be ONE-WORD long. (further explained [below](#known-bugs))
-* IDs will NOT be usable after deletion. (further explained [below](#known-bugs)) 
+* Add a **slash** (`/`) in front of any tag.
+* All commands (e.g. `add` / `delete`) are **LOWERCASE**.
+* To input ID of product, just the **non-zero part** will suffice. *(i.e. 1 instead of ID_0001)*
+* Quantity of all products must be a **WHOLE** number.
+* Price of all products must be to **2 DECIMAL PLACES**.
+* Names of all products must be **ONE-WORD** long. (further explained [below](#known-bugs))
+* IDs will **NOT** be usable after deletion. (further explained [below](#known-bugs)) 
 
 ### **Adding a Product**
 
@@ -72,13 +75,9 @@
 
 * Creates a new product object & attaches different attributes to it (with an auto-generated ID).
 * Tags:
-  * `/name` →  Name of the product to create.
-  * `/qty` → Quantity of the product to create that is available for sale.
-  * `/price` → Price of the product to create.
-* **Things to note:**
-  * P_NAME must be ONE word only. (due to implementation limitations)
-    * E.g. fresh milk must be written as fresh_milk. (i.e. replace spaces with underscores)
-    * This feature will be fixed in later versions.
+  * `/name` →  Name of the product to create. *(must be **one-word only**)*
+  * `/qty` → Quantity of the product to create that is available for sale. *(must be **whole number**)*
+  * `/price` → Price of the product to create. *(must be **2 decimal places**)*
 
 **Example:**
 
@@ -93,7 +92,7 @@
 
 * Deletes a specified product with the given ID.
 * Tags:
-  * `/id` → ID of the product to delete (just the non-zero part will suffice).
+  * `/id` → ID of the product to delete. *(just the non-zero part will suffice)*
 
 **Example:**
 
@@ -108,14 +107,10 @@
 
 * Changes one or more attributes of a specified product.
 * Tags:
-  * `/id` → ID of the product to modify (just the non-zero part will suffice).
-  * `/name` → New name of the product to modify.
-  * `/qty` → New quantity of the product to modify.
-  * `/price` → New price of the product to modify.
-* **Things to note:**
-  * NEW_NAME must be ONE word only. (due to implementation limitations)
-    * E.g. fresh milk must be written as fresh_milk. (i.e. replace spaces with underscores)
-    * This feature will be fixed in later versions.
+  * `/id` → ID of the product to modify. *(just the non-zero part will suffice)*
+  * `/name` → New name of the product to modify. *(must be **one-word only**)*
+  * `/qty` → New quantity of the product to modify. *(must be **whole number**)*
+  * `/price` → New price of the product to modify. *(must be **2 decimal places**)*
 
 **Example:**
 
@@ -151,8 +146,8 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 * Changes the sales record and updates the inventory list.
 * Tags:
-  * `/id` → ID of the product that was sold (just the non-zero part will suffice).
-  * `/qty` → Quantity of the product that was sold.
+  * `/id` → ID of the product that was sold. *(just the non-zero part will suffice)*
+  * `/qty` → Quantity of the product that was sold. *(must be **whole number**)*
 
 **Example:**
 
@@ -167,7 +162,7 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 * Sets the quantity sold to zero for the specified product.
 * Tags:
-  * `/id` → ID of the product to clear (just the non-zero part will suffice).
+  * `/id` → ID of the product to clear. *(just the non-zero part will suffice)*
 
 **Example:**
 
@@ -201,11 +196,7 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 * Returns the ID of the product that matches the given name.
 * Tags:
-  * `/name` → Name of product to search for.
-* **Things to note:**
-  * P_NAME must be ONE word only. (due to implementation limitations)
-    * E.g. fresh milk must be written as fresh_milk. (i.e. replace spaces with underscores)
-    * This feature will be fixed in later versions.
+  * `/name` → Name of product to search for. *(must be **one-word only**)*
 
 **Example:**
 
@@ -220,7 +211,7 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 * Returns the name of the product that matches the given ID.
 * Tags:
-  * `/id` → ID of the product to search for (just the non-zero part will suffice).
+  * `/id` → ID of the product to search for. *(just the non-zero part will suffice)*
 
 **Example:**
 
