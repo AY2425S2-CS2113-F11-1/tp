@@ -316,34 +316,114 @@ out commands, compared to using the mouse to navigate a GUI application.
 3. Change the current working directory to the folder containing the `.jar` file.
 4. run `java -jar <file name>.jar` on Command Prompt / Terminal.
 
+### First-Time setup
+
+* When the program requests for Credentials information (e.g. ID / Name / Password / Business Type), do not input 
+anything and press `Enter`.
+  * *Example Input:* When `Enter Business ID:` is shown, press `Enter` without inputting anything.
+  * *Output:* An error message stating that no input was detected will be shown.
+* When the program requests for the Business Type, input something other than FNB or RETAIL.
+  * *Example Input:* `fnb` / `retail` / `SERVICE`
+  * *Output:* An error message stating the Business Type is invalid will be shown. 
+
+### Sign-In Process
+*to be determined...*
+
 ### Adding a product
 
-* Try tags without `/` / missing tags / missing tag attributes
-* Try negative quantities for `/qty` and `/price`
+* Input the `add` command with **missing attributes**.
+  * *Example Input:* `add` / `add MILK 50` / `add WHITE_RICE 13.00` / `add 30 6.00`
+  * *Output:* An error message stating that there are missing attributes will be shown.
+* Input the `add` command with **negative values** for quantity and price.
+  * *Example Input:* `add MILK -50 2.50` / `add EGGS 30 -6.00`
+  * *Output:* An error message stating that the quantity and/or price cannot be negative will be shown.
+* Input the `add` command with a **non-whole number value** for quantity.
+  * *Example Input:* `add MILK 50.4 2.50`
+  * *Output:* An error message stating that the quantity must be a whole number will be shown.
+* Input the `add` command with the price as **zero**.
+  * *Example Input:* `add MILK 50 0.00`
+  * *Output:* An error message stating that the price cannot be zero will be shown.
 
 ### Deleting a product
 
-* Try tags without `/` / missing tag attributes
-* Try invalid ID formats / non-existent IDs
+* Input the `delete` command with **missing attributes**.
+  * *Example Input:* `delete`
+  * *Output:* An error message stating that there are missing attributes will be shown.
+* Input the `delete` command with an **invalid ID**.
+  * *Example Input:* `delete XD`
+  * *Output:* An error message stating that the ID is invalid will be shown.
+* Input the `delete` command with an ID that **does not exist in the product list**.
+  * *Example Input:* `delete 15` (when there are 5 products in the list)
+  * *Output:* An error message stating that the product with the provided ID cannot be found will be shown.
 
 ### Updating a product
 
-* Try tags without `/` / missing tags / missing tag attributes
-* Try invalid ID formats / non-existent IDs
-* Try negative quantities for `/qty` and `/price`
+* Input the `update` command with **missing attributes**.
+  * *Example Input:* `update` / `update 1 MILK 50` / `update 1 WHITE_RICE 13.00` / `add 1 30 6.00` etc.
+  * *Output:* An error message stating that there are missing attributes will be shown.
+* Input the `update` command with an **invalid ID**.
+  * *Example Input:* `update XD MILK 50 2.50`
+  * *Output:* An error message stating that the ID is invalid will be shown.
+* Input the `update` command with an ID that **does not exist in the product list**.
+  * *Example Input:* `update 15 MILK 50 2.50` (when there are 5 products in the list)
+  * *Output:* An error message stating that the product with the provided ID cannot be found will be shown.
+* Input the `update` command with **negative values** for quantity and price.
+  * *Example Input:* `update 1 MILK -50 2.50` / `add 2 EGGS 30 -6.00`
+  * *Output:* An error message stating that the quantity and/or price cannot be negative will be shown.
+* Input the `update` command with a **non-whole number value** for quantity.
+  * *Example Input:* `update 1 MILK 50.4 2.50`
+  * *Output:* An error message stating that the quantity must be a whole number will be shown.
+* Input the `update` command with the price as **zero**.
+  * *Example Input:* `update 1 MILK 50 0.00`
+  * *Output:* An error message stating that the price cannot be zero will be shown.
 
 ### Searching a product
 
-* Try tags without `/` / missing tag attributes
-* Try invalid ID formats / non-existent IDs
+* Input the `search` command with **missing attributes**.
+  * *Example Input:* `search`
+  * *Output:* An error message stating that there are missing attributes will be shown.
+* Input the `search` command with an **invalid ID**.
+  * *Example Input:* `search XD`
+  * *Output:* An error message stating that the ID is invalid will be shown.
+* Input the `search` command with an ID that **does not exist in the product list**.
+  * *Example Input:* `search 15` (when there are 5 products in the list)
+  * *Output:* An error message stating that the product with the provided ID cannot be found will be shown.
 
 ### Managing Sales
 
-* Try tags without `/` / missing tags / missing tag attributes
-* Try invalid ID formats / non-existent IDs
-* Try negative quantities for `/qty`
+* Input the `sold` command with **missing attributes**.
+  * *Example Input:* `sold` / `sold 5` (where 5 is the quantity) / `sold 1` (where 1 is the ID)
+  * *Output:* An error message stating that there are missing attributes will be shown.
+* Input the `sold` command with an **invalid ID**.
+  * *Example Input:* `sold XD 5`
+  * *Output:* An error message stating that the ID is invalid will be shown.
+* Input the `sold` command with an ID that **does not exist in the product list**.
+  * *Example Input:* `sold 15 5` (when there are 5 products in the list)
+  * *Output:* An error message stating that the product with the provided ID cannot be found will be shown.
+* Input the `sold` command with a **negative value** for quantity.
+  * *Example Input:* `sold 1 -5`
+  * *Output:* An error message stating that the quantity cannot be negative will be shown.
+* Input the `sold` command with a **non-whole number value** for quantity.
+  * *Example Input:* `sold 1 5.6`
+  * *Output:* An error message stating that the quantity must be a whole number will be shown.
+
+### Clearing Sales
+
+* Input the `clear` command with **missing attributes**.
+  * *Example Input:* `clear`
+  * *Output:* An error message stating that there are missing attributes will be shown.
+* Input the `clear` command with an **invalid ID**.
+  * *Example Input:* `clear XD`
+  * *Output:* An error message stating that the ID is invalid will be shown.
+* Input the `clear` command with an ID that **does not exist in the product list**.
+  * *Example Input:* `clear 15` (when there are 5 products in the list)
+  * *Output:* An error message stating that the product with the provided ID cannot be found will be shown.
 
 ### Calculation of Revenue
 
-* Try tags without `/` / missing tag attributes
-* Try invalid ID formats / non-existent IDs
+* Input the `revenue` command with an **invalid ID**.
+  * *Example Input:* `revenue XD`
+  * *Output:* An error message stating that the ID is invalid will be shown.
+* Input the `revenue` command with an ID that **does not exist in the product list**.
+  * *Example Input:* `revenue 15` (when there are 5 products in the list)
+  * *Output:* An error message stating that the product with the provided ID cannot be found will be shown.
