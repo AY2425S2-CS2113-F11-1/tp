@@ -31,15 +31,15 @@ public class Constants {
     public static final String PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
     public static final String TRY_AGAIN_MESSAGE = " Please try again.";
     public static final String HELP_LIST = """
-            add         add /name <name> /qty <number> /price <number>                    (Add new product to list)
-            delete      delete /id <number>                                               (Delete existing product)
-            update      update /id <number> /name <name> /qty <number> /price <number>    (Update existing product)
-            print       print                                                             (Print list of products)
-            sold        sold /id <number> /qty <number>                                   (Mark some products as sold)
-            clear       clear /id <number>                                                (Clear current sales)
-            revenue     revenue OR revenue /id <number>                                   (Check revenue)
-            search      search /name <name> OR search /id <number>                        (Look for specific product)
-            exit        exit                                                              (Exit application)""";
+            add         add <Name> <Quantity> <Price>                   (Add new product to list)
+            delete      delete <ID number>                              (Delete existing product)
+            update      update <ID number> <flag> <Updated value>       (Update product, flags: /name /quantity /price)
+            print       print                                           (Print list of products)
+            sold        sold <ID number> <Quantity sold>                (Mark some products as sold)
+            clear       clear <ID number>                               (Clear current sales)
+            revenue     revenue OR revenue <ID number>                  (Check revenue)
+            search      search /name <name> OR search /id <number>      (Look for specific product)
+            exit        exit                                            (Exit application)""";
 
 
     // BusynessManager
@@ -109,11 +109,22 @@ public class Constants {
     public static final String CP_PRICE_FLAG = "/price";
     public static final String CP_ID_FLAG = "/id";
 
+    public static final String HELP_L2IST = """
+            add         add <Name> <Quantity> <Price>                   (Add new product to list)
+            delete      delete <ID number>                              (Delete existing product)
+            update      update <ID number> <flag> <Updated value>       (Update product, flags: /name /quantity /price)
+            print       print                                           (Print list of products)
+            sold        sold <ID number> <Quantity sold>                (Mark some products as sold)
+            clear       clear <ID number>                               (Clear current sales)
+            revenue     revenue OR revenue <ID number>                  (Check revenue)
+            search      search /name <name> OR search /id <number>      (Look for specific product)
+            exit        exit """;
     public static final String CP_INVALID_COMMAND_MESSAGE = "Command does not exist." + TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_FLAG_MESSAGE_ADD = "Invalid format. add <name> <quantity> <price>";
-    public static final String CP_INVALID_FLAG_MESSAGE_SOLD = "Invalid format. /id /qty.";
-    public static final String CP_INVALID_FLAG_MESSAGE_REVENUE = "Invalid format. /id or keep empty for total.";
-    public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. /name OR /id.";
+    public static final String CP_INVALID_FLAG_MESSAGE_SOLD = "Invalid format. sold <ID number> <Quantity sold>";
+    public static final String CP_INVALID_FLAG_MESSAGE_REVENUE = "Invalid format. revenue OR revenue <ID number>";
+    public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. " +
+        "search /name <name> OR search /id <number>";
     public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid flags." +
         "\nupdate <ID number> <flag> <Updated value>," +
         "\nwhere <flag> is either /name, /qty, or /price.";
