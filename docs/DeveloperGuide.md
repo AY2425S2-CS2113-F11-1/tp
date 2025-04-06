@@ -80,7 +80,7 @@ All of these features are contained under the main BusynessManager class to prov
 taking care of the different needs of businesses.
 
 
-## Implementation
+## Key Implementation
 
 <!-- @@author himethcodes -->
 ### Product class
@@ -278,7 +278,7 @@ market.
 |  v1.0   | business owner with new products to sell |             add products to my database              |           indicate that these products are to be sold           |
 |  v1.0   |  business owner with outdated products   |           remove products from my database           | indicate that my business is not selling these products anymore |
 |  v1.0   |         forgetful business owner         |           see all my products in one list            |            find out what products my business sells             |
-|  v1.0   |          curious business owner          |       the data of the products in my database        |       find out more about the performance of that product       |
+|  v1.0   |          curious business owner          |     see the data of the products in my database      |       find out more about the performance of that product       |
 |  v1.0   |              business owner              |     modify the data of a product in my database      |        keep the information about my product up-to-date         |
 |  v1.0   |    business owner with many products     |         search for a product in my database          |         find out if that product is sold by my business         |
 |  v1.0   |        for-profit business owner         |                    track my sales                    |            manage my business in a profitable manner            |
