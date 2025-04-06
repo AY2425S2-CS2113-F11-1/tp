@@ -38,7 +38,7 @@ import static busynessmanager.constants.Constants.CP_HELP_COMMAND;
 import static busynessmanager.constants.Constants.CP_ADD_COMMAND;
 import static busynessmanager.constants.Constants.CP_DELETE_COMMAND;
 import static busynessmanager.constants.Constants.CP_UPDATE_COMMAND;
-import static busynessmanager.constants.Constants.CP_PRINT_COMMAND;
+import static busynessmanager.constants.Constants.CP_LIST_COMMAND;
 import static busynessmanager.constants.Constants.CP_SOLD_COMMAND;
 import static busynessmanager.constants.Constants.CP_CLEAR_COMMAND;
 import static busynessmanager.constants.Constants.CP_REVENUE_COMMAND;
@@ -200,7 +200,7 @@ public class CommandParser {
         case CP_UPDATE_COMMAND:
             updateProduct(info);
             break;
-        case CP_PRINT_COMMAND:
+        case CP_LIST_COMMAND:
             printProducts();
             break;
         case CP_SOLD_COMMAND:

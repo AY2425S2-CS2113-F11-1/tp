@@ -92,7 +92,7 @@ public class Constants {
     public static final String CP_ADD_COMMAND = "add";
     public static final String CP_DELETE_COMMAND = "delete";
     public static final String CP_UPDATE_COMMAND = "update";
-    public static final String CP_PRINT_COMMAND = "print";
+    public static final String CP_LIST_COMMAND = "list";
     public static final String CP_SOLD_COMMAND = "sold";
     public static final String CP_CLEAR_COMMAND = "clear";
     public static final String CP_REVENUE_COMMAND = "revenue";
