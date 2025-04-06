@@ -172,82 +172,66 @@ data.
 
 ![](images/CommandParser.png)
 
-The CommandParser class connects the main BusynessManager class and the other Manager classes. These include the 
-InventoryManager, SalesManager, SearchManager and RevenueCalculator class. When the BusynessManager class detects user
-input, it calls the CommandParser class and provides the user input as a String. At this point, the CommandParser goes 
-through 3 steps to execute the user input, before giving back control to the user by returning to the BusynessManager 
-class. 
+The CommandParser class connects the main BusynessManager class with the other Manager classes, and is called when the 
+BusynessManager class detects user input. It takes in the user input as a String, and undergoes 3 steps to execute the 
+user input, before giving back control to the user by returning to the BusynessManager class. 
 
 The 3 steps is as follows:
 
-1. Splitting user input String
+1. Splitting the user input String
 2. Executing the command
 3. Manipulating the information
 
-**Splitting user input String**
+**Splitting the user input String**
 
 ![](images/CommandParser_Ref1.png)
 
-When the BusynessManager class detects user input, it calls `parseCommand()` in the CommandParser class, giving this
-method the user input as a String. It will then split the user input into the "command" and the "information" portions.
-The "command" portion is defined as a one-word String that will define which task the user wants Busyness Manager to do,
-while the "information" portion contains the relevant information for that task. For instance, the "information" can 
-include the product ID, name, quantity and price. To split the user input String, `parseCommand()` calls 3 sub-methods.
-Firstly, the CommandParser class calls `getCommandSeparatorIndex()` which will return the index of the first space of 
-the user input String. The first space will be returned, as the "command" is a one-word String, which will be the first
-word of the user input. After that, `parseCommand()` calls `splitCommand()` and `splitInfo()` which returns the 
-"command" and the "information" respectively. Both sub-methods utilise `.substring()` that is from Java's String class.
+1. `parseCommand()` in the CommandParser class is called, taking in the user input as a String.
+2. The user input is split into the "command" and the "information" portions. 
+   * "command": A one-word String defines what task the user wants Busyness Manager to do,
+   * "information": Contains the relevant information for that task. (e.g. product ID / name / quantity / price) 
+3. To split the user input String, `parseCommand()` calls 3 sub-methods.
+   * `getCommandSeparatorIndex()`: Returns the index of the first space of the user input String. 
+     * The first space will be returned, as the "command" is a one-word String, which will be the first word of the 
+     user input. 
+   * `splitCommand()` and `splitInfo()`: Returns the "command" and the "information" respectively. 
+     * Both sub-methods utilise `.substring()` from Java's String class.
 
 **Executing the command**
 
 ![](images/CommandParser_Ref2.png)
 
-After the "command" and "information" have been extracted, `parseCommand()` calls `executeCommand()`, with the "command"
-and the "information" as parameters. Within this method, the "command" is passed into a switch statement, which 
-determines which command method the parser should execute. For example, in the sequence diagram above, if the "command" 
-is the one-word String `add`, the switch statement will call `addProduct()` with the "information" as a parameter. If 
-the "command" does not correspond to any of the possible commands, `executeCommand()` will throw a 
-`InvalidCommandException` which will output an error message to the user that their "command" does not exist, and is 
-therefore invalid.
+1. `parseCommand()` calls `executeCommand()`, with the "command" and the "information" as parameters. 
+2. The "command" is passed into a switch statement that determines what command method the parser should execute. 
+   * For example, in the sequence diagram above, if the "command" is the one-word String `update`, the switch statement 
+   will call `updateProduct()` with the "information" as a parameter.
 
 **Manipulating the information**
 
 ![](images/CommandParser_Ref3.png)
 
-After calling the appropriate command execution method, the command execution method will extract the relevant 
-attributes from the "information" String. This is done using `.split()` from Java's String class, which outputs
-an array of Strings. Before extracting the attributes, the method checks if the correct tags have been inputted by the 
-user. This is done through the finding the index where the tag is expected to be, and checking the String in that index
-with the expected tag using `.equals()` from Java's String class. If the inputted tags are deemed correct, the 
-extraction of attributes will begin. Throughout the extraction of attributes segment, due to the use of an array,
-exception handling of `ArrayOutOfBoundsException` is done. In the scenario where this exception is thrown,
-`InvalidCommandException` will also be thrown, and later caught when the command execution method returns.
+*Note: from here on, it is assumed that `update` is the "command".*
 
-For the product **name**, since it is expected to be of type `String`, the attribute is extracted directly from the index 
-immediately after the index that contains `/name`. However, due to how `split()` works, only one-word Strings are able
-to be extracted as the product name. Hence, the name of products in the program are restricted to one-word Strings. 
-This limitation will be addressed in later versions.
+1. The command method extracts the relevant attributes from the "information" String. 
+   * This is done using `.split()` from Java's String class, which outputs an array of Strings.
+2. The product **name** is extracted directly from the index immediately after the "command". 
+   * However, only one-word Strings can be extracted as the product name using this method. Hence, the name of products
+   in the program are restricted to one-word Strings. This limitation will be addressed in later versions.
+3. The product **ID** is extracted from the index immediately after the product name.
+   * Since the product ID needs to be of type `int` and not `String` for formatting purposes, the attribute undergoes 
+   parsing to an integer type,
+   * The product ID is then formatted to the ID format (ID_XXXX) and converted back to a String.
+4. The product **quantity** and **price** is extracted from the subsequent indexes.
+   * Since the product quantity and price need to be of type `int` and not `String`, the attribute undergoes parsing to
+   an integer type.
+5. When the attributes have been extracted, the command method will call its counterpart in the relevant Manager class.
+   * After this counterpart has finished executing, the command method will return, followed by `executeCommand()` and 
+   `parseCommand()`.
+6. CommandParser returns to the BusynessManager class, giving input control back to the user.
 
-For the product **quantity** or **price**, the attribute will be extracted from the index immediately after the index that
-contains `/qty` `/price` respectively. After that, since we require the product quantity and price to be of type `int`
-and not `String`, the attribute will undergo parsing to an integer type, with appropriate exception handling. This
-integer is the final result from the attribute extraction of the product quantity or price.
-
-For the product **ID**,  the attribute will be extracted from the index immediately after the index that contains `/id`. 
-After that, since we require the product ID to be of type `int` and not `String` for formatting purposes, the attribute 
-will undergo parsing to an integer type, with appropriate exception handling. Next, there is a check to confirm that the
-inputted ID is within the maximum size of a product list, which is 9999 due to the ID format (ID_XXXX where X represents 
-a digit). If the check is satisfactory, the product ID is then formatted to the ID format (ID_XXXX) and converted back 
-to a String. This String is the final result from the attribute extraction of the product ID.
-
-When the attributes have been extracted, the command execution method will call its counterpart located in the relevant
-Manager class. The counterpart in the Manager class is the method that actually performs the task inputted by the user.
-After this counterpart has returned, the command execution method will also return, followed by `executeCommand()` and 
-`parseCommand()`. Finally, CommandParser returns to the BusynessManager class, giving input control back to the user.
-
-*Note:* The manipulating information description applies to most command execution methods. However, for printing of the 
-product list and computation of total revenue, since there is no "information" required for their command execution 
-methods, they will skip the extraction of attributes portion.
+*Note:* This concept of attribute extraction applies to most command execution methods. However, for printing of the 
+product list and computation of total revenue, since there is no "information" required for their command methods, they
+will not require attribute extraction.
 
 
 ## Product Scope
