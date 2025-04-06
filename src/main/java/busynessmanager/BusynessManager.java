@@ -17,7 +17,49 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static busynessmanager.constants.Constants.*;
+import static busynessmanager.constants.Constants.EMPTY_STRING;
+import static busynessmanager.constants.Constants.DATA_FOLDER;
+import static busynessmanager.constants.Constants.BUSINESS_INFO_FILE;
+import static busynessmanager.constants.Constants.BM_LOGIN_MESSAGE;
+import static busynessmanager.constants.Constants.NEWLINE;
+import static busynessmanager.constants.Constants.INDEX_0;
+import static busynessmanager.constants.Constants.INDEX_1;
+import static busynessmanager.constants.Constants.INDEX_2;
+import static busynessmanager.constants.Constants.INDEX_3;
+import static busynessmanager.constants.Constants.INDEX_4;
+import static busynessmanager.constants.Constants.FILE_REGEX;
+import static busynessmanager.constants.Constants.BM_UPPERCASE_REGEX;
+import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_FNB;
+import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_RETAIL;
+import static busynessmanager.constants.Constants.BM_FIRST_SETUP_APPROVAL;
+import static busynessmanager.constants.Constants.BM_NAME_TITLE;
+import static busynessmanager.constants.Constants.BM_TYPE_TITLE;
+import static busynessmanager.constants.Constants.BM_ID_TITLE;
+import static busynessmanager.constants.Constants.BM_INVENTORY_TITLE;
+import static busynessmanager.constants.Constants.BM_WELCOME_MESSAGE;
+import static busynessmanager.constants.Constants.BM_NO_INPUT_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.BM_FIRST_SETUP_CHECK_MESSAGE;
+import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_ID_MESSAGE;
+import static busynessmanager.constants.Constants.BM_ENTER_PASSWORD_MESSAGE;
+import static busynessmanager.constants.Constants.BM_ENTER_PASSWORD_MESSAGE_2;
+import static busynessmanager.constants.Constants.BM_SUCCESSFUL_LOGIN_MESSAGE;
+import static busynessmanager.constants.Constants.BM_INVALID_CREDENTIALS_MESSAGE;
+import static busynessmanager.constants.Constants.BM_ENTER_NAME_MESSAGE;
+import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_TYPE_MESSAGE;
+import static busynessmanager.constants.Constants.BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.BM_SETUP_COMPLETE_MESSAGE;
+import static busynessmanager.constants.Constants.BM_READY_MESSAGE;
+import static busynessmanager.constants.Constants.BM_WAITING_INPUT_MESSAGE;
+import static busynessmanager.constants.Constants.BM_EXIT_KEYWORD;
+import static busynessmanager.constants.Constants.BM_EXIT_MESSAGE;
+import static busynessmanager.constants.Constants.BM_ID_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_NO_CREDENTIALS_MESSAGE;
+import static busynessmanager.constants.Constants.BM_NO_DATA_MESSAGE;
+import static busynessmanager.constants.Constants.BM_SAVE_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_LOAD_SUCCESS_MESSAGE;
+import static busynessmanager.constants.Constants.BM_LOAD_FAIL_MESSAGE;
+
 
 
 /**
