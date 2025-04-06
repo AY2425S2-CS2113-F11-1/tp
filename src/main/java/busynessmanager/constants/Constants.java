@@ -113,7 +113,8 @@ public class Constants {
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Error: Invalid format. /id.";
     public static final String CP_INVALID_COMMAND_MESSAGE = "Error: The command provided does not exist."
             + TRY_AGAIN_MESSAGE;
-    public static final String CP_INVALID_NUMERAL_MESSAGE = "Error: The quantity and/or price provided is not a proper number."
+    public static final String CP_INVALID_NUMERAL_MESSAGE = "Error: The quantity and/or price provided " +
+            "is not a proper number."
             + TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Error: The quantity provided is not a proper number."
             + TRY_AGAIN_MESSAGE;
@@ -140,13 +141,16 @@ public class Constants {
     public static final String IM_REMOVE_FORMAT = "Product removed: %s";
     public static final String IM_UPDATED_FORMAT = "Product updated: %s";
     public static final String IM_NAME_EXISTS_FORMAT = "Error: A product with the name '%s' already exists.";
-    public static final String IM_QTY_SOLD_ZERO_FORMAT = "Error: The quantity sold for product with ID %s is currently 0.";
+    public static final String IM_QTY_SOLD_ZERO_FORMAT = "Error: The quantity sold for product with ID %s " +
+            "is currently 0.";
 
     public static final String IM_LIST = "Product list:";
     public static final String IM_EMPTY_MESSAGE = "Error: There are no products in the inventory.";
-    public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE = "Error: The quantity and/or price provided is a negative number."
+    public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE = "Error: The quantity and/or price provided " +
+            "is a negative number."
             + TRY_AGAIN_MESSAGE;
-    public static final String IM_QTY_EXCEED_MESSAGE = "Error: The quantity sold provided exceeds the quantity of product with ID %s."
+    public static final String IM_QTY_EXCEED_MESSAGE = "Error: The quantity sold provided exceeds the quantity " +
+            "of product with ID %s."
             + TRY_AGAIN_MESSAGE;
 
 
@@ -154,7 +158,8 @@ public class Constants {
     public static final String SM_CLEARED_FORMAT = "Sales cleared: " + IM_ID_FORMAT;
     public static final String SM_RECORDED_FORMAT = "Sales recorded: " + IM_ID_FORMAT + ", Quantity Sold: %d";
 
-    public static final String SM_MINIMUM_QTY_SOLD_MESSAGE = "Error: The quantity sold provided must be greater than 0.";
+    public static final String SM_MINIMUM_QTY_SOLD_MESSAGE = "Error: The quantity sold provided must be " +
+            "greater than 0.";
 
 
     // RevenueCalculator

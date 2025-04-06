@@ -26,25 +26,25 @@ public class RevenueCalculatorTest {
         im.addProduct("bean", 100, 0.6);
         im.addProduct("donkey", 6000, 900);
         im.addProduct("bingbangbong", 1, 10000);
-        sm.recordSale("ID_0010", 50);
-        sm.recordSale("ID_0011", 10);
-        sm.recordSale("ID_0012", 1);
+        sm.recordSale("ID_0001", 50);
+        sm.recordSale("ID_0002", 10);
+        sm.recordSale("ID_0003", 1);
 
         im.printProducts();
 
         assertEquals(
             30,
-            rc.computeProductRevenue("ID_0010")
+            rc.computeProductRevenue("ID_0001")
         );
 
         assertEquals(
             9000,
-            rc.computeProductRevenue("ID_0011")
+            rc.computeProductRevenue("ID_0002")
         );
 
         assertEquals(
             10000,
-            rc.computeProductRevenue("ID_0012")
+            rc.computeProductRevenue("ID_0003")
         );
     }
 
@@ -53,9 +53,9 @@ public class RevenueCalculatorTest {
         im.addProduct("bean", 100, 0.6); // ID_0010
         im.addProduct("donkey", 6000, 900);
         im.addProduct("bingbangbong", 1, 10000);
-        sm.recordSale("ID_0013", 50);
-        sm.recordSale("ID_0014", 10);
-        sm.recordSale("ID_0015", 1);
+        sm.recordSale("ID_0004", 50);
+        sm.recordSale("ID_0005", 10);
+        sm.recordSale("ID_0006", 1);
 
         assertEquals(
             19030,
