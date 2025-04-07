@@ -3,8 +3,10 @@ package busynessmanager.credentials;
 
 import busynessmanager.BusynessManager;
 
-import static busynessmanager.constants.Constants.*;
-
+import static busynessmanager.constants.Constants.BM_ID_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_NAME_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_PASSWORD_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE;
 
 /**
  * Represents the credentials of a business in the Busyness Manager application.
@@ -20,10 +22,10 @@ public class Credentials {
     /**
      * Constructs a Credentials object with the given business details.
      *
-     * @param businessID      The unique identifier of the business.
-     * @param businessName    The name of the business.
+     * @param businessID       The unique identifier of the business.
+     * @param businessName     The name of the business.
      * @param businessPassword The password for authentication.
-     * @param businessType    The type of business (F&B or Retail).
+     * @param businessType     The type of business (F&B or Retail).
      * @throws IllegalArgumentException if any of the parameters are null or empty.
      */
     public Credentials(String businessID, String businessName, String businessPassword,
