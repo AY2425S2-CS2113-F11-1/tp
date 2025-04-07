@@ -41,7 +41,7 @@ handling, and structured command processing.
 **Contributions to Team-Based Tasks:**
 * Reviewed PRs
 * Maintained code quality throughout the development life-cycle.
-* Resolved issues 149-160 from PED
+* Resolved issues 149-160 and 165 from PED
 ---
 **Contributions to Community / Review Tasks:**
 * PRs Reviewed: [#65](https://github.com/AY2425S2-CS2113-F11-1/tp/pull/65),
