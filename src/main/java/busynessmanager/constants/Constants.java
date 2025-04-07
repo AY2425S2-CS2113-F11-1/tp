@@ -58,6 +58,9 @@ public class Constants {
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
+    public static final String BM_FORGOT_PASSWORD_MESSAGE = "Did you forget your password? (yes/no):";
+    public static final String BM_PASSWORD_RECOVERY = "Your password is: ";
+    public static final String BM_NO_PASSWORD_MESSAGE = "No password found.";
     public static final String BM_SUCCESSFUL_LOGIN_MESSAGE = "Login successful!";
     public static final String BM_INVALID_CREDENTIALS_MESSAGE = "Invalid credentials. Exiting.";
     public static final String BM_ENTER_NAME_MESSAGE = "Enter Business Name: ";

@@ -38,6 +38,9 @@ import static busynessmanager.constants.Constants.BM_FIRST_SETUP_CHECK_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_ID_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_PASSWORD_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_PASSWORD_MESSAGE_2;
+import static busynessmanager.constants.Constants.BM_FORGOT_PASSWORD_MESSAGE;
+import static busynessmanager.constants.Constants.BM_PASSWORD_RECOVERY;
+import static busynessmanager.constants.Constants.BM_NO_PASSWORD_MESSAGE;
 import static busynessmanager.constants.Constants.BM_SUCCESSFUL_LOGIN_MESSAGE;
 import static busynessmanager.constants.Constants.BM_INVALID_CREDENTIALS_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_NAME_MESSAGE;
@@ -145,6 +148,18 @@ public class BusynessManager {
             UI.printMessage(BM_SUCCESSFUL_LOGIN_MESSAGE);
         } else {
             UI.printMessage(BM_INVALID_CREDENTIALS_MESSAGE);
+
+            UI.printMessageWithoutNewline(BM_FORGOT_PASSWORD_MESSAGE);
+            String response = scanner.nextLine().trim();
+
+            if (response.equalsIgnoreCase("yes")) {
+                if (credentials != null && credentials.getBusinessID().equals(id)) {
+                    UI.printMessage(BM_PASSWORD_RECOVERY + credentials.getBusinessPassword());
+                }
+                else {
+                    UI.printMessage(BM_NO_PASSWORD_MESSAGE);
+                }
+            }
             System.exit(INDEX_0);
         }
     }
