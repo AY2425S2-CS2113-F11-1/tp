@@ -42,6 +42,7 @@ import static busynessmanager.constants.Constants.BM_SUCCESSFUL_LOGIN_MESSAGE;
 import static busynessmanager.constants.Constants.BM_INVALID_CREDENTIALS_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_NAME_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_TYPE_MESSAGE;
+import static busynessmanager.constants.Constants.BM_INVALID_ID_ERROR_MESSAGE;
 import static busynessmanager.constants.Constants.BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE;
 import static busynessmanager.constants.Constants.BM_SETUP_COMPLETE_MESSAGE;
 import static busynessmanager.constants.Constants.BM_READY_MESSAGE;
@@ -130,6 +131,11 @@ public class BusynessManager {
     protected void login(Scanner scanner) {
         UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
         String id = scanner.nextLine().trim();
+
+        if (!id.matches("\\d+")) {
+            UI.printMessage(BM_INVALID_ID_ERROR_MESSAGE);
+            System.exit(INDEX_0);
+        }
 
         UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE);
         String password = scanner.nextLine().trim();

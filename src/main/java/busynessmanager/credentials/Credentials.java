@@ -3,10 +3,7 @@ package busynessmanager.credentials;
 
 import busynessmanager.BusynessManager;
 
-import static busynessmanager.constants.Constants.BM_ID_ASSERTION_FAIL_MESSAGE;
-import static busynessmanager.constants.Constants.BM_NAME_ASSERTION_FAIL_MESSAGE;
-import static busynessmanager.constants.Constants.BM_PASSWORD_ASSERTION_FAIL_MESSAGE;
-import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE;
+import static busynessmanager.constants.Constants.*;
 
 
 /**
