@@ -18,6 +18,7 @@ public class Constants {
     public static final String FILE_REGEX = ",";
     public static final int MINIMUM_VALUE = 0;
     public static final int MAXIMUM_VALUE = 9999;
+    public static final long MAXIMUM_AMOUNT = 999999;
     public static final int INDEX_0 = 0;
     public static final int INDEX_1 = 1;
     public static final int INDEX_2 = 2;
@@ -44,7 +45,7 @@ public class Constants {
     public static final String BM_UPPERCASE_REGEX = "[A-Z]+";
     public static final String BM_BUSINESSTYPE_FNB = "FNB";
     public static final String BM_BUSINESSTYPE_RETAIL = "RETAIL";
-    public static final String BM_FIRST_SETUP_APPROVAL = "yes";
+    public static final String BM_APPROVAL = "yes";
     public static final String BM_EXIT_APPROVAL = "exit";
     public static final String BM_WAITING_INPUT = ">";
     public static final String BM_NAME_TITLE = "Business Name: ";
@@ -63,6 +64,9 @@ public class Constants {
     public static final String BM_ENTER_BUSINESS_TYPE_MESSAGE = "Enter Business Type (FNB/RETAIL): ";
     public static final String BM_SUCCESSFUL_LOGIN_MESSAGE = "Login successful!";
     public static final String BM_INVALID_CREDENTIALS_MESSAGE = "Invalid credentials. Exiting.";
+    public static final String BM_FORGOT_PASSWORD_MESSAGE = "Did you forget your password?:";
+    public static final String BM_PASSWORD_RECOVERY = "Your password is: ";
+    public static final String BM_NO_PASSWORD_MESSAGE = "No password found.";
     public static final String BM_SETUP_COMPLETE_MESSAGE = "Business setup complete!";
     public static final String BM_READY_MESSAGE = "Busyness Manager is ready. Type 'help' for commands.";
     public static final String BM_EXIT_MESSAGE = "Exiting Busyness Manager...";
@@ -153,9 +157,11 @@ public class Constants {
 
     public static final String IM_LIST = "Product list:";
     public static final String IM_EMPTY_MESSAGE = "Error: There are no products in the inventory.";
-    public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE = "Error: The quantity and/or price provided " +
-            "cannot be a negative number." + TRY_AGAIN_MESSAGE;
     public static final String IM_ZERO_PRICE_MESSAGE = "Error: The price provided cannot be zero." + TRY_AGAIN_MESSAGE;
+    public static final String IM_NEGATIVE_QTY_PRICE_MESSAGE = "Error: The quantity and/or price provided " +
+            "cannot be a negative number." + TRY_AGAIN_MESSAGE;
+    public static final String IM_MAX_QTY_PRICE_MESSAGE = "Error: The quantity and/or price provided exceeds the maximum " +
+            "set by Busyness Manager." + TRY_AGAIN_MESSAGE;
     public static final String IM_QTY_EXCEED_MESSAGE = "Error: The quantity sold provided exceeds the quantity " +
             "of product with ID %s.";
 

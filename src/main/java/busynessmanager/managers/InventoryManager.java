@@ -17,6 +17,7 @@ import static busynessmanager.constants.Constants.INDEX_4;
 import static busynessmanager.constants.Constants.INDEX_5;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.constants.Constants.MAXIMUM_AMOUNT;
 import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
 import static busynessmanager.constants.Constants.FILE_REGEX;
 import static busynessmanager.constants.Constants.IM_LIST;
@@ -26,9 +27,10 @@ import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
 import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
 import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
 import static busynessmanager.constants.Constants.IM_QTY_SOLD_ZERO_FORMAT;
-import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
+import static busynessmanager.constants.Constants.IM_NEGATIVE_QTY_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.IM_ZERO_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.IM_QTY_EXCEED_MESSAGE;
+import static busynessmanager.constants.Constants.IM_MAX_QTY_PRICE_MESSAGE;
 
 
 /**
@@ -64,7 +66,10 @@ public class InventoryManager {
         Product product;
 
         if (qty < MINIMUM_VALUE || price < MINIMUM_VALUE) {
-            UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+            UI.printMessage(IM_NEGATIVE_QTY_PRICE_MESSAGE);
+            return;
+        } else if (qty > MAXIMUM_AMOUNT || price > MAXIMUM_AMOUNT) {
+            UI.printMessage(IM_MAX_QTY_PRICE_MESSAGE);
             return;
         } else if (price == MINIMUM_VALUE) {
             UI.printMessage(IM_ZERO_PRICE_MESSAGE);
@@ -89,7 +94,7 @@ public class InventoryManager {
             Product removedProduct = productList.remove(id);
             UI.printFormattedMessage(IM_REMOVE_FORMAT + NEWLINE, removedProduct.toString());
         } else {
-            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT+ NEWLINE, id);
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
     }
 
@@ -106,7 +111,7 @@ public class InventoryManager {
             Product product = productList.get(id);
 
             if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
-                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                UI.printMessage(IM_NEGATIVE_QTY_PRICE_MESSAGE);
                 return;
             } else {
                 product.setName(name);
@@ -124,8 +129,8 @@ public class InventoryManager {
     /**
      * Updates the details of an existing product.
      *
-     * @param id    The unique ID of the product.
-     * @param name  The new name of the product.
+     * @param id   The unique ID of the product.
+     * @param name The new name of the product.
      */
     public void updateName(String id, String name) {
         if (productList.containsKey(id)) {
@@ -142,15 +147,18 @@ public class InventoryManager {
     /**
      * Updates the details of an existing product.
      *
-     * @param id    The unique ID of the product.
-     * @param qty   The new quantity of the product.
+     * @param id  The unique ID of the product.
+     * @param qty The new quantity of the product.
      */
     public void updateQty(String id, int qty) {
         if (productList.containsKey(id)) {
             Product product = productList.get(id);
 
             if (qty < MINIMUM_VALUE) {
-                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                UI.printMessage(IM_NEGATIVE_QTY_PRICE_MESSAGE);
+                return;
+            } else if (qty > MAXIMUM_AMOUNT) {
+                UI.printMessage(IM_MAX_QTY_PRICE_MESSAGE);
                 return;
             } else {
                 product.setQuantity(qty);
@@ -173,7 +181,10 @@ public class InventoryManager {
             Product product = productList.get(id);
 
             if (price < MINIMUM_VALUE) {
-                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                UI.printMessage(IM_NEGATIVE_QTY_PRICE_MESSAGE);
+                return;
+            } else if (price > MAXIMUM_AMOUNT) {
+                UI.printMessage(IM_MAX_QTY_PRICE_MESSAGE);
                 return;
             } else if (price == MINIMUM_VALUE) {
                 UI.printMessage(IM_ZERO_PRICE_MESSAGE);
@@ -212,10 +223,15 @@ public class InventoryManager {
      * Updates the quantity of a product after a sale.
      * Ensures the quantity does not drop below the minimum allowed value.
      *
-     * @param id       The unique ID of the product.
-     * @param qtySold  The quantity sold.
+     * @param id      The unique ID of the product.
+     * @param qtySold The quantity sold.
      */
     protected boolean updateProductQuantity(String id, int qtySold) {
+        if (qtySold > MAXIMUM_AMOUNT) {
+            UI.printMessage(IM_MAX_QTY_PRICE_MESSAGE);
+            return false;
+        }
+
         Product product;
 
         if (productList.containsKey(id)) {

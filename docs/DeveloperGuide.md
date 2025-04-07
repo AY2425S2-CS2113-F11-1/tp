@@ -274,6 +274,8 @@ market.
 
 * Should work on any _mainstream OS_ with Java 17 installed.
 * Should serve a business with up to 10,000 goods for sale.
+* Should work with products with quantity below 1,000,000.
+* Should work with products with price below $1,000,000.
 * A user with decent typing speed for normal text should be able to complete most tasks faster through typing
 out commands, compared to using the mouse to navigate a GUI application.
 

@@ -28,6 +28,7 @@ the `.txt` file**.
 * **Login**
   * Requires business ID and password.
   * Subsequent features can be accessed after logging in.
+  * Password can be retrieved.
 
 * **Viewing Help:** `help`
   * Provides possible command instructions and expected formatting.
@@ -68,8 +69,8 @@ the `.txt` file**.
 * There must always be **ONE SPACE** between any command *(e.g. update)*, flag *(e.g. /name)*, and value *(e.g. MILK)*.
 * Add a **slash** (`/`) in front of any flag.
 * To input ID of product, just the **non-zero part** will suffice. *(i.e. 1 instead of ID_0001)*
-* Quantity of all products must be a **WHOLE** number.
-* Price of all products can be up to **2 DECIMAL PLACES**.
+* Quantity of all products must be a **WHOLE** number under 1 million.
+* Price of all products can be up to **2 DECIMAL PLACES**, and must be under $1 million.
 * Names of all products must be **ONE-WORD** long. (further explained [below](#known-bugs))
 * IDs will **NOT** be usable after deletion. (further explained [below](#known-bugs)) 
 
