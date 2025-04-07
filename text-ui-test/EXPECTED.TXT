@@ -1,7 +1,7 @@
 Welcome to Busyness Manager!
 Please enter your business name: Error: There is no input detected. Please try again.
 Please enter your business name: Do you want to add your business?
-(Enter: "yes" to set up credentials or any other input to exit Busyness Manager) Enter Business ID: Error: There is no input detected. Please try again.
+(Enter "yes" to create a new account / Enter any other input to exit Busyness Manager) Enter Business ID: Error: There is no input detected. Please try again.
 Enter Business ID: Enter Business Name: Error: There is no input detected. Please try again.
 Enter Business Name: Enter Business Password: Error: There is no input detected. Please try again.
 Enter Business Password: Enter Business Type (FNB/RETAIL): Error: There is no input detected. Please try again.
