@@ -9,7 +9,25 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static busynessmanager.constants.Constants.*;
+import static busynessmanager.constants.Constants.INDEX_0;
+import static busynessmanager.constants.Constants.INDEX_1;
+import static busynessmanager.constants.Constants.INDEX_2;
+import static busynessmanager.constants.Constants.INDEX_3;
+import static busynessmanager.constants.Constants.INDEX_4;
+import static busynessmanager.constants.Constants.INDEX_5;
+import static busynessmanager.constants.Constants.INDEX_6;
+import static busynessmanager.constants.Constants.NEWLINE;
+import static busynessmanager.constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
+import static busynessmanager.constants.Constants.FILE_REGEX;
+import static busynessmanager.constants.Constants.IM_LIST;
+import static busynessmanager.constants.Constants.IM_EMPTY_MESSAGE;
+import static busynessmanager.constants.Constants.IM_ADD_FORMAT;
+import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
+import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
+import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
+import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
+import static busynessmanager.constants.Constants.IM_QTY_EXCEED_ERROR_MESSAGE;
 
 
 /**
@@ -162,7 +180,7 @@ public class InventoryManager {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
     }
-    
+
     /**
      * Prints all products in the inventory.
      * If the inventory is empty, displays an appropriate message.
