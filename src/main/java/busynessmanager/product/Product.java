@@ -52,10 +52,10 @@ public class Product {
         this.quantity = quantity;
         this.quantitySold = quantitySold;
         this.price = price;
-        this.revenue = revenue; // Change load file
-        //this.revenue = INDEX_0; // Change load file
+        this.revenue = revenue;
     }
 
+    // @@author LEESY02
     /**
      * Sets the idCounter value to the given input
      *
@@ -65,6 +65,7 @@ public class Product {
         idCounter = newCounter;
     }
 
+    //@@author himethcodes
     /**
      * Gets the unique product ID.
      *
@@ -120,6 +121,7 @@ public class Product {
         return revenue;
     }
 
+    //@@author himethcodes
     /**
      * Sets the name of the product.
      *
@@ -166,6 +168,7 @@ public class Product {
         this.revenue = newRevenue;
     }
 
+    //@@author himethcodes
     /**
      * Returns a formatted string representation of the product.
      *

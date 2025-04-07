@@ -76,6 +76,7 @@ public class SalesManager {
         }
     }
 
+    //@@author LEESY02
     /**
      * Returns the InventoryManager used in the SalesManager class.
      *

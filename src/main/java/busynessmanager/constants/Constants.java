@@ -34,7 +34,7 @@ public class Constants {
             add         add <Name> <Quantity> <Price>                   (Add new product to list)
             delete      delete <ID number>                              (Delete existing product)
             update      update <ID number> <flag> <Updated value>       (Update product, flags: /name /quantity /price)
-            print       print                                           (Print list of products)
+            list        list                                            (Print list of products)
             sold        sold <ID number> <Quantity sold>                (Mark some products as sold)
             clear       clear <ID number>                               (Clear current sales)
             revenue     revenue OR revenue <ID number>                  (Check revenue)

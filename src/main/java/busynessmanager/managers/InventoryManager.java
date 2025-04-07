@@ -339,9 +339,9 @@ public class InventoryManager {
                 int quantitySold = Integer.parseInt(parts[INDEX_3]);
                 double price = Double.parseDouble(parts[INDEX_4]);
                 double revenue = Double.parseDouble(parts[INDEX_5]);
-                // edit here
-                String numberPart = id.substring(3);
-                int newIDCounter = Integer.parseInt(numberPart) + 1;
+
+                String numberPart = id.substring(INDEX_3);
+                int newIDCounter = Integer.parseInt(numberPart) + INDEX_1;
                 productList.put(id, new Product(id, name, quantity, quantitySold, price, revenue));
                 Product.setIdCounter(newIDCounter);
             }
