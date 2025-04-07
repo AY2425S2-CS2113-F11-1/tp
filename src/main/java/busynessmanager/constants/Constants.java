@@ -18,6 +18,7 @@ public class Constants {
     public static final String FILE_REGEX = ",";
     public static final int MINIMUM_VALUE = 0;
     public static final int MAXIMUM_VALUE = 9999;
+    public static final long MAXIMUM_AMOUNT = 999999;
     public static final int INDEX_0 = 0;
     public static final int INDEX_1 = 1;
     public static final int INDEX_2 = 2;
@@ -139,6 +140,7 @@ public class Constants {
     public static final String IM_LIST = PRODUCT + WHITESPACE + "list:";
     public static final String IM_EMPTY_MESSAGE = "No products in inventory";
     public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE = "Quantity and/or price is a negative number.";
+    public static final String IM_MAXIMUM_QUANTITY_PRICE_MESSAGE = "Quantity and/or price exceeds the maximum number.";
     public static final String IM_QTY_EXCEED_ERROR_MESSAGE = "Quantity sold exceeds the quantity of product."
             + TRY_AGAIN_MESSAGE;
 

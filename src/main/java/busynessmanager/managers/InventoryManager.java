@@ -9,24 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static busynessmanager.constants.Constants.INDEX_0;
-import static busynessmanager.constants.Constants.INDEX_1;
-import static busynessmanager.constants.Constants.INDEX_2;
-import static busynessmanager.constants.Constants.INDEX_3;
-import static busynessmanager.constants.Constants.INDEX_4;
-import static busynessmanager.constants.Constants.INDEX_5;
-import static busynessmanager.constants.Constants.NEWLINE;
-import static busynessmanager.constants.Constants.MINIMUM_VALUE;
-import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
-import static busynessmanager.constants.Constants.FILE_REGEX;
-import static busynessmanager.constants.Constants.IM_LIST;
-import static busynessmanager.constants.Constants.IM_EMPTY_MESSAGE;
-import static busynessmanager.constants.Constants.IM_ADD_FORMAT;
-import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
-import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
-import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
-import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
-import static busynessmanager.constants.Constants.IM_QTY_EXCEED_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.*;
 
 
 /**
@@ -64,7 +47,10 @@ public class InventoryManager {
         if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
             UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
             return;
-        } else {
+        } else if (qty > MAXIMUM_AMOUNT || price > MAXIMUM_AMOUNT) {
+            UI.printMessage(IM_MAXIMUM_QUANTITY_PRICE_MESSAGE);
+            return;
+        }else {
             product = new Product(name, qty, price);
         }
 
