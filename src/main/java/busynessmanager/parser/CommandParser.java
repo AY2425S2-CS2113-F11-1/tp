@@ -373,7 +373,6 @@ public class CommandParser {
             inventoryManager.updateName(productID, productNewName);
             break;
         case CP_QUANTITY_FLAG:
-            //productNewQuantity = Integer.parseInt(components[INDEX_2]);
             try {
                 productNewQuantity = parseInt(components[INDEX_2]);
             } catch (NumberParsingFailedException e) {
