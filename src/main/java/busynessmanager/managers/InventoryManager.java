@@ -98,6 +98,7 @@ public class InventoryManager {
         }
     }
 
+    //@@author LEESY02
     /**
      * Updates the details of an existing product.
      *
@@ -161,7 +162,7 @@ public class InventoryManager {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
     }
-
+    
     /**
      * Prints all products in the inventory.
      * If the inventory is empty, displays an appropriate message.
