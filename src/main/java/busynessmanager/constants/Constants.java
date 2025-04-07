@@ -166,8 +166,8 @@ public class Constants {
     public static final String IM_ZERO_PRICE_MESSAGE = "Error: The price provided cannot be zero." + TRY_AGAIN_MESSAGE;
     public static final String IM_NEGATIVE_QTY_PRICE_MESSAGE = "Error: The quantity and/or price provided " +
             "cannot be a negative number." + TRY_AGAIN_MESSAGE;
-    public static final String IM_MAX_QTY_PRICE_MESSAGE = "Error: The quantity and/or price provided exceeds the maximum " +
-            "set by Busyness Manager." + TRY_AGAIN_MESSAGE;
+    public static final String IM_MAX_QTY_PRICE_MESSAGE = "Error: The quantity and/or price provided exceeds the " +
+            "maximum set by Busyness Manager." + TRY_AGAIN_MESSAGE;
     public static final String IM_QTY_EXCEED_MESSAGE = "Error: The quantity sold provided exceeds the quantity " +
             "of product with ID %s.";
 
