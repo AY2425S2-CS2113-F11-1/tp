@@ -2,14 +2,18 @@
 # User Guide for Busyness Manager
 
 ## Sign-In Process:
+
 1. Enter business name.
-   * If business name does not exist in the program, user will be asked for permission to start 
-   [First-Time Setup](#first-time-setup). (Input  "**yes**" to proceed with First-Time Setup)
+   * If business name does not exist in Busyness Manager, user will be asked for permission to start 
+   [First-Time Setup](#first-time-setup).
+     * Input  "**yes**" to proceed with First-Time Setup and create a new business account.
+     * Input anything else to terminate Busyness Manager and restart.
 2. Enter business ID.
 3. Enter business password.
-   * If ID and password are correct, message stating that login is successful will be shown,
-   * If ID and/or password are incorrect, user will be asked if they have forgotten their ID and password. (Input 
-   "**yes**" to display the business ID and password)
+   * If ID and password are correct, message stating that login is successful will be shown.
+   * If ID and/or password are incorrect, user will be asked if they have forgotten their ID and password.
+     * Input "**yes**" to display the business ID and password. (Busyness Manager will terminate after showing)
+     * Input anything else to terminate Busyness Manager and restart.
 
 ## First-Time Setup:
 
@@ -20,8 +24,8 @@
 5. Message stating that the setup is successful is shown.
 
 **Note:** If the user wants to edit these Credentials information, they may do so within the `data/<business name>.txt` 
-file. However, **there is no guarantee that the program will work as intended after any kinds of modifications to
-the `.txt` file**.
+file. However, **there is no guarantee that Busyness Manager will work as intended after any kinds of modifications to
+the `.txt` file**. This issue will be improved in subsequent versions.
 
 ## Features:
 

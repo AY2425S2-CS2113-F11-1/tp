@@ -20,7 +20,6 @@ import java.util.Scanner;
 import static busynessmanager.constants.Constants.EMPTY_STRING;
 import static busynessmanager.constants.Constants.DATA_FOLDER;
 import static busynessmanager.constants.Constants.BUSINESS_INFO_FILE;
-import static busynessmanager.constants.Constants.BM_LOGIN_MESSAGE;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.INDEX_0;
 import static busynessmanager.constants.Constants.INDEX_1;
@@ -29,6 +28,7 @@ import static busynessmanager.constants.Constants.INDEX_3;
 import static busynessmanager.constants.Constants.INDEX_4;
 import static busynessmanager.constants.Constants.FILE_REGEX;
 import static busynessmanager.constants.Constants.BM_UPPERCASE_REGEX;
+import static busynessmanager.constants.Constants.BM_DIGIT_REGEX;
 import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_FNB;
 import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_RETAIL;
 import static busynessmanager.constants.Constants.BM_APPROVAL;
@@ -39,19 +39,22 @@ import static busynessmanager.constants.Constants.BM_TYPE_TITLE;
 import static busynessmanager.constants.Constants.BM_ID_TITLE;
 import static busynessmanager.constants.Constants.BM_INVENTORY_TITLE;
 import static busynessmanager.constants.Constants.BM_WELCOME_MESSAGE;
-import static busynessmanager.constants.Constants.BM_NO_INPUT_MESSAGE;
+import static busynessmanager.constants.Constants.BM_LOGIN_MESSAGE;
 import static busynessmanager.constants.Constants.BM_FIRST_SETUP_CHECK_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_ID_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_PASSWORD_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_PASSWORD_MESSAGE_2;
-import static busynessmanager.constants.Constants.BM_FORGOT_PASSWORD_MESSAGE;
-import static busynessmanager.constants.Constants.BM_PASSWORD_RECOVERY;
-import static busynessmanager.constants.Constants.BM_NO_PASSWORD_MESSAGE;
 import static busynessmanager.constants.Constants.BM_SUCCESSFUL_LOGIN_MESSAGE;
-import static busynessmanager.constants.Constants.BM_INVALID_CREDENTIALS_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_NAME_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_TYPE_MESSAGE;
+import static busynessmanager.constants.Constants.BM_NO_INPUT_MESSAGE;
+import static busynessmanager.constants.Constants.BM_INVALID_ID_MESSAGE;
 import static busynessmanager.constants.Constants.BM_INVALID_BUSINESSTYPE_MESSAGE;
+import static busynessmanager.constants.Constants.BM_FORGOT_PASSWORD_MESSAGE;
+import static busynessmanager.constants.Constants.BM_RECOVERY_MESSAGE;
+import static busynessmanager.constants.Constants.BM_RECOVERY_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.BM_PASSWORD_RECOVERY;
+import static busynessmanager.constants.Constants.BM_ID_RECOVERY;
 import static busynessmanager.constants.Constants.BM_SETUP_COMPLETE_MESSAGE;
 import static busynessmanager.constants.Constants.BM_READY_MESSAGE;
 import static busynessmanager.constants.Constants.BM_EXIT_MESSAGE;
@@ -140,7 +143,7 @@ public class BusynessManager {
             }
         } else {
             loadBusinessData(businessName);
-            login(scanner);
+            login(scanner, businessName);
         }
 
         run(scanner);
@@ -151,7 +154,7 @@ public class BusynessManager {
      *
      * @param scanner The Scanner object for user input.
      */
-    protected void login(Scanner scanner) {
+    protected void login(Scanner scanner, String businessName) {
         String id = EMPTY_STRING;
         String password = EMPTY_STRING;
 
@@ -183,6 +186,7 @@ public class BusynessManager {
             }
         }
 
+        // @@author rozaliesmit
         if (credentials != null && credentials.getBusinessID().equals(id) &&
                 credentials.getBusinessPassword().equals(password)) {
             UI.printMessage(BM_SUCCESSFUL_LOGIN_MESSAGE);
@@ -191,18 +195,23 @@ public class BusynessManager {
             String response = scanner.nextLine().trim();
 
             if (response.equalsIgnoreCase(BM_APPROVAL)) {
-                if (credentials != null && credentials.getBusinessID().equals(id)) {
+                if (credentials != null && credentials.getBusinessName().equals(businessName)) {
+                    UI.printMessage(BM_ID_RECOVERY + credentials.getBusinessID());
                     UI.printMessage(BM_PASSWORD_RECOVERY + credentials.getBusinessPassword());
+
+                    UI.printMessage(BM_RECOVERY_MESSAGE);
                 } else {
-                    UI.printMessage(BM_NO_PASSWORD_MESSAGE);
+                    UI.printMessage(BM_RECOVERY_ERROR_MESSAGE);
                 }
             } else {
-                UI.printMessage(BM_INVALID_CREDENTIALS_MESSAGE);
+                UI.printMessage(BM_EXIT_MESSAGE);
             }
+
             System.exit(INDEX_0);
         }
     }
 
+    // @@author amirhusaini06
     /**
      * Handles first-time business setup, allowing user to register their business.
      *
@@ -315,16 +324,20 @@ public class BusynessManager {
         String businessID = EMPTY_STRING;
 
         while (businessID.isEmpty()) {
-            UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
+            while (!businessID.matches(BM_DIGIT_REGEX)) {
+                UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
 
-            if (!scanner.hasNextLine()) {
-                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
-            } else {
-                businessID = scanner.nextLine().trim();
-            }
+                if (!scanner.hasNextLine()) {
+                    UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
+                } else {
+                    businessID = scanner.nextLine().trim();
+                }
 
-            if (businessID.isEmpty()) {
-                UI.printMessage(BM_NO_INPUT_MESSAGE);
+                if (businessID.isEmpty()) {
+                    UI.printMessage(BM_NO_INPUT_MESSAGE);
+                } else if (!businessID.matches(BM_DIGIT_REGEX)) {
+                    UI.printMessage(BM_INVALID_ID_MESSAGE);
+                }
             }
         }
 

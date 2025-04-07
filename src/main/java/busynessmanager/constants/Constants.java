@@ -43,6 +43,7 @@ public class Constants {
 
     // BusynessManager
     public static final String BM_UPPERCASE_REGEX = "[A-Z]+";
+    public static final String BM_DIGIT_REGEX = "\\d+";
     public static final String BM_BUSINESSTYPE_FNB = "FNB";
     public static final String BM_BUSINESSTYPE_RETAIL = "RETAIL";
     public static final String BM_APPROVAL = "yes";
@@ -56,24 +57,29 @@ public class Constants {
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
     public static final String BM_LOGIN_MESSAGE = "Please enter your business name: ";
     public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "Do you want to add your business?" +
-        "\n(Enter: \"yes\" to set up credentials or any other input to exit Busyness Manager) ";
+        "\n(Enter \"yes\" to create a new account / Enter any other input to exit Busyness Manager) ";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
     public static final String BM_ENTER_NAME_MESSAGE = "Enter Business Name: ";
     public static final String BM_ENTER_BUSINESS_TYPE_MESSAGE = "Enter Business Type (FNB/RETAIL): ";
     public static final String BM_SUCCESSFUL_LOGIN_MESSAGE = "Login successful!";
-    public static final String BM_INVALID_CREDENTIALS_MESSAGE = "Invalid credentials. Exiting.";
-    public static final String BM_FORGOT_PASSWORD_MESSAGE = "Did you forget your password?:";
-    public static final String BM_PASSWORD_RECOVERY = "Your password is: ";
-    public static final String BM_NO_PASSWORD_MESSAGE = "No password found.";
     public static final String BM_SETUP_COMPLETE_MESSAGE = "Business setup complete!";
     public static final String BM_READY_MESSAGE = "Busyness Manager is ready. Type 'help' for commands.";
     public static final String BM_EXIT_MESSAGE = "Exiting Busyness Manager...";
     public static final String BM_NO_INPUT_MESSAGE = "Error: There is no input detected."
             + TRY_AGAIN_MESSAGE;
+    public static final String BM_INVALID_ID_MESSAGE = "Error: The business ID provided must only contain numbers."
+            + TRY_AGAIN_MESSAGE;
     public static final String BM_INVALID_BUSINESSTYPE_MESSAGE = "Error: The business type provided is invalid."
             + TRY_AGAIN_MESSAGE;
+    public static final String BM_FORGOT_PASSWORD_MESSAGE = "The ID and/or password is incorrect. Do you want to " +
+            "retrieve these details?" + "\nEnter \"yes\" to retrieve ID and password / Enter any other input " +
+            "to exit Busyness Manager) ";
+    public static final String BM_RECOVERY_MESSAGE = "Please restart Busyness Manager and try again.";
+    public static final String BM_RECOVERY_ERROR_MESSAGE = "Error: The ID / password cannot be retrieved.";
+    public static final String BM_ID_RECOVERY = "The ID is: ";
+    public static final String BM_PASSWORD_RECOVERY = "The password is: ";
 
     public static final String BM_ID_ASSERTION_FAIL_MESSAGE = "Business ID should not be null or empty.";
     public static final String BM_NAME_ASSERTION_FAIL_MESSAGE = "Business name should not be null or empty.";
