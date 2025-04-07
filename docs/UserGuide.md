@@ -13,6 +13,7 @@
 - **Login**
     - Requires business ID and password.
     - Subsequent features can be accessed after logging in.
+    - Password can be retrieved.
 
 
 - **Viewing Help:** `help`
@@ -64,8 +65,8 @@
 - Creates a new product object & attaches different attributes to it (with an auto-generated ID).
 - Tags:
     - `/name` →  Name of the product to create.
-    - `/qty` → Quantity of the product to create that is available for sale.
-    - `/price` → Price of the product to create.
+    - `/qty` → Quantity of the product to create that is available for sale (cannot exceed 999999).
+    - `/price` → Price of the product to create (cannot exceed 999999).
 
 **Example:**
 - Input -> `add /name MILK /qty 50 /price 2.50`

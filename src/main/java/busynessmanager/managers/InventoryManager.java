@@ -50,7 +50,7 @@ public class InventoryManager {
         } else if (qty > MAXIMUM_AMOUNT || price > MAXIMUM_AMOUNT) {
             UI.printMessage(IM_MAXIMUM_QUANTITY_PRICE_MESSAGE);
             return;
-        }else {
+        } else {
             product = new Product(name, qty, price);
         }
 
@@ -70,7 +70,7 @@ public class InventoryManager {
             Product removedProduct = productList.remove(id);
             UI.printFormattedMessage(IM_REMOVE_FORMAT + NEWLINE, removedProduct.toString());
         } else {
-            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT+ NEWLINE, id);
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
     }
 
@@ -120,12 +120,13 @@ public class InventoryManager {
 
 
     //@@author rozaliesmit
+
     /**
      * Updates the quantity of a product after a sale.
      * Ensures the quantity does not drop below the minimum allowed value.
      *
-     * @param id       The unique ID of the product.
-     * @param qtySold  The quantity sold.
+     * @param id      The unique ID of the product.
+     * @param qtySold The quantity sold.
      */
     protected boolean updateProductQuantity(String id, int qtySold) {
         Product product;
@@ -166,6 +167,7 @@ public class InventoryManager {
     }
 
     //@@author LEESY02
+
     /**
      * Returns the current list of products in the inventory.
      *
@@ -176,6 +178,7 @@ public class InventoryManager {
     }
 
     //@@author amirhusaini06
+
     /**
      * Retrieves the inventory data as a string for saving to a file.
      *

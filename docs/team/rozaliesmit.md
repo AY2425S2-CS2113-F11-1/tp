@@ -25,10 +25,14 @@ handling, and structured command processing.
     data.
 ---
 
+### Enhancements Added
+- Added a password recovery function
+
 ### Contributions to Documentation
 
 #### User Guide:
 - Reviewed descriptions of the `SalesManager` features.
+- Updated descriptions
 
 #### Developer's Guide:
 - Added the design and implementation of the `SalesManager` class.
@@ -37,4 +41,5 @@ handling, and structured command processing.
 ### Contributions to Team-Based Tasks
 - Collaborated to improve code quality and maintain project standard consistency
 - Discussed solutions and feedback to streamline feature integration
+- Fixed bugs 162-164 from PED
 ---

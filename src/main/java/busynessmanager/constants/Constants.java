@@ -8,7 +8,7 @@ package busynessmanager.constants;
  * 1. prefix XX_ refers to the class the constant is likely to be used in. (i.e. IM_ stands for InventoryManager)
  * 2. suffix _MESSAGE means the constant is to be printed out directly as a message to the user. (UI Class)
  * 3. suffix _FORMAT means the constant is a Formatted Message, similar to point 2,
- *    but different values need to be inserted into the String.
+ * but different values need to be inserted into the String.
  */
 public class Constants {
     // Misc.
@@ -44,7 +44,7 @@ public class Constants {
     public static final String BM_UPPERCASE_REGEX = "[A-Z]+";
     public static final String BM_BUSINESSTYPE_FNB = "FNB";
     public static final String BM_BUSINESSTYPE_RETAIL = "RETAIL";
-    public static final String BM_FIRST_SETUP_APPROVAL = "yes";
+    public static final String BM_APPROVAL = "yes";
     public static final String BM_NAME_TITLE = "Business Name: ";
     public static final String BM_TYPE_TITLE = "Business Type: ";
     public static final String BM_ID_TITLE = "Business ID: ";
@@ -58,7 +58,7 @@ public class Constants {
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
-    public static final String BM_FORGOT_PASSWORD_MESSAGE = "Did you forget your password? (yes/no):";
+    public static final String BM_FORGOT_PASSWORD_MESSAGE = "Did you forget your password?:";
     public static final String BM_PASSWORD_RECOVERY = "Your password is: ";
     public static final String BM_NO_PASSWORD_MESSAGE = "No password found.";
     public static final String BM_SUCCESSFUL_LOGIN_MESSAGE = "Login successful!";
