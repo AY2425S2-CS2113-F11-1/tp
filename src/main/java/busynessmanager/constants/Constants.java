@@ -8,7 +8,7 @@ package busynessmanager.constants;
  * 1. prefix XX_ refers to the class the constant is likely to be used in. (i.e. IM_ stands for InventoryManager)
  * 2. suffix _MESSAGE means the constant is to be printed out directly as a message to the user. (UI Class)
  * 3. suffix _FORMAT means the constant is a Formatted Message, similar to point 2,
- * but different values need to be inserted into the String.
+ *    but different values need to be inserted into the String.
  */
 public class Constants {
     // Misc.
@@ -25,19 +25,20 @@ public class Constants {
     public static final int INDEX_3 = 3;
     public static final int INDEX_4 = 4;
     public static final int INDEX_5 = 5;
-    public static final int INDEX_6 = 6;
-    public static final int INDEX_7 = 7;
+    public static final String DATA_FOLDER = "data";
+    public static final String BUSINESS_INFO_FILE = "data/%s.txt";
     public static final String PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";
     public static final String TRY_AGAIN_MESSAGE = " Please try again.";
     public static final String HELP_LIST = """
-            add         add /name <name> /qty <number> /price <number>
-            delete      delete /id <number>
-            update      update /id <number> /name <name> /qty <number> /price <number>
-            print       print
-            sold        sold /id <number> /qty <number>
-            clear       clear /id <number>
-            revenue     revenue OR revenue /id <number>
-            search      search /name <name> OR search /id <number>""";
+            add         add <Name> <Quantity> <Price>                   (Add new product to list)
+            delete      delete <ID number>                              (Delete existing product)
+            update      update <ID number> <flag> <Updated value>       (Update product, flags: /name /quantity /price)
+            print       print                                           (Print list of products)
+            sold        sold <ID number> <Quantity sold>                (Mark some products as sold)
+            clear       clear <ID number>                               (Clear current sales)
+            revenue     revenue OR revenue <ID number>                  (Check revenue)
+            search      search /name <name> OR search /id <number>      (Look for specific product)
+            exit        exit                                            (Exit application)""";
 
 
     // BusynessManager
@@ -51,10 +52,12 @@ public class Constants {
     public static final String BM_INVENTORY_TITLE = "---INVENTORY---";
 
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
+    public static final String BM_LOGIN_MESSAGE = "Please enter your business name:";
     public static final String BM_NO_INPUT_ERROR_MESSAGE = "Error: No input detected.";
     public static final String BM_INVALID_ID_ERROR_MESSAGE = "Business ID should only be digits." + TRY_AGAIN_MESSAGE;
     public static final String BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE = "Invalid business type." + TRY_AGAIN_MESSAGE;
-    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "No existing ID. Do you want to add your business? ";
+    public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "Do you want to add your business?" +
+        "\n(Enter: \"Yes\" to set up credentials or any other input to exit Busyness Manager)";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
@@ -110,11 +113,14 @@ public class Constants {
     public static final String CP_ID_FLAG = "/id";
 
     public static final String CP_INVALID_COMMAND_MESSAGE = "Command does not exist." + TRY_AGAIN_MESSAGE;
-    public static final String CP_INVALID_FLAG_MESSAGE_ADD = "Invalid format. /name /qty /price.";
-    public static final String CP_INVALID_FLAG_MESSAGE_SOLD = "Invalid format. /id /qty.";
-    public static final String CP_INVALID_FLAG_MESSAGE_REVENUE = "Invalid format. /id or keep empty for total.";
-    public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. /name OR /id.";
-    public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid format. /id /name /qty /price.";
+    public static final String CP_INVALID_FLAG_MESSAGE_ADD = "Invalid format. add <name> <quantity> <price>";
+    public static final String CP_INVALID_FLAG_MESSAGE_SOLD = "Invalid format. sold <ID number> <Quantity sold>";
+    public static final String CP_INVALID_FLAG_MESSAGE_REVENUE = "Invalid format. revenue OR revenue <ID number>";
+    public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. " +
+        "search /name <name> OR search /id <number>";
+    public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid flags." +
+        "\nupdate <ID number> <flag> <Updated value>," +
+        "\nwhere <flag> is either /name, /qty, or /price.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
     public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a proper number." +
             TRY_AGAIN_MESSAGE;
@@ -124,6 +130,8 @@ public class Constants {
     public static final String CP_ID_MISSING_MESSAGE = "ID is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_NAME_MISSING_MESSAGE = "Name is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_LOG_MESSAGE = "String splitting failure.";
+    public static final String CP_INVALID_PRICE_MESSAGE = "Please enter a valid price value " +
+        "(Input is more than 2 decimal points)";
 
 
     // Product
@@ -143,8 +151,9 @@ public class Constants {
 
     public static final String IM_LIST = PRODUCT + WHITESPACE + "list:";
     public static final String IM_EMPTY_MESSAGE = "No products in inventory";
-    public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE = "Quantity and/or price is a negative number.";
     public static final String IM_MAXIMUM_QUANTITY_PRICE_MESSAGE = "Quantity and/or price exceeds the maximum number.";
+    public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE
+        = "Quantity and/or price is a negative number or price is zero.";
     public static final String IM_QTY_EXCEED_ERROR_MESSAGE = "Quantity sold exceeds the quantity of product."
             + TRY_AGAIN_MESSAGE;
 

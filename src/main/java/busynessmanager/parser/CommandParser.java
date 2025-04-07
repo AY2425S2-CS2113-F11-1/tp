@@ -14,6 +14,7 @@ import busynessmanager.exceptions.NumberParsingFailedException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.math.BigDecimal;
 
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.MAXIMUM_VALUE;
@@ -22,11 +23,6 @@ import static busynessmanager.constants.Constants.EMPTY_STRING;
 import static busynessmanager.constants.Constants.INDEX_0;
 import static busynessmanager.constants.Constants.INDEX_1;
 import static busynessmanager.constants.Constants.INDEX_2;
-import static busynessmanager.constants.Constants.INDEX_3;
-import static busynessmanager.constants.Constants.INDEX_4;
-import static busynessmanager.constants.Constants.INDEX_5;
-import static busynessmanager.constants.Constants.INDEX_6;
-import static busynessmanager.constants.Constants.INDEX_7;
 import static busynessmanager.constants.Constants.HELP_LIST;
 import static busynessmanager.constants.Constants.ID_FORMAT;
 import static busynessmanager.constants.Constants.CP_NAME;
@@ -52,16 +48,16 @@ import static busynessmanager.constants.Constants.CP_INVALID_COMMAND_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_ADD;
 import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_UPDATE;
 import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SOLD;
-import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_REVENUE;
 import static busynessmanager.constants.Constants.CP_INVALID_FLAG_MESSAGE_SEARCH;
 import static busynessmanager.constants.Constants.CP_INVALID_ID_MESSAGE;
-import static busynessmanager.constants.Constants.CP_INVALID_ID_FORMAT_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
 import static busynessmanager.constants.Constants.CP_ID_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_NAME_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
 import static busynessmanager.constants.Constants.CP_READ_BUSINESS_INFO_COMMAND;
+import static busynessmanager.constants.Constants.CP_INVALID_PRICE_MESSAGE;
+
 
 
 /**
@@ -244,20 +240,21 @@ public class CommandParser {
         double productPrice;
 
         try {
-            if (!components[INDEX_0].equals(CP_NAME_FLAG) ||
-                    !components[INDEX_2].equals(CP_QUANTITY_FLAG) ||
-                    !components[INDEX_4].equals(CP_PRICE_FLAG)) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
-            }
-
-            productName = components[INDEX_1];
+            productName = components[INDEX_0];
 
             try {
-                productQuantity = parseInt(components[INDEX_3]);
-                productPrice = parseDouble(components[INDEX_5]);
+                productQuantity = parseInt(components[INDEX_1]);
+                productPrice = parseDouble(components[INDEX_2]);
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
             }
+
+            BigDecimal bd = BigDecimal.valueOf(productPrice);
+            int decimalPlaces = bd.scale();
+            if (decimalPlaces > 2) {
+                throw new InvalidCommandException(CP_INVALID_PRICE_MESSAGE);
+            }
+
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_ADD);
         }
@@ -275,15 +272,11 @@ public class CommandParser {
     protected void deleteProduct(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
 
-        if (!components[INDEX_0].equals(CP_ID_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_ID_FORMAT_MESSAGE);
-        }
-
         try {
             String productIDString;
 
             try {
-                productIDString = components[INDEX_1];
+                productIDString = components[INDEX_0];
             } catch (IndexOutOfBoundsException e) {
                 throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
@@ -308,59 +301,100 @@ public class CommandParser {
     }
 
     /**
-     * Splits the information String into the product ID, updated name, updated quantity and updated price.
-     * It then calls updateProduct() from the InventoryManager class.
+     * Splits the information String into an array.
+     * It then calls updateBasedOnFlags() to update the product depending on the flag provided by the String info.
      *
      * @param info Information related to the command keyword.
      * @throws InvalidCommandException If the user input is of the wrong format.
      */
     protected void updateProduct(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
-        String productNewName;
-        int productNewQuantity;
-        double productNewPrice;
 
         try {
-            if (!components[INDEX_0].equals(CP_ID_FLAG) ||
-                    !components[INDEX_2].equals(CP_NAME_FLAG) ||
-                    !components[INDEX_4].equals(CP_QUANTITY_FLAG) ||
-                    !components[INDEX_6].equals(CP_PRICE_FLAG)) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
-            }
-
-            productNewName = components[INDEX_3];
-
-            try {
-                productNewQuantity = parseInt(components[INDEX_5]);
-                productNewPrice = parseDouble(components[INDEX_7]);
-            } catch (NumberParsingFailedException e) {
-                throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
-            }
-
-            String productIDString;
-
-            try {
-                productIDString = components[INDEX_1];
-            } catch (IndexOutOfBoundsException e) {
-                throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
-            }
-
-
-            int productIDNumber;
-
-            try {
-                productIDNumber = Integer.parseInt(productIDString);
-            } catch (NumberFormatException e) {
-                throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
-            }
+            int productIDNumber = getProductIDNumber(components);
 
             if (productIDNumber < MINIMUM_VALUE || productIDNumber > MAXIMUM_VALUE) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             } else {
-                String productID = String.format(ID_FORMAT, productIDNumber);
-                inventoryManager.updateProduct(productID, productNewName, productNewQuantity, productNewPrice);
+                updateBasedOnFlags(components, productIDNumber);
             }
         } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
+        }
+    }
+
+    /**
+     * Splits the information String into the product ID, updated name, updated quantity and updated price.
+     *
+     * @param components Information related to the command keyword.
+     * @return The numeral representation of Product ID to be updated
+     * @throws InvalidCommandException If the user input is of the wrong format.
+     */
+    private int getProductIDNumber(String[] components) throws InvalidCommandException {
+        if (!components[INDEX_1].equals(CP_NAME_FLAG) &&
+            !components[INDEX_1].equals(CP_QUANTITY_FLAG) &&
+            !components[INDEX_1].equals(CP_PRICE_FLAG)) {
+            throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
+        }
+
+        String productIDString;
+
+        try {
+            productIDString = components[INDEX_0];
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
+        }
+
+        int productIDNumber;
+
+        try {
+            productIDNumber = Integer.parseInt(productIDString);
+        } catch (NumberFormatException e) {
+            throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
+        }
+        return productIDNumber;
+    }
+
+    /**
+     * Updates the given Product component
+     *
+     * @param components Information related to the command keyword.
+     * @throws InvalidCommandException If the user input is of the wrong format.
+     */
+    private void updateBasedOnFlags(String[] components, int productIDNumber) throws InvalidCommandException {
+        String productNewName = EMPTY_STRING;
+        int productNewQuantity = INDEX_0;
+        double productNewPrice = INDEX_0;
+
+        String productID = String.format(ID_FORMAT, productIDNumber);
+        switch(components[INDEX_1]) {
+        case CP_NAME_FLAG:
+            productNewName = components[INDEX_2];
+            inventoryManager.updateName(productID, productNewName);
+            break;
+        case CP_QUANTITY_FLAG:
+            //productNewQuantity = Integer.parseInt(components[INDEX_2]);
+            try {
+                productNewQuantity = parseInt(components[INDEX_2]);
+            } catch (NumberParsingFailedException e) {
+                throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
+            }
+            inventoryManager.updateQty(productID, productNewQuantity);
+            break;
+        case CP_PRICE_FLAG:
+            try {
+                productNewPrice = parseDouble(components[INDEX_2]);
+            } catch (NumberParsingFailedException e) {
+                throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE);
+            }
+            BigDecimal bd = BigDecimal.valueOf(productNewPrice);
+            int decimalPlaces = bd.scale();
+            if (decimalPlaces > 2) {
+                throw new InvalidCommandException(CP_INVALID_PRICE_MESSAGE);
+            }
+            inventoryManager.updatePrice(productID, productNewPrice);
+            break;
+        default:
             throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_UPDATE);
         }
     }
@@ -382,23 +416,20 @@ public class CommandParser {
         String[] components = splitInfo(info);
 
         try {
-            if (!components[INDEX_0].equals(CP_ID_FLAG) || !components[INDEX_2].equals(CP_QUANTITY_FLAG)) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_SOLD);
-            }
 
             int quantitySold;
 
+            // sold <ID number> <Quantity sold>
             try {
-                quantitySold = parseInt(components[INDEX_3]);
+                quantitySold = parseInt(components[INDEX_1]);
             } catch (NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_NUMERAL_MESSAGE_2);
             }
 
-
             String productIDString;
 
             try {
-                productIDString = components[INDEX_1];
+                productIDString = components[INDEX_0];
             } catch (IndexOutOfBoundsException e) {
                 throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
@@ -406,8 +437,8 @@ public class CommandParser {
             int productIDNumber;
 
             try {
-                productIDNumber = Integer.parseInt(productIDString);
-            } catch (NumberFormatException e) {
+                productIDNumber = parseInt(productIDString);
+            } catch (NumberFormatException | NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             }
 
@@ -432,15 +463,11 @@ public class CommandParser {
     protected void clearSales(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
 
-        if (!components[INDEX_0].equals(CP_ID_FLAG)) {
-            throw new InvalidCommandException(CP_INVALID_ID_FORMAT_MESSAGE);
-        }
-
         try {
             String productIDString;
 
             try {
-                productIDString = components[INDEX_1];
+                productIDString = components[INDEX_0];
             } catch (IndexOutOfBoundsException e) {
                 throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
             }
@@ -448,8 +475,8 @@ public class CommandParser {
             int productIDNumber;
 
             try {
-                productIDNumber = Integer.parseInt(productIDString);
-            } catch (NumberFormatException e) {
+                productIDNumber = parseInt(productIDString);
+            } catch (NumberFormatException | NumberParsingFailedException e) {
                 throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
             }
 
@@ -478,15 +505,11 @@ public class CommandParser {
         } else {
             String[] components = splitInfo(info);
 
-            if (!components[INDEX_0].equals(CP_ID_FLAG)) {
-                throw new InvalidCommandException(CP_INVALID_FLAG_MESSAGE_REVENUE);
-            }
-
             try {
                 String productIDString;
 
                 try {
-                    productIDString = components[INDEX_1];
+                    productIDString = components[INDEX_0];
                 } catch (IndexOutOfBoundsException e) {
                     throw new InvalidCommandException(CP_ID_MISSING_MESSAGE);
                 }
@@ -494,8 +517,8 @@ public class CommandParser {
                 int productIDNumber;
 
                 try {
-                    productIDNumber = Integer.parseInt(productIDString);
-                } catch (NumberFormatException e) {
+                    productIDNumber = parseInt(productIDString);
+                } catch (NumberFormatException | NumberParsingFailedException e) {
                     throw new InvalidCommandException(CP_INVALID_ID_MESSAGE);
                 }
 
