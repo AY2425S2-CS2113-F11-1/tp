@@ -17,6 +17,7 @@ import static busynessmanager.constants.Constants.INDEX_4;
 import static busynessmanager.constants.Constants.INDEX_5;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
+import static busynessmanager.constants.Constants.MAXIMUM_AMOUNT;
 import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
 import static busynessmanager.constants.Constants.FILE_REGEX;
 import static busynessmanager.constants.Constants.IM_LIST;
@@ -26,6 +27,7 @@ import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
 import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
 import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
 import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
+import static busynessmanager.constants.Constants.IM_MAXIMUM_QUANTITY_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.IM_QTY_EXCEED_ERROR_MESSAGE;
 
 
@@ -64,6 +66,9 @@ public class InventoryManager {
         if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
             UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
             return;
+        } else if (qty > MAXIMUM_AMOUNT || price > MAXIMUM_AMOUNT) {
+            UI.printMessage(IM_MAXIMUM_QUANTITY_PRICE_MESSAGE);
+            return;
         } else {
             product = new Product(name, qty, price);
         }
@@ -84,7 +89,7 @@ public class InventoryManager {
             Product removedProduct = productList.remove(id);
             UI.printFormattedMessage(IM_REMOVE_FORMAT + NEWLINE, removedProduct.toString());
         } else {
-            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT+ NEWLINE, id);
+            UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
     }
 
@@ -118,8 +123,8 @@ public class InventoryManager {
     /**
      * Updates the details of an existing product.
      *
-     * @param id    The unique ID of the product.
-     * @param name  The new name of the product.
+     * @param id   The unique ID of the product.
+     * @param name The new name of the product.
      */
     public void updateName(String id, String name) {
         if (productList.containsKey(id)) {
@@ -136,8 +141,8 @@ public class InventoryManager {
     /**
      * Updates the details of an existing product.
      *
-     * @param id    The unique ID of the product.
-     * @param qty   The new quantity of the product.
+     * @param id  The unique ID of the product.
+     * @param qty The new quantity of the product.
      */
     public void updateQty(String id, int qty) {
         if (productList.containsKey(id)) {
@@ -198,12 +203,13 @@ public class InventoryManager {
 
 
     //@@author rozaliesmit
+
     /**
      * Updates the quantity of a product after a sale.
      * Ensures the quantity does not drop below the minimum allowed value.
      *
-     * @param id       The unique ID of the product.
-     * @param qtySold  The quantity sold.
+     * @param id      The unique ID of the product.
+     * @param qtySold The quantity sold.
      */
     protected boolean updateProductQuantity(String id, int qtySold) {
         Product product;
@@ -244,6 +250,7 @@ public class InventoryManager {
     }
 
     //@@author LEESY02
+
     /**
      * Returns the current list of products in the inventory.
      *
@@ -254,6 +261,7 @@ public class InventoryManager {
     }
 
     //@@author amirhusaini06
+
     /**
      * Retrieves the inventory data as a string for saving to a file.
      *
@@ -263,13 +271,13 @@ public class InventoryManager {
         StringBuilder data = new StringBuilder();
 
         productList.entrySet().stream()
-            .sorted(Map.Entry.comparingByKey())
-            .map(entry -> entry.getValue())
-            .forEach(product -> data.append(product.getId()).append(FILE_REGEX)
-                .append(product.getName()).append(FILE_REGEX)
-                .append(product.getQuantity()).append(FILE_REGEX)
-                .append(product.getQuantitySold()).append(FILE_REGEX)
-                .append(product.getPrice()).append(NEWLINE));
+                .sorted(Map.Entry.comparingByKey())
+                .map(entry -> entry.getValue())
+                .forEach(product -> data.append(product.getId()).append(FILE_REGEX)
+                        .append(product.getName()).append(FILE_REGEX)
+                        .append(product.getQuantity()).append(FILE_REGEX)
+                        .append(product.getQuantitySold()).append(FILE_REGEX)
+                        .append(product.getPrice()).append(NEWLINE));
 
         return data.toString();
     }
