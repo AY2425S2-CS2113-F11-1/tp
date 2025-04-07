@@ -16,9 +16,9 @@ public class RevenueCalculatorTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        im = new InventoryManager();
-        sm = new SalesManager(im);
-        rc = new RevenueCalculator(sm);
+        this.im = new InventoryManager();
+        this.sm = new SalesManager(im);
+        this.rc = new RevenueCalculator(sm);
     }
 
     @Test
