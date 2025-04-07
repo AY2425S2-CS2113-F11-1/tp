@@ -23,10 +23,10 @@ class BusynessManagerTest {
      */
     @Test
     void testFirstTimeSetup() {
-        Scanner input = new Scanner("testID\ntestName\ntestPass\nFNB\n");
+        Scanner input = new Scanner("1234\ntestName\ntestPass\nFNB\n");
         busynessManager.firstTimeSetup(input);
 
-        assertTrue(busynessManager.validPassword("testID", "testPass"),
+        assertTrue(busynessManager.validPassword("1234", "testPass"),
                 "Password should be set correctly");
     }
 
@@ -35,10 +35,10 @@ class BusynessManagerTest {
      */
     @Test
     void testValidPasswordWithInvalidCredentials() {
-        Scanner setupInput = new Scanner("testID\ntestName\ntestPass\nFNB\n");
+        Scanner setupInput = new Scanner("1234\ntestName\ntestPass\nFNB\n");
         busynessManager.firstTimeSetup(setupInput);
 
-        assertFalse(busynessManager.validPassword("testID", "wrongPass"),
+        assertFalse(busynessManager.validPassword("1234", "wrongPass"),
                 "Password validation should fail for incorrect password");
     }
 
@@ -47,7 +47,7 @@ class BusynessManagerTest {
      */
     @Test
     void testBusinessTypeSelection() {
-        Scanner setupInput = new Scanner("testID\ntestName\ntestPass\nFNB\n");
+        Scanner setupInput = new Scanner("1234\ntestName\ntestPass\nFNB\n");
         busynessManager.firstTimeSetup(setupInput);
         Scanner businessTypeInput = new Scanner("FNB\n");
 
