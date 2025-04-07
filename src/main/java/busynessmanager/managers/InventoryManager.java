@@ -15,6 +15,7 @@ import static busynessmanager.constants.Constants.INDEX_2;
 import static busynessmanager.constants.Constants.INDEX_3;
 import static busynessmanager.constants.Constants.INDEX_4;
 import static busynessmanager.constants.Constants.INDEX_5;
+import static busynessmanager.constants.Constants.INDEX_6;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.MAXIMUM_AMOUNT;
@@ -245,7 +246,7 @@ public class InventoryManager {
                 return false;
             } else {
                 product.setQuantitySold(currentQtySold + qtySold);
-                product.setQuantity(Math.max(MINIMUM_VALUE, currentQty - qtySold));
+                product.setQuantity(currentQty - qtySold);
                 return true;
             }
         } else {
@@ -284,6 +285,19 @@ public class InventoryManager {
         return productList;
     }
 
+    /**
+     * Updates the current revenue of the Product
+     *
+     * @param id String ID of the product
+     * @param qtySold Quantity sold that affects the current revenue
+     */
+    public void updateRevenue(String id, int qtySold) {
+        Product product = productList.get(id);
+        double newRevenue = product.getRevenue() + qtySold * product.getPrice();
+
+        product.setRevenue(newRevenue);
+    }
+
     //@@author amirhusaini06
     /**
      * Retrieves the inventory data as a string for saving to a file.
@@ -300,7 +314,8 @@ public class InventoryManager {
                 .append(product.getName()).append(FILE_REGEX)
                 .append(product.getQuantity()).append(FILE_REGEX)
                 .append(product.getQuantitySold()).append(FILE_REGEX)
-                .append(product.getPrice()).append(NEWLINE));
+                .append(product.getPrice()).append(FILE_REGEX)
+                .append(product.getRevenue()).append(NEWLINE));
 
         return data.toString();
     }
@@ -317,17 +332,17 @@ public class InventoryManager {
         while ((line = reader.readLine()) != null) {
             String[] parts = line.split(FILE_REGEX);
 
-            if (parts.length == INDEX_5) {
+            if (parts.length == INDEX_6) {
                 String id = parts[INDEX_0];
                 String name = parts[INDEX_1];
                 int quantity = Integer.parseInt(parts[INDEX_2]);
                 int quantitySold = Integer.parseInt(parts[INDEX_3]);
                 double price = Double.parseDouble(parts[INDEX_4]);
+                double revenue = Double.parseDouble(parts[INDEX_5]);
 
                 String numberPart = id.substring(INDEX_3);
                 int newIDCounter = Integer.parseInt(numberPart) + INDEX_1;
-
-                productList.put(id, new Product(id, name, quantity, quantitySold, price));
+                productList.put(id, new Product(id, name, quantity, quantitySold, price, revenue));
                 Product.setIdCounter(newIDCounter);
             }
         }

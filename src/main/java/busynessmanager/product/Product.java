@@ -17,6 +17,7 @@ public class Product {
     private int quantity;
     private int quantitySold;
     private double price;
+    private double revenue;
 
     /**
      * Constructs a new Product with the specified name, quantity, and price.
@@ -32,6 +33,7 @@ public class Product {
         this.quantity = quantity;
         this.quantitySold = INDEX_0;
         this.price = price;
+        revenue = INDEX_0;
     }
 
     /**
@@ -44,14 +46,16 @@ public class Product {
      * @param quantitySold The amount of the product that was sold.
      * @param price    The price of the product.
      */
-    public Product(String id, String name, int quantity, int quantitySold, double price) {
+    public Product(String id, String name, int quantity, int quantitySold, double price, double revenue) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.quantitySold = quantitySold;
         this.price = price;
+        this.revenue = revenue;
     }
 
+    // @@author LEESY02
     /**
      * Sets the idCounter value to the given input
      *
@@ -61,6 +65,7 @@ public class Product {
         idCounter = newCounter;
     }
 
+    //@@author himethcodes
     /**
      * Gets the unique product ID.
      *
@@ -106,6 +111,17 @@ public class Product {
         return price;
     }
 
+    //@@author LEESY02
+    /**
+     * Gets the revenue earned from this product thus far
+     *
+     * @return The revenue
+     */
+    public double getRevenue() {
+        return revenue;
+    }
+
+    //@@author himethcodes
     /**
      * Sets the name of the product.
      *
@@ -142,6 +158,17 @@ public class Product {
         this.price = price;
     }
 
+    //@@author LEESY02
+    /**
+     * Sets the revenue earned from this product
+     *
+     * @param newRevenue The new revenue
+     */
+    public void setRevenue(double newRevenue) {
+        this.revenue = newRevenue;
+    }
+
+    //@@author himethcodes
     /**
      * Returns a formatted string representation of the product.
      *

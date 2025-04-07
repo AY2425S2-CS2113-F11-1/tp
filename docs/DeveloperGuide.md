@@ -81,19 +81,76 @@ taking care of the different needs of businesses.
 
 
 ## Key Implementation
+<!-- @@author LEESY02 -->
+### BusynessManager class
+
+The `BusynessManager` class is the class with the main() method, it holds and takes care of all relevant classes to run
+the program
+
+**Member Variables**
+* **`Credentials credentials`** - Credentials of the logged in Business
+* **`InventoryManager inventoryManager`** - Inventory of the logged in Business
+* **`CommandParser commandParser`** - Instance of CommandParser to run commands based on user inputs
+
+**BusynessManager Class Methods**
+* **`BusynessManager()`**
+  * Instantiates InventoryManager and CommandParser (and other required classes)
+* **`main(String[] args)`**
+  * Starting point of the program, creates and new instance of BusynessManager and calls start()
+* **`start()`**
+  * Receives input of the Business Name from the user
+  * If Business exists in the database, calls:
+    * loadBusinessData(String businessName)
+    * login(Scanner scanner, String businessName)
+  * If Business does not exist in the data base, calls: (After prompt)
+    * firstTimeSetup(Scanner scanner)
+  * Calls run(Scanner scanner) if the login/setup process is successful
+* **`login(Scanner scanner, String businessName)`**
+  * Allows user to proceed if the input Business ID and password matches that in the credentials,
+  * credentials is loaded in from loadBusinessData(String businessName)
+* **`firstTimeSetup(Scanner scanner)`**
+  * Sets up a new Business(user) by extracting relevant information 
+  * The following private methods are used within this method: 
+    * extractID(Scanner scanner)
+    * extractName(Scanner scanner)
+    * extractPassword(Scanner scanner)
+    * extractBusinessType(Scanner scanner)
+* **`run(Scanner scanner)`**
+  * Receives input from user and passes it to CommandParser to run the actual commands
+* **`saveBusinessData(String businessName)`**
+  * Saves relevant data into a txt file present in ./data folder
+    * If business name is "Milk Corp", a text file names "Milk Corp.txt" is created in the data folder
+  * Relevant data includes:
+    * Business ID
+    * Business Name
+    * Password
+    * Business type
+    * Inventory (Every Product instance and relevant attributes)
+* **`loadBusinessData(String businessName)`**
+  * Loads in business data, based on the data saved by saveBusinessData(String businessName)
+* **`getBusinessDetails()`**
+  * Used by CommandParser
+* **`getInventoryManager()`**
+  * Used by CommandParser
+
+**Interactions with Other Components**
+* **`Credentials`** - `BusynessManager` has an instance of **`Credentials`** for authorizing logins 
+* **`InventoryManager`** - Used to save and load data between `InventoryManager` and data folder
+* **`CommandParser`** - Used to execute various commands
 
 <!-- @@author himethcodes -->
 ### Product class
 
 The `Product` class represents an individual item in the business inventory. It contains the following attributes:
 
-**Attributes**
+**Member Variables**
 
 * **`String id`** - A unique identifier for the product.
 * **`String name`** - The name of the product.
 * **`int quantity`** - The current quantity available for sale.
 * **`int quantitySold`** - The number of units sold.
 * **`double price`** - The price of each unit of the product.
+* **`double revenue`** - The revenue earned from of each product.
 
 **Product Class Methods**
 
@@ -109,6 +166,8 @@ The `Product` class represents an individual item in the business inventory. It 
   * Returns the total quantity sold.
 * **`getPrice()`**
   * Returns the product price.
+* **`getRevenue()`**
+  * Returns the revenue earned from the product so far.
 
 ### InventoryManager class
 
@@ -125,17 +184,35 @@ the product ID, and the value is the corresponding `Product` object.
   * Adds a new product to the inventory.
 * **`deleteProduct(String id)`**
   * Removes a product from the inventory.
-* **`updateProduct(String id, String name, int qty, double price)`**
-  * Updates the details of an existing product.
 * **`printProducts()`**
   * Displays all products in the inventory.
+* **`updateProduct(String id, String name, int qty, double price)`**
+  * Updates the details of an existing product.
+  * <!-- @@author LEESY02 --> To update attributes 1 by 1, there are also:
+    * updateName(String id, String name)
+    * updateQty(String id, int qty)
+    * updatePrice(String id, double price)
+* **`updateProductQuantity(String id, int qtySold)`**
+  * Update attributes quantity and quantitySold of the specified product (given by the String id parameter)
+* **`resetProductSales(String id)`**
+  * Resets attribute quantitySold to 0
+* `**returnProductList()**`
+  * Returns the HashMap containing the ID and Product key-value pairs
+* `**updateRevenue(String id, int qtySold)**`
+  * Updates revenue of Product
+* `**getInventoryData()**`
+  * Returns a String containing the different attributes of all present Product instanes in the HashMap
+* `**loadInventory(BufferedReader reader)**`
+  * Loads a previous saved state into an instance of InventoryManager
 
+<!-- @@author himethcodes -->
 **Interactions with Other Components**
 
 * **`SalesManager`** - Uses `InventoryManager` to update stock and record sales.
 * **`SearchManager`** - Uses `InventoryManager` to search for products.
-* **`RevenueCalculator`** - Fetches product price and quantity sold from `InventoryManager` to calculate total revenue.
+* **`RevenueCalculator`** - Fetches product price and revenue from `InventoryManager` to calculate total revenue.
 * **`CommandParser`** - Calls `InventoryManager` methods based on user input.
+* **`BusynessManager`** - Calls `InventoryManager` methods to load and save business data.
 
 <!-- @@author rozaliesmit -->
 ### SalesManager class
@@ -151,10 +228,12 @@ inventory is adjusted accordingly.
 
 **SalesManager Class Methods**
 
-* **`SalesManager inventory`**
+* **`SalesManager(InventoryManager inventory)`**
   * Constructs a `SalesManager` class with a given `InventoryManager`.
 * **`recordSale(String id, int qty Sold)`**
   * Records a sale of a specified quantity of a product with the given ID.
+  * Private method checkIfInvalidQuantity(int qtySold), checks if the provide qtySold value is a positive value.
+  * Calls updateRevenue() from InventoryManager to save the updated revenue value from the sale. 
 * **`clearSales(String id)`**
   * Resets the sales data for a product with the given ID.
 * **`getInventory()`**
@@ -166,6 +245,68 @@ inventory is adjusted accordingly.
 data.
 * **`RevenueCalculator`** - Uses `SalesManager` to compute total sales to compute total and individual product revenue.
 * **`CommandParser`** - Calls `SalesManager` to execute sales-related commands entered by the user.
+
+
+<!-- @@author LEESY02 -->
+### RevenueCalculator class
+The `RevenueCalculator` calculates and displays revenue generated from various transactions.
+
+**Member Variables**
+
+* **`SalesManager sm`** -  Stores a reference to the `SalesManager` class, the `SalesManager`
+  interacts with the inventory data and fetches/updates relevant revenue data.
+
+**RevenueCalculator Class Methods**
+
+* **`RevenueCalculator(SalesManager sm)`**
+  * Constructs a `RevenueCalculator` class with a given `SalesManager`.
+* **`computeTotalRevenue()`**
+  * Computes the total revenue generated from all Product instances present in InventoryManager 
+  (present in SalesManager)
+* **`computeProductRevenue(String id)`**
+  * Computes the revenue generated from the specified Product instance
+* **`computeIndividualRevenue(Product product)`**
+  * A private method that returns the revenue attribute of the given product.
+  * Used by both computeTotalRevenue() and computeProductRevenue(String id)
+* **`returnProductList()`**
+  * Returns the HashMap containing ID and Product key-value pairs (taken from InventoryManager inside SalesManager)
+* **`printProductRevenue(Product product, double individualRevenue)`**
+  * A private method that prints out the revenue generated from the given Product instance
+
+**Interactions with Other Components**
+
+* **`SalesManager`** - `RevenueCalculator` relies on the `SalesManager` to update product quantities and reset sales
+  data.
+* **`CommandParser`** - Calls `RevenueCalculator` to execute revenue-related commands entered by the user.
+
+
+### SearchManager class
+The `SearchManager` searches for different Product instances, given the Product's name or ID.
+
+**Member Variables**
+
+* **`InventoryManager Inventory`** - Stores a reference to the `InventoryManager` class, the `SearchManager`
+  interacts with the inventory data and fetches relevant data to display to the user as a search result.
+
+**SearchManager Class Methods**
+
+* **`SearchManager(InventoryManager inventory)`**
+  * Constructs a `SalesManager` class with a given `InventoryManager`.
+* **`searchByName(String name)`**
+  * Searches for a Product with the given String name
+* **`searchById(String id)`**
+  * Searches for a Product with the given String ID
+* **`checkForProductByName(String name, Set<Map.Entry<String, Product>> mapSet)`**
+  * A private method that returns true if given String name is present in the Set.
+  * Used by searchByName(String name)
+* **`checkForProductById(String id, HashMap<String, Product> currentProductList)`**
+  * A private method that returns true if given String ID is present in the HashMap.
+  * Used by searchById(String id)
+
+**Interactions with Other Components**
+
+* **`InventoryManager`** - `SearchManager` relies on the `InventoryManager` to search for products.
+* **`CommandParser`** - Calls `SearchManager` to execute search-related commands entered by the user.
 
 <!-- @@author b1inmeister -->
 ### CommandParser class
@@ -196,7 +337,7 @@ The 3 steps is as follows:
      user input. 
    * `splitCommand()` and `splitInfo()`: Returns the "command" and the "information" respectively. 
      * Both sub-methods utilise `.substring()` from Java's String class.
-
+  
 **Executing the command**
 
 ![](images/CommandParser_Ref2.png)
@@ -233,7 +374,61 @@ The 3 steps is as follows:
 product list and computation of total revenue, since there is no "information" required for their command methods, they
 will not require attribute extraction.
 
+<!-- @@author LEESY02 -->
+### Credentials class
 
+**Member Variables**
+
+* **`String businessID`** - String ID for Business
+* **`String businessName`** - String ID of Business
+* **`String businessPassword`** - String password of Business
+* **`BusynessManager.BusinessType businessType`** - Enum in `BusynessManager` that contains the different Business types
+
+**Credentials Class Methods**
+  * All methods in Credentials are getters for their respective attributes (Member Variables).
+    * **`getBusinessID()`**
+    * **`getBusinessName()`**
+    * **`getBusinessPassword()`**
+    * **`getBusinessType()`**
+
+**Interactions with Other Components**
+  * **`BusynessManager`** - Used by BusynessManager to load and verify user(business) credentials during login, as well
+  as during saving of data
+
+
+### Constants class
+`Constants` class is used to hold static constants used during printing of messages using UI class or Magic Literals
+required during the execution of the program
+
+**Member Variables**
+  * Contains static constants used for printing messages in the UI class
+
+**Constants Class Methods**
+  * None
+
+**Interactions with Other Components**
+  * **`UI`** Uses values from the Constants class to print output to the user
+  * Almost all classes uses Magic Literals from this class
+
+
+### UI class
+`UI` class is used to print outputs to user (Abstraction of printing output)
+
+**Member Variables**
+  * None
+
+**UI Class Methods**
+  * printMessageWithoutNewline(String message)
+  * printMessage(String message)
+  * printErrorMessage(String message)
+  * printFormattedMessage(String message, Object... args)
+All methods in UI Class is static (class level)
+
+**Interactions with Other Components**
+  * **`Constants`** - Constant variable from this class is used by `UI` for printing
+  * Almost all classes uses UI class for printing
+
+<!-- @@author b1inmeister -->
 ## Product Scope
 
 ### Target user profile

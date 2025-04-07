@@ -19,6 +19,12 @@ handling, and structured command processing.
 * _Highlights:_ When RevenueCalculator is instantiated, we provide it an instance of SalesManager, which has an instance
   of InventoryManager. We then access the HashMap (ID : Product) contained under InventorManager. Revenue
   is then calculated from the attributes of individual Product instances
+> Added the ability to search for specific products, given its ID/name
+* _What it does:_ Searches through HashMap for matching ID/name, and returns relevant information, 
+  such as Price and Quantity
+* _Justification:_ Required for v1.0
+* _Highlights:_ When SearchManager is instantiated, we provide it an instance of InventoryManager to keep track of all
+  the products
 > Added UI and Constants classes
 * _What it does:_ Streamlines printing of messages to the users, as well as holds different magic literals required
 * _Justification:_ Enhances readability of the code, greater level of abstraction (Printing is done by UI class only)
@@ -28,6 +34,7 @@ handling, and structured command processing.
 
 **Enhancements Added:**
 * Created JUnit tests for methods relevant to InventoryManager, SalesManager, and RevenueCalculator.
+* Resolved issues 149-160 and 165 from PED
 
 ---
 
@@ -36,12 +43,14 @@ handling, and structured command processing.
 * Formatting for enhanced readability and other miscellaneous additions
 > _Developer's Guide:_
 * Gave a general breakdown of how all the classes of the project interacts with one another
+* Elaborations (Key Implementation) on the inner functionalities of BusynessManager, Credentials, UI, Constants,
+ RevenueCalculator and SearchManager
+* Elaboration on other classes' details
 * Created a UML Class Diagram for the application
 ---
 **Contributions to Team-Based Tasks:**
 * Reviewed PRs
 * Maintained code quality throughout the development life-cycle.
-* Resolved issues 149-160 from PED
 ---
 **Contributions to Community / Review Tasks:**
 * PRs Reviewed: [#65](https://github.com/AY2425S2-CS2113-F11-1/tp/pull/65),

@@ -309,6 +309,7 @@ public class CommandParser {
         }
     }
 
+    //@@author LEESY02
     /**
      * Splits the information String into an array.
      * It then calls updateBasedOnFlags() to update the product depending on the flag provided by the String info.
@@ -332,6 +333,7 @@ public class CommandParser {
         }
     }
 
+    //@@author b1inmeister
     /**
      * Splits the information String into the product ID, updated name, updated quantity and updated price.
      *

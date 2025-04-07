@@ -42,9 +42,11 @@ public class SalesManager {
 
         if (isSuccess) {
             UI.printFormattedMessage(SM_RECORDED_FORMAT + NEWLINE, id, qtySold);
+            inventory.updateRevenue(id, qtySold);
         }
     }
 
+    //@@author LEESY02
     /**
      * Checks if the input integer is invalid (Lesser or equals to zero)
      *
@@ -60,6 +62,7 @@ public class SalesManager {
         return false;
     }
 
+    //@@author rozaliesmit
     /**
      * Clears sales for a product by its ID.
      *
@@ -73,6 +76,7 @@ public class SalesManager {
         }
     }
 
+    //@@author LEESY02
     /**
      * Returns the InventoryManager used in the SalesManager class.
      *
