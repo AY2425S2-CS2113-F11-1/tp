@@ -5,9 +5,7 @@ skinparam sequenceReferenceBackgroundColor #
 participant "cp:CommandParser" as cp
 participant ":Manager" as m
 
--> cp ++ #red : parseCommand(input)
-cp -> cp ++ #orange : executeCommand(command, info)
-cp -> cp ++ #yellow : addProduct(info)
+cp -> cp ++ #yellow : updateProduct(info)
 
 group sd Manipulating the information
     cp -> cp ++ #green : splitInfo(info)
@@ -15,12 +13,11 @@ group sd Manipulating the information
 
     cp -> cp : extract attributes (from components)
 
-    cp -> m ++ : Manager.addProduct(attributes)
+    cp -> m ++ : Manager.updateProduct(attributes)
+
     return
 end
 
-return
-return
 return
 
 @enduml

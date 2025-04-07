@@ -26,9 +26,11 @@ import static busynessmanager.constants.Constants.IM_ADD_FORMAT;
 import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
 import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
 import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
-import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
-import static busynessmanager.constants.Constants.IM_MAXIMUM_QUANTITY_PRICE_MESSAGE;
-import static busynessmanager.constants.Constants.IM_QTY_EXCEED_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.IM_QTY_SOLD_ZERO_FORMAT;
+import static busynessmanager.constants.Constants.IM_NEGATIVE_QTY_PRICE_MESSAGE;
+import static busynessmanager.constants.Constants.IM_ZERO_PRICE_MESSAGE;
+import static busynessmanager.constants.Constants.IM_QTY_EXCEED_MESSAGE;
+import static busynessmanager.constants.Constants.IM_MAX_QTY_PRICE_MESSAGE;
 
 
 /**
@@ -63,11 +65,14 @@ public class InventoryManager {
 
         Product product;
 
-        if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
-            UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+        if (qty < MINIMUM_VALUE || price < MINIMUM_VALUE) {
+            UI.printMessage(IM_NEGATIVE_QTY_PRICE_MESSAGE);
             return;
         } else if (qty > MAXIMUM_AMOUNT || price > MAXIMUM_AMOUNT) {
-            UI.printMessage(IM_MAXIMUM_QUANTITY_PRICE_MESSAGE);
+            UI.printMessage(IM_MAX_QTY_PRICE_MESSAGE);
+            return;
+        } else if (price == MINIMUM_VALUE) {
+            UI.printMessage(IM_ZERO_PRICE_MESSAGE);
             return;
         } else {
             product = new Product(name, qty, price);
@@ -106,7 +111,7 @@ public class InventoryManager {
             Product product = productList.get(id);
 
             if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
-                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                UI.printMessage(IM_NEGATIVE_QTY_PRICE_MESSAGE);
                 return;
             } else {
                 product.setName(name);
@@ -120,6 +125,7 @@ public class InventoryManager {
         }
     }
 
+    // @@author LEESY02
     /**
      * Updates the details of an existing product.
      *
@@ -149,7 +155,10 @@ public class InventoryManager {
             Product product = productList.get(id);
 
             if (qty < MINIMUM_VALUE) {
-                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                UI.printMessage(IM_NEGATIVE_QTY_PRICE_MESSAGE);
+                return;
+            } else if (qty > MAXIMUM_AMOUNT) {
+                UI.printMessage(IM_MAX_QTY_PRICE_MESSAGE);
                 return;
             } else {
                 product.setQuantity(qty);
@@ -171,8 +180,14 @@ public class InventoryManager {
         if (productList.containsKey(id)) {
             Product product = productList.get(id);
 
-            if (price <= MINIMUM_VALUE) {
-                UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+            if (price < MINIMUM_VALUE) {
+                UI.printMessage(IM_NEGATIVE_QTY_PRICE_MESSAGE);
+                return;
+            } else if (price > MAXIMUM_AMOUNT) {
+                UI.printMessage(IM_MAX_QTY_PRICE_MESSAGE);
+                return;
+            } else if (price == MINIMUM_VALUE) {
+                UI.printMessage(IM_ZERO_PRICE_MESSAGE);
                 return;
             } else {
                 product.setPrice(price);
@@ -184,6 +199,7 @@ public class InventoryManager {
         }
     }
 
+    //@@author himethcodes
     /**
      * Prints all products in the inventory.
      * If the inventory is empty, displays an appropriate message.
@@ -203,7 +219,6 @@ public class InventoryManager {
 
 
     //@@author rozaliesmit
-
     /**
      * Updates the quantity of a product after a sale.
      * Ensures the quantity does not drop below the minimum allowed value.
@@ -212,6 +227,11 @@ public class InventoryManager {
      * @param qtySold The quantity sold.
      */
     protected boolean updateProductQuantity(String id, int qtySold) {
+        if (qtySold > MAXIMUM_AMOUNT) {
+            UI.printMessage(IM_MAX_QTY_PRICE_MESSAGE);
+            return false;
+        }
+
         Product product;
 
         if (productList.containsKey(id)) {
@@ -221,7 +241,7 @@ public class InventoryManager {
             int currentQtySold = product.getQuantitySold();
 
             if (qtySold > currentQty) {
-                UI.printMessage(IM_QTY_EXCEED_ERROR_MESSAGE);
+                UI.printFormattedMessage(IM_QTY_EXCEED_MESSAGE + NEWLINE, id);
                 return false;
             } else {
                 product.setQuantitySold(currentQtySold + qtySold);
@@ -241,8 +261,13 @@ public class InventoryManager {
      */
     protected boolean resetProductSales(String id) {
         if (productList.containsKey(id)) {
-            productList.get(id).setQuantitySold(MINIMUM_VALUE);
-            return true;
+            if (productList.get(id).getQuantitySold() == MINIMUM_VALUE) {
+                UI.printFormattedMessage(IM_QTY_SOLD_ZERO_FORMAT + NEWLINE, id);
+                return false;
+            } else {
+                productList.get(id).setQuantitySold(MINIMUM_VALUE);
+                return true;
+            }
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
             return false;
@@ -250,7 +275,6 @@ public class InventoryManager {
     }
 
     //@@author LEESY02
-
     /**
      * Returns the current list of products in the inventory.
      *
@@ -261,7 +285,6 @@ public class InventoryManager {
     }
 
     //@@author amirhusaini06
-
     /**
      * Retrieves the inventory data as a string for saving to a file.
      *
@@ -271,13 +294,13 @@ public class InventoryManager {
         StringBuilder data = new StringBuilder();
 
         productList.entrySet().stream()
-                .sorted(Map.Entry.comparingByKey())
-                .map(entry -> entry.getValue())
-                .forEach(product -> data.append(product.getId()).append(FILE_REGEX)
-                        .append(product.getName()).append(FILE_REGEX)
-                        .append(product.getQuantity()).append(FILE_REGEX)
-                        .append(product.getQuantitySold()).append(FILE_REGEX)
-                        .append(product.getPrice()).append(NEWLINE));
+            .sorted(Map.Entry.comparingByKey())
+            .map(entry -> entry.getValue())
+            .forEach(product -> data.append(product.getId()).append(FILE_REGEX)
+                .append(product.getName()).append(FILE_REGEX)
+                .append(product.getQuantity()).append(FILE_REGEX)
+                .append(product.getQuantitySold()).append(FILE_REGEX)
+                .append(product.getPrice()).append(NEWLINE));
 
         return data.toString();
     }
@@ -301,8 +324,9 @@ public class InventoryManager {
                 int quantitySold = Integer.parseInt(parts[INDEX_3]);
                 double price = Double.parseDouble(parts[INDEX_4]);
 
-                String numberPart = id.substring(3);
-                int newIDCounter = Integer.parseInt(numberPart) + 1;
+                String numberPart = id.substring(INDEX_3);
+                int newIDCounter = Integer.parseInt(numberPart) + INDEX_1;
+
                 productList.put(id, new Product(id, name, quantity, quantitySold, price));
                 Product.setIdCounter(newIDCounter);
             }

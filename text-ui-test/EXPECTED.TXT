@@ -1,7 +1,11 @@
 Welcome to Busyness Manager!
-Please enter your business name:
-Do you want to add your business?
-(Enter: "Yes" to set up credentials or any other input to exit Busyness Manager)Enter Business ID: Enter Business Name: Enter Business Password: Enter Business Type (FNB/RETAIL): Invalid business type. Please try again.
+Please enter your business name: Error: There is no input detected. Please try again.
+Please enter your business name: Do you want to add your business?
+(Enter "yes" to create a new account / Enter any other input to exit Busyness Manager) Enter Business ID: Error: There is no input detected. Please try again.
+Enter Business ID: Enter Business Name: Error: There is no input detected. Please try again.
+Enter Business Name: Enter Business Password: Error: There is no input detected. Please try again.
+Enter Business Password: Enter Business Type (FNB/RETAIL): Error: There is no input detected. Please try again.
+Enter Business Type (FNB/RETAIL): Error: The business type provided is invalid. Please try again.
 Enter Business Type (FNB/RETAIL): Business setup complete!
 Busyness Manager is ready. Type 'help' for commands.
 >add         add <Name> <Quantity> <Price>                   (Add new product to list)
@@ -13,774 +17,96 @@ clear       clear <ID number>                               (Clear current sales
 revenue     revenue OR revenue <ID number>                  (Check revenue)
 search      search /name <name> OR search /id <number>      (Look for specific product)
 exit        exit                                            (Exit application)
->Invalid format. add <name> <quantity> <price>
->Invalid format. add <name> <quantity> <price>
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->Quantity or price is not a proper number. Please try again.
->No products in inventory
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->ID is invalid. Please try again.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->Invalid flags.
-update <ID number> <flag> <Updated value>,
-where <flag> is either /name, /qty, or /price.
->No products in inventory
->Invalid format. sold <ID number> <Quantity sold>
->Invalid format. sold <ID number> <Quantity sold>
->Quantity is not a proper number. Please try again.
->Quantity is not a proper number. Please try again.
->ID is invalid. Please try again.
->Quantity is not a proper number. Please try again.
->ID is invalid. Please try again.
->Quantity is not a proper number. Please try again.
->ID is invalid. Please try again.
->Quantity is not a proper number. Please try again.
->ID is invalid. Please try again.
->Quantity is not a proper number. Please try again.
->ID is invalid. Please try again.
->Quantity is not a proper number. Please try again.
->ID is invalid. Please try again.
->Quantity is not a proper number. Please try again.
->ID is invalid. Please try again.
->Quantity is not a proper number. Please try again.
->Quantity is not a proper number. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->No products in inventory
->Invalid format. search /name <name> OR search /id <number>
->Invalid format. search /name <name> OR search /id <number>
->Invalid format. search /name <name> OR search /id <number>
->Invalid format. search /name <name> OR search /id <number>
->Invalid format. search /name <name> OR search /id <number>
->Name is missing. Please try again.
->Product with name white not found.
->Product with name bread not found.
->Invalid format. search /name <name> OR search /id <number>
->Invalid format. search /name <name> OR search /id <number>
->Invalid format. search /name <name> OR search /id <number>
->Invalid format. search /name <name> OR search /id <number>
->ID is missing. Please try again.
->ID is invalid. Please try again.
->Product with ID ID_0069 not found.
->Product with ID ID_0003 not found.
->Total Revenue: 0.00
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->ID is invalid. Please try again.
->No products in inventory
+>Error: Invalid format. add <name> <quantity> <price>.
+>Error: Invalid format. add <name> <quantity> <price>.
+>Error: Invalid format. add <name> <quantity> <price>.
+>Error: Invalid format. add <name> <quantity> <price>.
+>Error: The quantity and/or price provided is not a proper number. Please try again.
+>Error: The quantity and/or price provided cannot be a negative number. Please try again.
+>Error: The quantity and/or price provided is not a proper number. Please try again.
+>Error: The quantity and/or price provided is not a proper number. Please try again.
+>Error: The price provided cannot be zero. Please try again.
+>Product added: ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $4.00
+>Error: A product with the name 'MILK' already exists.
+>Product added: ID_0002: BREAD | Qty: 70 | Sold: 0 | Price: $3.00
+>Product added: ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
+>Product list:
+ID_0001: MILK | Qty: 50 | Sold: 0 | Price: $4.00
+ID_0002: BREAD | Qty: 70 | Sold: 0 | Price: $3.00
+ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
+>Invalid flags.
+update <ID number> <flag> <updated value>,
+where <flag> is either /name, /qty, or /price.
+>Invalid flags.
+update <ID number> <flag> <updated value>,
+where <flag> is either /name, /qty, or /price.
+>Invalid flags.
+update <ID number> <flag> <updated value>,
+where <flag> is either /name, /qty, or /price.
+>Invalid flags.
+update <ID number> <flag> <updated value>,
+where <flag> is either /name, /qty, or /price.
+>Invalid flags.
+update <ID number> <flag> <updated value>,
+where <flag> is either /name, /qty, or /price.
+>Invalid flags.
+update <ID number> <flag> <updated value>,
+where <flag> is either /name, /qty, or /price.
+>Error: The product ID provided is invalid. Please try again.
+>Error: The product with ID ID_0015 is not found.
+>Error: The quantity and/or price provided cannot be a negative number. Please try again.
+>Error: The quantity and/or price provided cannot be a negative number. Please try again.
+>Error: The quantity and/or price provided is not a proper number. Please try again.
+>Error: The quantity and/or price provided is not a proper number. Please try again.
+>Error: The price provided cannot be zero. Please try again.
+>Product updated: ID_0001: FRESH_MILK | Qty: 50 | Sold: 0 | Price: $4.00
+>Product updated: ID_0001: FRESH_MILK | Qty: 60 | Sold: 0 | Price: $4.00
+>Product updated: ID_0001: FRESH_MILK | Qty: 60 | Sold: 0 | Price: $5.00
+>Product list:
+ID_0001: FRESH_MILK | Qty: 60 | Sold: 0 | Price: $5.00
+ID_0002: BREAD | Qty: 70 | Sold: 0 | Price: $3.00
+ID_0003: RICE | Qty: 60 | Sold: 0 | Price: $9.00
+>Error: Invalid format. sold <ID number> <Quantity sold>.
+>Error: Invalid format. sold <ID number> <Quantity sold>.
+>Error: Invalid format. sold <ID number> <Quantity sold>.
+>Error: The quantity provided must be a whole number. Please try again.
+>Error: The product ID provided is invalid. Please try again.
+>Error: The product with ID ID_0069 is not found.
+>Error: The quantity sold provided must be greater than 0.
+>Error: The quantity provided must be a whole number. Please try again.
+>Error: The quantity provided must be a whole number. Please try again.
+>Sales recorded: Product ID: ID_0001, Quantity Sold: 7
+>Sales recorded: Product ID: ID_0002, Quantity Sold: 13
+>Sales recorded: Product ID: ID_0003, Quantity Sold: 11
+>Product list:
+ID_0001: FRESH_MILK | Qty: 53 | Sold: 7 | Price: $5.00
+ID_0002: BREAD | Qty: 57 | Sold: 13 | Price: $3.00
+ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
+>Error: Invalid format. search /name <name> OR search /id <number>.
+>Error: Invalid format. search /name <name> OR search /id <number>.
+>Error: There is no name provided. Please try again.
+>Error: Product with name white not found.
+>ID_0002: BREAD | Qty: 57 | Sold: 13 | Price: $3.00
+>Error: There is no product ID provided. Please try again.
+>Error: The product ID provided is invalid. Please try again.
+>Error: The product with ID ID_0069 is not found.
+>ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
+>Revenue of FRESH_MILK: 35.00
+Revenue of RICE: 99.00
+Revenue of BREAD: 39.00
+Total Revenue: 173.00
+>Error: The product ID provided is invalid. Please try again.
+>Error: The product with ID ID_0069 is not found.
+>Revenue of BREAD: 39.00
+>Error: There is no product ID provided. Please try again.
+>Error: The product ID provided is invalid. Please try again.
+>Error: The product with ID ID_0069 is not found.
+>Sales cleared: Product ID: ID_0001
+>Error: There is no product ID provided. Please try again.
+>Error: The product ID provided is invalid. Please try again.
+>Error: The product with ID ID_0069 is not found.
+>Product removed: ID_0002: BREAD | Qty: 57 | Sold: 13 | Price: $3.00
+>Product list:
+ID_0001: FRESH_MILK | Qty: 53 | Sold: 0 | Price: $5.00
+ID_0003: RICE | Qty: 49 | Sold: 11 | Price: $9.00
 >Exiting Busyness Manager...

@@ -8,6 +8,7 @@ import static busynessmanager.constants.Constants.BM_NAME_ASSERTION_FAIL_MESSAGE
 import static busynessmanager.constants.Constants.BM_PASSWORD_ASSERTION_FAIL_MESSAGE;
 import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_ASSERTION_FAIL_MESSAGE;
 
+
 /**
  * Represents the credentials of a business in the Busyness Manager application.
  * This class stores the business ID, name, password, and type.
