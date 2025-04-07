@@ -8,7 +8,7 @@ package busynessmanager.constants;
  * 1. prefix XX_ refers to the class the constant is likely to be used in. (i.e. IM_ stands for InventoryManager)
  * 2. suffix _MESSAGE means the constant is to be printed out directly as a message to the user. (UI Class)
  * 3. suffix _FORMAT means the constant is a Formatted Message, similar to point 2,
- *    but different values need to be inserted into the String.
+ * but different values need to be inserted into the String.
  */
 public class Constants {
     // Misc.
@@ -57,7 +57,7 @@ public class Constants {
     public static final String BM_INVALID_ID_ERROR_MESSAGE = "Business ID should only be digits." + TRY_AGAIN_MESSAGE;
     public static final String BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE = "Invalid business type." + TRY_AGAIN_MESSAGE;
     public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "Do you want to add your business?" +
-        "\n(Enter: \"Yes\" to set up credentials or any other input to exit Busyness Manager)";
+            "\n(Enter: \"Yes\" to set up credentials or any other input to exit Busyness Manager)";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
@@ -117,10 +117,10 @@ public class Constants {
     public static final String CP_INVALID_FLAG_MESSAGE_SOLD = "Invalid format. sold <ID number> <Quantity sold>";
     public static final String CP_INVALID_FLAG_MESSAGE_REVENUE = "Invalid format. revenue OR revenue <ID number>";
     public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Invalid format. " +
-        "search /name <name> OR search /id <number>";
+            "search /name <name> OR search /id <number>";
     public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid flags." +
-        "\nupdate <ID number> <flag> <Updated value>," +
-        "\nwhere <flag> is either /name, /qty, or /price.";
+            "\nupdate <ID number> <flag> <Updated value>," +
+            "\nwhere <flag> is either /name, /qty, or /price.";
     public static final String CP_INVALID_ID_FORMAT_MESSAGE = "Invalid format. /id.";
     public static final String CP_INVALID_NUMERAL_MESSAGE = "Quantity or price is not a proper number." +
             TRY_AGAIN_MESSAGE;
@@ -131,7 +131,7 @@ public class Constants {
     public static final String CP_NAME_MISSING_MESSAGE = "Name is missing." + TRY_AGAIN_MESSAGE;
     public static final String CP_LOG_MESSAGE = "String splitting failure.";
     public static final String CP_INVALID_PRICE_MESSAGE = "Please enter a valid price value " +
-        "(Input is more than 2 decimal points)";
+            "(Input is more than 2 decimal points)";
 
 
     // Product
@@ -153,7 +153,7 @@ public class Constants {
     public static final String IM_EMPTY_MESSAGE = "No products in inventory";
     public static final String IM_MAXIMUM_QUANTITY_PRICE_MESSAGE = "Quantity and/or price exceeds the maximum number.";
     public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE
-        = "Quantity and/or price is a negative number or price is zero.";
+            = "Quantity and/or price is a negative number or price is zero.";
     public static final String IM_QTY_EXCEED_ERROR_MESSAGE = "Quantity sold exceeds the quantity of product."
             + TRY_AGAIN_MESSAGE;
 
