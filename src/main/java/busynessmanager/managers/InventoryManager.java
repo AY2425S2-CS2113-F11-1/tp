@@ -27,6 +27,7 @@ import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
 import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
 import static busynessmanager.constants.Constants.IM_QTY_SOLD_ZERO_FORMAT;
 import static busynessmanager.constants.Constants.IM_NEGATIVE_QUANTITY_PRICE_MESSAGE;
+import static busynessmanager.constants.Constants.IM_ZERO_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.IM_QTY_EXCEED_MESSAGE;
 
 
@@ -62,8 +63,11 @@ public class InventoryManager {
 
         Product product;
 
-        if (qty < MINIMUM_VALUE || price <= MINIMUM_VALUE) {
+        if (qty < MINIMUM_VALUE || price < MINIMUM_VALUE) {
             UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+            return;
+        } else if (price == MINIMUM_VALUE) {
+            UI.printMessage(IM_ZERO_PRICE_MESSAGE);
             return;
         } else {
             product = new Product(name, qty, price);
@@ -116,6 +120,7 @@ public class InventoryManager {
         }
     }
 
+    // @@author LEESY02
     /**
      * Updates the details of an existing product.
      *
@@ -167,8 +172,11 @@ public class InventoryManager {
         if (productList.containsKey(id)) {
             Product product = productList.get(id);
 
-            if (price <= MINIMUM_VALUE) {
+            if (price < MINIMUM_VALUE) {
                 UI.printMessage(IM_NEGATIVE_QUANTITY_PRICE_MESSAGE);
+                return;
+            } else if (price == MINIMUM_VALUE) {
+                UI.printMessage(IM_ZERO_PRICE_MESSAGE);
                 return;
             } else {
                 product.setPrice(price);
@@ -180,6 +188,7 @@ public class InventoryManager {
         }
     }
 
+    //@@author himethcodes
     /**
      * Prints all products in the inventory.
      * If the inventory is empty, displays an appropriate message.
@@ -299,8 +308,9 @@ public class InventoryManager {
                 int quantitySold = Integer.parseInt(parts[INDEX_3]);
                 double price = Double.parseDouble(parts[INDEX_4]);
 
-                String numberPart = id.substring(3);
-                int newIDCounter = Integer.parseInt(numberPart) + 1;
+                String numberPart = id.substring(INDEX_3);
+                int newIDCounter = Integer.parseInt(numberPart) + INDEX_1;
+
                 productList.put(id, new Product(id, name, quantity, quantitySold, price));
                 Product.setIdCounter(newIDCounter);
             }

@@ -300,6 +300,17 @@ out commands, compared to using the mouse to navigate a GUI application.
 3. Change the current working directory to the folder containing the `.jar` file.
 4. run `java -jar <file name>.jar` on Command Prompt / Terminal.
 
+### Sign-In Process
+
+* When the program asks for the login details, do not input anything and press `Enter`.
+  * *Example Input:* When `Please enter your business name:` is shown, press `Enter` without inputting anything.
+  * *Output:* An error message stating that no input was detected will be shown.
+* When the program asks for the login details, input an incorrect set of login information.
+  * *Example Input:* When asked for the **business name**, input an incorrect name.
+  * *Output:* The program will provide an option to create a new business account before termination.
+  * *Example Input:* When asked for the **business ID and password**, input some incorrect information.
+  * *Output:* The program will provide an option to display the ID and password before termination.
+
 ### First-Time setup
 
 * When the program requests for Credentials information (e.g. ID / Name / Password / Business Type), do not input 
@@ -310,20 +321,17 @@ anything and press `Enter`.
   * *Example Input:* `fnb` / `retail` / `SERVICE`
   * *Output:* An error message stating the Business Type is invalid will be shown. 
 
-### Sign-In Process
-*to be determined...*
-
 ### Adding a product
 
 * Input the `add` command with **missing attributes**.
   * *Example Input:* `add` / `add MILK 50` / `add WHITE_RICE 13.00` / `add 30 6.00`
-  * *Output:* An error message stating that there are missing attributes will be shown.
+  * *Output:* An error message stating that the format is incorrect will be shown.
 * Input the `add` command with **negative values** for quantity and price.
   * *Example Input:* `add MILK -50 2.50` / `add EGGS 30 -6.00`
   * *Output:* An error message stating that the quantity and/or price cannot be negative will be shown.
-* Input the `add` command with a **non-whole number value** for quantity.
-  * *Example Input:* `add MILK 50.4 2.50`
-  * *Output:* An error message stating that the quantity must be a whole number will be shown.
+* Input the `add` command with a **non-proper value** for quantity and/or price.
+  * *Example Input:* `add MILK 50.4 2.50`/ `add MILK 50 hi` / `add XD XD XD`
+  * *Output:* An error message stating that the quantity and/or price is not a proper number will be shown.
 * Input the `add` command with the price as **zero**.
   * *Example Input:* `add MILK 50 0.00`
   * *Output:* An error message stating that the price cannot be zero will be shown.
@@ -332,7 +340,7 @@ anything and press `Enter`.
 
 * Input the `delete` command with **missing attributes**.
   * *Example Input:* `delete`
-  * *Output:* An error message stating that there are missing attributes will be shown.
+  * *Output:* An error message stating that the ID is missing will be shown.
 * Input the `delete` command with an **invalid ID**.
   * *Example Input:* `delete XD`
   * *Output:* An error message stating that the ID is invalid will be shown.
@@ -343,41 +351,47 @@ anything and press `Enter`.
 ### Updating a product
 
 * Input the `update` command with **missing attributes**.
-  * *Example Input:* `update` / `update 1 MILK 50` / `update 1 WHITE_RICE 13.00` / `add 1 30 6.00` etc.
-  * *Output:* An error message stating that there are missing attributes will be shown.
+  * *Example Input:* `update` / `update /name` / `update 1 /qty` / `update 2 /price`
+  * *Output:* An error message stating that the flags are invalid will be shown.
 * Input the `update` command with an **invalid ID**.
-  * *Example Input:* `update XD MILK 50 2.50`
+  * *Example Input:* `update XD /name MILK`
   * *Output:* An error message stating that the ID is invalid will be shown.
 * Input the `update` command with an ID that **does not exist in the product list**.
-  * *Example Input:* `update 15 MILK 50 2.50` (when there are 5 products in the list)
+  * *Example Input:* `update 15 /qty 50` (when there are 5 products in the list)
   * *Output:* An error message stating that the product with the provided ID cannot be found will be shown.
 * Input the `update` command with **negative values** for quantity and price.
-  * *Example Input:* `update 1 MILK -50 2.50` / `add 2 EGGS 30 -6.00`
+  * *Example Input:* `update 1 /qty -50 2.50` / `update 2 /price -6.00`
   * *Output:* An error message stating that the quantity and/or price cannot be negative will be shown.
-* Input the `update` command with a **non-whole number value** for quantity.
-  * *Example Input:* `update 1 MILK 50.4 2.50`
-  * *Output:* An error message stating that the quantity must be a whole number will be shown.
+* Input the `update` command with a **non-whole number value** for quantity and/or price.
+  * *Example Input:* `update 1 /qty 50.4` / `update 2 /price hi` 
+  * *Output:* An error message stating that the quantity and/or price is not a proper number will be shown.
 * Input the `update` command with the price as **zero**.
-  * *Example Input:* `update 1 MILK 50 0.00`
+  * *Example Input:* `update 1 /price 0.00`
   * *Output:* An error message stating that the price cannot be zero will be shown.
 
 ### Searching a product
 
+* Input the `search` command with **an invalid format**.
+  * *Example Input:* `search` / `search XD`
+  * *Output:* An error message stating that the format is incorrect will be shown.
 * Input the `search` command with **missing attributes**.
-  * *Example Input:* `search`
-  * *Output:* An error message stating that there are missing attributes will be shown.
+  * *Example Input:* `search /name` / `search /id`
+  * *Output:* An error message stating that the name or ID is missing will be shown.
+* Input the `search` command with a name that **does not exist in the product list**.
+  * *Example Input:* `search /name BEANS`
+  * *Output:* An error message stating that the product with the provided name cannot be found will be shown.
 * Input the `search` command with an **invalid ID**.
-  * *Example Input:* `search XD`
+  * *Example Input:* `search /id XD`
   * *Output:* An error message stating that the ID is invalid will be shown.
 * Input the `search` command with an ID that **does not exist in the product list**.
-  * *Example Input:* `search 15` (when there are 5 products in the list)
+  * *Example Input:* `search /id 15` (when there are 5 products in the list)
   * *Output:* An error message stating that the product with the provided ID cannot be found will be shown.
 
 ### Managing Sales
 
 * Input the `sold` command with **missing attributes**.
   * *Example Input:* `sold` / `sold 5` (where 5 is the quantity) / `sold 1` (where 1 is the ID)
-  * *Output:* An error message stating that there are missing attributes will be shown.
+  * *Output:* An error message stating that the format is incorrect will be shown.
 * Input the `sold` command with an **invalid ID**.
   * *Example Input:* `sold XD 5`
   * *Output:* An error message stating that the ID is invalid will be shown.
@@ -388,7 +402,7 @@ anything and press `Enter`.
   * *Example Input:* `sold 1 -5`
   * *Output:* An error message stating that the quantity cannot be negative will be shown.
 * Input the `sold` command with a **non-whole number value** for quantity.
-  * *Example Input:* `sold 1 5.6`
+  * *Example Input:* `sold 1 5.6` / `sold 1 hi`
   * *Output:* An error message stating that the quantity must be a whole number will be shown.
 
 ### Clearing Sales

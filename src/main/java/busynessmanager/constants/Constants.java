@@ -53,9 +53,9 @@ public class Constants {
     public static final String BM_INVENTORY_TITLE = "---INVENTORY---";
 
     public static final String BM_WELCOME_MESSAGE = "Welcome to Busyness Manager!";
-    public static final String BM_LOGIN_MESSAGE = "Please enter your business name:";
+    public static final String BM_LOGIN_MESSAGE = "Please enter your business name: ";
     public static final String BM_FIRST_SETUP_CHECK_MESSAGE = "Do you want to add your business?" +
-        "\n(Enter: \"Yes\" to set up credentials or any other input to exit Busyness Manager)";
+        "\n(Enter: \"yes\" to set up credentials or any other input to exit Busyness Manager) ";
     public static final String BM_ENTER_BUSINESS_ID_MESSAGE = "Enter Business ID: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE = "Enter Password: ";
     public static final String BM_ENTER_PASSWORD_MESSAGE_2 = "Enter Business Password: ";
@@ -111,21 +111,20 @@ public class Constants {
     public static final String CP_INVALID_FLAG_MESSAGE_ADD = "Error: Invalid format. add <name> <quantity> <price>.";
     public static final String CP_INVALID_FLAG_MESSAGE_SOLD = "Error: Invalid format. " +
             "sold <ID number> <Quantity sold>.";
-    public static final String CP_INVALID_FLAG_MESSAGE_REVENUE = "Error: Invalid format. " +
-            "revenue OR revenue <ID number>.";
-    public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Error: Invalid format." +
+    public static final String CP_INVALID_FLAG_MESSAGE_SEARCH = "Error: Invalid format. " +
             "search /name <name> OR search /id <number>.";
-    public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = "Invalid flags." +
-            "\nupdate <ID number> <flag> <Updated value>," +
-            "\nwhere <flag> is either /name, /qty, or /price.";
+    public static final String CP_INVALID_FLAG_MESSAGE_UPDATE = """
+            Invalid flags.
+            update <ID number> <flag> <updated value>,
+            where <flag> is either /name, /qty, or /price.""";
     public static final String CP_INVALID_COMMAND_MESSAGE = "Error: The command provided does not exist."
             + TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_NUMERAL_MESSAGE = "Error: The quantity and/or price provided " +
             "is not a proper number." + TRY_AGAIN_MESSAGE;
-    public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Error: The quantity provided is not a proper number."
+    public static final String CP_INVALID_NUMERAL_MESSAGE_2 = "Error: The quantity provided must be a whole number."
             + TRY_AGAIN_MESSAGE;
     public static final String CP_INVALID_PRICE_MESSAGE = "Error: The price provided is invalid."
-            + TRY_AGAIN_MESSAGE + " (Input is more than 2 decimal points)";
+            + TRY_AGAIN_MESSAGE + " (Input is more than 2 decimal places)";
     public static final String CP_INVALID_ID_MESSAGE = "Error: The product ID provided is invalid."
             + TRY_AGAIN_MESSAGE;
     public static final String CP_ID_ABSENT_MESSAGE = "Error: The product ID provided is not present in the inventory."
@@ -136,18 +135,6 @@ public class Constants {
             + TRY_AGAIN_MESSAGE;
 
     public static final String CP_LOG_MESSAGE = "String splitting failure.";
-
-    public static final String HELP_L2IST = """
-            add         add <Name> <Quantity> <Price>                   (Add new product to list)
-            delete      delete <ID number>                              (Delete existing product)
-            update      update <ID number> <flag> <Updated value>       (Update product, flags: /name /quantity /price)
-            print       print                                           (Print list of products)
-            sold        sold <ID number> <Quantity sold>                (Mark some products as sold)
-            clear       clear <ID number>                               (Clear current sales)
-            revenue     revenue OR revenue <ID number>                  (Check revenue)
-            search      search /name <name> OR search /id <number>      (Look for specific product)
-            exit        exit""";
-
 
 
     // Product
@@ -167,7 +154,8 @@ public class Constants {
     public static final String IM_LIST = "Product list:";
     public static final String IM_EMPTY_MESSAGE = "Error: There are no products in the inventory.";
     public static final String IM_NEGATIVE_QUANTITY_PRICE_MESSAGE = "Error: The quantity and/or price provided " +
-            "is a negative number." + TRY_AGAIN_MESSAGE;
+            "cannot be a negative number." + TRY_AGAIN_MESSAGE;
+    public static final String IM_ZERO_PRICE_MESSAGE = "Error: The price provided cannot be zero." + TRY_AGAIN_MESSAGE;
     public static final String IM_QTY_EXCEED_MESSAGE = "Error: The quantity sold provided exceeds the quantity " +
             "of product with ID %s.";
 
@@ -187,6 +175,4 @@ public class Constants {
 
     // SearchManager
     public static final String SRM_PRODUCT_NOT_FOUND_FORMAT = "Error: Product with name %s not found.";
-    public static final String SRM_ID_QUERY_FORMAT = "Product ID of %s: %s";
-    public static final String SRM_NAME_QUERY_FORMAT = "Product name of %s: %s";
 }

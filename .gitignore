@@ -16,4 +16,4 @@ bin/
 /data
 /text-ui-test/ACTUAL.TXT
 /text-ui-test/EXPECTED-UNIX.TXT
-/text-ui-test/data/BusinessInfo.txt
+/text-ui-test/data

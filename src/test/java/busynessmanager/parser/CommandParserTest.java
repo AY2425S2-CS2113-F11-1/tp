@@ -18,17 +18,21 @@ public class CommandParserTest {
     @Test
     public void getCommandSeparatorIndex_validString_success() throws InvalidStringException {
         assertEquals(3, new CommandParser().getCommandSeparatorIndex(
-                "add /name MILK /qty 50 price 2.50"));
+                "add MILK 50 2.50"));
         assertEquals(6, new CommandParser().getCommandSeparatorIndex(
-                "delete /id 1"));
+                "delete 1"));
         assertEquals(6, new CommandParser().getCommandSeparatorIndex(
-                "update /id 1 /name FRESH_MILK /qty 45 /price 3.00"));
+                "update 1 /name FRESH_MILK"));
+        assertEquals(6, new CommandParser().getCommandSeparatorIndex(
+                "update 1 /qty 45"));
+        assertEquals(6, new CommandParser().getCommandSeparatorIndex(
+                "update 1 /price 3.00"));
         assertEquals(4, new CommandParser().getCommandSeparatorIndex(
-                "sold /id 1 /qty 5"));
+                "sold 1 5"));
         assertEquals(5, new CommandParser().getCommandSeparatorIndex(
-                "clear /id 1"));
+                "clear 1"));
         assertEquals(7, new CommandParser().getCommandSeparatorIndex(
-                "revenue /id 1"));
+                "revenue 1"));
         assertEquals(6, new CommandParser().getCommandSeparatorIndex(
                 "search /name MILK"));
         assertEquals(6, new CommandParser().getCommandSeparatorIndex(
@@ -70,17 +74,21 @@ public class CommandParserTest {
     @Test
     public void extractCommand_positiveIndexWithinLimit_success() throws InvalidStringException {
         assertEquals("add", new CommandParser().extractCommand(
-                3, "add /name MILK /qty 50 price 2.50"));
+                3, "add MILK 50 2.50"));
         assertEquals("delete", new CommandParser().extractCommand(
-                6, "delete /id 1"));
+                6, "delete 1"));
         assertEquals("update", new CommandParser().extractCommand(
-                6, "update /id 1 /name FRESH_MILK /qty 45 /price 3.00"));
+                6, "update 1 /name FRESH_MILK"));
+        assertEquals("update", new CommandParser().extractCommand(
+                6, "update 1 /qty 45"));
+        assertEquals("update", new CommandParser().extractCommand(
+                6, "update 1 /price 3.00"));
         assertEquals("sold", new CommandParser().extractCommand(
-                4, "sold /id 1 /qty 5"));
+                4, "sold 1 5"));
         assertEquals("clear", new CommandParser().extractCommand(
-                5, "clear /id 1"));
+                5, "clear 1"));
         assertEquals("revenue", new CommandParser().extractCommand(
-                7, "revenue /id 1"));
+                7, "revenue 1"));
         assertEquals("search", new CommandParser().extractCommand(
                 6, "search /name MILK"));
         assertEquals("search", new CommandParser().extractCommand(
@@ -132,18 +140,22 @@ public class CommandParserTest {
      */
     @Test
     public void extractInfo_positiveIndexWithinLimit_success() throws InvalidStringException {
-        assertEquals("/name MILK /qty 50 price 2.50", new CommandParser().extractInfo(
-                3, "add /name MILK /qty 50 price 2.50"));
-        assertEquals("/id 1", new CommandParser().extractInfo(
-                6, "delete /id 1"));
-        assertEquals("/id 1 /name FRESH_MILK /qty 45 /price 3.00", new CommandParser().extractInfo(
-                6, "update /id 1 /name FRESH_MILK /qty 45 /price 3.00"));
-        assertEquals("/id 1 /qty 5", new CommandParser().extractInfo(
-                4, "sold /id 1 /qty 5"));
-        assertEquals("/id 1", new CommandParser().extractInfo(
-                5, "clear /id 1"));
-        assertEquals("/id 1", new CommandParser().extractInfo(
-                7, "revenue /id 1"));
+        assertEquals("MILK 50 2.50", new CommandParser().extractInfo(
+                3, "add MILK 50 2.50"));
+        assertEquals("1", new CommandParser().extractInfo(
+                6, "delete 1"));
+        assertEquals("1 /name FRESH_MILK", new CommandParser().extractInfo(
+                6, "update 1 /name FRESH_MILK"));
+        assertEquals("1 /qty 45", new CommandParser().extractInfo(
+                6, "update 1 /qty 45"));
+        assertEquals("1 /price 3.00", new CommandParser().extractInfo(
+                6, "update 1 /price 3.00"));
+        assertEquals("1 5", new CommandParser().extractInfo(
+                4, "sold 1 5"));
+        assertEquals("1", new CommandParser().extractInfo(
+                5, "clear 1"));
+        assertEquals("1", new CommandParser().extractInfo(
+                7, "revenue 1"));
         assertEquals("/name MILK", new CommandParser().extractInfo(
                 6, "search /name MILK"));
         assertEquals("/id 1", new CommandParser().extractInfo(
@@ -288,7 +300,7 @@ public class CommandParserTest {
             fail();
         } catch (InvalidCommandException e) {
             assertEquals("Error: The price provided is invalid. Please try again." +
-                    " (Input is more than 2 decimal points)", e.getMessage());
+                    " (Input is more than 2 decimal places)", e.getMessage());
         }
     }
 
@@ -297,32 +309,39 @@ public class CommandParserTest {
      * deleteProduct()
      */
     @Test
-    public void deleteProduct_wrongWord_exceptionThrown() {
-        try {
-            new CommandParser().deleteProduct("id 69");
-            fail();
-        } catch (InvalidCommandException e) {
-            assertEquals("Error: Invalid format. /id.", e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
-
-        }
-    }
-
-    @Test
     public void deleteProduct_iDEmpty_exceptionThrown() {
         try {
-            new CommandParser().deleteProduct("/id");
+            new CommandParser().deleteProduct("");
             fail();
         } catch (InvalidCommandException e) {
             assertEquals("Error: There is no product ID provided. Please try again.", e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
         }
     }
 
     @Test
     public void deleteProduct_iDWrongFormat_exceptionThrown() {
         try {
-            new CommandParser().deleteProduct("/id star");
+            new CommandParser().deleteProduct("star");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void deleteProduct_iDNegative_exceptionThrown() {
+        try {
+            new CommandParser().deleteProduct("-2");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void deleteProduct_iDOverLimit_exceptionThrown() {
+        try {
+            new CommandParser().deleteProduct("11111");
             fail();
         } catch (InvalidCommandException e) {
             assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
@@ -331,74 +350,138 @@ public class CommandParserTest {
 
 
     /*
-     * updateProduct()
+     * updateProduct(), getProductIDNumber() & updateBasedOnFlags()
      */
     @Test
-    public void updateProduct_wrongWord_exceptionThrown() {
+    public void updateProduct_infoEmpty_exceptionThrown() {
         try {
-            new CommandParser().updateProduct("id 69 name larry qty 50 price 2.50");
+            new CommandParser().updateProduct("");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Error: Invalid format. /id /name /qty /price.", e.getMessage());
-            assertEquals("Invalid flags.\n" + "update <ID number> <flag> <Updated value>,\n" +
-                "where <flag> is either /name, /qty, or /price.", e.getMessage());
+            assertEquals("""
+            Invalid flags.
+            update <ID number> <flag> <updated value>,
+            where <flag> is either /name, /qty, or /price.""", e.getMessage());
         }
     }
 
     @Test
-    public void updateProduct_priceEmpty_exceptionThrown() {
+    public void getProductIDNumber_tagInvalid_exceptionThrown() {
         try {
-            new CommandParser().updateProduct("/id 69 /name larry /qty 50 /price");
+            new CommandParser().updateProduct("1 cat");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Error: Invalid format. /id /name /qty /price.", e.getMessage());
-            assertEquals("Invalid flags.\n" + "update <ID number> <flag> <Updated value>,\n" +
-                "where <flag> is either /name, /qty, or /price.", e.getMessage());
+            assertEquals("""
+            Invalid flags.
+            update <ID number> <flag> <updated value>,
+            where <flag> is either /name, /qty, or /price.""", e.getMessage());
         }
     }
 
     @Test
-    public void updateProduct_parseNumberFail_exceptionThrown() {
+    public void getProductIDNumber_iDWrongFormat_exceptionThrown() {
         try {
-            new CommandParser().updateProduct("/id 69 /name larry /qty hi /price 2.50");
-            fail();
-        } catch (InvalidCommandException e) {
-            assertEquals("Error: The quantity and/or price provided is not a proper number. Please try again."
-                    , e.getMessage());
-            assertEquals("Invalid flags.\n" + "update <ID number> <flag> <Updated value>,\n" +
-                "where <flag> is either /name, /qty, or /price.", e.getMessage());
-        }
-
-        try {
-            new CommandParser().updateProduct("/id 69 /name larry /qty 15.6 /price 2.50");
-            fail();
-        } catch (InvalidCommandException e) {
-            assertEquals("Error: The quantity and/or price provided is not a proper number. Please try again."
-                    , e.getMessage());
-            assertEquals("Invalid flags.\n" + "update <ID number> <flag> <Updated value>,\n" +
-                "where <flag> is either /name, /qty, or /price.", e.getMessage());
-        }
-
-        try {
-            new CommandParser().updateProduct("/id 69 /name larry /qty 50 /price hi");
-            fail();
-        } catch (InvalidCommandException e) {
-            assertEquals("Error: The quantity and/or price provided is not a proper number. Please try again."
-                    , e.getMessage());
-            assertEquals("Invalid flags.\n" + "update <ID number> <flag> <Updated value>,\n" +
-                "where <flag> is either /name, /qty, or /price.", e.getMessage());
-        }
-    }
-
-    @Test
-    public void updateProduct_iDWrongFormat_exceptionThrown() {
-        try {
-            new CommandParser().updateProduct("/id star /name larry /qty 50 /price 2.50");
+            new CommandParser().updateProduct("star /name FRESH_MILK");
             fail();
         } catch (InvalidCommandException e) {
             assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
-            assertEquals("Invalid flags.\n" + "update <ID number> <flag> <Updated value>,\n" +
-                "where <flag> is either /name, /qty, or /price.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void updateProduct_iDNegative_exceptionThrown() {
+        try {
+            new CommandParser().updateProduct("-2 /qty 45");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void updateProduct_iDOverLimit_exceptionThrown() {
+        try {
+            new CommandParser().updateProduct("11111 /price 3.00");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void updateBasedOnFlags_nameEmpty_exceptionThrown() {
+        try {
+            new CommandParser().updateProduct("1 /name");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("""
+            Invalid flags.
+            update <ID number> <flag> <updated value>,
+            where <flag> is either /name, /qty, or /price.""", e.getMessage());
+        }
+    }
+
+    @Test
+    public void updateBasedOnFlags_quantityEmpty_exceptionThrown() {
+        try {
+            new CommandParser().updateProduct("1 /qty");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("""
+            Invalid flags.
+            update <ID number> <flag> <updated value>,
+            where <flag> is either /name, /qty, or /price.""", e.getMessage());
+        }
+    }
+
+    @Test
+    public void updateBasedOnFlags_priceEmpty_exceptionThrown() {
+        try {
+            new CommandParser().updateProduct("1 /price");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("""
+            Invalid flags.
+            update <ID number> <flag> <updated value>,
+            where <flag> is either /name, /qty, or /price.""", e.getMessage());
+        }
+    }
+
+    @Test
+    public void updateBasedOnFlags_parseNumberFail_exceptionThrown() {
+        try {
+            new CommandParser().updateProduct("1 /qty hi");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The quantity and/or price provided is not a proper number. Please try again."
+                    , e.getMessage());
+        }
+
+        try {
+            new CommandParser().updateProduct("1 /price hi");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The quantity and/or price provided is not a proper number. Please try again."
+                    , e.getMessage());
+        }
+
+        try {
+            new CommandParser().updateProduct("1 /qty 45.6");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The quantity and/or price provided is not a proper number. Please try again."
+                    , e.getMessage());
+        }
+    }
+
+    @Test
+    public void updateBasedOnFlags_priceMoreThanTwoDecimals_exceptionThrown() {
+        try {
+            new CommandParser().updateProduct("1 /price 3.003");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The price provided is invalid. Please try again." +
+                    " (Input is more than 2 decimal places)", e.getMessage());
         }
     }
 
@@ -407,56 +490,71 @@ public class CommandParserTest {
      * recordSale()
      */
     @Test
-    public void recordSale_wrongWord_exceptionThrown() {
+    public void recordSale_infoEmpty_exceptionThrown() {
         try {
-            new CommandParser().recordSale("id 69 qty 50");
+            new CommandParser().recordSale("");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Error: Invalid format. /id /qty.", e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
+            assertEquals("Error: Invalid format. sold <ID number> <Quantity sold>.", e.getMessage());
         }
     }
 
     @Test
     public void recordSale_qtyEmpty_exceptionThrown() {
         try {
-            new CommandParser().recordSale("/id 69 /qty");
+            new CommandParser().recordSale("1");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Error: Invalid format. /id /qty.", e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
+            assertEquals("Error: Invalid format. sold <ID number> <Quantity sold>.", e.getMessage());
         }
     }
 
     @Test
     public void recordSale_parseNumberFail_exceptionThrown() {
         try {
-            new CommandParser().recordSale("/id 69 /qty hi");
+            new CommandParser().recordSale("1 hi");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Error: The quantity provided is not a proper number. Please try again."
+            assertEquals("Error: The quantity provided must be a whole number. Please try again."
                     , e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
         }
 
         try {
-            new CommandParser().recordSale("/id 69 /qty 15.6");
+            new CommandParser().recordSale("1 50.6");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Error: The quantity provided is not a proper number. Please try again."
+            assertEquals("Error: The quantity provided must be a whole number. Please try again."
                     , e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
         }
     }
 
     @Test
     public void recordSale_iDWrongFormat_exceptionThrown() {
         try {
-            new CommandParser().recordSale("/id star /qty 50");
+            new CommandParser().recordSale("star 50");
             fail();
         } catch (InvalidCommandException e) {
             assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
-            assertEquals("Quantity is not a proper number. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void recordSale_iDNegative_exceptionThrown() {
+        try {
+            new CommandParser().recordSale("-2 50");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void recordSale_iDOverLimit_exceptionThrown() {
+        try {
+            new CommandParser().recordSale("11111 50");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
         }
     }
 
@@ -464,31 +562,39 @@ public class CommandParserTest {
      * clearSales()
      */
     @Test
-    public void clearSales_wrongWord_exceptionThrown() {
-        try {
-            new CommandParser().clearSales("id 69");
-            fail();
-        } catch (InvalidCommandException e) {
-            assertEquals("Error: Invalid format. /id.", e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
-        }
-    }
-
-    @Test
     public void clearSales_iDEmpty_exceptionThrown() {
         try {
-            new CommandParser().clearSales("/id");
+            new CommandParser().clearSales("");
             fail();
         } catch (InvalidCommandException e) {
             assertEquals("Error: There is no product ID provided. Please try again.", e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
         }
     }
 
     @Test
     public void clearSales_iDWrongFormat_exceptionThrown() {
         try {
-            new CommandParser().clearSales("/id star");
+            new CommandParser().clearSales("star");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void clearSales_iDNegative_exceptionThrown() {
+        try {
+            new CommandParser().clearSales("-2");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void clearSales_iDOverLimit_exceptionThrown() {
+        try {
+            new CommandParser().clearSales("11111");
             fail();
         } catch (InvalidCommandException e) {
             assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
@@ -500,31 +606,29 @@ public class CommandParserTest {
      * computeRevenue()
      */
     @Test
-    public void computeRevenue_wrongWord_exceptionThrown() {
-        try {
-            new CommandParser().computeRevenue("id 69");
-            fail();
-        } catch (InvalidCommandException e) {
-            assertEquals("Error: Invalid format. /id or keep empty for total.", e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
-        }
-    }
-
-    @Test
-    public void computeRevenue_iDEmpty_exceptionThrown() {
-        try {
-            new CommandParser().computeRevenue("/id");
-            fail();
-        } catch (InvalidCommandException e) {
-            assertEquals("Error: There is no product ID provided. Please try again.", e.getMessage());
-            assertEquals("ID is invalid. Please try again.", e.getMessage());
-        }
-    }
-
-    @Test
     public void computeRevenue_iDWrongFormat_exceptionThrown() {
         try {
-            new CommandParser().computeRevenue("/id star");
+            new CommandParser().computeRevenue("star");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void computeRevenue_iDNegative_exceptionThrown() {
+        try {
+            new CommandParser().computeRevenue("-2");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void computeRevenue_iDOverLimit_exceptionThrown() {
+        try {
+            new CommandParser().computeRevenue("11111");
             fail();
         } catch (InvalidCommandException e) {
             assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
@@ -532,18 +636,16 @@ public class CommandParserTest {
     }
 
 
-
     /*
      * searchForProduct()
      */
     @Test
-    public void searchForProduct_wrongWord_exceptionThrown() {
+    public void searchForProduct_invalidTag_exceptionThrown() {
         try {
             new CommandParser().searchForProduct("cat");
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("Error: Invalid format. /name OR /id.", e.getMessage());
-            assertEquals("Invalid format. search /name <name> OR search /id <number>", e.getMessage());
+            assertEquals("Error: Invalid format. search /name <name> OR search /id <number>.", e.getMessage());
         }
     }
 
@@ -571,6 +673,26 @@ public class CommandParserTest {
     public void searchForProduct_iDWrongFormat_exceptionThrown() {
         try {
             new CommandParser().searchForProduct("/id star");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void searchForProduct_iDNegative_exceptionThrown() {
+        try {
+            new CommandParser().searchForProduct("/id -2");
+            fail();
+        } catch (InvalidCommandException e) {
+            assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void searchForProduct_iDOverLimit_exceptionThrown() {
+        try {
+            new CommandParser().searchForProduct("/id 11111");
             fail();
         } catch (InvalidCommandException e) {
             assertEquals("Error: The product ID provided is invalid. Please try again.", e.getMessage());

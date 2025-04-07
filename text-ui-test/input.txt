@@ -1,7 +1,8 @@
-FAKENAME
+
+Milk Corp
 yes
 
-abc123
+1234
 
 Milk Corp
 
@@ -11,96 +12,69 @@ xd
 FNB
 help
 add
-add xd
-add name qty price
-add /name qty price
-add /name /qty price
-add /name /qty /price
-add /name MILK /qty /price
-add /name /qty 50 /price
-add /name /qty /price 4
-add /name MILK /qty 50 /price
-add /name MILK /qty /price 4
-add /name /qty 50 /price 4
-add /name MILK /qty -50 /price -4
-add /name MILK /qty 50.6 /price 4
-add /name MILK /qty 50 /price 4
-add /name MILK /qty 50 /price 4
-add /name BREAD /qty 70 /price 3
-add /name RICE /qty 60 /price 9
+add MILK 50
+add MILK 4
+add 50 4
+add xd xd xd
+add MILK -50 -4
+add MILK 50.6 4
+add MILK 50 hi
+add MILK 50 0
+add MILK 50 4
+add MILK 50 4
+add BREAD 70 3
+add RICE 60 9
 list
 update
 update xd
-update id name qty price
-update /id name qty price
-update /id /name qty price
-update /id /name /qty price
-update /id /name /qty /price
-update /id 1 /name /qty /price
-update /id /name MILK /qty /price
-update /id /name /qty 60 /price
-update /id /name /qty /price 6
-update /id 1 /name MILK /qty /price
-update /id 1 /name /qty 60 /price
-update /id 1 /name /qty /price 6
-update /id /name MILK /qty 60 /price
-update /id /name MILK /qty /price 6
-update /id /name /qty 60 /price 6
-update /id 1 /name MILK /qty 60 /price
-update /id 1 /name MILK /qty /price 6
-update /id 1 /name /qty 60 /price 6
-update /id /name MILK /qty 60 /price 6
-update /id xd /name MILK /qty 60 /price 6
-update /id 69 /name MILK /qty 60 /price 6
-update /id 1 /name MILK /qty -60 /price -6
-update /id 1 /name MILK /qty 60.7 /price 6
-update /id 1 /name MILK /qty 60 /price 6
+update /name MILK
+update 1 60
+update 1 /price
+update xd xd xd
+update xd /name MILK
+update 15 /qty 60
+update 1 /qty -60
+update 1 /price -5
+update 1 /qty 60.7
+update 1 /price hi
+update 1 /price 0
+update 1 /name FRESH_MILK
+update 1 /qty 60
+update 1 /price 5
 list
 sold
-sold xd
-sold id qty
-sold /id qty
-sold /id /qty
-sold /id 1 /qty
-sold /id /qty 1
-sold /id xd /qty 7
-sold /id 69 /qty 7
-sold /id 1 /qty -7
-sold /id 1 /qty 7
-sold /id 2 /qty 13
-sold /id 3 /qty 11
+sold 1
+sold 7
+sold xd xd
+sold xd 7
+sold 69 7
+sold 1 -7
+sold 1 7.6
+sold 1 hi
+sold 1 7
+sold 2 13
+sold 3 11
 list
 search
 search xd
-search name
 search /name
 search /name white
 search /name bread
-search id
 search /id
 search /id xd
 search /id 69
 search /id 3
 revenue
 revenue xd
-revenue id
-revenue /id
-revenue /id xd
-revenue /id 69
-revenue /id 2
+revenue 69
+revenue 2
 clear
 clear xd
-clear id
-clear /id
-clear /id xd
-clear /id 69
-clear /id 1
+clear 69
+clear 1
 delete
 delete xd
-delete id
-delete /id
-delete /id xd
-delete /id 69
-delete /id 2
+delete 69
+delete 2
 list
 exit

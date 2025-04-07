@@ -104,9 +104,25 @@ public class BusynessManager {
      */
     private void start() {
         Scanner scanner = new Scanner(System.in);
+
         UI.printMessage(BM_WELCOME_MESSAGE);
-        UI.printMessage(BM_LOGIN_MESSAGE);
-        String businessName = scanner.nextLine();
+
+        String businessName = EMPTY_STRING;
+
+        while (businessName.isEmpty()) {
+            UI.printMessageWithoutNewline(BM_LOGIN_MESSAGE);
+
+            if (!scanner.hasNextLine()) {
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
+            } else {
+                businessName = scanner.nextLine().trim();
+            }
+
+            if (businessName.isEmpty()) {
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
+            }
+        }
+
         File file = new File(String.format(BUSINESS_INFO_FILE, businessName));
 
         if (!file.exists()) {
@@ -133,11 +149,36 @@ public class BusynessManager {
      * @param scanner The Scanner object for user input.
      */
     protected void login(Scanner scanner) {
-        UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
-        String id = scanner.nextLine().trim();
+        String id = EMPTY_STRING;
+        String password = EMPTY_STRING;
 
-        UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE);
-        String password = scanner.nextLine().trim();
+        while (id.isEmpty()) {
+            UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
+
+            if (!scanner.hasNextLine()) {
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
+            } else {
+                id = scanner.nextLine().trim();
+            }
+
+            if (id.isEmpty()) {
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
+            }
+        }
+
+        while (password.isEmpty()) {
+            UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE);
+
+            if (!scanner.hasNextLine()) {
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
+            } else {
+                password = scanner.nextLine().trim();
+            }
+
+            if (password.isEmpty()) {
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
+            }
+        }
 
         if (credentials != null && credentials.getBusinessID().equals(id) &&
                 credentials.getBusinessPassword().equals(password)) {
@@ -345,7 +386,9 @@ public class BusynessManager {
             } else {
                 String businessTypeString = scanner.nextLine().trim();
 
-                if (businessTypeString.matches(BM_UPPERCASE_REGEX)
+                if (businessTypeString.isEmpty()) {
+                    UI.printMessage(BM_NO_INPUT_MESSAGE);
+                } else if (businessTypeString.matches(BM_UPPERCASE_REGEX)
                         && businessTypeString.equals(BM_BUSINESSTYPE_FNB)) {
                     businessType = BusinessType.FNB;
                 } else if (businessTypeString.matches(BM_UPPERCASE_REGEX)

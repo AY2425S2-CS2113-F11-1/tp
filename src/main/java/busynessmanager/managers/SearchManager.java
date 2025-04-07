@@ -10,8 +10,6 @@ import java.util.Set;
 
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.PRODUCT_NOT_FOUND_FORMAT;
-import static busynessmanager.constants.Constants.SRM_ID_QUERY_FORMAT;
-import static busynessmanager.constants.Constants.SRM_NAME_QUERY_FORMAT;
 import static busynessmanager.constants.Constants.SRM_PRODUCT_NOT_FOUND_FORMAT;
 
 
@@ -72,9 +70,6 @@ public class SearchManager {
             boolean areNamesMatching = entry.getValue().getName().equalsIgnoreCase(name);
 
             if (areNamesMatching) {
-                String id = entry.getKey();
-
-                UI.printFormattedMessage(SRM_ID_QUERY_FORMAT + NEWLINE, name, id);
                 UI.printMessage(entry.getValue().toString());
                 return true;
             }
@@ -93,9 +88,7 @@ public class SearchManager {
     private void checkForProductById(String id, HashMap<String, Product> currentProductList) {
         if (currentProductList.containsKey(id)) {
             Product product = currentProductList.get(id);
-            String name = product.getName();
 
-            UI.printFormattedMessage(SRM_NAME_QUERY_FORMAT + NEWLINE, id, name);
             UI.printMessage(product.toString());
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
