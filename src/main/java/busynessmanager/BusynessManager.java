@@ -17,6 +17,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static busynessmanager.constants.Constants.EMPTY_STRING;
+import static busynessmanager.constants.Constants.DATA_FOLDER;
+import static busynessmanager.constants.Constants.BUSINESS_INFO_FILE;
 import static busynessmanager.constants.Constants.NEWLINE;
 import static busynessmanager.constants.Constants.INDEX_0;
 import static busynessmanager.constants.Constants.INDEX_1;
@@ -25,28 +28,35 @@ import static busynessmanager.constants.Constants.INDEX_3;
 import static busynessmanager.constants.Constants.INDEX_4;
 import static busynessmanager.constants.Constants.FILE_REGEX;
 import static busynessmanager.constants.Constants.BM_UPPERCASE_REGEX;
+import static busynessmanager.constants.Constants.BM_DIGIT_REGEX;
 import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_FNB;
 import static busynessmanager.constants.Constants.BM_BUSINESSTYPE_RETAIL;
-import static busynessmanager.constants.Constants.BM_FIRST_SETUP_APPROVAL;
+import static busynessmanager.constants.Constants.BM_APPROVAL;
+import static busynessmanager.constants.Constants.BM_EXIT_APPROVAL;
+import static busynessmanager.constants.Constants.BM_WAITING_INPUT;
 import static busynessmanager.constants.Constants.BM_NAME_TITLE;
 import static busynessmanager.constants.Constants.BM_TYPE_TITLE;
 import static busynessmanager.constants.Constants.BM_ID_TITLE;
 import static busynessmanager.constants.Constants.BM_INVENTORY_TITLE;
 import static busynessmanager.constants.Constants.BM_WELCOME_MESSAGE;
-import static busynessmanager.constants.Constants.BM_NO_INPUT_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.BM_LOGIN_MESSAGE;
 import static busynessmanager.constants.Constants.BM_FIRST_SETUP_CHECK_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_ID_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_PASSWORD_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_PASSWORD_MESSAGE_2;
 import static busynessmanager.constants.Constants.BM_SUCCESSFUL_LOGIN_MESSAGE;
-import static busynessmanager.constants.Constants.BM_INVALID_CREDENTIALS_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_NAME_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ENTER_BUSINESS_TYPE_MESSAGE;
-import static busynessmanager.constants.Constants.BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.BM_NO_INPUT_MESSAGE;
+import static busynessmanager.constants.Constants.BM_INVALID_ID_MESSAGE;
+import static busynessmanager.constants.Constants.BM_INVALID_BUSINESSTYPE_MESSAGE;
+import static busynessmanager.constants.Constants.BM_FORGOT_PASSWORD_MESSAGE;
+import static busynessmanager.constants.Constants.BM_RECOVERY_MESSAGE;
+import static busynessmanager.constants.Constants.BM_RECOVERY_ERROR_MESSAGE;
+import static busynessmanager.constants.Constants.BM_PASSWORD_RECOVERY;
+import static busynessmanager.constants.Constants.BM_ID_RECOVERY;
 import static busynessmanager.constants.Constants.BM_SETUP_COMPLETE_MESSAGE;
 import static busynessmanager.constants.Constants.BM_READY_MESSAGE;
-import static busynessmanager.constants.Constants.BM_WAITING_INPUT_MESSAGE;
-import static busynessmanager.constants.Constants.BM_EXIT_KEYWORD;
 import static busynessmanager.constants.Constants.BM_EXIT_MESSAGE;
 import static busynessmanager.constants.Constants.BM_ID_ASSERTION_FAIL_MESSAGE;
 import static busynessmanager.constants.Constants.BM_PASSWORD_NULL_ASSERTION_FAIL_MESSAGE;
@@ -57,13 +67,12 @@ import static busynessmanager.constants.Constants.BM_LOAD_SUCCESS_MESSAGE;
 import static busynessmanager.constants.Constants.BM_LOAD_FAIL_MESSAGE;
 
 
+
 /**
  * The main class for the Busyness Manager application.
  * Handles user authentication, business setup, and command execution.
  */
 public class BusynessManager {
-    private static final String DATA_FOLDER = "data";
-    private static final String BUSINESS_INFO_FILE = DATA_FOLDER + "/BusinessInfo.txt";
 
     public enum BusinessType {
         FNB, RETAIL
@@ -72,7 +81,6 @@ public class BusynessManager {
     private Credentials credentials;
     private final InventoryManager inventoryManager;
     private final CommandParser commandParser;
-
 
     /**
      * Constructs a BusynessManager instance and initializes the necessary managers.
@@ -84,7 +92,6 @@ public class BusynessManager {
         RevenueCalculator revenueCalculator = new RevenueCalculator(salesManager);
         SearchManager searchManager = new SearchManager(inventoryManager);
         commandParser = new CommandParser(inventoryManager, salesManager, revenueCalculator, searchManager);
-        loadBusinessData();
     }
 
 
@@ -103,20 +110,40 @@ public class BusynessManager {
      */
     private void start() {
         Scanner scanner = new Scanner(System.in);
+
         UI.printMessage(BM_WELCOME_MESSAGE);
 
-        if (credentials == null) {
+        String businessName = EMPTY_STRING;
+
+        while (businessName.isEmpty()) {
+            UI.printMessageWithoutNewline(BM_LOGIN_MESSAGE);
+
+            if (!scanner.hasNextLine()) {
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
+            } else {
+                businessName = scanner.nextLine().trim();
+            }
+
+            if (businessName.isEmpty()) {
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
+            }
+        }
+
+        File file = new File(String.format(BUSINESS_INFO_FILE, businessName));
+
+        if (!file.exists()) {
             UI.printMessageWithoutNewline(BM_FIRST_SETUP_CHECK_MESSAGE);
             String response = scanner.nextLine();
 
-            if (response.equalsIgnoreCase(BM_FIRST_SETUP_APPROVAL)) {
+            if (response.equalsIgnoreCase(BM_APPROVAL)) {
                 firstTimeSetup(scanner);
             } else {
                 UI.printMessage(BM_EXIT_MESSAGE);
                 return;
             }
         } else {
-            login(scanner);
+            loadBusinessData(businessName);
+            login(scanner, businessName);
         }
 
         run(scanner);
@@ -127,22 +154,64 @@ public class BusynessManager {
      *
      * @param scanner The Scanner object for user input.
      */
-    protected void login(Scanner scanner) {
-        UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
-        String id = scanner.nextLine().trim();
+    protected void login(Scanner scanner, String businessName) {
+        String id = EMPTY_STRING;
+        String password = EMPTY_STRING;
 
-        UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE);
-        String password = scanner.nextLine().trim();
+        while (id.isEmpty()) {
+            UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
 
+            if (!scanner.hasNextLine()) {
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
+            } else {
+                id = scanner.nextLine().trim();
+            }
+
+            if (id.isEmpty()) {
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
+            }
+        }
+
+        while (password.isEmpty()) {
+            UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE);
+
+            if (!scanner.hasNextLine()) {
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
+            } else {
+                password = scanner.nextLine().trim();
+            }
+
+            if (password.isEmpty()) {
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
+            }
+        }
+
+        // @@author rozaliesmit
         if (credentials != null && credentials.getBusinessID().equals(id) &&
                 credentials.getBusinessPassword().equals(password)) {
             UI.printMessage(BM_SUCCESSFUL_LOGIN_MESSAGE);
         } else {
-            UI.printMessage(BM_INVALID_CREDENTIALS_MESSAGE);
+            UI.printMessageWithoutNewline(BM_FORGOT_PASSWORD_MESSAGE);
+            String response = scanner.nextLine().trim();
+
+            if (response.equalsIgnoreCase(BM_APPROVAL)) {
+                if (credentials != null && credentials.getBusinessName().equals(businessName)) {
+                    UI.printMessage(BM_ID_RECOVERY + credentials.getBusinessID());
+                    UI.printMessage(BM_PASSWORD_RECOVERY + credentials.getBusinessPassword());
+
+                    UI.printMessage(BM_RECOVERY_MESSAGE);
+                } else {
+                    UI.printMessage(BM_RECOVERY_ERROR_MESSAGE);
+                }
+            } else {
+                UI.printMessage(BM_EXIT_MESSAGE);
+            }
+
             System.exit(INDEX_0);
         }
     }
 
+    // @@author amirhusaini06
     /**
      * Handles first-time business setup, allowing user to register their business.
      *
@@ -155,7 +224,7 @@ public class BusynessManager {
         BusinessType type = extractBusinessType(scanner);
 
         credentials = new Credentials(id, name, password, type);
-        saveBusinessData();
+        saveBusinessData(credentials.getBusinessName());
         UI.printMessage(BM_SETUP_COMPLETE_MESSAGE);
     }
 
@@ -165,19 +234,20 @@ public class BusynessManager {
      * @param scanner The Scanner object for user input.
      */
     private void run(Scanner scanner) {
+
         UI.printMessage(BM_READY_MESSAGE);
 
         while (true) {
-            UI.printMessageWithoutNewline(BM_WAITING_INPUT_MESSAGE);
+            UI.printMessageWithoutNewline(BM_WAITING_INPUT);
             String input = scanner.nextLine();
 
-            if (input.equalsIgnoreCase(BM_EXIT_KEYWORD)) {
+            if (input.equalsIgnoreCase(BM_EXIT_APPROVAL)) {
                 UI.printMessage(BM_EXIT_MESSAGE);
                 break;
             }
 
             commandParser.parseCommand(input);
-            saveBusinessData();
+            saveBusinessData(credentials.getBusinessName());
         }
         scanner.close();
     }
@@ -185,19 +255,20 @@ public class BusynessManager {
     /**
      * Saves business credentials and inventory data to a file.
      */
-    private void saveBusinessData() {
+    private void saveBusinessData(String businessName) {
         File dataFolder = new File(DATA_FOLDER);
 
         if (!dataFolder.exists()) {
             dataFolder.mkdir();
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BUSINESS_INFO_FILE))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(
+            String.format(BUSINESS_INFO_FILE, businessName)))) {
             if (credentials != null) {
                 writer.write(credentials.getBusinessID() + FILE_REGEX +
-                        credentials.getBusinessName() + FILE_REGEX +
-                        credentials.getBusinessPassword() + FILE_REGEX +
-                        credentials.getBusinessType() + NEWLINE);
+                    credentials.getBusinessName() + FILE_REGEX +
+                    credentials.getBusinessPassword() + FILE_REGEX +
+                    credentials.getBusinessType() + NEWLINE);
             }
 
             writer.write(BM_INVENTORY_TITLE + NEWLINE);
@@ -211,8 +282,8 @@ public class BusynessManager {
     /**
      * Loads business credentials and inventory data from a file.
      */
-    private void loadBusinessData() {
-        File file = new File(BUSINESS_INFO_FILE);
+    private void loadBusinessData(String businessName) {
+        File file = new File(String.format(BUSINESS_INFO_FILE, businessName));
 
         if (!file.exists()) {
             UI.printMessage(BM_NO_DATA_MESSAGE);
@@ -250,19 +321,23 @@ public class BusynessManager {
      * @return The business name inputted by the user.
      */
     private String extractID(Scanner scanner) {
-        String businessID = "";
+        String businessID = EMPTY_STRING;
 
         while (businessID.isEmpty()) {
-            UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
+            while (!businessID.matches(BM_DIGIT_REGEX)) {
+                UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_ID_MESSAGE);
 
-            if (!scanner.hasNextLine()) {
-                UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
-            } else {
-                businessID = scanner.nextLine().trim();
-            }
+                if (!scanner.hasNextLine()) {
+                    UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
+                } else {
+                    businessID = scanner.nextLine().trim();
+                }
 
-            if (businessID.isEmpty()) {
-                UI.printMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                if (businessID.isEmpty()) {
+                    UI.printMessage(BM_NO_INPUT_MESSAGE);
+                } else if (!businessID.matches(BM_DIGIT_REGEX)) {
+                    UI.printMessage(BM_INVALID_ID_MESSAGE);
+                }
             }
         }
 
@@ -276,19 +351,19 @@ public class BusynessManager {
      * @return The business name inputted by the user.
      */
     private String extractName(Scanner scanner) {
-        String businessName = "";
+        String businessName = EMPTY_STRING;
 
         while (businessName.isEmpty()) {
             UI.printMessageWithoutNewline(BM_ENTER_NAME_MESSAGE);
 
             if (!scanner.hasNextLine()) {
-                UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
             } else {
                 businessName = scanner.nextLine().trim();
             }
 
             if (businessName.isEmpty()) {
-                UI.printMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
             }
         }
 
@@ -302,19 +377,19 @@ public class BusynessManager {
      * @return The password inputted by the user.
      */
     private String extractPassword(Scanner scanner) {
-        String businessPassword = "";
+        String businessPassword = EMPTY_STRING;
 
         while (businessPassword.isEmpty()) {
             UI.printMessageWithoutNewline(BM_ENTER_PASSWORD_MESSAGE_2);
 
             if (!scanner.hasNextLine()) {
-                UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
             } else {
                 businessPassword = scanner.nextLine().trim();
             }
 
             if (businessPassword.isEmpty()) {
-                UI.printMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printMessage(BM_NO_INPUT_MESSAGE);
             }
         }
 
@@ -334,18 +409,20 @@ public class BusynessManager {
             UI.printMessageWithoutNewline(BM_ENTER_BUSINESS_TYPE_MESSAGE);
 
             if (!scanner.hasNextLine()) {
-                UI.printErrorMessage(BM_NO_INPUT_ERROR_MESSAGE);
+                UI.printErrorMessage(BM_NO_INPUT_MESSAGE);
             } else {
                 String businessTypeString = scanner.nextLine().trim();
 
-                if (businessTypeString.matches(BM_UPPERCASE_REGEX)
+                if (businessTypeString.isEmpty()) {
+                    UI.printMessage(BM_NO_INPUT_MESSAGE);
+                } else if (businessTypeString.matches(BM_UPPERCASE_REGEX)
                         && businessTypeString.equals(BM_BUSINESSTYPE_FNB)) {
                     businessType = BusinessType.FNB;
                 } else if (businessTypeString.matches(BM_UPPERCASE_REGEX)
                         && businessTypeString.equals(BM_BUSINESSTYPE_RETAIL)) {
                     businessType = BusinessType.RETAIL;
                 } else {
-                    UI.printMessage(BM_INVALID_BUSINESSTYPE_ERROR_MESSAGE);
+                    UI.printMessage(BM_INVALID_BUSINESSTYPE_MESSAGE);
                 }
             }
         }
@@ -379,8 +456,8 @@ public class BusynessManager {
             return BM_NO_CREDENTIALS_MESSAGE;
         }
 
-        return BM_ID_TITLE + credentials.getBusinessID() + "\n"
-                + BM_NAME_TITLE + credentials.getBusinessName() + "\n"
+        return BM_ID_TITLE + credentials.getBusinessID() + NEWLINE
+                + BM_NAME_TITLE + credentials.getBusinessName() + NEWLINE
                 + BM_TYPE_TITLE + credentials.getBusinessType();
     }
 

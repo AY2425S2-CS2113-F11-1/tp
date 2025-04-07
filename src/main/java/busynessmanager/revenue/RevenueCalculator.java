@@ -1,4 +1,4 @@
-//@@author LEESY02
+// @@author LEESY02
 package busynessmanager.revenue;
 
 import busynessmanager.product.Product;
@@ -36,16 +36,14 @@ public class RevenueCalculator {
      * Sums up the total revenue of all Products in the SalesManager (which has an InventoryManager).
      */
     public double computeTotalRevenue() {
-        InventoryManager currentInventory = sm.getInventory();
-        HashMap<String, Product> currentProductList = currentInventory.returnProductList();
+        HashMap<String, Product> currentProductList = returnProductList();
 
         double totalRevenue = MINIMUM_VALUE;
 
         for (Product product : currentProductList.values()) {
-            double individualRevenue = product.getPrice() * product.getQuantitySold();
+            double individualRevenue = computeIndividualRevenue(product);
 
-            UI.printFormattedMessage(RC_INDIVIDUAL_REVENUE_FORMAT + NEWLINE,
-                    product.getName(), individualRevenue);
+            printProductRevenue(product, individualRevenue);
 
             totalRevenue += individualRevenue;
         }
@@ -63,8 +61,7 @@ public class RevenueCalculator {
      * @param id The String ID of the product to be queried.
      */
     public double computeProductRevenue(String id) {
-        InventoryManager currentInventory = sm.getInventory();
-        HashMap<String, Product> currentProductList = currentInventory.returnProductList();
+        HashMap<String, Product> currentProductList = returnProductList();
 
         Product product;
 
@@ -75,11 +72,47 @@ public class RevenueCalculator {
             return MINIMUM_VALUE;
         }
 
-        double individualRevenue = product.getPrice() * product.getQuantitySold();
+        double individualRevenue = computeIndividualRevenue(product);
 
-        UI.printFormattedMessage(RC_INDIVIDUAL_REVENUE_FORMAT + NEWLINE,
-            product.getName(), individualRevenue);
+        assert individualRevenue >= MINIMUM_VALUE;
+
+        printProductRevenue(product, individualRevenue);
 
         return individualRevenue;
+    }
+
+    /**
+     * Returns the Hashmap containing the String ID (key) and Product (value) of the current SalesManager instantiated
+     * in the project
+     *
+     * @return The Hashmap of String IDs and Product products
+     */
+    private HashMap<String, Product> returnProductList() {
+        InventoryManager currentInventory = sm.getInventory();
+
+        return currentInventory.returnProductList();
+    }
+
+    /**
+     * Sub-method of computeProductRevenue
+     * Calculates the revenue of a given product
+     *
+     * @param product The product to be calculated
+     * @return The revenue of the product
+     */
+    private double computeIndividualRevenue(Product product) {
+        return product.getRevenue();
+    }
+
+    /**
+     * Sub-method of computeProductRevenue
+     * Prints the revenue earned from the specified product
+     *
+     * @param product The product to be printed
+     * @param individualRevenue The revenue earned from the product
+     */
+    private void printProductRevenue(Product product, double individualRevenue) {
+        UI.printFormattedMessage(RC_INDIVIDUAL_REVENUE_FORMAT + NEWLINE,
+            product.getName(), individualRevenue);
     }
 }

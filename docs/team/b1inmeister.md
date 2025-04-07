@@ -3,7 +3,7 @@
 
 ## Overview of Project: Busyness Manager
 Busyness Manager is a CLI-based inventory management application designed to help businesses track inventory, manage
-sales, and compute revenue. The project is written in Java (~2.5kLoC) and incorporates authentication, secure data
+sales, and compute revenue. The project is written in Java (~4.7kLoC) and incorporates authentication, secure data
 handling, and structured command processing.
 
 ### Summary of Contributions
@@ -37,6 +37,7 @@ handling, and structured command processing.
 
 * Conducted automated text UI testing for Busyness Manager.
 * Created JUnit tests for methods relevant to parsing.
+* Resolved bugs from PE-D (#165 to #183)
 
 ---
 
@@ -45,6 +46,7 @@ handling, and structured command processing.
 > _User Guide:_
 
   * Checked User Guide for irregularities before submission.
+  * Added Known Bugs section and justified the presence of these bugs.
 
 > _Developer's Guide:_
 
@@ -66,6 +68,6 @@ handling, and structured command processing.
 **Contributions to Community / Review Tasks:**
 
 * PRs Reviewed: [#66](https://github.com/AY2425S2-CS2113-F11-1/tp/pull/66#pullrequestreview-2681532166),
-  [#71](https://github.com/AY2425S2-CS2113-F11-1/tp/pull/71#pullrequestreview-2688719182),
-  [#126](https://github.com/AY2425S2-CS2113-F11-1/tp/pull/126#pullrequestreview-2709859483)
+                [#71](https://github.com/AY2425S2-CS2113-F11-1/tp/pull/71#pullrequestreview-2688719182),
+                [#126](https://github.com/AY2425S2-CS2113-F11-1/tp/pull/126#pullrequestreview-2709859483)
 * Usage of Course Forum: [#27](https://github.com/nus-cs2113-AY2425S2/forum/issues/27#issue-2931206666)

@@ -11,9 +11,10 @@
      Splitting user input String
  end ref
 
- group sd Executing the command [command = "add"]
+ group sd Executing the command [command = "update"]
      cp -> cp ++ #orange : executeCommand(command, info)
-     cp -> cp ++ #yellow : addProduct(info)
+     cp -> cp ++ #yellow : updateProduct(info)
+
      ref over cp, m
          Manipulating the information
      end ref

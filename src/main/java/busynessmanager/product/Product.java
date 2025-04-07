@@ -6,7 +6,6 @@ import static busynessmanager.constants.Constants.INDEX_1;
 import static busynessmanager.constants.Constants.ID_FORMAT;
 import static busynessmanager.constants.Constants.PRODUCT_FORMAT;
 
-
 /**
  * Represents a product in the inventory.
  * Each product has a unique ID, name, quantity, quantity sold, and price.
@@ -18,7 +17,7 @@ public class Product {
     private int quantity;
     private int quantitySold;
     private double price;
-
+    private double revenue;
 
     /**
      * Constructs a new Product with the specified name, quantity, and price.
@@ -34,26 +33,39 @@ public class Product {
         this.quantity = quantity;
         this.quantitySold = INDEX_0;
         this.price = price;
+        revenue = INDEX_0;
     }
 
     /**
-     * Constructs a new Product with the specified name, quantity, quantity sold and price.
+     * Constructs a new Product with the specified ID, name, quantity, quantity sold and price.
      * This constructor is used when loading from the text file.
      *
+     * @param id     The ID of the product.
      * @param name     The name of the product.
      * @param quantity The initial stock quantity of the product.
      * @param quantitySold The amount of the product that was sold.
      * @param price    The price of the product.
      */
-    public Product(String name, int quantity, int quantitySold, double price) {
-        this.id = String.format(ID_FORMAT, idCounter++); // Generates unique ID like ID_0001
+    public Product(String id, String name, int quantity, int quantitySold, double price, double revenue) {
+        this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.quantitySold = quantitySold;
         this.price = price;
+        this.revenue = revenue;
     }
 
+    // @@author LEESY02
+    /**
+     * Sets the idCounter value to the given input
+     *
+     * @param newCounter The new idCounter value
+     */
+    public static void setIdCounter(int newCounter) {
+        idCounter = newCounter;
+    }
 
+    //@@author himethcodes
     /**
      * Gets the unique product ID.
      *
@@ -99,6 +111,17 @@ public class Product {
         return price;
     }
 
+    //@@author LEESY02
+    /**
+     * Gets the revenue earned from this product thus far
+     *
+     * @return The revenue
+     */
+    public double getRevenue() {
+        return revenue;
+    }
+
+    //@@author himethcodes
     /**
      * Sets the name of the product.
      *
@@ -135,6 +158,17 @@ public class Product {
         this.price = price;
     }
 
+    //@@author LEESY02
+    /**
+     * Sets the revenue earned from this product
+     *
+     * @param newRevenue The new revenue
+     */
+    public void setRevenue(double newRevenue) {
+        this.revenue = newRevenue;
+    }
+
+    //@@author himethcodes
     /**
      * Returns a formatted string representation of the product.
      *
