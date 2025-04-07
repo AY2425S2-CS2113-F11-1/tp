@@ -24,6 +24,7 @@ public class Constants {
     public static final int INDEX_3 = 3;
     public static final int INDEX_4 = 4;
     public static final int INDEX_5 = 5;
+    public static final int INDEX_6 = 6;
     public static final String DATA_FOLDER = "data";
     public static final String BUSINESS_INFO_FILE = "data/%s.txt";
     public static final String PRODUCT_NOT_FOUND_FORMAT = "Product with ID %s not found.";

@@ -101,7 +101,7 @@ public class RevenueCalculator {
      * @return The revenue of the product
      */
     private double computeIndividualRevenue(Product product) {
-        return product.getPrice() * product.getQuantitySold();
+        return product.getRevenue() /* + product.getPrice() * product.getQuantitySold()*/;
     }
 
     /**
