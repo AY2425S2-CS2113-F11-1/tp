@@ -8,6 +8,7 @@
    [First-Time Setup](#first-time-setup).
      * Input  "**yes**" to proceed with First-Time Setup and create a new business account.
      * Input anything else to terminate Busyness Manager and restart.
+     * This sign-in process allows users to register multiple businesses on one device.
 2. Enter business ID.
 3. Enter business password.
    * If ID and password are correct, message stating that login is successful will be shown.
