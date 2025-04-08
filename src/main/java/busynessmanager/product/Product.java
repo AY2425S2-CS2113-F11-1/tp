@@ -6,6 +6,7 @@ import static busynessmanager.constants.Constants.INDEX_1;
 import static busynessmanager.constants.Constants.ID_FORMAT;
 import static busynessmanager.constants.Constants.PRODUCT_FORMAT;
 
+
 /**
  * Represents a product in the inventory.
  * Each product has a unique ID, name, quantity, quantity sold, and price.
@@ -18,6 +19,7 @@ public class Product {
     private int quantitySold;
     private double price;
     private double revenue;
+
 
     /**
      * Constructs a new Product with the specified name, quantity, and price.
@@ -55,11 +57,12 @@ public class Product {
         this.revenue = revenue;
     }
 
+
     // @@author LEESY02
     /**
-     * Sets the idCounter value to the given input
+     * Sets the idCounter value to the given input.
      *
-     * @param newCounter The new idCounter value
+     * @param newCounter The new idCounter value.
      */
     public static void setIdCounter(int newCounter) {
         idCounter = newCounter;
@@ -160,9 +163,9 @@ public class Product {
 
     //@@author LEESY02
     /**
-     * Sets the revenue earned from this product
+     * Sets the revenue earned from this product.
      *
-     * @param newRevenue The new revenue
+     * @param newRevenue The new revenue.
      */
     public void setRevenue(double newRevenue) {
         this.revenue = newRevenue;

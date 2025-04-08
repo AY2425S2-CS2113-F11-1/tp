@@ -1,21 +1,21 @@
 Welcome to Busyness Manager!
 Please enter your business name: Error: There is no input detected. Please try again.
-Please enter your business name: Do you want to add your business?
+Please enter your business name: This business name does not exist in Busyness Manager. Do you want to add your business?
 (Enter "yes" to create a new account / Enter any other input to exit Busyness Manager) Enter Business ID: Error: There is no input detected. Please try again.
-Enter Business ID: Enter Business Name: Error: There is no input detected. Please try again.
-Enter Business Name: Enter Business Password: Error: There is no input detected. Please try again.
+Enter Business ID: Error: The business ID provided must only contain numbers. Please try again.
+Enter Business ID: Enter Business Password: Error: There is no input detected. Please try again.
 Enter Business Password: Enter Business Type (FNB/RETAIL): Error: There is no input detected. Please try again.
 Enter Business Type (FNB/RETAIL): Error: The business type provided is invalid. Please try again.
 Enter Business Type (FNB/RETAIL): Business setup complete!
 Busyness Manager is ready. Type 'help' for commands.
 >add         add <Name> <Quantity> <Price>                   (Add new product to list)
 delete      delete <ID number>                              (Delete existing product)
-update      update <ID number> <flag> <Updated value>       (Update product, flags: /name /quantity /price)
+update      update <ID number> <Flag> <Updated value>       (Update product, flags: /name /quantity /price)
 list        list                                            (Print list of products)
 sold        sold <ID number> <Quantity sold>                (Mark some products as sold)
 clear       clear <ID number>                               (Clear current sales)
 revenue     revenue OR revenue <ID number>                  (Check revenue)
-search      search /name <name> OR search /id <number>      (Look for specific product)
+search      search /name <Name> OR search /id <ID number>   (Look for specific product)
 exit        exit                                            (Exit application)
 >Error: Invalid format. add <name> <quantity> <price>.
 >Error: Invalid format. add <name> <quantity> <price>.

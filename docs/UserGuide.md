@@ -1,39 +1,12 @@
 <!-- @@author amirhusaini06 -->
 # User Guide for Busyness Manager
 
-## Sign-In Process:
-
-1. Enter business name.
-   * If business name does not exist in Busyness Manager, user will be asked for permission to start 
-   [First-Time Setup](#first-time-setup).
-     * Input  "**yes**" to proceed with First-Time Setup and create a new business account.
-     * Input anything else to terminate Busyness Manager and restart.
-     * This sign-in process allows users to register multiple businesses on one device.
-2. Enter business ID.
-3. Enter business password.
-   * If ID and password are correct, message stating that login is successful will be shown.
-   * If ID and/or password are incorrect, user will be asked if they have forgotten their ID and password.
-     * Input "**yes**" to display the business ID and password. (Busyness Manager will terminate after showing)
-     * Input anything else to terminate Busyness Manager and restart.
-
-## First-Time Setup:
-
-1. Enter business ID. (A **whole number**)
-2. Enter business name. (A **set of words**)
-3. Enter business password. (A **sequence of characters**)
-4. Enter business type: FNB or RETAIL. (**case-sensitive**)
-5. Message stating that the setup is successful is shown.
-
-**Note:** If the user wants to edit these Credentials information, they may do so within the `data/<business name>.txt` 
-file. However, **there is no guarantee that Busyness Manager will work as intended after any kinds of modifications to
-the `.txt` file**. This issue will be improved in subsequent versions.
-
 ## Features:
 
 * **Login**
   * Requires business ID and password.
   * Subsequent features can be accessed after logging in.
-  * Password can be retrieved.
+  * ID / Password can be retrieved.
 
 * **Viewing Help:** `help`
   * Provides possible command instructions and expected formatting.
@@ -67,19 +40,51 @@ the `.txt` file**. This issue will be improved in subsequent versions.
 
 ---
 
+## Initialisation:
+
+### Sign-In Process
+
+1. Enter business name.
+  * If business name does not exist in Busyness Manager, user will be asked for permission to start
+    [First-Time Setup](#first-time-setup).
+    * Input  "**yes**" to proceed with First-Time Setup and create a new business account.
+    * Input anything else to terminate Busyness Manager and restart.
+    * This sign-in process allows users to register multiple businesses on one device.
+2. Enter business ID.
+3. Enter business password.
+  * If ID and password are correct, message stating that login is successful will be shown.
+  * If ID and/or password are incorrect, user will be asked if they have forgotten their ID and password.
+    * Input "**yes**" to display the business ID and password. (Busyness Manager will terminate after showing)
+    * Input anything else to terminate Busyness Manager and restart.
+
+### First-Time Setup
+
+1. Enter business ID. (A **set of digits**)
+2. Enter business password. (A **sequence of characters**)
+3. Enter business type: FNB or RETAIL. (**case-sensitive**)
+4. Message stating that the setup is successful is shown.
+
+**Note:** If the user wants to edit these Credentials information, they may do so within the `data/<business name>.txt`
+file. However, **there is no guarantee that Busyness Manager will work as intended after any kinds of modifications to
+the `.txt` file**. This issue will be improved in subsequent versions.
+
+---
+
 ## Command Summary:
 
-**Important things to take note:**
+### Important things to take note:
 
 * There must always be **ONE SPACE** between any command *(e.g. update)*, flag *(e.g. /name)*, and value *(e.g. MILK)*.
 * Add a **slash** (`/`) in front of any flag.
 * To input ID of product, just the **non-zero part** will suffice. *(i.e. 1 instead of ID_0001)*
 * Quantity of all products must be a **WHOLE** number under 1 million.
 * Price of all products can be up to **2 DECIMAL PLACES**, and must be under $1 million.
-* Names of all products must be **ONE-WORD** long. (further explained [below](#known-bugs))
-* IDs will **NOT** be usable after deletion. (further explained [below](#known-bugs)) 
+* Names of all products must be **ONE WORD** long. (further explained [below](#known-bugs))
+* IDs will **NOT** be usable again after deletion. (further explained [below](#known-bugs)) 
 
-### **Adding a Product**
+---
+
+### Adding a Product
 
 > `add P_NAME P_QTY P_PRICE`
 
@@ -87,7 +92,7 @@ the `.txt` file**. This issue will be improved in subsequent versions.
 * Values:
   * `P_NAME` →  Name of the product to create. *(must be **one-word only**)*
   * `P_QTY` → Quantity of the product to create that is available for sale. *(must be **whole number**)*
-  * `P_PRICE` → Price of the product to create. *(must be **2 decimal places**)*
+  * `P_PRICE` → Price of the product to create. *(up to **2 decimal places**)*
 
 **Example:**
 * Input -> `add MILK 50 2.50`
@@ -95,7 +100,7 @@ the `.txt` file**. This issue will be improved in subsequent versions.
 
 ---
 
-### **Deleting a Product**
+### Deleting a Product
 
 > `delete P_ID`
 
@@ -110,11 +115,11 @@ the `.txt` file**. This issue will be improved in subsequent versions.
 
 ---
 
-### **Updating a Product Name**
+### Updating a Product Name
 
 > `update P_ID /name NEW_NAME`
 
-* Changes one or more attributes of a specified product.
+* Changes the name of a specified product.
 * Flags:
   * `/name` → Flag to indicate the attribute to edit is the product name.
 * Values: 
@@ -128,11 +133,11 @@ the `.txt` file**. This issue will be improved in subsequent versions.
 
 ---
 
-### **Updating a Product Quantity**
+### Updating a Product Quantity
 
 > `update P_ID /qty NEW_QTY`
 
-* Changes one or more attributes of a specified product.
+* Changes the quantity of a specified product.
 * Flags:
   * `/qty` → Flag to indicate the attribute to edit is the product quantity.
 * Values:
@@ -146,16 +151,16 @@ the `.txt` file**. This issue will be improved in subsequent versions.
 
 ---
 
-### **Updating a Product Price**
+### Updating a Product Price
 
 > `update P_ID /price NEW_PRICE`
 
-* Changes one or more attributes of a specified product.
+* Changes the price of a specified product.
 * Flags:
   * `/price` → Flag to indicate the attribute to edit is the product price.
 * Values:
   * `P_ID` → ID of the product to modify. *(just the non-zero part will suffice)*
-  * `NEW_PRICE` → New price of the product to modify. *(must be **2 decimal places**)*
+  * `NEW_PRICE` → New price of the product to modify. *(up to **2 decimal places**)*
 
 **Example:**
 
@@ -164,7 +169,7 @@ the `.txt` file**. This issue will be improved in subsequent versions.
 
 ---
 
-### **Printing Product List**
+### Printing Product List
 
 > `list`
 
@@ -185,7 +190,7 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 ---
 
-### **Recording a Sale**
+### Recording a Sale
 
 > `sold P_ID QTY_SOLD`
 
@@ -201,11 +206,13 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 ---
 
-### **Clearing Sold Quantity**
+### Clearing Sold Quantity
 
 > `clear P_ID`
 
-* Sets the quantity sold to zero for the specified product.
+* Sets the quantity sold to zero for the specified product. *(this can be conducted during scenarios such as clearing 
+historical sales)*
+* *Note:* This will also reset the revenue generated by this product to zero as well.
 * Values:
   * `P_ID` → ID of the product to clear. *(just the non-zero part will suffice)*
 
@@ -216,7 +223,8 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 ---
 <!-- @@author himethcodes -->
-### **Computing Revenue**
+
+### Computing Revenue
 
 > `revenue` / `revenue P_ID`
 
@@ -235,7 +243,8 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 ---
 <!-- @@author rozaliesmit -->
-### **Searching for a Product by Name**
+
+### Searching for a Product by Name
 
 > `search /name P_NAME`
 
@@ -252,7 +261,8 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 
 ---
 <!-- @@author LEESY02 -->
-### **Searching for a Product by ID**
+
+### Searching for a Product by ID
 
 > `search /id P_ID`
 
@@ -267,14 +277,16 @@ _Format of Product List:_ `ID_NUMBER: PRODUCT_NAME | QTY | QTY_SOLD | PRICE`
 * Input -> `search /id 1`
 * Output -> `ID_0001: FRESH_MILK | Qty: 60 | Sold: 0 | Price: $3.00`
 
+---
 <!-- @@author b1inmeister -->
+
 ## Known Bugs:
 
 1. The names of all products in the inventory must be one-word only. This means that names like *fresh milk* and *cheese
 tofu* are not accepted. To add products with names like these, the space in their names must be replaced by underscores.
 For instance, *fresh milk* must be replaced by **fresh_milk**, and *cheese tofu* must be replaced by **cheese_tofu**.
 This bug is due to implementation limitations, and will be addressed in future versions.
-2. After an ID is deleted, it will not be usable within that business's inventory. While this may be a bug to some 
+2. After an ID is deleted, it will not be usable again within that business's inventory. While this may be a bug to some 
 users, this is by design. In the context of business operations, product IDs ought not to be re-used for data integrity
 purposes. Furthermore, in databases like our inventory, there is the need to ensure that the primary keys in databases, 
 which in this case are the product IDs, are unique and immutable. Thus, in Busyness Manager, the product IDs will not be
