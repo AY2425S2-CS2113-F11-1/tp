@@ -34,7 +34,7 @@ application {
 
 shadowJar {
     archiveBaseName = 'BusynessManager'
-    archiveVersion = '2.0'
+    archiveVersion = '2.1'
 }
 
 checkstyle {

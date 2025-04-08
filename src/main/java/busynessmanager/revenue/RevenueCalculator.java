@@ -83,9 +83,9 @@ public class RevenueCalculator {
 
     /**
      * Returns the Hashmap containing the String ID (key) and Product (value) of the current SalesManager instantiated
-     * in the project
+     * in the project.
      *
-     * @return The Hashmap of String IDs and Product products
+     * @return The Hashmap of String IDs and Product products.
      */
     private HashMap<String, Product> returnProductList() {
         InventoryManager currentInventory = sm.getInventory();
@@ -94,22 +94,22 @@ public class RevenueCalculator {
     }
 
     /**
-     * Sub-method of computeProductRevenue
-     * Calculates the revenue of a given product
+     * Sub-method of computeProductRevenue.
+     * Calculates the revenue of a given product.
      *
-     * @param product The product to be calculated
-     * @return The revenue of the product
+     * @param product The product to be calculated.
+     * @return The revenue of the product.
      */
     private double computeIndividualRevenue(Product product) {
         return product.getRevenue();
     }
 
     /**
-     * Sub-method of computeProductRevenue
-     * Prints the revenue earned from the specified product
+     * Sub-method of computeProductRevenue.
+     * Prints the revenue earned from the specified product.
      *
-     * @param product The product to be printed
-     * @param individualRevenue The revenue earned from the product
+     * @param product The product to be printed.
+     * @param individualRevenue The revenue earned from the product.
      */
     private void printProductRevenue(Product product, double individualRevenue) {
         UI.printFormattedMessage(RC_INDIVIDUAL_REVENUE_FORMAT + NEWLINE,

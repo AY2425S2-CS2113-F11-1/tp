@@ -558,6 +558,7 @@ public class CommandParserTest {
         }
     }
 
+
     /*
      * clearSales()
      */
@@ -719,6 +720,7 @@ public class CommandParserTest {
                 new CommandParser().splitInfo("/name MILK"));
     }
 
+
     /*
      * parseInt()
      */
@@ -757,6 +759,7 @@ public class CommandParserTest {
             assertEquals("Conversion to a number has failed.", e.getMessage());
         }
     }
+
 
     /*
      * parseDouble()

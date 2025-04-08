@@ -5,9 +5,9 @@ import busynessmanager.ui.UI;
 
 import static busynessmanager.constants.Constants.MINIMUM_VALUE;
 import static busynessmanager.constants.Constants.NEWLINE;
-import static busynessmanager.constants.Constants.SM_MINIMUM_QTY_SOLD_MESSAGE;
-import static busynessmanager.constants.Constants.SM_CLEARED_FORMAT;
-import static busynessmanager.constants.Constants.SM_RECORDED_FORMAT;
+import static busynessmanager.constants.Constants.SM_MIN_QTY_SOLD_MESSAGE;
+import static busynessmanager.constants.Constants.SM_CLEAR_FORMAT;
+import static busynessmanager.constants.Constants.SM_RECORD_FORMAT;
 
 
 /**
@@ -41,21 +41,21 @@ public class SalesManager {
         boolean isSuccess = inventory.updateProductQuantity(id, qtySold);
 
         if (isSuccess) {
-            UI.printFormattedMessage(SM_RECORDED_FORMAT + NEWLINE, id, qtySold);
+            UI.printFormattedMessage(SM_RECORD_FORMAT + NEWLINE, id, qtySold);
             inventory.updateRevenue(id, qtySold);
         }
     }
 
     //@@author LEESY02
     /**
-     * Checks if the input integer is invalid (Lesser or equals to zero)
+     * Checks if the input integer is invalid (Lesser or equals to zero).
      *
-     * @param qtySold The integer to be tested
-     * @return Returns true if integer is below or equals 0
+     * @param qtySold The integer to be tested.
+     * @return Returns true if integer is below or equals 0.
      */
     private boolean checkIfInvalidQuantity(int qtySold) {
         if (qtySold <= MINIMUM_VALUE) {
-            UI.printMessage(SM_MINIMUM_QTY_SOLD_MESSAGE);
+            UI.printMessage(SM_MIN_QTY_SOLD_MESSAGE);
             return true;
         }
 
@@ -72,7 +72,7 @@ public class SalesManager {
         boolean isSuccess = inventory.resetProductSales(id);
 
         if (isSuccess) {
-            UI.printFormattedMessage(SM_CLEARED_FORMAT + NEWLINE, id);
+            UI.printFormattedMessage(SM_CLEAR_FORMAT + NEWLINE, id);
         }
     }
 

@@ -1,7 +1,6 @@
 //@@author b1inmeister
 package busynessmanager.parser;
 
-import busynessmanager.BusynessManager;
 import busynessmanager.managers.InventoryManager;
 import busynessmanager.managers.SalesManager;
 import busynessmanager.managers.SearchManager;
@@ -27,10 +26,9 @@ import static busynessmanager.constants.Constants.INDEX_3;
 import static busynessmanager.constants.Constants.HELP_LIST;
 import static busynessmanager.constants.Constants.ID_FORMAT;
 import static busynessmanager.constants.Constants.CP_NAME;
+import static busynessmanager.constants.Constants.CP_SPLIT_REGEX;
 import static busynessmanager.constants.Constants.CP_COMMAND_SEPARATOR_INDEX;
 import static busynessmanager.constants.Constants.CP_ASSERTION_FAIL_INDEX;
-import static busynessmanager.constants.Constants.CP_CREDENTIALS_TITLE;
-import static busynessmanager.constants.Constants.CP_INVENTORY_TITLE;
 import static busynessmanager.constants.Constants.CP_HELP_COMMAND;
 import static busynessmanager.constants.Constants.CP_ADD_COMMAND;
 import static busynessmanager.constants.Constants.CP_DELETE_COMMAND;
@@ -40,7 +38,6 @@ import static busynessmanager.constants.Constants.CP_SOLD_COMMAND;
 import static busynessmanager.constants.Constants.CP_CLEAR_COMMAND;
 import static busynessmanager.constants.Constants.CP_REVENUE_COMMAND;
 import static busynessmanager.constants.Constants.CP_SEARCH_COMMAND;
-import static busynessmanager.constants.Constants.CP_SPLIT_REGEX;
 import static busynessmanager.constants.Constants.CP_ID_FLAG;
 import static busynessmanager.constants.Constants.CP_NAME_FLAG;
 import static busynessmanager.constants.Constants.CP_PRICE_FLAG;
@@ -53,12 +50,11 @@ import static busynessmanager.constants.Constants.CP_INVALID_COMMAND_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_ID_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE;
 import static busynessmanager.constants.Constants.CP_INVALID_NUMERAL_MESSAGE_2;
+import static busynessmanager.constants.Constants.CP_INVALID_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.CP_ID_ABSENT_MESSAGE;
 import static busynessmanager.constants.Constants.CP_ID_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_NAME_MISSING_MESSAGE;
 import static busynessmanager.constants.Constants.CP_LOG_MESSAGE;
-import static busynessmanager.constants.Constants.CP_READ_BUSINESS_INFO_COMMAND;
-import static busynessmanager.constants.Constants.CP_INVALID_PRICE_MESSAGE;
 
 
 /**
@@ -182,6 +178,7 @@ public class CommandParser {
      *
      * @param command Command keyword from the user input.
      * @param info Information related to the command keyword.
+     * @throws InvalidCommandException If the command inputted does not exist.
      */
     protected void executeCommand(String command, String info) throws InvalidCommandException {
         switch (command) {
@@ -212,9 +209,6 @@ public class CommandParser {
         case CP_SEARCH_COMMAND:
             searchForProduct(info);
             break;
-        case CP_READ_BUSINESS_INFO_COMMAND:
-            readBusinessInfo();
-            break;
         default:
             throw new InvalidCommandException(CP_INVALID_COMMAND_MESSAGE);
         }
@@ -236,6 +230,7 @@ public class CommandParser {
      */
     protected void addProduct(String info) throws InvalidCommandException {
         String[] components = splitInfo(info);
+
         String productName;
         int productQuantity;
         double productPrice;
@@ -376,20 +371,18 @@ public class CommandParser {
      */
     private void updateBasedOnFlags(String[] components, int productIDNumber) throws InvalidCommandException {
         try {
-            String productNewName;
-            int productNewQuantity;
-            double productNewPrice;
-
             String productID = String.format(ID_FORMAT, productIDNumber);
             String productFlag = components[INDEX_1].toLowerCase();
 
             switch (productFlag) {
             case CP_NAME_FLAG:
-                productNewName = components[INDEX_2];
+                String productNewName = components[INDEX_2];
 
                 inventoryManager.updateName(productID, productNewName);
                 break;
             case CP_QUANTITY_FLAG:
+                int productNewQuantity;
+
                 try {
                     productNewQuantity = parseInt(components[INDEX_2]);
                 } catch (NumberParsingFailedException e) {
@@ -399,6 +392,8 @@ public class CommandParser {
                 inventoryManager.updateQty(productID, productNewQuantity);
                 break;
             case CP_PRICE_FLAG:
+                double productNewPrice;
+
                 try {
                     productNewPrice = parseDouble(components[INDEX_2]);
                 } catch (NumberParsingFailedException e) {
@@ -433,6 +428,7 @@ public class CommandParser {
     /**
      * Splits the information String into the product ID, and amount of product that was sold.
      * It then calls recordSale() from the SalesManager class.
+     *
      * @param info Information related to the command keyword.
      * @throws InvalidCommandException If the user input is of the wrong format.
      */
@@ -652,16 +648,5 @@ public class CommandParser {
         } catch (NumberFormatException e) {
             throw new NumberParsingFailedException();
         }
-    }
-
-    /**
-     * Reads business credentials and inventory from BusinessInfo.txt.
-     */
-    protected void readBusinessInfo() {
-        BusynessManager busynessManager = new BusynessManager();
-
-        UI.printMessage(CP_CREDENTIALS_TITLE + busynessManager.getBusinessDetails());
-        UI.printMessage(CP_INVENTORY_TITLE);
-        busynessManager.getInventoryManager().printProducts();
     }
 }

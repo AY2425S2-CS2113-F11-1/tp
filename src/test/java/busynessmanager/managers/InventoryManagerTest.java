@@ -29,6 +29,7 @@ public class InventoryManagerTest {
     @Test
     public void addProduct_addItemTest_success() {
         im.addProduct("bean", 100, 0.6);
+
         assertEquals(
             "ID_0002: bean | Qty: 100 | Sold: 0 | Price: $0.60",
             im.returnProductList().get("ID_0002").toString()
@@ -45,7 +46,6 @@ public class InventoryManagerTest {
             "ID_0004: bingbangbong | Qty: 1 | Sold: 0 | Price: $10000.00",
             im.returnProductList().get("ID_0004").toString()
         );
-
     }
 
     @Test
@@ -89,5 +89,4 @@ public class InventoryManagerTest {
             );
         }
     }
-
 }

@@ -25,13 +25,13 @@ import static busynessmanager.constants.Constants.IM_LIST;
 import static busynessmanager.constants.Constants.IM_EMPTY_MESSAGE;
 import static busynessmanager.constants.Constants.IM_ADD_FORMAT;
 import static busynessmanager.constants.Constants.IM_REMOVE_FORMAT;
-import static busynessmanager.constants.Constants.IM_UPDATED_FORMAT;
+import static busynessmanager.constants.Constants.IM_UPDATE_FORMAT;
 import static busynessmanager.constants.Constants.IM_NAME_EXISTS_FORMAT;
 import static busynessmanager.constants.Constants.IM_QTY_SOLD_ZERO_FORMAT;
 import static busynessmanager.constants.Constants.IM_NEGATIVE_QTY_PRICE_MESSAGE;
+import static busynessmanager.constants.Constants.IM_MAX_QTY_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.IM_ZERO_PRICE_MESSAGE;
 import static busynessmanager.constants.Constants.IM_QTY_EXCEED_MESSAGE;
-import static busynessmanager.constants.Constants.IM_MAX_QTY_PRICE_MESSAGE;
 
 
 /**
@@ -120,7 +120,7 @@ public class InventoryManager {
                 product.setPrice(price);
             }
 
-            UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
+            UI.printFormattedMessage(IM_UPDATE_FORMAT + NEWLINE, product.toString());
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
@@ -139,7 +139,7 @@ public class InventoryManager {
 
             product.setName(name);
 
-            UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
+            UI.printFormattedMessage(IM_UPDATE_FORMAT + NEWLINE, product.toString());
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
@@ -165,7 +165,7 @@ public class InventoryManager {
                 product.setQuantity(qty);
             }
 
-            UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
+            UI.printFormattedMessage(IM_UPDATE_FORMAT + NEWLINE, product.toString());
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
@@ -194,7 +194,7 @@ public class InventoryManager {
                 product.setPrice(price);
             }
 
-            UI.printFormattedMessage(IM_UPDATED_FORMAT + NEWLINE, product.toString());
+            UI.printFormattedMessage(IM_UPDATE_FORMAT + NEWLINE, product.toString());
         } else {
             UI.printFormattedMessage(PRODUCT_NOT_FOUND_FORMAT + NEWLINE, id);
         }
@@ -267,6 +267,7 @@ public class InventoryManager {
                 return false;
             } else {
                 productList.get(id).setQuantitySold(MINIMUM_VALUE);
+                productList.get(id).setRevenue(MINIMUM_VALUE);
                 return true;
             }
         } else {
@@ -308,14 +309,14 @@ public class InventoryManager {
         StringBuilder data = new StringBuilder();
 
         productList.entrySet().stream()
-            .sorted(Map.Entry.comparingByKey())
-            .map(entry -> entry.getValue())
-            .forEach(product -> data.append(product.getId()).append(FILE_REGEX)
-                .append(product.getName()).append(FILE_REGEX)
-                .append(product.getQuantity()).append(FILE_REGEX)
-                .append(product.getQuantitySold()).append(FILE_REGEX)
-                .append(product.getPrice()).append(FILE_REGEX)
-                .append(product.getRevenue()).append(NEWLINE));
+                .sorted(Map.Entry.comparingByKey())
+                .map(entry -> entry.getValue())
+                .forEach(product -> data.append(product.getId()).append(FILE_REGEX)
+                        .append(product.getName()).append(FILE_REGEX)
+                        .append(product.getQuantity()).append(FILE_REGEX)
+                        .append(product.getQuantitySold()).append(FILE_REGEX)
+                        .append(product.getPrice()).append(FILE_REGEX)
+                        .append(product.getRevenue()).append(NEWLINE));
 
         return data.toString();
     }
@@ -342,6 +343,7 @@ public class InventoryManager {
 
                 String numberPart = id.substring(INDEX_3);
                 int newIDCounter = Integer.parseInt(numberPart) + INDEX_1;
+
                 productList.put(id, new Product(id, name, quantity, quantitySold, price, revenue));
                 Product.setIdCounter(newIDCounter);
             }
