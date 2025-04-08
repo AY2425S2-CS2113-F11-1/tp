@@ -5,7 +5,7 @@ skinparam sequenceReferenceBackgroundColor #
 participant "cp:CommandParser" as cp
 participant ":Manager" as m
 
-cp -> cp ++ #yellow : updateProduct(info)
+cp -> cp ++ #yellow : addProduct(info)
 
 group sd Manipulating the information
     cp -> cp ++ #green : splitInfo(info)

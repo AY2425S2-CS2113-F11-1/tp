@@ -6,11 +6,12 @@
 * [CS2113 individualProject (amirhusaini06)](https://github.com/amirhusaini06/ip)
 
 <!-- @@author b1inmeister -->
-* [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip) 
+* [CS2113 individualProject (b1inmeister)](https://github.com/b1inmeister/ip)
 
 <!-- @@author LEESY02 -->
 * [CS2113 individualProject (LEESY02)](https://github.com/LEESY02/ip) 
 
+---
 
 ## Design
 
@@ -29,9 +30,14 @@ aspects of business management.
 * The **Credentials** class stores business authentication details, ensuring security.
 * The **BusynessManager** acts as the central controller, orchestrating interactions between components.
 
+---
+
 <!-- @@author LEESY02 -->
 **Below is a UML Class Diagram of the Classes present in the application.**
+
 ![](images/BusynessManager_ClassDiagram.png)
+
+---
 
 <!-- @@author amirhusaini06 -->
 ### Key Features & Implementation Details
@@ -79,47 +85,50 @@ output to its users, while the CommandParser class receives inputs and commands 
 All of these features are contained under the main BusynessManager class to provide its users a smooth experience in
 taking care of the different needs of businesses.
 
+---
 
-## Key Implementation
-<!-- @@author LEESY02 -->
+## Implementation
+
 ### BusynessManager class
 
 The `BusynessManager` class is the class with the main() method, it holds and takes care of all relevant classes to run
-the program
+the program.
 
 **Member Variables**
-* **`Credentials credentials`** - Credentials of the logged in Business
-* **`InventoryManager inventoryManager`** - Inventory of the logged in Business
-* **`CommandParser commandParser`** - Instance of CommandParser to run commands based on user inputs
+
+* **`Credentials credentials`** - Credentials of the logged in Business.
+* **`InventoryManager inventoryManager`** - Inventory of the logged in Business.
+* **`CommandParser commandParser`** - Instance of CommandParser to run commands based on user inputs.
 
 **BusynessManager Class Methods**
+
 * **`BusynessManager()`**
-  * Instantiates InventoryManager and CommandParser (and other required classes)
+  * Instantiates InventoryManager and CommandParser. (and other required classes)
 * **`main(String[] args)`**
-  * Starting point of the program, creates and new instance of BusynessManager and calls start()
+  * Starting point of the program, creates and new instance of BusynessManager and calls start().
 * **`start()`**
-  * Receives input of the Business Name from the user
+  * Receives input of the Business Name from the user.
   * If Business exists in the database, calls:
-    * loadBusinessData(String businessName)
-    * login(Scanner scanner, String businessName)
-  * If Business does not exist in the data base, calls: (After prompt)
-    * firstTimeSetup(Scanner scanner)
-  * Calls run(Scanner scanner) if the login/setup process is successful
+    * loadBusinessData(businessName)
+    * login(scanner, businessName)
+  * If Business does not exist in the database, calls: (After prompt)
+    * firstTimeSetup(scanner)
+  * Calls run(scanner) if the login/setup process is successful.
 * **`login(Scanner scanner, String businessName)`**
-  * Allows user to proceed if the input Business ID and password matches that in the credentials,
-  * credentials is loaded in from loadBusinessData(String businessName)
+  * Allows user to proceed if the input Business ID and password matches that in the credentials.
+  * Credentials are loaded in from loadBusinessData(businessName).
 * **`firstTimeSetup(Scanner scanner)`**
-  * Sets up a new Business(user) by extracting relevant information 
+  * Sets up a new Business (user) by extracting relevant information.
   * The following private methods are used within this method: 
-    * extractID(Scanner scanner)
-    * extractName(Scanner scanner)
-    * extractPassword(Scanner scanner)
-    * extractBusinessType(Scanner scanner)
+    * extractID(scanner)
+    * extractName(scanner)
+    * extractPassword(scanner)
+    * extractBusinessType(scanner)
 * **`run(Scanner scanner)`**
-  * Receives input from user and passes it to CommandParser to run the actual commands
+  * Receives input from user and passes it to CommandParser to run the actual commands.
 * **`saveBusinessData(String businessName)`**
-  * Saves relevant data into a txt file present in ./data folder
-    * If business name is "Milk Corp", a text file names "Milk Corp.txt" is created in the data folder
+  * Saves relevant data into a txt file present in ./data folder.
+    * If business name is "Milk Corp", a text file names "Milk Corp.txt" is created in the data folder.
   * Relevant data includes:
     * Business ID
     * Business Name
@@ -127,16 +136,19 @@ the program
     * Business type
     * Inventory (Every Product instance and relevant attributes)
 * **`loadBusinessData(String businessName)`**
-  * Loads in business data, based on the data saved by saveBusinessData(String businessName)
+  * Loads in business data, based on the data saved by saveBusinessData(String businessName).
 * **`getBusinessDetails()`**
-  * Used by CommandParser
+  * Used by CommandParser.
 * **`getInventoryManager()`**
-  * Used by CommandParser
+  * Used by CommandParser.
 
 **Interactions with Other Components**
-* **`Credentials`** - `BusynessManager` has an instance of **`Credentials`** for authorizing logins 
-* **`InventoryManager`** - Used to save and load data between `InventoryManager` and data folder
-* **`CommandParser`** - Used to execute various commands
+
+* **`Credentials`** - `BusynessManager` has an instance of **`Credentials`** for authorizing logins.
+* **`InventoryManager`** - Used to save and load data between `InventoryManager` and data folder.
+* **`CommandParser`** - Used to execute various commands.
+
+---
 
 <!-- @@author himethcodes -->
 ### Product class
@@ -169,6 +181,8 @@ The `Product` class represents an individual item in the business inventory. It 
 * **`getRevenue()`**
   * Returns the revenue earned from the product so far.
 
+---
+
 ### InventoryManager class
 
 The `InventoryManager` class manages all `Product` objects in the inventory. It maintains a `HashMap` where the key is
@@ -188,22 +202,23 @@ the product ID, and the value is the corresponding `Product` object.
   * Displays all products in the inventory.
 * **`updateProduct(String id, String name, int qty, double price)`**
   * Updates the details of an existing product.
-  * <!-- @@author LEESY02 --> To update attributes 1 by 1, there are also:
+  <!-- @@author LEESY02 --> 
+  * To update attributes 1 by 1, there are also:
     * updateName(String id, String name)
     * updateQty(String id, int qty)
     * updatePrice(String id, double price)
 * **`updateProductQuantity(String id, int qtySold)`**
-  * Update attributes quantity and quantitySold of the specified product (given by the String id parameter)
+  * Update attributes quantity and quantitySold of the specified product. (given by the String id parameter)
 * **`resetProductSales(String id)`**
-  * Resets attribute quantitySold to 0
-* `**returnProductList()**`
-  * Returns the HashMap containing the ID and Product key-value pairs
-* `**updateRevenue(String id, int qtySold)**`
-  * Updates revenue of Product
-* `**getInventoryData()**`
-  * Returns a String containing the different attributes of all present Product instanes in the HashMap
-* `**loadInventory(BufferedReader reader)**`
-  * Loads a previous saved state into an instance of InventoryManager
+  * Resets attribute quantitySold to 0.
+* **`returnProductList()`**
+  * Returns the HashMap containing the ID and Product key-value pairs.
+* **`updateRevenue(String id, int qtySold)`**
+  * Updates revenue of Product.
+* **`getInventoryData()`**
+  * Returns a String containing the different attributes of all present Product instances in the HashMap.
+* **`loadInventory(BufferedReader reader)`**
+  * Loads a previous saved state into an instance of InventoryManager.
 
 <!-- @@author himethcodes -->
 **Interactions with Other Components**
@@ -213,6 +228,8 @@ the product ID, and the value is the corresponding `Product` object.
 * **`RevenueCalculator`** - Fetches product price and revenue from `InventoryManager` to calculate total revenue.
 * **`CommandParser`** - Calls `InventoryManager` methods based on user input.
 * **`BusynessManager`** - Calls `InventoryManager` methods to load and save business data.
+
+---
 
 <!-- @@author rozaliesmit -->
 ### SalesManager class
@@ -246,9 +263,11 @@ data.
 * **`RevenueCalculator`** - Uses `SalesManager` to compute total sales to compute total and individual product revenue.
 * **`CommandParser`** - Calls `SalesManager` to execute sales-related commands entered by the user.
 
+---
 
 <!-- @@author LEESY02 -->
 ### RevenueCalculator class
+
 The `RevenueCalculator` calculates and displays revenue generated from various transactions.
 
 **Member Variables**
@@ -261,17 +280,17 @@ The `RevenueCalculator` calculates and displays revenue generated from various t
 * **`RevenueCalculator(SalesManager sm)`**
   * Constructs a `RevenueCalculator` class with a given `SalesManager`.
 * **`computeTotalRevenue()`**
-  * Computes the total revenue generated from all Product instances present in InventoryManager 
+  * Computes the total revenue generated from all Product instances present in InventoryManager. 
   (present in SalesManager)
 * **`computeProductRevenue(String id)`**
-  * Computes the revenue generated from the specified Product instance
+  * Computes the revenue generated from the specified Product instance.
 * **`computeIndividualRevenue(Product product)`**
   * A private method that returns the revenue attribute of the given product.
-  * Used by both computeTotalRevenue() and computeProductRevenue(String id)
+  * Used by both computeTotalRevenue() and computeProductRevenue(String id).
 * **`returnProductList()`**
-  * Returns the HashMap containing ID and Product key-value pairs (taken from InventoryManager inside SalesManager)
+  * Returns the HashMap containing ID and Product key-value pairs (taken from InventoryManager inside SalesManager).
 * **`printProductRevenue(Product product, double individualRevenue)`**
-  * A private method that prints out the revenue generated from the given Product instance
+  * A private method that prints out the revenue generated from the given Product instance.
 
 **Interactions with Other Components**
 
@@ -279,8 +298,10 @@ The `RevenueCalculator` calculates and displays revenue generated from various t
   data.
 * **`CommandParser`** - Calls `RevenueCalculator` to execute revenue-related commands entered by the user.
 
+---
 
 ### SearchManager class
+
 The `SearchManager` searches for different Product instances, given the Product's name or ID.
 
 **Member Variables**
@@ -293,20 +314,22 @@ The `SearchManager` searches for different Product instances, given the Product'
 * **`SearchManager(InventoryManager inventory)`**
   * Constructs a `SalesManager` class with a given `InventoryManager`.
 * **`searchByName(String name)`**
-  * Searches for a Product with the given String name
+  * Searches for a Product with the given String name.
 * **`searchById(String id)`**
-  * Searches for a Product with the given String ID
+  * Searches for a Product with the given String ID.
 * **`checkForProductByName(String name, Set<Map.Entry<String, Product>> mapSet)`**
   * A private method that returns true if given String name is present in the Set.
   * Used by searchByName(String name)
 * **`checkForProductById(String id, HashMap<String, Product> currentProductList)`**
   * A private method that returns true if given String ID is present in the HashMap.
-  * Used by searchById(String id)
+  * Used by searchById(String id).
 
 **Interactions with Other Components**
 
 * **`InventoryManager`** - `SearchManager` relies on the `InventoryManager` to search for products.
 * **`CommandParser`** - Calls `SearchManager` to execute search-related commands entered by the user.
+
+---
 
 <!-- @@author b1inmeister -->
 ### CommandParser class
@@ -344,25 +367,26 @@ The 3 steps is as follows:
 
 1. `parseCommand()` calls `executeCommand()`, with the "command" and the "information" as parameters. 
 2. The "command" is passed into a switch statement that determines what command method the parser should execute. 
-   * For example, in the sequence diagram above, if the "command" is the one-word String `update`, the switch statement 
-   will call `updateProduct()` with the "information" as a parameter.
+   * For example, in the sequence diagram above, if the "command" is the one-word String `add`, the switch statement 
+   will call `addProduct()` with the "information" as a parameter.
 
 **Manipulating the information**
 
 ![](images/CommandParser_Ref3.png)
 
-*Note: from here on, it is assumed that `update` is the "command".*
+*Note: from here on, it is assumed that `add` is the "command".*
 
 1. The command method extracts the relevant attributes from the "information" String. 
    * This is done using `.split()` from Java's String class, which outputs an array of Strings.
 2. The product **name** is extracted directly from the index immediately after the "command". 
    * However, only one-word Strings can be extracted as the product name using this method. Hence, the name of products
    in the program are restricted to one-word Strings. This limitation will be addressed in later versions.
-3. The product **ID** is extracted from the index immediately after the product name.
-   * Since the product ID needs to be of type `int` and not `String` for formatting purposes, the attribute undergoes 
-   parsing to an integer type,
+3. *(applicable to other methods besides `add`)* The product **ID** is extracted from the index immediately after the
+   "command".
+   * Since the product ID needs to be of type `int` and not `String` for formatting purposes, the attribute undergoes
+     parsing to an integer type,
    * The product ID is then formatted to the ID format (ID_XXXX) and converted back to a String.
-4. The product **quantity** and **price** is extracted from the subsequent indexes.
+4. The product **quantity** and **price** are extracted from the subsequent indexes.
    * Since the product quantity and price need to be of type `int` and not `String`, the attribute undergoes parsing to
    an integer type.
 5. When the attributes have been extracted, the command method will call its counterpart in the relevant Manager class.
@@ -374,59 +398,67 @@ The 3 steps is as follows:
 product list and computation of total revenue, since there is no "information" required for their command methods, they
 will not require attribute extraction.
 
+---
+
 <!-- @@author LEESY02 -->
 ### Credentials class
 
 **Member Variables**
 
-* **`String businessID`** - String ID for Business
-* **`String businessName`** - String ID of Business
-* **`String businessPassword`** - String password of Business
-* **`BusynessManager.BusinessType businessType`** - Enum in `BusynessManager` that contains the different Business types
+* **`String businessID`** - String ID for Business.
+* **`String businessName`** - String name of Business.
+* **`String businessPassword`** - String password of Business.
+* **`BusynessManager.BusinessType businessType`** - Enum in `BusynessManager` that contains the different Business 
+types.
 
 **Credentials Class Methods**
-  * All methods in Credentials are getters for their respective attributes (Member Variables).
-    * **`getBusinessID()`**
-    * **`getBusinessName()`**
-    * **`getBusinessPassword()`**
-    * **`getBusinessType()`**
+
+* All methods in Credentials are getters for their respective attributes. (Member Variables)
+  * **`getBusinessID()`**
+  * **`getBusinessName()`**
+  * **`getBusinessPassword()`**
+  * **`getBusinessType()`**
 
 **Interactions with Other Components**
-  * **`BusynessManager`** - Used by BusynessManager to load and verify user(business) credentials during login, as well
-  as during saving of data
 
+* **`BusynessManager`** - Used by BusynessManager to load and verify user (business) credentials during login, as well
+as during saving of data.
+
+---
 
 ### Constants class
 `Constants` class is used to hold static constants used during printing of messages using UI class or Magic Literals
-required during the execution of the program
+required during the execution of the program.
 
 **Member Variables**
-  * Contains static constants used for printing messages in the UI class
 
-**Constants Class Methods**
-  * None
+* Contains static constants used for printing messages in the UI class.
 
 **Interactions with Other Components**
-  * **`UI`** Uses values from the Constants class to print output to the user
-  * Almost all classes uses Magic Literals from this class
 
+* **`UI`** - Uses values from the Constants class to print output to the user.
+* Almost all classes uses Magic Literals from this class.
+
+---
 
 ### UI class
-`UI` class is used to print outputs to user (Abstraction of printing output)
-
-**Member Variables**
-  * None
+`UI` class is used to print outputs to user (Abstraction of printing output).
 
 **UI Class Methods**
-  * printMessageWithoutNewline(String message)
-  * printMessage(String message)
-  * printErrorMessage(String message)
-  * printFormattedMessage(String message, Object... args)
-All methods in UI Class is static (class level)
+
+* `printMessageWithoutNewline(String message)`
+* `printMessage(String message)`
+* `printErrorMessage(String message)`
+* `printFormattedMessage(String message, Object... args)`
+
+*Note:* All methods in UI Class are static. (class level)
 
 **Interactions with Other Components**
-  * **`Constants`** - Constant variable from this class is used by `UI` for printing
-  * Almost all classes uses UI class for printing
+
+* **`Constants`** - Constants variable from this class is used by `UI` for printing.
+* Almost all classes uses UI class for printing
+
+---
 
 <!-- @@author b1inmeister -->
 ## Product Scope
@@ -448,6 +480,7 @@ Busyness Manager can manage the inventory of a business in a faster and more org
 application. Moreover, it is cheaper to run and maintain, compared to other inventory management applications in the 
 market.
 
+---
 
 ## User Stories
 
@@ -464,6 +497,7 @@ market.
 |  v2.0   |         forgetful business owner         |     have a list of possible commands and formats     |                 recall what commands I can use                  |
 |  v2.0   |              business owner              |                   save my database                   |   reuse the existing database when I restart the application    |
 
+---
 
 ## Non-Functional Requirements
 
@@ -474,6 +508,7 @@ market.
 * A user with decent typing speed for normal text should be able to complete most tasks faster through typing
 out commands, compared to using the mouse to navigate a GUI application.
 
+---
 
 ## Glossary
 
@@ -487,6 +522,7 @@ out commands, compared to using the mouse to navigate a GUI application.
 <!-- @@author b1inmeister -->
 * **Mainstream OS** - Windows, Linux, Unix, macOS 
 
+---
 
 ## Instructions for Manual Testing
 
@@ -499,10 +535,10 @@ out commands, compared to using the mouse to navigate a GUI application.
 
 ### Sign-In Process
 
-* When the program asks for the login details, do not input anything and press `Enter`.
+* When the program asks for the login details, **do not input anything** and press `Enter`.
   * *Example Input:* When `Please enter your business name:` is shown, press `Enter` without inputting anything.
   * *Output:* An error message stating that no input was detected will be shown.
-* When the program asks for the login details, input an incorrect set of login information.
+* When the program asks for the login details, input an **incorrect set** of login information.
   * *Example Input:* When asked for the **business name**, input an incorrect name.
   * *Output:* The program will provide an option to create a new business account before termination.
   * *Example Input:* When asked for the **business ID and password**, input some incorrect information.
@@ -510,11 +546,14 @@ out commands, compared to using the mouse to navigate a GUI application.
 
 ### First-Time setup
 
-* When the program requests for Credentials information (e.g. ID / Name / Password / Business Type), do not input 
-anything and press `Enter`.
+* When the program requests for Credentials information (e.g. ID / Name / Password / Business Type), **do not input 
+anything** and press `Enter`.
   * *Example Input:* When `Enter Business ID:` is shown, press `Enter` without inputting anything.
   * *Output:* An error message stating that no input was detected will be shown.
-* When the program requests for the Business Type, input something other than FNB or RETAIL.
+* When the program requests for the ID, input **a String of letters**.
+  * *Example Input:* `tralalero tralala`
+  * *Output:* An error message stating that the ID must be a set of digits will be shown.
+* When the program requests for the Business Type, input something **other than FNB or RETAIL**.
   * *Example Input:* `fnb` / `retail` / `SERVICE`
   * *Output:* An error message stating the Business Type is invalid will be shown. 
 
